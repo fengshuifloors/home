@@ -6,7 +6,6 @@ use Elementor\Core\Base\Module as BaseModule;
 use Elementor\Core\DynamicTags\Manager;
 use Elementor\Modules\System_Info\Module as System_Info;
 use Elementor\Plugin;
-use Elementor\Tracker;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -136,15 +135,14 @@ class Module extends BaseModule {
 				'count' => $doc_count,
 			];
 
-			// ' ? 1 : 0;' In sorters is compatibility for PHP8.0.
 			// Sort usage by title.
 			uasort( $usage, function( $a, $b ) {
-				return ( $a['title'] > $b['title'] ) ? 1 : 0;
+				return ( $a['title'] > $b['title'] );
 			} );
 
 			// If title includes '-' will have lower priority.
 			uasort( $usage, function( $a ) {
-				return strpos( $a['title'], '-' ) ? 1 : 0;
+				return strpos( $a['title'], '-' );
 			} );
 		}
 
@@ -277,7 +275,6 @@ class Module extends BaseModule {
 		$post_types = get_post_types( array( 'public' => true ) );
 
 		$query = new \WP_Query( [
-			'no_found_rows' => true,
 			'meta_key' => '_elementor_data',
 			'post_type' => $post_types,
 			'post_status' => [ 'publish', 'private' ],
@@ -572,12 +569,7 @@ class Module extends BaseModule {
 
 				$this->add_to_global( $document->get_name(), $usage );
 			} catch ( \Exception $exception ) {
-				Plugin::$instance->logger->get_logger()->error( $exception->getMessage(), [
-					'document_id' => $document->get_id(),
-					'document_name' => $document->get_name(),
-				] );
-
-				return;
+				return; // Do nothing.
 			};
 		}
 	}
@@ -600,10 +592,6 @@ class Module extends BaseModule {
 	 * @access public
 	 */
 	public function __construct() {
-		if ( ! Tracker::is_allow_track() ) {
-			return;
-		}
-
 		add_action( 'transition_post_status', [ $this, 'on_status_change' ], 10, 3 );
 		add_action( 'before_delete_post', [ $this, 'on_before_delete_post' ] );
 

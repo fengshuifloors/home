@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace voku\helper;
 
-final class HtmlDomHelper
-{
+final class HtmlDomHelper {
 
     /**
      * @param string $html
@@ -14,7 +13,7 @@ final class HtmlDomHelper
      *
      * @return string
      */
-    public static function mergeHtmlAttributes(
+    static function mergeHtmlAttributes(
         string $html,
         string $optionStr,
         string $htmlCssSelector
@@ -70,4 +69,5 @@ final class HtmlDomHelper
 
         return $domElement->html();
     }
+
 }

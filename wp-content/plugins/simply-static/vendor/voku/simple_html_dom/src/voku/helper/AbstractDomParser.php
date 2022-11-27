@@ -109,6 +109,8 @@ abstract class AbstractDomParser implements DomParserInterface
         $this->document = clone $this->document;
     }
 
+    /** @noinspection MagicMethodsValidityInspection */
+
     /**
      * @param string $name
      *
@@ -487,7 +489,7 @@ abstract class AbstractDomParser implements DomParserInterface
         if (\strpos($html, 'http') !== false) {
 
             // regEx for e.g.: [https://www.domain.de/foo.php?foobar=1&email=lars%40moelleken.org&guid=test1233312&{{foo}}#foo]
-            $regExUrl = '/(\[?\bhttps?:\/\/[^\s<>]+(?:\(\w+\)|[^[:punct:]\s]|\/|}|]))/i';
+            $regExUrl = '/(\[?\bhttps?:\/\/[^\s<>]+(?:\([\w]+\)|[^[:punct:]\s]|\/|\}|\]))/i';
             \preg_match_all($regExUrl, $html, $linksOld);
 
             if (!empty($linksOld[1])) {

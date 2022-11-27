@@ -1,9 +1,6 @@
 <?php
 namespace Elementor;
 
-use Elementor\Core\Breakpoints\Manager as Breakpoints_Manager;
-use Elementor\Modules\DynamicTags\Module as TagsModule;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -335,6 +332,26 @@ class Group_Control_Background extends Group_Control_Base {
 				'image[url]!' => '',
 			],
 			'required' => true,
+			'device_args' => [
+				Controls_Stack::RESPONSIVE_TABLET => [
+					'selectors' => [
+						'{{SELECTOR}}' => 'background-position: {{SIZE}}{{UNIT}} {{ypos_tablet.SIZE}}{{ypos_tablet.UNIT}}',
+					],
+					'condition' => [
+						'background' => [ 'classic' ],
+						'position_tablet' => [ 'initial' ],
+					],
+				],
+				Controls_Stack::RESPONSIVE_MOBILE => [
+					'selectors' => [
+						'{{SELECTOR}}' => 'background-position: {{SIZE}}{{UNIT}} {{ypos_mobile.SIZE}}{{ypos_mobile.UNIT}}',
+					],
+					'condition' => [
+						'background' => [ 'classic' ],
+						'position_mobile' => [ 'initial' ],
+					],
+				],
+			],
 		];
 
 		$fields['ypos'] = [
@@ -381,6 +398,26 @@ class Group_Control_Background extends Group_Control_Base {
 				'image[url]!' => '',
 			],
 			'required' => true,
+			'device_args' => [
+				Controls_Stack::RESPONSIVE_TABLET => [
+					'selectors' => [
+						'{{SELECTOR}}' => 'background-position: {{xpos_tablet.SIZE}}{{xpos_tablet.UNIT}} {{SIZE}}{{UNIT}}',
+					],
+					'condition' => [
+						'background' => [ 'classic' ],
+						'position_tablet' => [ 'initial' ],
+					],
+				],
+				Controls_Stack::RESPONSIVE_MOBILE => [
+					'selectors' => [
+						'{{SELECTOR}}' => 'background-position: {{xpos_mobile.SIZE}}{{xpos_mobile.UNIT}} {{SIZE}}{{UNIT}}',
+					],
+					'condition' => [
+						'background' => [ 'classic' ],
+						'position_mobile' => [ 'initial' ],
+					],
+				],
+			],
 		];
 
 		$fields['attachment'] = [
@@ -404,7 +441,7 @@ class Group_Control_Background extends Group_Control_Base {
 		$fields['attachment_alert'] = [
 			'type' => Controls_Manager::RAW_HTML,
 			'content_classes' => 'elementor-control-field-description',
-			'raw' => esc_html__( 'Note: Attachment Fixed works only on desktop.', 'elementor' ),
+			'raw' => __( 'Note: Attachment Fixed works only on desktop.', 'elementor' ),
 			'separator' => 'none',
 			'condition' => [
 				'background' => [ 'classic' ],
@@ -488,22 +525,35 @@ class Group_Control_Background extends Group_Control_Base {
 				'size' => [ 'initial' ],
 				'image[url]!' => '',
 			],
+			'device_args' => [
+				Controls_Stack::RESPONSIVE_TABLET => [
+					'selectors' => [
+						'{{SELECTOR}}' => 'background-size: {{SIZE}}{{UNIT}} auto',
+					],
+					'condition' => [
+						'background' => [ 'classic' ],
+						'size_tablet' => [ 'initial' ],
+					],
+				],
+				Controls_Stack::RESPONSIVE_MOBILE => [
+					'selectors' => [
+						'{{SELECTOR}}' => 'background-size: {{SIZE}}{{UNIT}} auto',
+					],
+					'condition' => [
+						'background' => [ 'classic' ],
+						'size_mobile' => [ 'initial' ],
+					],
+				],
+			],
 		];
 
 		$fields['video_link'] = [
 			'label' => _x( 'Video Link', 'Background Control', 'elementor' ),
 			'type' => Controls_Manager::TEXT,
 			'placeholder' => 'https://www.youtube.com/watch?v=XHOmBV4js_E',
-			'description' => esc_html__( 'YouTube/Vimeo link, or link to video file (mp4 is recommended).', 'elementor' ),
+			'description' => __( 'YouTube/Vimeo link, or link to video file (mp4 is recommended).', 'elementor' ),
 			'label_block' => true,
 			'default' => '',
-			'dynamic' => [
-				'active' => true,
-				'categories' => [
-					TagsModule::POST_META_CATEGORY,
-					TagsModule::URL_CATEGORY,
-				],
-			],
 			'condition' => [
 				'background' => [ 'video' ],
 			],
@@ -512,9 +562,9 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['video_start'] = [
-			'label' => esc_html__( 'Start Time', 'elementor' ),
+			'label' => __( 'Start Time', 'elementor' ),
 			'type' => Controls_Manager::NUMBER,
-			'description' => esc_html__( 'Specify a start time (in seconds)', 'elementor' ),
+			'description' => __( 'Specify a start time (in seconds)', 'elementor' ),
 			'placeholder' => 10,
 			'condition' => [
 				'background' => [ 'video' ],
@@ -524,9 +574,9 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['video_end'] = [
-			'label' => esc_html__( 'End Time', 'elementor' ),
+			'label' => __( 'End Time', 'elementor' ),
 			'type' => Controls_Manager::NUMBER,
-			'description' => esc_html__( 'Specify an end time (in seconds)', 'elementor' ),
+			'description' => __( 'Specify an end time (in seconds)', 'elementor' ),
 			'placeholder' => 70,
 			'condition' => [
 				'background' => [ 'video' ],
@@ -536,7 +586,7 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['play_once'] = [
-			'label' => esc_html__( 'Play Once', 'elementor' ),
+			'label' => __( 'Play Once', 'elementor' ),
 			'type' => Controls_Manager::SWITCHER,
 			'condition' => [
 				'background' => [ 'video' ],
@@ -546,23 +596,8 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['play_on_mobile'] = [
-			'label' => esc_html__( 'Play On Mobile', 'elementor' ),
+			'label' => __( 'Play On Mobile', 'elementor' ),
 			'type' => Controls_Manager::SWITCHER,
-			'condition' => [
-				'background' => [ 'video' ],
-			],
-			'of_type' => 'video',
-			'frontend_available' => true,
-		];
-
-		// This control was added to handle a bug with the Youtube Embed API. The bug: If there is a video with Privacy
-		// Mode on, and at the same time the page contains another video WITHOUT privacy mode on, one of the videos
-		// will not run properly. This added control allows users to align all their videos to one host (either
-		// youtube.com or youtube-nocookie.com, depending on whether the user wants privacy mode on or not).
-		$fields['privacy_mode'] = [
-			'label' => esc_html__( 'Privacy Mode', 'elementor' ),
-			'type' => Controls_Manager::SWITCHER,
-			'description' => esc_html__( 'Only works for YouTube videos.', 'elementor' ),
 			'condition' => [
 				'background' => [ 'video' ],
 			],
@@ -572,7 +607,7 @@ class Group_Control_Background extends Group_Control_Base {
 
 		$fields['video_fallback'] = [
 			'label' => _x( 'Background Fallback', 'Background Control', 'elementor' ),
-			'description' => esc_html__( 'This cover image will replace the background video in case that the video could not be loaded.', 'elementor' ),
+			'description' => __( 'This cover image will replace the background video in case that the video could not be loaded.', 'elementor' ),
 			'type' => Controls_Manager::MEDIA,
 			'dynamic' => [
 				'active' => true,
@@ -598,7 +633,7 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['slideshow_loop'] = [
-			'label' => esc_html__( 'Infinite Loop', 'elementor' ),
+			'label' => __( 'Infinite Loop', 'elementor' ),
 			'type' => Controls_Manager::SWITCHER,
 			'default' => 'yes',
 			'condition' => [
@@ -609,7 +644,7 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['slideshow_slide_duration'] = [
-			'label' => esc_html__( 'Duration', 'elementor' ) . ' (ms)',
+			'label' => __( 'Duration', 'elementor' ) . ' (ms)',
 			'type' => Controls_Manager::NUMBER,
 			'default' => 5000,
 			'condition' => [
@@ -619,7 +654,7 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['slideshow_slide_transition'] = [
-			'label' => esc_html__( 'Transition', 'elementor' ),
+			'label' => __( 'Transition', 'elementor' ),
 			'type' => Controls_Manager::SELECT,
 			'default' => 'fade',
 			'options' => [
@@ -637,7 +672,7 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['slideshow_transition_duration'] = [
-			'label' => esc_html__( 'Transition Duration', 'elementor' ) . ' (ms)',
+			'label' => __( 'Transition Duration', 'elementor' ) . ' (ms)',
 			'type' => Controls_Manager::NUMBER,
 			'default' => 500,
 			'condition' => [
@@ -647,15 +682,15 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['slideshow_background_size'] = [
-			'label' => esc_html__( 'Background Size', 'elementor' ),
+			'label' => __( 'Background Size', 'elementor' ),
 			'type' => Controls_Manager::SELECT,
 			'responsive' => true,
 			'default' => '',
 			'options' => [
-				'' => esc_html__( 'Default', 'elementor' ),
-				'auto' => esc_html__( 'Auto', 'elementor' ),
-				'cover' => esc_html__( 'Cover', 'elementor' ),
-				'contain' => esc_html__( 'Contain', 'elementor' ),
+				'' => __( 'Default', 'elementor' ),
+				'auto' => __( 'Auto', 'elementor' ),
+				'cover' => __( 'Cover', 'elementor' ),
+				'contain' => __( 'Contain', 'elementor' ),
 			],
 			'selectors' => [
 				'{{WRAPPER}} .elementor-background-slideshow__slide__image' => 'background-size: {{VALUE}};',
@@ -666,12 +701,12 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['slideshow_background_position'] = [
-			'label' => esc_html__( 'Background Position', 'elementor' ),
+			'label' => __( 'Background Position', 'elementor' ),
 			'type' => Controls_Manager::SELECT,
 			'default' => '',
 			'responsive' => true,
 			'options' => [
-				'' => esc_html__( 'Default', 'elementor' ),
+				'' => __( 'Default', 'elementor' ),
 				'center center' => _x( 'Center Center', 'Background Control', 'elementor' ),
 				'center left' => _x( 'Center Left', 'Background Control', 'elementor' ),
 				'center right' => _x( 'Center Right', 'Background Control', 'elementor' ),
@@ -690,19 +725,8 @@ class Group_Control_Background extends Group_Control_Base {
 			],
 		];
 
-		$fields['slideshow_lazyload'] = [
-			'label' => esc_html__( 'Lazyload', 'elementor' ),
-			'type' => Controls_Manager::SWITCHER,
-			'separator' => 'before',
-			'condition' => [
-				'background' => [ 'slideshow' ],
-			],
-			'of_type' => 'slideshow',
-			'frontend_available' => true,
-		];
-
 		$fields['slideshow_ken_burns'] = [
-			'label' => esc_html__( 'Ken Burns Effect', 'elementor' ),
+			'label' => __( 'Ken Burns Effect', 'elementor' ),
 			'type' => Controls_Manager::SWITCHER,
 			'separator' => 'before',
 			'condition' => [
@@ -713,12 +737,12 @@ class Group_Control_Background extends Group_Control_Base {
 		];
 
 		$fields['slideshow_ken_burns_zoom_direction'] = [
-			'label' => esc_html__( 'Direction', 'elementor' ),
+			'label' => __( 'Direction', 'elementor' ),
 			'type' => Controls_Manager::SELECT,
 			'default' => 'in',
 			'options' => [
-				'in' => esc_html__( 'In', 'elementor' ),
-				'out' => esc_html__( 'Out', 'elementor' ),
+				'in' => __( 'In', 'elementor' ),
+				'out' => __( 'Out', 'elementor' ),
 			],
 			'condition' => [
 				'background' => [ 'slideshow' ],
