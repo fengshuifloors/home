@@ -166,11 +166,6 @@ abstract class AbstractSimpleHtmlDom
                 // no break
             default:
                 if ($this->node && \property_exists($this->node, $nameOrig)) {
-                    // INFO: Cannot assign null to property DOMNode::* of type string
-                    if ($nameOrig === 'prefix' || $nameOrig === 'textContent') {
-                        $value = (string)$value;
-                    }
-
                     return $this->node->{$nameOrig} = $value;
                 }
 

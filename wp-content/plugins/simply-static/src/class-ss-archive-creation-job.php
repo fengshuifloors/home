@@ -169,7 +169,6 @@ class Archive_Creation_Job extends \WP_Background_Process {
 
 		$this->save_status_message( sprintf( __( 'Done! Finished in %s', 'simply-static' ), $time_string ) );
 		parent::complete();
-		do_action('ss_completed', 'success');
 	}
 
 
@@ -286,7 +285,6 @@ class Archive_Creation_Job extends \WP_Background_Process {
 		Util::debug_log( $exception );
 		$message = sprintf( __( "An exception occurred: %s", 'simply-static' ), $exception->getMessage() );
 		$this->save_status_message( $message, 'error' );
-		do_action('ss_completed', 'exception', $message);
 		return 'cancel';
 	}
 
@@ -300,7 +298,6 @@ class Archive_Creation_Job extends \WP_Background_Process {
 		Util::debug_log( $wp_error );
 		$message = sprintf( __( "An error occurred: %s", 'simply-static' ), $wp_error->get_error_message() );
 		$this->save_status_message( $message, 'error' );
-		do_action('ss_completed', 'error', $message);
 		return 'cancel';
 	}
 
