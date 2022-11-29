@@ -539,6 +539,7 @@
                         pageID: pageID,
                         elemID: $scope.data('id'),
                         category: $loadMoreBtn.data("tax"),
+                        orderBy: $loadMoreBtn.data("order"),
                         skin: skin,
                         page_number: page_number,
                         nonce: PremiumWooSettings.products_nonce,

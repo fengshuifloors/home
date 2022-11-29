@@ -93,6 +93,26 @@ class Ip_Location extends Condition {
 
 		$location = strtolower( $location_data['geoplugin_countryName'] );
 
+		if ( empty( $location ) ) {
+
+			$location_data = wp_remote_get(
+				'https://api.ipgeolocation.io/ipgeo?apiKey=3263c9e5716649c7aa6f884665f27538&ip=' . $ip_address,
+				array(
+					'timeout'   => 60,
+					'sslverify' => false,
+				)
+			);
+
+			if ( is_wp_error( $location_data ) || empty( $location_data ) ) {
+				return; // localhost.
+			}
+
+			$location_data = json_decode( wp_remote_retrieve_body( $location_data ), true );
+
+			$location = strtolower( $location_data['country_name'] );
+
+		}
+
 		$condition_result = is_array( $value ) && ! empty( $value ) ? in_array( $location, $value, true ) : $value === $location;
 
 		return Helper_Functions::get_final_result( $condition_result, $operator );

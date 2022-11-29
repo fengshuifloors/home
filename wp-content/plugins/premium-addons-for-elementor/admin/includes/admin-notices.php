@@ -61,10 +61,10 @@ class Admin_Notices {
 
 		self::$notices = array(
 			'pa-review',
-			'magic_scroll_notice',
+			'bf22_notice',
 		);
 
-		delete_option( 'site_logo_notice' );
+		delete_option( 'magic_scroll_notice' );
 
 	}
 
@@ -106,7 +106,7 @@ class Admin_Notices {
 			return;
 		}
 
-		$this->get_mscroll_notice();
+		$this->get_bf_notice();
 
 	}
 
@@ -235,43 +235,50 @@ class Admin_Notices {
 
 	/**
 	 *
-	 * Shows admin notice for Premium SVG Draw.
+	 * Shows admin notice for Black Friday Sale.
 	 *
-	 * @since 4.8.8
+	 * @since 4.9.39
 	 * @access public
 	 *
 	 * @return void
 	 */
-	public function get_mscroll_notice() {
+	public function get_bf_notice() {
 
-		$mscroll_notice = get_option( 'magic_scroll_notice' );
+		$papro_path = 'premium-addons-pro/premium-addons-pro-for-elementor.php';
 
-		if ( '1' === $mscroll_notice ) {
+		$is_papro_installed = Helper_Functions::is_plugin_installed( $papro_path );
+
+		$license_status = get_option( 'papro_license_status' );
+
+		$bf_notice = get_option( 'bf22_notice' );
+
+		if ( ( $is_papro_installed && 'valid' === $license_status ) || '1' === $bf_notice ) {
 			return;
 		}
 
-		$notice_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/elementor-magic-scroll-global-addon/', 'magic-scroll-notification', 'wp-dash', 'magic-scroll' );
+		$link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/black-friday/', 'wp-dash', 'bf22-notification', 'bf22' );
 
 		?>
 
-		<div class="error pa-notice-wrap pa-new-feature-notice">
+		<div class="error pa-notice-wrap pa-new-feature-notice pa-review-notice">
 			<div class="pa-img-wrap">
-				<img src="<?php echo esc_url( PREMIUM_ADDONS_URL ) . 'admin/images/pa-logo-symbol.png'; ?>">
+				<img src="<?php echo PREMIUM_ADDONS_URL . 'admin/images/pa-logo-symbol.png'; ?>">
 			</div>
 			<div class="pa-text-wrap">
 				<p>
-					<strong><?php echo esc_html( __( 'Premium Magic Scroll Global Addon', 'premium-addons-for-elemetor' ) ); ?></strong>
-					<?php echo wp_kses_post( sprintf( __( 'is now available in Premium Addons Pro. <a href="%s" target="_blank">Check it out now!</a>', 'premium-addons-for-elementor' ), esc_url( $notice_url ) ) ); ?>
+					<?php echo __( 'Black Friday! Get <b>25% Discount</b> for a Limited Time Only', 'premium-addons-for-elementor' ); ?>
+					<a class="button button-primary" href="<?php echo esc_url( $link ); ?>" target="_blank">
+						<span><?php echo __( 'Get The Deal', 'premium-addons-for-elementor' ); ?></span>
+					</a>
 				</p>
 			</div>
-			<div class="pa-notice-close" data-notice="mscroll">
+			<div class="pa-notice-close" data-notice="bf22">
 				<span class="dashicons dashicons-dismiss"></span>
 			</div>
 		</div>
 
 		<?php
 	}
-
 
 
 	/**

@@ -983,18 +983,24 @@
         showTemplatesModal: function (_this) {
 
             var $this = $(_this.target),
-                $section = $this.closest('.elementor-add-section').prev(".elementor-top-section"),
-                modelID = $section.data('model-cid');
+                // The section above the add new section box.
+                $addSection = $this.closest('.elementor-add-section'),
+                $prevSections = $addSection.prev(".elementor-top-section"),
+                $nextSections = $addSection.next(".elementor-top-section"),
+                modelID = $prevSections.data('model-cid');
 
             if (elementor.previewView.collection.length) {
                 $.each(elementor.previewView.collection.models, function (index, model) {
-                    if ('undefined' === typeof modelID) {
+                    //Trying to insert before at the beginning of the page.
+                    if ('undefined' === typeof modelID && $nextSections.length > 0) {
                         PremiumEditor.atIndex = 0;
                     } else if (modelID === model.cid) {
                         PremiumEditor.atIndex = index + 1;
                     }
                 });
             }
+
+            //If at the end of the page atIndex = null
 
             this.getModal().show();
 
