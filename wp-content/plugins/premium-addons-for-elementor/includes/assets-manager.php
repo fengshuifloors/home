@@ -260,6 +260,12 @@ class Assets_Manager {
 			return false;
 		}
 
+		$type = get_post_type();
+
+		if ( 'page' !== $type && 'post' !== $type ) {
+			return false;
+		}
+
 		$current_id = get_the_ID();
 
 		if ( ! $current_id || $current_id < 0 ) {

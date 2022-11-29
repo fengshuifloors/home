@@ -4475,7 +4475,7 @@ class Premium_Nav_Menu extends Widget_Base {
 		?>
 			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
 				<div class="premium-ver-inner-container">
-					<a class="premium-hamburger-toggle premium-mobile-menu-icon" href="javascript:void(0)">
+					<div class="premium-hamburger-toggle premium-mobile-menu-icon" role="button" aria-label="Toggle Menu">
 						<span class="premium-toggle-text">
 							<?php
 								Icons_Manager::render_icon( $settings['pa_mobile_toggle_icon'], array( 'aria-hidden' => 'true' ) );
@@ -4488,7 +4488,7 @@ class Premium_Nav_Menu extends Widget_Base {
 								echo esc_html( $settings['pa_mobile_toggle_close'] );
 							?>
 						</span>
-					</a>
+					</div>
 					<?php
 
 					if ( 'yes' === $settings['pa_ver_toggle_switcher'] ) {
@@ -4531,10 +4531,10 @@ class Premium_Nav_Menu extends Widget_Base {
 						?>
 						<div class="premium-nav-slide-overlay"></div>
 						<div class="premium-mobile-menu-outer-container">
-							<a class="premium-mobile-menu-close" href="javascript:void(0)">
+							<div class="premium-mobile-menu-close" role="button" aria-label="Close Menu">
 								<?php Icons_Manager::render_icon( $settings['pa_mobile_close_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 								<span class="premium-toggle-close"><?php echo esc_html( $settings['pa_mobile_toggle_close'] ); ?></span>
-							</a>
+						</div>
 						<?php
 						/**
 						 * @param int|bool $menu_id WordPress menu id | false if it's a custom menu.

@@ -162,9 +162,10 @@
 }
 
 /**Hamburger Menu*/
-.premium-nav-widget-container a.premium-hamburger-toggle,
-.premium-mobile-menu-outer-container a.premium-mobile-menu-close {
+.premium-nav-widget-container .premium-hamburger-toggle,
+.premium-mobile-menu-outer-container .premium-mobile-menu-close {
     text-decoration: none;
+    cursor: pointer;
 }
 
 .premium-nav-widget-container .premium-hamburger-toggle {

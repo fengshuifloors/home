@@ -322,7 +322,15 @@ class PA_Controls_Handler {
 			$id        = $item_key . '_' . $list['_id'];
 			$time_zone = in_array( $list['pa_condition_key'], array( 'date_range', 'time_range', 'date', 'day' ), true ) ? $list['pa_condition_timezone'] : false;
 
-			$check = ( 'acf_text' === $list['pa_condition_key'] || '' !== $value ) ? $class->compare_value( $settings, $operator, $value, $compare_val, $time_zone ) : true;
+			if ( 'ip_location' !== $list['pa_condition_key'] ) {
+				$check = ( 'acf_text' === $list['pa_condition_key'] || '' !== $value ) ? $class->compare_value( $settings, $operator, $value, $compare_val, $time_zone ) : true;
+			} else {
+
+				$detect_method = $list['pa_condition_loc_method'];
+
+				$check = $class->compare_location( $settings, $operator, $value, $compare_val, $time_zone, $detect_method );
+
+			}
 
 			$this->conditions_results_holder[ $element_id ][ $id ] = $check;
 		}

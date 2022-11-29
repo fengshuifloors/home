@@ -209,7 +209,7 @@ class Skin_7 extends Skin_Base {
 	}
 
 	/**
-	 * Register Gallery Carousel Style.
+	 * Register Carousel Style.
 	 *
 	 * @access public
 	 * @since 4.7.0

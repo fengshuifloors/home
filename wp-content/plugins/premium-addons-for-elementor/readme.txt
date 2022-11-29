@@ -1,160 +1,160 @@
-=== Premium Addons for Elementor (Blog Post Grid, Mega Menu Builder, WooCommerce Products Grid, Carousel, Free Elementor Templates) ===
+=== Premium Addons for Elementor (Blog Post Listing, Mega Menu Builder, WooCommerce Products Grid, Carousel, Free Templates) ===
 Contributors: Leap13, Rimoun
-Tags: elementor, elementor addons, elementor widgets, elementor elements, elementor templates
+Tags: elementor, elementor addons, widgets, elementor elements, templates
 Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme
 Requires at least: 5.0
 Tested Up To: 6.1.1
 Requires PHP: 7.0
-Stable Tag: 4.9.39
+Stable Tag: 4.9.40
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
-Premium Addons for Elementor plugin includes essential widgets and addons like Blog Post Grid, Megamenu, WooCommerce Products Listing, Carousel, Modal Popup, Lottie Animations, Google Maps, Pricing Tables, Evergreen Countdown, Testimonials and much more.
+Premium Addons for Elementor plugin includes essential widgets and addons like Blog Post Listing, Megamenu, WooCommerce Products Listing, Carousel, Modal Popup, Lottie Animations, Google Maps, Pricing Tables, Evergreen Countdown, Testimonials and much more.
 
 == Description ==
 
-Supercharge your [Elementor Page Builder](https://wordpress.org/plugins/elementor/) with 60+ highly customizable Elementor essential addons and widgets, 400+ premade Elementor templates that will give you the ability to build sophisticated websites in less time with no coding required. Both Elementor and Premium Addons plugins take your WordPress website to the next level.
+Supercharge your [Elementor Page Builder](https://wordpress.org/plugins/elementor/) with 60+ highly customizable addons and widgets, 400+ premade templates that will give you the ability to build sophisticated websites in less time with no coding required. Both Elementor and Premium Addons plugins take your WordPress website to the next level.
 
-[**Check Elementor Widgets & Addons Demo Pages**](https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
+[**Check The Widgets & Addons Demo Pages**](https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
 
 ### Useful Links
 [Support](https://my.leap13.com/contact-support/) | [Docs](https://premiumaddons.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) | [Video Tutorials](https://www.youtube.com/channel/UCXcJ9BeO2sKKHor7Q9VglTQ) | [Facebook Group](https://facebook.com/groups/premiumAddons) | [Upgrade to Pro](https://premiumaddons.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
 
-### New: Elementor SVG Draw Widget
+### New: SVG Draw Widget
 You can now draw any Font Awesome icon or SVG path using Premium SVG Draw widget. Not just that, we have added Draw Icon option in all premium widgets that has icon option in them. [Check it out now!](https://premiumaddons.com/elementor-svg-draw-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
-### New: Three transition effects added to Vertical Scroll one page navigation widget
-Now, you can select between three scroll transition effects in Elementor one page navigation widget in Premium Addons. Make your Vertical Scroll Elementor widget glow using the newly transitions Cube, Parallax, and Zoomed Parallax. Those three new transitions will let you get the ability to build eye-catchy single page WordPress websites with no effort. [Check it out now!](https://premiumaddons.com/vertical-scroll-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
+### Three transition effects added to Vertical Scroll one page navigation widget
+Now, you can select between three scroll transition effects in Premium Vertical Scroll widget in Premium Addons. Make your Vertical Scroll widget glow using the newly transitions Cube, Parallax, and Zoomed Parallax. Those three new transitions will let you get the ability to build eye-catchy single page WordPress websites with no effort. [Check it out now!](https://premiumaddons.com/vertical-scroll-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
 ### Elementor Navigation/Mega Menu Widget
-Now, you build outstanding navigation menus and mega menus in Elementor using Premium Navigation/Mega Menu Widget which allows you to select between four different layouts with dozens of options to create a responsive menu for your Elementor website. [Check it out now!](https://premiumaddons.com/elementor-mega-menu-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
+Now, you build outstanding navigation menus and mega menus using Premium Navigation/Mega Menu Widget which allows you to select between four different layouts with dozens of options to create a responsive menu. [Check it out now!](https://premiumaddons.com/elementor-mega-menu-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
-### Elementor Section Templates Live Builder Tool
-Now, you create build Elementor section templates and insert them inside the Elementor templates based widgets in Premium Addons within the same page using [Elementor Templates Live Editor tool](https://premiumaddons.com/elementor-templates-live-editor/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
+### Section Templates Live Builder Tool
+Now, you create build Elementor section templates and insert them inside the templates based widgets in Premium Addons within the same page using [Templates Live Editor tool](https://premiumaddons.com/elementor-templates-live-editor/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
-### Elementor Display Conditions
+### Display Conditions
 Premium Addons is proudly offering you a professional way to manage your website content with specific conditions which is perfect for marketers and eCommerce websites. You can show/hide content dynamically based on location, browser, operating system, user role, URL parameters, device type, Woocommerce display conditions such as WooCommerce product and WooCommerce shopping cart data, ACF fields, etc. [Check the demo page](https://premiumaddons.com/elementor-display-conditions/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
 
-### Elementor WooCommerce Products Listing widget
-Show off your products in an elegant way using Premium Woo Products Widget for Elementor Page Builder that comes with unlimited customization options. [Check the demo page](https://premiumaddons.com/elementor-woocommerce-products/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
+### WooCommerce Products Listing widget
+Show off your products in an elegant way using Premium Woo Products Widget that comes with unlimited customization options. [Check the demo page](https://premiumaddons.com/elementor-woocommerce-products/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
 
-### Elementor Floating Effects
-[Floating Animations for Elementor Global Feature](https://premiumaddons.com/elementor-floating-effects/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) that comes from Premium Addons for Elementor Free Plugin could be added to any Elementor widget including Elementor Sections, Inner-Sections. In addition, it could be added to the Elements inside each Elementor widget using Custom CSS Selector option.
+### Floating Effects
+[Floating Animations Global Feature](https://premiumaddons.com/elementor-floating-effects/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) that comes from Premium Addons Free Plugin could be added to any widget including Sections, Inner-Sections. In addition, it could be added to the Elements inside each widget using Custom CSS Selector option.
 
-### Elementor Equal Height Feature
-Now, you can make your columns, widgets or any selector you want the same height with just ONE click using [Elementor Equal Height feature](https://premiumaddons.com/docs/elementor-column-equal-height/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) in section settings -> Advanced tab.
+### Equal Height Feature
+Now, you can make your columns, widgets or any selector you want the same height with just ONE click using [Equal Height feature](https://premiumaddons.com/docs/elementor-column-equal-height/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) in section settings -> Advanced tab.
 
-### Elementor Pre-made Templates
-NEW: Ever-growing [Elementor Section Templates Library](https://premiumaddons.com/premium-templates-for-elementor/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) Available on both Premium Addons Free and PRO versions. Browse, preview, and insert the template you like in your page/post with just ONE click. You can also select to insert the templates without media files (images, videos, etc.) to prevent overloading your WordPress Media Library with large files.
+### Pre-made Templates
+NEW: Ever-growing [Section Templates Library](https://premiumaddons.com/premium-templates-for-elementor/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) Available on both Premium Addons Free and PRO versions. Browse, preview, and insert the template you like in your page/post with just ONE click. You can also select to insert the templates without media files (images, videos, etc.) to prevent overloading your WordPress Media Library with large files.
 
-### Elementor Lottie Animations Integration
-You can now use [Lottie Animations in ALL our Elementor widgets](https://premiumaddons.com/elementor-lottie-animations-section-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme). Whatever widget that have an image or icon option now have also the option to add a Lottie animation. Lottie animations are open source, lightweight and available for free, Use them now to make your Elementor pages more eye-catching.
+### Lottie Animations Integration
+You can now use [Lottie Animations in ALL our widgets](https://premiumaddons.com/elementor-lottie-animations-section-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme). Whatever widget that have an image or icon option now have also the option to add a Lottie animation. Lottie animations are open source, lightweight and available for free, Use them now to make your Elementor pages more eye-catching.
 
 ### Cross-Domain Copy N’ Paste
-Now, you will have the ability to copy and paste any Elementor content from a website to another with just 2 clicks, copy from here and paste there, woohoo that’s it!. Check the documentation article from [here](https://premiumaddons.com/docs/how-to-copy-elementor-content-from-site-to-another-using-pa-copy-paste-feature/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
+Now, you will have the ability to copy and paste any content from a website to another with just 2 clicks, copy from here and paste there, woohoo that’s it!. Check the documentation article from [here](https://premiumaddons.com/docs/how-to-copy-elementor-content-from-site-to-another-using-pa-copy-paste-feature/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
-### Elementor Post and Page Duplicator
+### Post and Page Duplicator
 Duplicate any post, page or template on your website with just ONE click. Check the documentation article from [here](https://premiumaddons.com/docs/how-to-use-pa-duplicator/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
 ### Freehand Design Experience
-Following Elementor's steps, we've implemented freehand design experience in many widgets and addons to make it easier to design amazing layouts using your mouse.
+We've implemented freehand design experience in many widgets and addons to make it easier to design amazing layouts using your mouse.
 
-### 60+ Fully Customizable Elementor Widgets & Addons
+### 60+ Fully Customizable Widgets & Addons
 Besides adding new widgets on monthly bases, we don't mainly focus on the number, we focus on adding as much customization options to our widgets as possible more than anywhere else.
 
 ### Modular & Lightweight
-Premium Addons for Elementor was built the same way Elementor was built so it's fully modular. You can enable/disable specific elements to prevent overloading your website with code you will not actually use which helps your website have a blazing fast performance.
+Premium Addons for Elementor is fully modular. You can enable/disable specific elements to prevent overloading your website with code you will not actually use which helps your website have a blazing fast performance.
 
 ### WPML Ready
-You can use Premium Addons for Elementor to build multilingual websites easily as our plugin is 100%  compatible with WPML.
+You can use Premium Addons to build multilingual websites easily as our plugin is 100%  compatible with WPML.
 
 ### Fully Responsive & Cross Browser Ready
 Each widget and addon has been tested on different screen sizes, mobile devices, and tablets keeping in mind to add special responsive controls for the tricky widgets and addons we create. We always test Premium Addons on [BrowserStack](https://www.browserstack.com) to make sure that everything is stable.
 
-### Elementor Editor Panel Not Loading
+### Editor Panel Not Loading
 [How to resolve Elementor editor panel loading issue when Premium Addons is active](https://premiumaddons.com/docs/im-getting-a-blank-page-on-elementor-after-activating-premium-add-ons/).
 
-## Elementor Widgets & Addons Included
+## Widgets & Addons Included
 
 ### Content Widgets
-* [**Carousel Widget**](https://premiumaddons.com/carousel-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The best all purpose Elementor carousel widget. It can be used to create any kind of carousel you want like: Testimonials Carousel, Client Logos Carousel, and some of our users even used it as Advanced Slider in a combination with other widgets.
+* [**Carousel Widget**](https://premiumaddons.com/carousel-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The best all purpose carousel widget. It can be used to create any kind of carousel you want like: Testimonials Carousel, Client Logos Carousel, and some of our users even used it as Advanced Slider in a combination with other widgets.
 * [**Blog Widget**](https://premiumaddons.com/blog-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Blog Posts Widget comes with a modern style, advanced posts filtering options, and also it allows you to create posts carousel.
 * [**Google Maps Widget**](https://premiumaddons.com/google-maps-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Advanced Google Maps Widget comes with features like adding multiple markers, custom skins, and much more options.
-* [**Team Members Widget**](https://premiumaddons.com/persons-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Very good Elementor Widget to list team members, co-workers, etc. Team Members Widget for Elementor comes with many customization options.
-* [**Tabs Widget**](https://premiumaddons.com/elementor-tabs-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create both Vertical and Horizontal tabs inside Elementor with tons of styling features. You can also use Elementor Templates as tabs content.
-* [**Content Switcher**](https://premiumaddons.com/content-switcher-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Present multiple content in a smart way using Content Switcher Widget for Elementor. This widget is ideal for to present pricing plans. It works with simple text editor or Elementor templates.
+* [**Team Members Widget**](https://premiumaddons.com/persons-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Very good widget to list team members, co-workers, etc. Team Members Widget comes with many customization options.
+* [**Tabs Widget**](https://premiumaddons.com/elementor-tabs-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create both Vertical and Horizontal tabs with tons of styling features.
+* [**Content Switcher**](https://premiumaddons.com/content-switcher-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Present multiple content in a smart way using Content Switcher Widget. This widget is ideal for to present pricing plans. It works with simple text editor or Elementor templates.
 * [**Fancy Text Widget**](https://premiumaddons.com/fancy-text-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The animated Fancy Text Widget comes with very useful options to help you create attractive marketing messages.
-* [**Heading Widget**](https://premiumaddons.com/heading-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Elementor Heading Widget has many customization options and ready-made heading styles.
+* [**Heading Widget**](https://premiumaddons.com/heading-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Heading Widget has many customization options and ready-made heading styles.
 * [**Dual Heading Widget**](https://premiumaddons.com/dual-header-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create a headeline with 2 different unique styles. Dual Heading Widget has numerous customization options.
 
 ### Image & Video Widgets
 * [**Site Logo Widget**](https://premiumaddons.com/elementor-site-logo-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create an attractive logo for your brand using an image, SVG shape, or Lottie Animation with tens of customization options.
-* [**Image Grid Widget**](https://premiumaddons.com/grid-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Highly customizable grid widget that can be used for creating attractive looking image galleries and portfolios.
+* [**Media Gallery Widget**](https://premiumaddons.com/grid-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Highly customizable gallery widget that can be used for creating attractive looking image galleries and portfolios.
 * [**Image Scroll Widget**](https://premiumaddons.com/elementor-image-scroll-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Allows you to represent your images in a brand new yet attractive way.
-* [**Image Comparison Widget**](https://premiumaddons.com/image-comparison-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create vertical or horizontal image comparisons easily using this amazing widget inside Elementor Page Builder.
+* [**Image Comparison Widget**](https://premiumaddons.com/image-comparison-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create vertical or horizontal image comparisons easily using this amazing widget.
 * [**Image Hotspots Widget**](https://premiumaddons.com/image-hotspots-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Image Hotspots Widget with 100% freehand design experience. Add hotspots to your image using mouse drag n' drop.
 * [**Image Layers Widget**](https://premiumaddons.com/image-layers-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Unleash your creativity with Image Layers Widget that allows you to combine multiple images, order them in layers and make them animated and/or interactive with mouse and/or with scrolling.
-* [**Image Accordion Widget**](https://premiumaddons.com/elementor-image-accordion-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create eye-catching Image Accordions in both vertical and horizontal orientations inside Elementor Page Builder.
-* [**Video Box Widget**](https://premiumaddons.com/video-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Bring videos from YouTube, Vimeo, Dailymotion, or upload your own using Video Box Widget for Elementor. The widget comes with many customization features.
+* [**Image Accordion Widget**](https://premiumaddons.com/elementor-image-accordion-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create eye-catching Image Accordions in both vertical and horizontal orientations.
+* [**Video Box Widget**](https://premiumaddons.com/video-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Bring videos from YouTube, Vimeo, Dailymotion, or upload your own using Video Box Widget. The widget comes with many customization features.
 
 ### Section/Column Addons & Widgets
-* [**Horizontal Scroll Widget**](https://premiumaddons.com/elementor-horizontal-scroll-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The first ever advanced Horizontal Scroll Widget for Elementor and WordPress that makes it easy to create horizontal scroll landing pages or even add horizontal scroll content within your page.
-* [**Vertical Scroll Widget**](https://premiumaddons.com/vertical-scroll-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create beautiful vertical scroll pages with advanced responsive control options using Premium Vertical Scroll Widget for Elementor Page Builder.
-* [**Background Transition Widget**](https://premiumaddons.com/elementor-color-transition-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create fancy, colorful, and eye-catching webpages using background Color Transition Widget for Elementor. It allows you to have a seamless transition between sections background colors.
+* [**Horizontal Scroll Widget**](https://premiumaddons.com/elementor-horizontal-scroll-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The first ever advanced Horizontal Scroll Widget and WordPress that makes it easy to create horizontal scroll landing pages or even add horizontal scroll content within your page.
+* [**Vertical Scroll Widget**](https://premiumaddons.com/vertical-scroll-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create beautiful vertical scroll pages with advanced responsive control options using Premium Vertical Scroll Widget.
+* [**Background Transition Widget**](https://premiumaddons.com/elementor-color-transition-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create fancy, colorful, and eye-catching webpages using background Color Transition Widget. It allows you to have a seamless transition between sections background colors.
 * [**Multi-Scroll Widget**](https://premiumaddons.com/multi-scroll-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Elementor widget available that allows you to create attractive multi-scroll effect. It can be used to create full landing pages or use it inside any page.
-* [**Elementor Custom Mouse Cursor Global Addon**](https://premiumaddons.com/elementor-custom-mouse-cursor-global-feature/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add a custom mouse cursor to any Elementor section, column, or widget. You can select between Font Awesome icon, custom SVGs, image or Lottie animation.
-* [**Elementor Badge Global Addon**](https://premiumaddons.com/elementor-badge-global-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add an icon, image, Lottie animation, or SVG blob shape badge to any Elementor section, column, or widget.
-* [**Elementor Animated Blob Generator**](https://premiumaddons.com/elementor-animated-blob-generator/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple animated blob layers to your Elementor sections with a wide range of smart customization options.
-* [**Elementor Lottie Animations Section Addon**](https://premiumaddons.com/elementor-lottie-animations-section-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple Lottie Animations easily to any Elementor section with allot of customization and interactivity options.
-* [**Elementor Parallax Section/Column Addon**](https://premiumaddons.com/parallax-section-addon-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Elementor Parallax Section Addon that can be enabled for Elementor columns with freehand design experience and many styles to choose from.
-* [**Elementor Particles Section/Column Addon**](https://premiumaddons.com/particles-section-addon-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create eye-catching particles background using Elementor and Premium Addons with many customization options. Also, you can enable it for any Elementor column.
-* [**Elementor Animated Gradient/Column Addon**](https://premiumaddons.com/animated-section-gradients-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Subtle animated gradients effect that makes your backgrounds super attractive. It's highly recommended for sections with call to actions. You can also enable it for any Elementor column.
-* [**Elementor Ken Burns Section/Column Addon**](https://premiumaddons.com/ken-burns-section-addon-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple images to your Elementor section or column background and animate them with the popular Ken Burns effect.
+* [**Custom Mouse Cursor Global Addon**](https://premiumaddons.com/elementor-custom-mouse-cursor-global-feature/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add a custom mouse cursor to any section, column, or widget. You can select between Font Awesome icon, custom SVGs, image or Lottie animation.
+* [**Badge Global Addon**](https://premiumaddons.com/elementor-badge-global-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add an icon, image, Lottie animation, or SVG blob shape badge to any section, column, or widget.
+* [**Animated Blob Generator**](https://premiumaddons.com/elementor-animated-blob-generator/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple animated blob layers to your sections with a wide range of smart customization options.
+* [**Lottie Animations Section Addon**](https://premiumaddons.com/elementor-lottie-animations-section-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple Lottie Animations easily to any section with allot of customization and interactivity options.
+* [**Parallax Section/Column Addon**](https://premiumaddons.com/parallax-section-addon-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Parallax Section Addon that can be enabled for columns with freehand design experience and many styles to choose from.
+* [**Particles Section/Column Addon**](https://premiumaddons.com/particles-section-addon-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create eye-catching particles background using Premium Addons with many customization options. Also, you can enable it for any column.
+* [**Animated Gradient/Column Addon**](https://premiumaddons.com/animated-section-gradients-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Subtle animated gradients effect that makes your backgrounds super attractive. It's highly recommended for sections with call to actions. You can also enable it for any column.
+* [**Ken Burns Section/Column Addon**](https://premiumaddons.com/ken-burns-section-addon-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple images to your section or column background and animate them with the popular Ken Burns effect.
 
 ### Off-Grid Widgets
- * [**Modal Box Widget**](https://premiumaddons.com/modal-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: All purpose Elementor modal box widget with the ability to use Elementor Templates and many other options.
+ * [**Modal Box Widget**](https://premiumaddons.com/modal-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: All purpose modal box widget with the ability to use Elementor Templates and many other options.
  * [**Alert Box Widget**](https://premiumaddons.com/alert-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show a popups, GDPR alerts and much more with this handy widget from Premium Addons.
- * [**Magic Section (off-canvas) Widget**](https://premiumaddons.com/magic-section-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Another Elementor off-canvas widget allows you to slide in a section from any direction with a trigger.
- * [**Preview Window Widget**](https://premiumaddons.com/preview-window-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Very clever way to show more data in less content area. Elementor templates can be used with Preview Window Widget.
+ * [**Magic Section (off-canvas) Widget**](https://premiumaddons.com/magic-section-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Another off-canvas widget allows you to slide in a section from any direction with a trigger.
+ * [**Preview Window Widget**](https://premiumaddons.com/preview-window-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Very clever way to show more data in less content area.
 
 ### Social Reviews & Testimonials Widgets
 * [**Testimonials Widget**](https://premiumaddons.com/testimonials-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The modern Testimonials Widget us available with many customization options. It can be used with Carousel Widget to create testimonials carousel.
-* [**Facebook Reviews Widget**](https://premiumaddons.com/facebook-reviews-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Elementor widget that allows you to show off your Facebook Reviews on your website.
-* [**Google Reviews Widget**](https://premiumaddons.com/google-reviews-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show your business's latest Google Reviews right on your webpage inside Elementor Page Builder.
+* [**Facebook Reviews Widget**](https://premiumaddons.com/facebook-reviews-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: This widget allows you to show off your Facebook Reviews on your website.
+* [**Google Reviews Widget**](https://premiumaddons.com/google-reviews-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show your business's latest Google Reviews right on your webpage.
 * [**Yelp Reviews Widget**](https://premiumaddons.com/elementor-yelp-reviews-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*:  Show your business's Yelp Reviews in your website pages with this useful widget.
 
 ### Blurbs & CTA Widgets
-* [**Bullet List Widget**](https://premiumaddons.com/elementor-bullet-list-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The first-ever Lottie-enabled Bullet List widget for Elementor Page Builder. Bullet list widget can also utilize icons, images, and text tags beside Lottie animations.
+* [**Bullet List Widget**](https://premiumaddons.com/elementor-bullet-list-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The first-ever Lottie-enabled Bullet List widget Page Builder. Bullet list widget can also utilize icons, images, and text tags beside Lottie animations.
 * [**Countdown Widget**](https://premiumaddons.com/countdown-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create sense of urgency with this widget. It's perfect for under construction pages, events, sale items, etc.
-* [**Banner Widget**](https://premiumaddons.com/banner-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Animated and interactive Banner Widget for Elementor comes with multiple styles and customization features.
+* [**Banner Widget**](https://premiumaddons.com/banner-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Animated and interactive Banner Widget comes with multiple styles and customization features.
 * [**Button Widget**](https://premiumaddons.com/button-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Advanced Button Widget comes with lots of interactive animation, styling options, and onClick event option.
 * [**Image Button Widget**](https://premiumaddons.com/image-button-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Image Button Widget is a unique element that can be used for creative and innovative call to action ideas.
 * [**3D Hover Box Widget**](https://premiumaddons.com/3d-hover-box-flip-box-widget-for-elementor/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Flip Box Widget comes with 8 cool 3D interactive effects. This widget can be used as a banner, for listing your company's services, and much more uses.
-* [**Icon Box Widget**](https://premiumaddons.com/icon-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: An advanced Icon Box Widget for Elementor with endless customization options.
+* [**Icon Box Widget**](https://premiumaddons.com/icon-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: An advanced Icon Box Widgetwith endless customization options.
 * [**iHover Widget**](https://premiumaddons.com/ihover-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The popular iHover Widget with various interactive animations and styling options.
 * [**Unfold Widget**](https://premiumaddons.com/unfold-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Advanced way to fit long text in small area. Unfold Widget is a great trick as it will make your layout design look better.
 
 ### Social Feed Widgets
 * [**Facebook Feed Widget**](https://premiumaddons.com/elementor-facebook-feed-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*:  Show your Facebook Feed directly inside your website.
 * [**Twitter Feed Widget**](https://premiumaddons.com/twitter-feed-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Display your Twitter Feed on your website pages.
-* [**Instagram Feed Widget**](https://premiumaddons.com/instagram-feed-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show your Instagram photos right on your webpage using Instagram Feed Widget for Elementor. Premium Instagram Feed widget has a built-in Instagram Access Token Generator.
-* [**Behance Feed Widget**](https://premiumaddons.com/behance-feed-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show off your amazing profolio projects using Behance Feed Widget for Elementor Page Builder.
+* [**Instagram Feed Widget**](https://premiumaddons.com/instagram-feed-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show your Instagram photos right on your webpage using Instagram Feed Widget. Premium Instagram Feed widget has a built-in Instagram Access Token Generator.
+* [**Behance Feed Widget**](https://premiumaddons.com/behance-feed-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show off your amazing profolio projects using Behance Feed Widget.
 
 ### Tables, Charts & Anything Data Widgets
-* [**Progress Bar Widget**](https://premiumaddons.com/progress-bar-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The most advanced Progress Bar Widget comes with multiple labels option. You can use it inside Elementor Page Builder.
-* [**Pricing Table Widget**](https://premiumaddons.com/pricing-table-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Highly customizable Elementor Pricing Table Widget with tons of styling options.
-* [**Charts Widget**](https://premiumaddons.com/charts-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)  *(PRO)*: The only advanced Elementor Charts Widget is available in Premium Addons. Create Line Chart, Bar Chart, Doughnut Chart, Radar Chart, and more.
+* [**Progress Bar Widget**](https://premiumaddons.com/progress-bar-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The most advanced Progress Bar Widget comes with multiple labels option.
+* [**Pricing Table Widget**](https://premiumaddons.com/pricing-table-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Highly customizable Pricing Table Widget with tons of styling options.
+* [**Charts Widget**](https://premiumaddons.com/charts-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)  *(PRO)*: The only advanced Charts Widget is available in Premium Addons. Create Line Chart, Bar Chart, Doughnut Chart, Radar Chart, and more.
 * [**Tables Widget**](https://premiumaddons.com/table-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create sophisticated tables with unique styling and interactivity options.
-* [**Counter Widget**](https://premiumaddons.com/counter-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Show your facts & figures with Elementor Counter Widget.
+* [**Counter Widget**](https://premiumaddons.com/counter-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Show your facts & figures with Counter Widget.
 
 ### Contact Widgets
-* [**Contact Form 7 Widget**](https://premiumaddons.com/contact-form-7-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Include contact forms in your contact us page using Contact Form 7 Widget for Elementor.
+* [**Contact Form 7 Widget**](https://premiumaddons.com/contact-form-7-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Include contact forms in your contact us page using Contact Form 7 Widget.
 * [**Facebook Messenger Widget**](https://premiumaddons.com/facebook-messenger-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Let your website users message you directly using Facebook Messenger Widget.
 * [**WhatsApp Chat Widget**](https://premiumaddons.com/whatsapp-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Get instant WhatsApp messages right from your website visitors.
 
 ###  Design Widgets
-* [**Divider Widget**](https://premiumaddons.com/divider-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Design beautiful dividers with this unique Elementor widget.
-* [**Image Separator Widget**](https://premiumaddons.com/image-separator-widget-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Add an Image Separator between Elementor sections with this handy yet fully responsive widget.
+* [**Divider Widget**](https://premiumaddons.com/divider-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Design beautiful dividers with this unique widget.
+* [**Image Separator Widget**](https://premiumaddons.com/image-separator-widget-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Add an Image Separator between sections with this handy yet fully responsive widget.
 
 ## Support & Documentation
 * [**Documentation**](https://premiumaddons.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) Search here first if you need to know how a widget or feature works or for troubleshooting.
@@ -165,7 +165,7 @@ Each widget and addon has been tested on different screen sizes, mobile devices,
 
 Check [Premium Addons PRO](https://premiumaddons.com/pro/)
 
-Love Elementor Premium Addons User? rate us on [WordPress](https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/?rate=5#new-post) :)
+Love Premium Addons User? rate us on [WordPress](https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/?rate=5#new-post) :)
 
 == Installation ==
 
@@ -180,13 +180,13 @@ Love Elementor Premium Addons User? rate us on [WordPress](https://wordpress.org
 - First make sure that Elementor Page Builder is installed, As this plugin works only with it.
 - Download the plugin then Upload it to the plugin folder: /wp-content/plugins/ or install it through the WordPress plugins screen directly.
 - Activate the plugin through the ‘Plugins’ screen in WordPress.
-- You can find Premium Addons Elements under the category “Premium Addons” on your Elementor element/widget list.
+- You can find Premium Addons Elements under the category “Premium Addons” on the editor panel.
 
 
 == Frequently Asked Questions ==
 = Is this a standalone Plugin? =
 
-No. You cannot use Premium Addons without Elementor as it\'s an addons plugin for Elementor.
+No. You cannot use Premium Addons without Elementor.
 
 = Does it work with any WordPress theme? =
 
@@ -194,30 +194,36 @@ Yes, it will work with any WordPress theme as long as you are using Elementor as
 
 = Will this plugin slow down my website speed? =
 
-Premium Addons for Elementor is light weight and we also gave you the control to enable only the elements you actually use on your website for faster performance.
+Premium Addonsis light weight and we also gave you the control to enable only the elements you actually use on your website for faster performance.
 
 = Is this plugin 100% Ads Free? =
 
-Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from Youtube videos, that can be added to Premium Widgets ( eg. Modal Box, Video Box, Blog, etc.)
+Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, that can be added to Premium Widgets ( eg. Modal Box, Video Box, Blog, etc.)
 
 == Screenshots ==
 
 1. Premium Addons Dashboard Tab
-2. Premium Blog Widget for Elementor
-3. Premium Media Grid Widget for Elementor
-4. Premium Dual Heading Widget for Elementor
-5. Premium Carousel Widget for Elementor
-6. Premium Progress Bar Widget for Elementor
-7. Premium Lottie Animations Widget for Elementor
-8. Premium Team Members Widget for Elementor
-9. Premium Video Box Widget for Elementor
-10. Premium Pricing Table Widget for Elementor
-11. Premium Blog Widget for Elementor
-12. Premium Image Separator Widget for Elementor
-13. Premium Counter Widget for Elementor
-14. Premium Progress Bar Widget for Elementor
+2. Premium Blog Widget
+3. Premium Media Gallery Widget
+4. Premium Dual Heading Widget
+5. Premium Carousel Widget
+6. Premium Progress Bar Widget
+7. Premium Lottie Animations Widget
+8. Premium Team Members Widget
+9. Premium Video Box Widget
+10. Premium Pricing Table Widget
+11. Premium Blog Widget
+12. Premium Image Separator Widget
+13. Premium Counter Widget
+14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.9.40 =
+
+- Fixed: Videos in Modal Box widget still playing after the modal box is closed.
+- Fixed: Google page insights error with Mega Menu widget.
+- Fixed: Modal Box widget not working properly with Elementor Loop Builder.
 
 = 4.9.39 =
 
@@ -237,7 +243,7 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 
 - Tweak: Added option to open submenu items by click in Mega Menu widget.
 - Tweak: Added VH unit for Height option in Maps widget.
-- Fixed: Grid Items are not focusable if lightbox option is disabled in Media Grid widget.
+- Fixed: Grid Items are not focusable if lightbox option is disabled in Media Gallery widget.
 - Fixed: Submenu content disappears issue in Mega Menu widget.
 - Fixed: Icon Colors not applied properly on SVG icons.
 
@@ -261,7 +267,7 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 
 - New: Added Background Image option in Videobox widget - [here](https://premiumaddons.com/video-box-widget-for-elementor-page-builder/).
 - Tweak: Added "aria-hidden" attribute to icons in Blog widget.
-- Fixed: Custom Elementor icons converted to SVGs causing them not to appear.
+- Fixed: Custom icons converted to SVGs causing them not to appear.
 
 = 4.9.33 =
 
@@ -276,7 +282,7 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 - Tweak: Code refactored for better performance and security.
 - Fixed: Image icon option not working in Progress Bar widget.
 - Fixed: Editor update button not working in some cases due to an issue with Display Conditions addon.
-- Fixed: Comatibility issues with WPML and Media Grid widget.
+- Fixed: Comatibility issues with WPML and Media Gallery widget.
 - Fixed: Compatibility issues with Thrive Architect theme.
 
 = 4.9.31 =
@@ -296,7 +302,7 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 - New: Added Cross-sells and Up-sells options to Query option in Woo Products Listing widget.
 - Tweak: Added Place Title Above Image option in Woo Products Listing widget.
 - Fixed: Add to Cart button adds variable products to cart directly in Woo Products Listing widget.
-- Fixed: Elementor editor not working when Display Conditions is used on page.
+- Fixed: Editor not working when Display Conditions is used on page.
 
 = 4.9.28 =
 
@@ -335,9 +341,9 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 
 - Tweak: Added Website Static Pages (Homepage, Frontpage, Blog Page, or 404 page) option in Display Conditions.
 - Tweak: Improve compatibility between WPML and Blog widget.
-- Fixed: Play icon not showing in Video Box widget if Load Font Awesome 4 Elementor option is disabled.
-- Fixed: Images not properly showing in Media Grid widget when Load More button option enabled and First Category Filter option disabled.
-- Fixed: Custom link attributes not working in Media Grid widget.
+- Fixed: Play icon not showing in Video Box widget if Load Font Awesome 4 option is disabled.
+- Fixed: Images not properly showing in Media Gallery widget when Load More button option enabled and First Category Filter option disabled.
+- Fixed: Custom link attributes not working in Media Gallery widget.
 
 = 4.9.21 =
 
@@ -367,7 +373,7 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 - Fixed: Mega Menu content showing before the page is loaded.
 - Fixed: Slide/Dropdown menu conflict with Elementor’s Page Transition Experiment.
 - Fixed: Open in New Tab and nofollow link attributes not applied in Lottie Animations widget.
-- Fixed: Lightbox and Link icons overlapping other content on page in Media Grid widget.
+- Fixed: Lightbox and Link icons overlapping other content on page in Media Gallery widget.
 - Fixed: Progress Bar Circle option not working when the progress value is below 50%.
 - Fixed: Products Load More button removed from all WooCommerce Products Listing widgets on the page.
 
@@ -389,7 +395,7 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 
 - New: Added Cube, Parallax, and Zoomed Parallax transition effects in Vertical Scroll widget - [here](https://premiumaddons.com/vertical-scroll-widget-for-elementor-page-builder/).
 - Fixed: Mega Menu automatically closes when a link is clicked in sub menus.
-- Fixed: Floating Effects addon not working with Elementor Flex Container element.
+- Fixed: Floating Effects addon not working with Flex Container element.
 - Fixed: PHP Fatal error in Dynamic Assets Generate feature.
 
 = 4.9.14 =
@@ -399,7 +405,7 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 - Tweak: Added option for Custom Menus to align mega content to the widget center in Mega Menu widget.
 - Fixed: PHP warning in WooCommerce Products Listing widget.
 - Fixed: Link attributes are duplicated with Custom Menu in Mega Menu widget.
-- Fixed: Elementor placeholder images are inserted in Media Library in Copy N' Paste feature.
+- Fixed: Placeholder images are inserted in Media Library in Copy N' Paste feature.
 - Fixed: Copy/Paste all content in Copy N' Paste feature not working.
 
 = 4.9.13 =
@@ -439,15 +445,15 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 = 4.9.6 =
 
 - Tweak: Load Lottie Animations when visible on viewport to improve performance and page loading speed.
-- Tweak: Added Privacy Mode option for YouTube videos in Media Grid widget.
-- Fixed: PHP warning when Image option is not set in Media Grid widget.
+- Tweak: Added Privacy Mode option for YouTube videos in Media Gallery widget.
+- Fixed: PHP warning when Image option is not set in Media Gallery widget.
 
 = 4.9.5 =
 
 - Tweak: Added Disable Floating Effects on Safari option in widgets that have floating effects.
 - Tweak: Trigger Floating Effects addon when element is visible on viewport to improve page loading speed.
 - Tweak: Removed unnecessary CSS classes from Modal Box widget.
-- Tweak: Compatibility between PA Cross-Domain Copy N’ Paste feature and Elementor Flex Container - [here](https://elementor.com/help/container-element/).
+- Tweak: Compatibility between PA Cross-Domain Copy N’ Paste feature and Flex Container element - [here](https://elementor.com/help/container-element/).
 - Fixed: CSS classes are rendered multiple times in Blog widget.
 - Fixed: Long text causes image icon to get squished in Bullet List widget.
 
@@ -474,14 +480,14 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 
 - New: Added Create/Edit Live Templates feature in all widgets that support Elementor Templates - [here](https://premiumaddons.com/elementor-templates-live-editor/).
 - Tweak: Added Dailymotion and Lightbox options in Videobox widget - [here](https://premiumaddons.com/video-box-widget-for-elementor-page-builder/).
-- Tweak: Media Grid and Blog widgets HTML markup optimized for better performance.
+- Tweak: Media Gallery and Blog widgets HTML markup optimized for better performance.
 - Fixed: Carousel widget navigation arrows/dots not working on RTL websites.
 - Fixed: Quickview Popup content is not showing properly for variable products in WooCommerce Products Listing widget.
 
 = 4.9.0 =
 
 - New: Added Generate Dynamic Assets feature in Widgets & Addons plugin settings tab to improve loading speed and performance.
-- Tweak: Added `preload` attribute for self-hosted videos in Media Grid widget to improve page loading speed.
+- Tweak: Added `preload` attribute for self-hosted videos in Media Gallery widget to improve page loading speed.
 - Tweak: Added Image Fit option for products thumbnails in WooCommerce Products Listing widget.
 - Tweak: Added Content Overflow option in Modal Box widget.
 - Fixed: Fatal error when IP Location Display Condition is used when Social Reviews widgets are disabled.
@@ -513,13 +519,13 @@ Tweak: JS code optimized for security improvements.
 - Tweak: Responsive styling improved for Quick View Modal in WooCommerce Products Listing widget.
 - Tweak: Make sure View Cart string is translated to the current langugage in WooCommerce Products Listing widget.
 - Tweak: Added Scotland and Wales countries for IP Location Display Condition.
-- Fixed: Inserting Premium Templates sometimes causes Elementor placeholder image to be inserted multiple times into the media library.
+- Fixed: Inserting Premium Templates sometimes causes placeholder image to be inserted multiple times into the media library.
 - Fixed: Close sticky video causes the original video to play in Videobox Widget
 
 = 4.8.6 =
 
-- Tweak: Compatibility between Display Conditions, Equal Height features and Elementor Container element - [here](https://elementor.com/help/container-element/).
-- Tweak: Compatibility between 'alt' text for images in Media Grid widget and WPML translation plugin.
+- Tweak: Compatibility between Display Conditions, Equal Height features and Flex Container element - [here](https://elementor.com/help/container-element/).
+- Tweak: Compatibility between 'alt' text for images in Media Gallery widget and WPML translation plugin.
 - Tweak: Added Text Align option for Background Text in Dual Heading widget.
 
 = 4.8.5 =
@@ -535,7 +541,7 @@ Tweak: JS code optimized for security improvements.
 
 - Tweak: Added Time Range option in Display Conditions global feature.
 - Fixed: Value alignment option not working in Counter widget.
-- Fixed: Floating Effects feature not working on editor when used inside widgets using Elementor templates (carousel, tabs, etc.).
+- Fixed: Floating Effects feature not working on editor when used inside widgets using templates (carousel, tabs, etc.).
 
 = 4.8.3 =
 
@@ -636,11 +642,11 @@ Tweak: JS code optimized for security improvements.
 = 4.6.0 =
 
 - Tweak: Width control option range values changed in Modal Box widget.
-- Tweak: Added compatibility with Elementor dynamic content in Bullet List widget.
+- Tweak: Added compatibility with dynamic content in Bullet List widget.
 - Tweak: Added Hover Shadow option for Submit button in Contact Form 7 widget.
 - Fixed: Multiple slides swipe issue in Vertical Scroll widget.
 - Fixed: Premium Contact Form 7 widget loaded even if Contact Form 7 plugin not installed.
-- Fixed: Prettyphoto lightbox width issue in some browsers in Media Grid widget.
+- Fixed: Prettyphoto lightbox width issue in some browsers in Media Gallery widget.
 
 = 4.5.9 =
 
@@ -663,7 +669,7 @@ Tweak: JS code optimized for security improvements.
 - Tweak: Default styling imporved for Button, Image Button and Modal Box widgets.
 - Fixed: Scroll animations are not triggered in Progress Bar, Heading and Dual Heading widgets.
 - Fixed: Close marker info container when another marker is clicked not working on touch devices in Google Maps widget.
-- Fixed: Image size issue on small devices when PrettyPhoto lightbox is selected in Media Grid widget.
+- Fixed: Image size issue on small devices when PrettyPhoto lightbox is selected in Media Gallery widget.
 - Fixed: Sticky video not working in some cases in Video Box widget.
 - Fixed: Scroll jittering issues in Vertical Scroll widget on Chrome browser.
 
@@ -675,7 +681,7 @@ Tweak: JS code optimized for security improvements.
 - Fixed: console error when Grid option is disabled in Blog widget.
 - Fixed: Page HTML markup issues with post excerpt includes HTML tags in Blog widget.
 - Fixed: Icon color option not working in some cases for SVG icons in all widgets.
-- Fixed: Lightbox and Link icons has no transition in Media Grid widget.
+- Fixed: Lightbox and Link icons has no transition in Media Gallery widget.
 - Fixed: Repeater styling options not working in Bullet List widget.
 
 = 4.5.4 =
@@ -700,20 +706,20 @@ Tweak: JS code optimized for security improvements.
 
 = 4.5.0 =
 
-- Tweak: Unnecessary code removed in Media Grid for faster editing speed.
-- Tweak: Added Privacy Mode option for Youtube videos in Media Grid widget.
+- Tweak: Unnecessary code removed in Media Gallery for faster editing speed.
+- Tweak: Added Privacy Mode option for Youtube videos in Media Gallery widget.
 - Tweak: Compatibility with Elementor v3.4.2.
 - Fixed: Grow Effect in Button widget not working on Safari.
-- Fixed: Metro grid not showing on small screens in Media Grid widget.
+- Fixed: Metro grid not showing on small screens in Media Gallery widget.
 
 = 4.4.9 =
 
-- Tweak: Improved JS code for Media Grid and Banner widgets.
+- Tweak: Improved JS code for Media Gallery and Banner widgets.
 - Fixed: Match Posts option not working in Blog widget.
 
 = 4.4.8 =
 
-- Tweak: JS code improved for Team Members, Blog and Media Grid widgets.
+- Tweak: JS code improved for Team Members, Blog and Media Gallery widgets.
 - Tweak: Compatibility with Elementor v3.4.
 - Fixed: Exclude Posts option not working in Blog widget.
 - Fixed: Post content margin issue in Blog widget with Twenty Twenty-One.
@@ -734,18 +740,18 @@ Tweak: JS code optimized for security improvements.
 = 4.4.5 =
 
 - Tweak: Added Tilt option in Lottie Animation widget.
-- Tweak: Media Grid widget videos compatibility with PrettyPhoto lightbox.
+- Tweak: Media Gallery widget videos compatibility with PrettyPhoto lightbox.
 - Tweak: Improved comatibility with WPML for all widgets.
 - Fixed: Alignment controls icons not showing in editor panel.
 
 = 4.4.4 =
 
-- Fixed: Fixed issue related to self hosted videos in Media Grid widget.
+- Fixed: Fixed issue related to self hosted videos in Media Gallery widget.
 
 = 4.4.3 =
 
 - Tweak: Added Justify option to Content Alignment in Blog widget.
-- Fixed: Video lightbox conflict with some themes in Media Grid widget.
+- Fixed: Video lightbox conflict with some themes in Media Gallery widget.
 
 = 4.4.2 =
 
@@ -754,7 +760,7 @@ Tweak: JS code optimized for security improvements.
 
 = 4.4.1 =
 
-- Fixed: Lightbox navigation issue with videos in Media Grid widget.
+- Fixed: Lightbox navigation issue with videos in Media Gallery widget.
 - Fixed: Blog pagination functions are called even pagination option is disabled.
 
 = 4.4.0 =
@@ -767,19 +773,19 @@ Tweak: JS code optimized for security improvements.
 = 4.3.9 =
 
 - New: Added Evergreen option in Countdown widget.
-- Fixed: Elementor Lightbox option adds a slider even with one image in Media Grid widget.
+- Fixed: Elementor Lightbox option adds a slider even with one image in Media Gallery widget.
 - Fixed: Text not rendered issue for Style 9 in Heading widget.
 
 = 4.3.8 =
 
-- Fixed: Video thumbnails not showing in Media Grid widget.
+- Fixed: Video thumbnails not showing in Media Gallery widget.
 
 = 4.3.7 =
 
 - Tweak: Added Show Video Title option for Playlist in Videobox widget.
 - Tweak: Improved all widgets comatibility with WPML.
 - Tweak: Added Link attributes for Company Name in Testimonial widget.
-- Tweak: Improve Images HTML markup in Media Grid widget.
+- Tweak: Improve Images HTML markup in Media Gallery widget.
 
 = 4.3.6 =
 
@@ -849,14 +855,14 @@ Tweak: JS code optimized for security improvements.
 
 - New: Added Equal Height addon in Section -> Advanced tab.
 - Tweak: Code refactored for better performance and faster editor loading.
-- Tweak: Added Gradient Layer option for Load More button in Media Grid widget.
-- Tweak: Added Loop option for videos in Media Grid widget.
+- Tweak: Added Gradient Layer option for Load More button in Media Gallery widget.
+- Tweak: Added Loop option for videos in Media Gallery widget.
 
 = 4.2.4 =
 
 - Tweak: Added Text Stroke option in Heading widget.
 - Tweak: Added Auto Fade effect to Fancy Text widget.
-- Fixed: Widgets are not showing in Elementor widget panel in some themes.
+- Fixed: Widgets are not showing in the editor panel in some themes.
 
 = 4.2.3 =
 
@@ -866,7 +872,7 @@ Tweak: JS code optimized for security improvements.
 
 = 4.2.2 =
 
-- Tweak: Added Get Image Title/Description from Media Library option in Media Grid widget.
+- Tweak: Added Get Image Title/Description from Media Library option in Media Gallery widget.
 - Tweak: Change Post Container HTML Tag to `article` in Blog widget.
 - Tweak: Show/Hide Post Author Image in Cards skin in Blog widget.
 - Tweak: Alt attribute added to Images in Bullet List widget.
@@ -902,7 +908,7 @@ Tweak: JS code optimized for security improvements.
 
 - Tweak: Added Grow hover effect to Button and Image Button widgets.
 - Tweak: Added Size option for Navigation Dots in Carousel widget.
-- Tweak: URL Flag option in Media Grid widget to link filter categories from any page.
+- Tweak: URL Flag option in Media Gallery widget to link filter categories from any page.
 
 = 4.1.5 =
 
@@ -925,7 +931,7 @@ Tweak: JS code optimized for security improvements.
 
 - Tweak: Added Image option to Icon and Feature List in Pricing Table widget.
 - Tweak: Added Height option to image in Image Separator widget.
-- Tweak: Videos not working in Media Grid widget when lightbox option is disabled.
+- Tweak: Videos not working in Media Gallery widget when lightbox option is disabled.
 - Fixed: Alignment options not working for Image/Lottie in Image Separator widget.
 - Fixed: Carousel Custom Navigation option not working after WordPress 5.6.
 
@@ -1010,10 +1016,10 @@ Tweak: JS code optimized for security improvements.
 - Tweak: Added New Entrance Animations in Modal Box widget - [here](https://premiumaddons.com/modal-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 - Tweak: Added switcher to show/hide Icon in Counter widget.
 - Tweak: Added responsive controls for Display option in Dual Heading widget.
-- Tweak: Render Elementor template function code refactored for faster loading speed.
+- Tweak: Render template function code refactored for faster loading speed.
 - Fixed: Blog Filter Tabs option works for the posts on the current page only.
 - Fixed: Carousel option not working for RTL sites in Blog widget.
-- Fixed: Icons Position option not working with Style 4 in Media Grid widget.
+- Fixed: Icons Position option not working with Style 4 in Media Gallery widget.
 - Fixed: Elements from other plugins are not showing in the editor panel when Premium Addons is activated.
 
 = 3.21.6 =
@@ -1024,10 +1030,10 @@ Tweak: JS code optimized for security improvements.
 = 3.21.5 =
 
 - Tweak: Added `Trigger on Viewport` option in Lottie Animations widget.
-- Tweak: Media Grid widget images loading with Lazyload Images plugins.
-- Fixed: Filter by categories with special characters not working in Media Grid widget.
+- Tweak: Media Gallery widget images loading with Lazyload Images plugins.
+- Fixed: Filter by categories with special characters not working in Media Gallery widget.
 - Fixed: Filter by tabs option not working when `All` category is removed in Blog widget.
-- Fixed: Font Awesome icons not showing in Carousel, Media Grid and Testimonials widgets.
+- Fixed: Font Awesome icons not showing in Carousel, Media Gallery and Testimonials widgets.
 
 = 3.21.4 =
 
@@ -1044,7 +1050,7 @@ Tweak: JS code optimized for security improvements.
 = 3.21.2 =
 
 - Tweak: Added Download Button option for self hosted videos in Video Box widget.
-- Fixed: Vimeo videos not working in Lightbox in Media Grid widget.
+- Fixed: Vimeo videos not working in Lightbox in Media Gallery widget.
 
 = 3.21.1 =
 
@@ -1061,7 +1067,7 @@ Tweak: JS code optimized for security improvements.
 = 3.20.9 =
 
 - Tweak: Added Loop Count option in Fancy Text widget.
-- Tweak: Elementor Deprecated functions updated.
+- Tweak: Deprecated functions updated.
 - Fixed: RTL issues in Banner and Title widgets.
 
 = 3.20.8 =
@@ -1069,7 +1075,7 @@ Tweak: JS code optimized for security improvements.
 - Tweak: Added Show/Hide Post Featured Image option in Blog widget.
 - Tweak: Added Border options for post box in Blog widget.
 - Tweak: Added Boxes Equal Height option for posts content boxes in Blog widget.
-- Fixed: Lottie animations duplicate issue when inserted in Elementor template.
+- Fixed: Lottie animations duplicate issue when inserted in a template.
 
 = 3.20.7 =
 
@@ -1084,15 +1090,15 @@ Tweak: JS code optimized for security improvements.
 
 = 3.20.6 =
 
-- Tweak: Added Show Title option for Elementor lightbox in Media Grid widget.
-- Fixed: Carousel flickering issue when Elementor Entrance Animation is added for inner content.
+- Tweak: Added Show Title option for Elementor lightbox in Media Gallery widget.
+- Fixed: Carousel flickering issue when Entrance Animation is added for inner content.
 
 = 3.20.5 =
 
 - Tweak: Added Active Border options for Filter tabs in Blog widget.
 - Tweak: Added Render Type option in Lottie Animation widget.
 - Fixed: Page scroll not working when Vertial Scroll widget is hidden on the current device.
-- Fixed: Item title/description hidden when video is clicked in Media Grid.
+- Fixed: Item title/description hidden when video is clicked in Media Gallery.
 
 = 3.20.4 =
 
@@ -1107,8 +1113,8 @@ Tweak: JS code optimized for security improvements.
 = 3.20.2 =
 
 - New: Premium Lottie Animations widget added.
-- Tweak: Even layout images height option improved in Media Grid widget.
-- Tweak: Image size option added for all layouts in Media Grid widget.
+- Tweak: Even layout images height option improved in Media Gallery widget.
+- Tweak: Image size option added for all layouts in Media Gallery widget.
 - Fixed: Page update button is disabled after inserting a template.
 
 = 3.20.1 =
@@ -1128,21 +1134,21 @@ Tweak: JS code optimized for security improvements.
 - Tweak: Added Text Shadow options for person/company name in Testimonials widget.
 - Tweak: Added Hover CSS Filters in Image Separator widget.
 - Tweak: Modal Box widget improved for faster editing experience.
-- Fixed: Images not re-align on window resize in Media Grid widget.
+- Fixed: Images not re-align on window resize in Media Gallery widget.
 
 = 3.12.3 =
 
 - Tweak: Added `Size` option for Markers in Google Maps widget.
 - Tweak: Posts comments number compatibility with Disqus plugin.
 - Fixed: Progress Bar widget value applied on all bars on the page.
-- Fixed: Media Grid widget masonry layout issues on the editor on Chrome.
+- Fixed: Media Gallery widget masonry layout issues on the editor on Chrome.
 - Fixed: Blog post content duplicate issue when Full Content option is selected.
 - Fixed: Blog masonry layout issues on the editor on Chrome.
 
 = 3.12.2 =
 
-- Tweak: Render Image Alt attribute on Elementor Lightbox in Media Grid widget.
-- Tweak: Added styling options for Elementor Lightbox in Media Grid widget.
+- Tweak: Render Image Alt attribute on Elementor Lightbox in Media Gallery widget.
+- Tweak: Added styling options for Elementor Lightbox in Media Gallery widget.
 - Tweak: Added `Website Link` option in Team Members widget.
 - Tweak: Added `Center Mode` option for post carousel in Blog widget.
 - Tweak: Added `Animated Gradient` style in Progress Bar widget.
@@ -1201,7 +1207,7 @@ Tweak: JS code optimized for security improvements.
 - Tweak: HTML div, p and span tags added to HTML Tag option in all widgets for SEO Optimization.
 - Tweak: Bordered overlay effect improved in Blog widget.
 - Fixed: Navigation dots in Vertical Scroll widget not hidden when scroll below the widget.
-- Fixed: Media Grid items not shown when Active Category Index option is left empty.
+- Fixed: Media Gallery items not shown when Active Category Index option is left empty.
 - Fixed: Current section in Vertical Scroll widget is not detected when scrollbar is used to scroll.
 - Fixed: Blog widget not showing posts if post excerpt is empty.
 - Fixed: Blog Widget layout always changed to masonry on filter tabs click.
@@ -1214,7 +1220,7 @@ Tweak: JS code optimized for security improvements.
 
 = 3.11.2 =
 
-- Tweak: Added RTL support for lightbox in Media Grid widget.
+- Tweak: Added RTL support for lightbox in Media Gallery widget.
 - Tweak: Added `Filter Tabs By Categories/Tags` in Blog widget.
 - Tweak: Added `Show/Hide Navigation Dots` option in Vertical Scroll widget.
 - Fixed: Banner widget image styling not applied after last version.
@@ -1237,7 +1243,7 @@ Tweak: JS code optimized for security improvements.
 - Tweak: Added `Background Color` option for active page in Blog widget.
 - Tweak: Pagination number styling improved for better pagination experience in Blog widget.
 - Tweak: Added `Image Size` option in Banner widget.
-- Tweak: Videos in Media Grid widget are now loaded only when an image is clicked to optimize page loading speed and size.
+- Tweak: Videos in Media Gallery widget are now loaded only when an image is clicked to optimize page loading speed and size.
 - Fixed: Background Color not applied on Triangle Ribbon in Pricing Table widget.
 
 = 3.10.9 =
@@ -1257,7 +1263,7 @@ Tweak: JS code optimized for security improvements.
 = 3.10.6 =
 
 - Tweak: Added Whatsapp and Telagram for social icons in Persons widget.
-- Fixed: Mute and Controls options not working for self-hosted videos when lightbox is enabled in Media Grid widget.
+- Fixed: Mute and Controls options not working for self-hosted videos when lightbox is enabled in Media Gallery widget.
 
 = 3.10.5 =
 
@@ -1304,9 +1310,9 @@ Tweak: JS code optimized for security improvements.
 
 = 3.9.7 =
 
-- New: Introducing "PA Duplicator" - The easiest way to duplicate posts, pages or Elementor templates.
+- New: Introducing "PA Duplicator" - The easiest way to duplicate posts, pages or templates.
 - Fixed: Multiple labels option not working on IE in Progressbar widget.
-- Fixed: Style #2 not working in Media Grid widget.
+- Fixed: Style #2 not working in Media Gallery widget.
 
 = 3.9.6 =
 
@@ -1314,7 +1320,7 @@ Tweak: JS code optimized for security improvements.
 
 = 3.9.5 =
 
-- Fixed: Style #2 caption hover animation issue in Media Grid widget.
+- Fixed: Style #2 caption hover animation issue in Media Gallery widget.
 
 = 3.9.4 =
 
@@ -1334,7 +1340,7 @@ Tweak: JS code optimized for security improvements.
 
 - Tweak: Premium Carousel widget now fully compatible with `Entrance Animations` for the inner elements.
 - Tweak: Added `Entrance Animation` option to navigation dots in Vertical Scroll widget.
-- Tweak: Added `Icons Size` option for lightbox, icons and videos icon in Media Grid widget.
+- Tweak: Added `Icons Size` option for lightbox, icons and videos icon in Media Gallery widget.
 
 = 3.9.0 =
 
@@ -1343,13 +1349,13 @@ Tweak: JS code optimized for security improvements.
 = 3.8.9 =
 
 - Tweak: Added `Digits Separator` option in Countdown widget.
-- Tweak: Added `Alignment` option for categories in Media Grid widget.
+- Tweak: Added `Alignment` option for categories in Media Gallery widget.
 - Fixed: Outline type box shadow not appearing in Person widget `Style 2`.
 
 = 3.8.8 =
 
-- Tweak: Added new style `Style 4` in Media Grid widget.
-- Tweak: Border Radius option for Image and Content changed from `SLIDER` to `DIMENSIONS` in Media Grid widget.
+- Tweak: Added new style `Style 4` in Media Gallery widget.
+- Tweak: Border Radius option for Image and Content changed from `SLIDER` to `DIMENSIONS` in Media Gallery widget.
 - Tweak: Added `Active Color` option for current pagination item in Blog widget.
 - Fixed: Number of pagination links is not valid if `Total Number of of Posts` option number is larger than published posts in Blog widget.
 
@@ -1390,7 +1396,7 @@ Tweak: JS code optimized for security improvements.
 
 = 3.8.0 =
 
-- Tweak: Change Lightbox, Links and Videos icons options added to Media Grid widget.
+- Tweak: Change Lightbox, Links and Videos icons options added to Media Gallery widget.
 - Tweak: Added `Enable Social Icons` option in Person widget.
 - Tweak: Added `Text Shadow` option for Name, Title and Description strings in Person widget.
 - Tweak: Added `Transition Duration` option for image and content in Person widget.
@@ -1400,7 +1406,7 @@ Tweak: JS code optimized for security improvements.
 
 - Tweak: Added style options for Container in Banner widget.
 - Tweak: Changed `Border Radius` option from `SLIDER` to `DIMENSIONS` in Countdown widget.
-- Tweak: Added `Remote Video URL` option to Media Grid and Video Box widget.
+- Tweak: Added `Remote Video URL` option to Media Gallery and Video Box widget.
 - Tweak: Added `First Category Label` option for Filter Tabs in Blog widget.
 - Fixed: Image overlay does not appear with Self Hosted videos in Video Box widget.
 - Fixed: `Contact Form 7` widget wraps all inputs in the page.
@@ -1411,7 +1417,7 @@ Tweak: JS code optimized for security improvements.
 = 3.7.8 =
 
 - Tweak: Added `Image Size` option in Image Scroll widget.
-- Fixed: Slideshow is not working when `Elementor` lightbox is selected in Media Grid widget.
+- Fixed: Slideshow is not working when `Elementor` lightbox is selected in Media Gallery widget.
 
 = 3.7.7 =
 
@@ -1449,7 +1455,7 @@ Tweak: JS code optimized for security improvements.
 
 = 3.7.0 =
 
-- Tweak: Media Grid widget now support videos.
+- Tweak: Media Gallery widget now support videos.
 - Fixed: `Undefined variable: header_new, header_migrated` in Modal Box widget.
 
 = 3.6.9 =

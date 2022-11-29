@@ -1872,7 +1872,7 @@
 
 
             var fromOrTo = !drawSettings.svgReverse ? 'from' : 'to',
-                $paths = $item.find("path, circle, rect, square, ellipse, polyline, line"),
+                $paths = $item.find("path, circle, rect, square, ellipse, polyline, polygon, line"),
                 lastPathIndex = 0,
                 startOnEndPoint = drawSettings.svgPoint,
                 setToTransparent = true;

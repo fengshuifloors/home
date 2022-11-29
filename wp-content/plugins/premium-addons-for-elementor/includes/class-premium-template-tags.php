@@ -1253,7 +1253,7 @@ class Premium_Template_Tags {
 	}
 
 	/**
-	 * Get Current Product Gallery Images
+	 * Get Current Product Images
 	 *
 	 * Gets current product images
 	 *
@@ -1283,7 +1283,7 @@ class Premium_Template_Tags {
 	}
 
 	/**
-	 * Get Current Product Gallery Images
+	 * Get Current Product Images
 	 *
 	 * Gets current product images
 	 *

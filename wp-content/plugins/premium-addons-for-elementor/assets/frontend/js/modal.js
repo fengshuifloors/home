@@ -114,10 +114,11 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
         t(document).on("click.bs.modal.data-api", '[data-toggle="premium-modal"]', function (e) {
             var o = t(this),
                 r = o.attr("href"),
-                a = t(o.attr("data-target") || r && r.replace(/.*(?=#[^\s]+$)/, "")),
+                a = o.parent().next('.premium-modal-box-modal'),
                 d = a.data("bs.modal") ? "toggle" : t.extend({
                     remote: !/#/.test(r) && r
                 }, a.data(), o.data());
+
             o.is("a") && e.preventDefault(), a.one("show.bs.modal", function (e) {
                 var iFrames = a.find(".soundcloud-iframe");
                 a.find(".soundcloud-iframe").remove();
@@ -137,8 +138,11 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
                             source = t(elem).attr("data-src");
                         }
 
+                        t(elem).attr("src", '');
+                        setTimeout(function () {
+                            t(elem).attr("src", source);
+                        }, 300);
 
-                        t(elem).attr("src", source);
                     });
 
                     //Pause videos on modal close
