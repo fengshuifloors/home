@@ -5,11 +5,11 @@ Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_c
 Requires at least: 5.0
 Tested Up To: 6.1.1
 Requires PHP: 7.0
-Stable Tag: 4.9.38
+Stable Tag: 4.9.39
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
-Premium Addons for Elementor plugin includes essential widgets and addons like Blog Post Grid, Megamenu, Gallery, WooCommerce Products Listing, Carousel, Modal Popup, Lottie Animations, Google Maps, Pricing Tables, Evergreen Countdown, Testimonials and much more.
+Premium Addons for Elementor plugin includes essential widgets and addons like Blog Post Grid, Megamenu, WooCommerce Products Listing, Carousel, Modal Popup, Lottie Animations, Google Maps, Pricing Tables, Evergreen Countdown, Testimonials and much more.
 
 == Description ==
 
@@ -218,6 +218,12 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 14. Premium Progress Bar Widget for Elementor
 
 == Changelog ==
+
+= 4.9.39 =
+
+- Fixed: Duplicated products are showing when Main Query is selected in Woo Products Listing widget.
+- Fixed: Premium Templates are not inserted in the proper position in the page.
+- Fixed: Vertical Offset not working for Flag Ribbon in Pricing Table widget.
 
 = 4.9.38 =
 
@@ -1709,7 +1715,7 @@ Tweak: JS code optimized for security improvements.
 = 3.1.8 =
 
 - Tweak: Added `Tablet/Mobile Breakpoint` options in Carousel widget.
-- Fixed: `Overlay Gallery Images` option not working with multiple Grid widgets.
+- Fixed: `Overlay Images` option not working with multiple Grid widgets.
 - Fixed: Duplicated Grid widget images in lightbox when `Whole Image Lightbox` option is enabled.
 
 = 3.1.7 =
@@ -1751,7 +1757,7 @@ Tweak: JS code optimized for security improvements.
 = 3.1.1 =
 
 - Tweak: Added `Metro Layout` for Grid widget.
-- Tweak: `Show Gallery Images` on lightbox option added to Grid widget.
+- Tweak: `Show Images` on lightbox option added to Grid widget.
 - Tweak: Added `Start Number` option for Counter widget.
 - Tweak: Icon Animation while scrolling enhanced for Counter widget.
 - Tweak: JS code refactor to improve performance speed.

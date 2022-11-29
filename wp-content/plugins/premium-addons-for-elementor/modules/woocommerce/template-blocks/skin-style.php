@@ -233,20 +233,26 @@ abstract class Skin_Style {
 
 				$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : false;
 
+				$orderby = 'menu_order title';
+
 				if ( $nonce && wp_verify_nonce( $nonce, 'pa-woo-products-nonce' ) ) {
 					if ( isset( $_POST['page_number'] ) && '' !== $_POST['page_number'] ) {
 						$paged = sanitize_text_field( wp_unslash( $_POST['page_number'] ) );
 					}
+
+					if ( isset( $_POST['orderBy'] ) && '' !== $_POST['orderBy'] ) {
+						$orderby = sanitize_text_field( wp_unslash( $_POST['orderBy'] ) );
+					}
 				}
 
-				$query_args['paged'] = $paged;
+				$query_args['paged']   = $paged;
+				$query_args['orderby'] = $orderby;
 
 				if ( isset( $_POST['category'] ) && '' !== $_POST['category'] ) {
 					$query_args['product_cat'] = sanitize_text_field( wp_unslash( $_POST['category'] ) );
 				}
 
-				$query_args['orderby'] = 'menu_order title';
-				$query_args['order']   = 'ASC';
+				$query_args['order'] = 'ASC';
 
 				self::$query_args = $query_args;
 
@@ -806,7 +812,8 @@ abstract class Skin_Style {
 
 		$posts_per_page = self::$query_args['posts_per_page'];
 
-		$args = self::$query_args;
+		$args    = self::$query_args;
+		$orderby = $args['orderby'];
 
 		if ( 'main' === $settings['query_type'] ) {
 
@@ -835,7 +842,7 @@ abstract class Skin_Style {
 
 		?>
 			<div class="premium-woo-load-more">
-				<button class="premium-woo-load-more-btn" data-products="<?php echo esc_attr( $more_products ); ?>" data-tax= "<?php echo esc_attr( $category ); ?>">
+				<button class="premium-woo-load-more-btn" data-products="<?php echo esc_attr( $more_products ); ?>" data-order="<?php echo esc_attr( $orderby ); ?>" data-tax="<?php echo esc_attr( $category ); ?>">
 					<span><?php echo wp_kses_post( $settings['load_more_text'] ); ?></span>
 					<span class="premium-woo-products-num">(<?php echo wp_kses_post( $more_products ); ?>)</span>
 				</button>

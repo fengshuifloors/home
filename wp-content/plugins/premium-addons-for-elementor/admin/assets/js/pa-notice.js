@@ -5,7 +5,7 @@
 
     var adminNotices = {
         'radius': 'radius_notice',
-        'mscroll': 'magic_scroll_notice',
+        'bf22': 'bf22_notice',
     };
 
     if (undefined !== notice) {

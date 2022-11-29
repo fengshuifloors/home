@@ -31,11 +31,11 @@
       -o-object-fit: cover;
          object-fit: cover; }
 
-.premium-badge-left {
+.premium-badge-left:not(.premium-badge-flag) {
   position: absolute;
   top: 0; }
 
-.premium-badge-right {
+.premium-badge-right:not(.premium-badge-flag) {
   position: absolute;
   top: 0;
   right: 0; }

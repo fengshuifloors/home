@@ -2632,7 +2632,7 @@ class Premium_Videobox extends Widget_Base {
 			}
 
 			if ( $loop && 'dailymotion' !== $video_type ) {
-				$options .= '&playlist=' . $params['id'];
+				// $options .= '&playlist=' . $params['id'];
 			}
 
 			if ( 'vimeo' === $video_type ) {

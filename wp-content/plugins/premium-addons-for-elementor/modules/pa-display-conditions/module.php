@@ -305,7 +305,58 @@ class Module {
 			)
 		);
 
+		$this->add_helpful_information( $element );
+
 		$element->end_controls_section();
+	}
+
+	/**
+	 * Add Helpful Information
+	 *
+	 * @since 4.9.39
+	 * @access private
+	 * @param object $element for current element.
+	 */
+	private function add_helpful_information( $element ) {
+
+		$element->add_control(
+			'pa_condition_info',
+			array(
+				'label'     => __( 'Helpful Information', 'premium-addons-pro' ),
+				'separator' => 'before',
+				'type'      => Controls_Manager::HEADING,
+				'condition' => array(
+					'pa_display_conditions_switcher' => 'yes',
+				),
+			)
+		);
+
+		$docs = array(
+			'https://premiumaddons.com/docs/elementor-display-conditions-tutorial/' => __( 'Getting started »', 'premium-addons-pro' ),
+			'https://premiumaddons.com/docs/elementor-editor-not-loading-with-display-conditions/' => __( 'Fix editor not loading with Display Conditions enabled »', 'premium-addons-pro' ),
+		);
+
+		$doc_index = 1;
+		foreach ( $docs as $url => $title ) {
+
+			$doc_url = Helper_Functions::get_campaign_link( $url, 'editor-page', 'wp-editor', 'get-support' );
+
+			$element->add_control(
+				'pa_condition_doc_' . $doc_index,
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => sprintf( '<a href="%s" target="_blank">%s</a>', $doc_url, $title ),
+					'content_classes' => 'editor-pa-doc',
+					'condition'       => array(
+						'pa_display_conditions_switcher' => 'yes',
+					),
+				)
+			);
+
+			$doc_index++;
+
+		}
+
 	}
 
 	/**

@@ -109,7 +109,7 @@ class Premium_Template_Tags {
 
 		if ( ! empty( $all_posts ) && ! is_wp_error( $all_posts ) ) {
 			foreach ( $all_posts as $post ) {
-				$this->options[ $post->ID ] = strlen( $post->post_title ) > 20 ? substr( $post->post_title, 0, 20 ) . '...' : $post->post_title;
+				$this->options[ $post->ID ] = strlen( $post->post_title ) > 30 ? substr( $post->post_title, 0, 30 ) . '...' : $post->post_title;
 			}
 		}
 		return $this->options;
