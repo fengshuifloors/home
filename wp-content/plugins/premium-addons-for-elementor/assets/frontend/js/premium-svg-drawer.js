@@ -53,7 +53,7 @@
                 }
 
                 var fromOrTo = !$scope.hasClass("premium-svg-anim-rev-yes") ? 'from' : 'to',
-                    $paths = $scope.find("path, circle, rect, square, ellipse, polyline, line"),
+                    $paths = $scope.find("path, circle, rect, square, ellipse, polyline, polygon, line"),
                     lastPathIndex = 0,
                     startOrEndPoint = 'from' === fromOrTo ? settings.animate_start_point.size : settings.animate_end_point.size;
 

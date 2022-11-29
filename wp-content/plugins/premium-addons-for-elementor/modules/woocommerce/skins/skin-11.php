@@ -74,7 +74,7 @@ class Skin_11 extends Skin_Base {
 		// Product Style.
 		add_action( 'elementor/element/premium-woo-products/section_image_style/after_section_end', array( $this, 'register_product_content_style' ) );
 
-		// Product Gallery Style.
+		// Product Images Style.
 		add_action( 'elementor/element/premium-woo-products/section_image_style/after_section_end', array( $this, 'register_gallery_style' ) );
 
 		// Product CTA Style.
@@ -249,7 +249,7 @@ class Skin_11 extends Skin_Base {
 	}
 
 	/**
-	 * Register Product Gallery style Controls.
+	 * Register Product Images style Controls.
 	 *
 	 * @since 4.7.0
 	 * @access public

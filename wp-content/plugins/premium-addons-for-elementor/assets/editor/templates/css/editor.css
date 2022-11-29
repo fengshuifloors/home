@@ -272,7 +272,7 @@
 #premium-template-library-content .premium-templates-list {
     height: 100%;
     overflow: auto;
-    margin-top: 12px;
+    margin-top: 6px;
 }
 
 #premium-template-library-content .premium-keywords-list {
@@ -283,7 +283,12 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#elementor-template-library-filter p {
+    margin-top: 6px;
 }
 
 #elementor-template-library-filter label {

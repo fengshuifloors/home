@@ -65,10 +65,11 @@ class Ip_Location extends Condition {
 	 * @param string      $value        condition value.
 	 * @param string      $compare_val  compare value.
 	 * @param string|bool $tz        time zone.
+	 * @param string      $method        location detect method.
 	 *
 	 * @return bool|void
 	 */
-	public function compare_value( $settings, $operator, $value, $compare_val, $tz ) {
+	public function compare_location( $settings, $operator, $value, $compare_val, $tz, $method ) {
 
 		if ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
 
@@ -85,18 +86,19 @@ class Ip_Location extends Condition {
 
 		$ip_address = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
 
-		$location_data = unserialize( rplg_urlopen( 'http://www.geoplugin.net/php.gp?ip=' . $ip_address )['data'] );
+		if ( 'old' === $method ) {
 
-		if ( 404 === $location_data['geoplugin_status'] ) {
-			return; // localhost.
-		}
+			$location_data = unserialize( rplg_urlopen( 'http://www.geoplugin.net/php.gp?ip=' . $ip_address )['data'] );
 
-		$location = strtolower( $location_data['geoplugin_countryName'] );
+			if ( 404 === $location_data['geoplugin_status'] ) {
+				return; // localhost.
+			}
 
-		if ( empty( $location ) ) {
+			$location = strtolower( $location_data['geoplugin_countryName'] );
+		} else {
 
 			$location_data = wp_remote_get(
-				'https://api.ipgeolocation.io/ipgeo?apiKey=3263c9e5716649c7aa6f884665f27538&ip=' . $ip_address,
+				'https://api.findip.net/' . $ip_address . '/?token=e21d68c353324af0af206c907e77ff97',
 				array(
 					'timeout'   => 60,
 					'sslverify' => false,
@@ -109,7 +111,7 @@ class Ip_Location extends Condition {
 
 			$location_data = json_decode( wp_remote_retrieve_body( $location_data ), true );
 
-			$location = strtolower( $location_data['country_name'] );
+			$location = strtolower( $location_data['country']['names']['en'] );
 
 		}
 

@@ -282,6 +282,23 @@ class Module {
 			)
 		);
 
+		$repeater->add_control(
+			'pa_condition_loc_method',
+			array(
+				'label'       => __( 'Location Detect Method', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => 'old',
+				'label_block' => true,
+				'options'     => array(
+					'old' => __( 'Old', 'premium-addons-for-elementor' ),
+					'new' => __( 'New', 'premium-addons-for-elementor' ),
+				),
+				'condition'   => array(
+					'pa_condition_key' => 'ip_location',
+				),
+			)
+		);
+
 		$should_apply = apply_filters( 'pa_display_conditions_values', true );
 
 		$values = $repeater->get_controls();

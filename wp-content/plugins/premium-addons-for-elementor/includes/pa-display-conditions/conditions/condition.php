@@ -39,4 +39,20 @@ abstract class Condition {
 	 */
 	public function compare_value( $settings, $operator, $value, $compare_val, $tz ) {}
 
+	/**
+	 * Compare Condition Value.
+	 *
+	 * @access public
+	 * @since 4.7.0
+	 *
+	 * @param array       $settings element settings.
+	 * @param string      $operator condition operator.
+	 * @param string      $value    condition value.
+	 * @param string|bool $tz        time zone.
+	 * @param string      $method        location detect method.
+	 *
+	 * @return bool|void
+	 */
+	public function compare_location( $settings, $operator, $value, $compare_val, $tz, $method ) {}
+
 }
