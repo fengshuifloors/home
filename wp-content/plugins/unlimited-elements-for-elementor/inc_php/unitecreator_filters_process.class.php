@@ -12,7 +12,7 @@ class UniteCreatorFiltersProcess{
 	const DEBUG_MAIN_QUERY = false;
 	
 	const DEBUG_FILTER = false;
-
+	
 	private static $showDebug = false;
 	
 	private static $filters = null;
@@ -34,6 +34,9 @@ class UniteCreatorFiltersProcess{
 	
 	const TYPE_TABS = "tabs";
 	const TYPE_SELECT = "select";
+	
+	const ROLE_CHILD = "child";
+	const ROLE_TERM_CHILD = "term_child";
 	
 	
 	/**
@@ -877,7 +880,7 @@ class UniteCreatorFiltersProcess{
 	 * get init filtres taxonomy request
 	 */
 	private function getInitFiltersTaxRequest($request, $strTestIDs){
-
+				
 		$posLimit = strpos($request, "LIMIT");
 		
 		if($posLimit){
@@ -934,8 +937,7 @@ class UniteCreatorFiltersProcess{
 				
 		$fullQuery = "SELECT $selectTop from($query) as summary";
 
-		
-		
+				
 		return($fullQuery);
 	}
 	
@@ -1025,11 +1027,11 @@ class UniteCreatorFiltersProcess{
 				dmp("--- Last Query Args:");
 				dmp($args);
 			}
-			
+						
 			$query = new WP_Query($args);
 						
 			$request = $query->request;
-						
+			
 			$taxRequest = $this->getInitFiltersTaxRequest($request, $testTermIDs);
 			
 			if(self::$showDebug == true){
@@ -1037,11 +1039,22 @@ class UniteCreatorFiltersProcess{
 				dmp("---- Terms request: ");
 				dmp($taxRequest);
 			}
+				
+			$arrFoundTermIDs = array();
 			
-			$db = HelperUC::getDB();
-			$arrFoundTermIDs = $db->fetchSql($taxRequest);
+			if(!empty($taxRequest)){
+				
+				$db = HelperUC::getDB();
+				try{
+					
+					$arrFoundTermIDs = $db->fetchSql($taxRequest);
+					$arrFoundTermIDs = $this->modifyFoundTermsIDs($arrFoundTermIDs);
+					
+				}catch(Exception $e){
+					//just leave it empty
+				}
+			}
 			
-			$arrFoundTermIDs = $this->modifyFoundTermsIDs($arrFoundTermIDs);
 			
 			if(self::$showDebug == true){
 				
@@ -1103,11 +1116,25 @@ class UniteCreatorFiltersProcess{
 	
 	private function _______AJAX_SEARCH__________(){}
 	
+	/**
+	 * before custom posts query
+	 * if under ajax search then et main query
+	 */
+	public function onBeforeCustomPostsQuery($query){
+		
+		if(GlobalsProviderUC::$isUnderAjaxSearch == false)
+			return(false);
+			
+		global $wp_the_query;
+		$wp_the_query = $query;
+	}
+	
 	
 	/**
 	 * ajax search
 	 */
 	private function putAjaxSearchData(){
+		
 		
 		$responseCode = http_response_code();
 		
@@ -1116,15 +1143,20 @@ class UniteCreatorFiltersProcess{
 		
 		$layoutID = UniteFunctionsUC::getPostGetVariable("layoutid","",UniteFunctionsUC::SANITIZE_KEY);
 		$elementID = UniteFunctionsUC::getPostGetVariable("elid","",UniteFunctionsUC::SANITIZE_KEY);
-
+		
 		$arrContent = HelperProviderCoreUC_EL::getElementorContentByPostID($layoutID);
 		
 		if(empty($arrContent))
 			UniteFunctionsUC::throwError("Elementor content not found");
-		
+			
 		//run the post query
+		GlobalsProviderUC::$isUnderAjaxSearch = true;
+			
 		$arrHtmlWidget = $this->getContentWidgetHtml($arrContent, $elementID);
-
+		
+		GlobalsProviderUC::$isUnderAjaxSearch = false;
+		
+		
 		$htmlGridItems = UniteFunctionsUC::getVal($arrHtmlWidget, "html");
 		$htmlGridItems2 = UniteFunctionsUC::getVal($arrHtmlWidget, "html2");
 		
@@ -1553,10 +1585,9 @@ class UniteCreatorFiltersProcess{
 			
 			$role = UniteFunctionsUC::getVal($data, "filter_role");
 			
-			if($role == "child")
+			if(strpos($role,"child") !== false)
 				$isSelectFirst = false;
 		}
-		
 		
 		if($isSelectFirst == false)
 			return($arrTerms);	
@@ -1836,7 +1867,7 @@ class UniteCreatorFiltersProcess{
 		$filterRole = UniteFunctionsUC::getVal($data, "filter_role");
 		if($filterRole == "single")		
 			$filterRole = null;
-			
+		
 		$attributes = "";
 		$style = "";
 		$addClass = " uc-grid-filter";
@@ -1863,8 +1894,17 @@ class UniteCreatorFiltersProcess{
 		}
 		
 		//hide child filter at start
-		if($filterRole == "child" && $isUnderAjax == false && $isInsideEditor == false){
+		if(strpos($filterRole,"child") !== false && $isUnderAjax == false && $isInsideEditor == false){
 			$addClass .= " uc-filter-initing uc-initing-filter-hidden";
+		}
+				
+		if($filterRole == self::ROLE_TERM_CHILD){
+			
+			$termID = UniteFunctionsUC::getVal($data, "child_termid");
+			
+			if(!empty($termID))
+				$attributes .= " data-childterm=\"$termID\"";
+			
 		}
 		
 		if($isInsideEditor == true)
@@ -2093,6 +2133,10 @@ class UniteCreatorFiltersProcess{
 			return(false);
 		
 		add_action("wp", array($this, "operateAjaxResponse"));
+		
+		add_action("ue_before_custom_posts_query", array($this, "onBeforeCustomPostsQuery"));
+		//add_action("ue_after_custom_posts_query", array($this, "onAfterCustomPostsQuery"));
+		
 		
 	}
 	

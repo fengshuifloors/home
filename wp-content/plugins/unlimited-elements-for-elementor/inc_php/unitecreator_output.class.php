@@ -31,6 +31,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	private $arrOptions;
 	private $isShowDebugData = false;
 	private $debugDataType = "";
+	private $itemsSource = "";
 	
 	
 	private static $arrUrlCacheCss = array();
@@ -2037,10 +2038,11 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		$this->objTemplate->addTemplate(self::TEMPLATE_CSS, $css);
 		$this->objTemplate->addTemplate(self::TEMPLATE_JS, $js);
 
-		
 		$arrItemData = null;
 		
 		$paramPostsList = null;
+		
+		$itemsSource = null;		//from what object the items came from
 		
 		//set items template
 		if($this->isItemsExists == false){
@@ -2074,6 +2076,8 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 					//set main param (true/false)
 					$arrData[$postsListName] = !empty($arrItemData);
 					
+					$itemsSource = "posts";
+					
 				break;
 				case UniteCreatorAddon::ITEMS_TYPE_DATASET:
 					
@@ -2102,14 +2106,14 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 						UniteFunctionsUC::throwError("Some listing param should be found");
 					
 					$paramName = UniteFunctionsUC::getVal($paramListing, "name");
-										
+					
 					$arrItemData = UniteFunctionsUC::getVal($arrData, $paramName."_items");
-										
+					
 					if(empty($arrItemData))
 						$arrItemData = array();
 					else
 						$arrItemData = $this->normalizeItemsData($arrItemData, $paramName);
-											
+					
 				break;
 				case "multisource":
 					
@@ -2121,9 +2125,10 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 					$paramName = UniteFunctionsUC::getVal($paramListing, "name");
 					
 					$dataValue = UniteFunctionsUC::getVal($arrData, $paramName);
-										
-					if(is_string($dataValue) && $dataValue === "uc_items")
+					
+					if(is_string($dataValue) && $dataValue === "uc_items"){
 						$arrItemData = $this->addon->getProcessedItemsData($this->processType);
+					}
 					elseif(is_array($dataValue)){
 						
 						$arrItemData = $dataValue;
@@ -2132,7 +2137,10 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 						dmp($arrItemData);
 						UniteFunctionsUC::throwError("Wrong multisouce data");
 					}
+					
+					UniteCreatetorParamsProcessorMultisource::checkShowItemsDebug($arrItemData);
 										
+					
 				break;
 				default:
 					
@@ -2159,9 +2167,12 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 							
 			$this->objTemplate->setParams($arrData);
 			
-			
 			$this->objTemplate->setArrItems($arrItemData);
 			
+			if(!empty($itemsSource))
+				$this->objTemplate->setItemsSource($itemsSource);
+			
+				
 			$htmlItem = $this->addon->getHtmlItem();
 						
 			$this->objTemplate->addTemplate(self::TEMPLATE_HTML_ITEM, $htmlItem);
@@ -2214,7 +2225,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			
 		$this->addon = $addon;
 		$this->isItemsExists = $this->addon->isHasItems();
-				
+		
 		$this->itemsType = $this->addon->getItemsType();
 		
 		$this->arrOptions = $this->addon->getOptions();
