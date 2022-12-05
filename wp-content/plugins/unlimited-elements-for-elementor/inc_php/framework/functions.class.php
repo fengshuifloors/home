@@ -2536,8 +2536,91 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		}
 		
 		
-		public static function z___________OTHERS__________(){}
+		public static function z___________TIME_AND_DATE__________(){}
 	
+	
+		/**
+		 * get time ago since now
+		 */
+		public static function getTimeAgoString($time_stamp){
+			
+			$time_difference = strtotime('now') - $time_stamp;
+			
+			//year
+			if ($time_difference >= 60 * 60 * 24 * 365.242199)
+				return self::getTimeAgoStringUnit($time_stamp, 60 * 60 * 24 * 365.242199, 'years','year');
+			
+			//month
+			if ($time_difference >= 60 * 60 * 24 * 30.4368499)
+				return self::getTimeAgoStringUnit($time_stamp, 60 * 60 * 24 * 30.4368499, 'months','month');
+			
+			//week
+			if ($time_difference >= 60 * 60 * 24 * 7)
+				return self::getTimeAgoStringUnit($time_stamp, 60 * 60 * 24 * 7, 'weeks','week');
+			
+			//day
+			if ($time_difference >= 60 * 60 * 24)
+				return self::getTimeAgoStringUnit($time_stamp, 60 * 60 * 24, 'days','day');
+			
+			//hour
+			if($time_difference >= 60 * 60)
+				return self::getTimeAgoStringUnit($time_stamp, 60 * 60, 'hours','hour');
+			
+			//minute
+			return self::getTimeAgoStringUnit($time_stamp, 60, 'minutes','minute');
+		}
+		
+		
+		/**
+		 * get time ago string
+		 */
+		private static function getTimeAgoStringUnit($time_stamp, $divisor, $strUnit, $strUnitSingle){
+			
+			$time_difference = strtotime("now") - $time_stamp;
+			$time_units      = floor($time_difference / $divisor);
+			
+			settype($time_units, 'string');
+			
+			if ($time_units === '0')
+				$time_units = 1;
+			
+			if($time_units == 1)
+				$output = $time_units . " ".$strUnitSingle." ". __("ago","unlimited-elements-for-elementor");
+			else
+				$output = $time_units . " ".$strUnit." ". __("ago","unlimited-elements-for-elementor");
+			
+			
+			return($output);
+		}	
+		
+		
+		
+		//---------------------------------------------------------------------------------------------------
+		// convert timestamp to time string
+		public static function timestamp2Time($stamp){
+			$strTime = date("H:i",$stamp);
+			return($strTime);
+		}
+		
+		/**
+		 * convert timestamp to date and time string
+		 */
+		public static function timestamp2DateTime($stamp){
+			$strDateTime = date("d M Y, H:i",$stamp);
+			return($strDateTime);
+		}
+		
+		//---------------------------------------------------------------------------------------------------
+		// convert timestamp to date string
+		public static function timestamp2Date($stamp){
+			$strDate = date("d M Y",$stamp);	//27 Jun 2009
+			return($strDate);
+		}
+		
+		
+		
+		public static function z___________OTHERS__________(){}
+		
 		
 		/**
 		 * get youtube video id from url, or ID
@@ -2669,27 +2752,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		}
 		
 		
-		//---------------------------------------------------------------------------------------------------
-		// convert timestamp to time string
-		public static function timestamp2Time($stamp){
-			$strTime = date("H:i",$stamp);
-			return($strTime);
-		}
-		
-		/**
-		 * convert timestamp to date and time string
-		 */
-		public static function timestamp2DateTime($stamp){
-			$strDateTime = date("d M Y, H:i",$stamp);
-			return($strDateTime);
-		}
-		
-		//---------------------------------------------------------------------------------------------------
-		// convert timestamp to date string
-		public static function timestamp2Date($stamp){
-			$strDate = date("d M Y",$stamp);	//27 Jun 2009
-			return($strDate);
-		}
 		
 		
 		/**

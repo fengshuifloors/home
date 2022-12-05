@@ -1243,6 +1243,37 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 
 == Changelog ==
 
+version 1.5.43: 2022-12-04
+
+* Feature: add settings output to dynamic grid fields debug
+* Fix: fixed pods multiple image data
+* Fix: fixed url terms in filter with dynamic grid
+* Fix: fixed users and menu not found bug in front	
+* Change: updated twig engine to the latest version
+
+
+version 1.5.42: 2022-11-29
+
+* Feature: added functionality for time ago in posts widgets
+* Feature: added woo variables to woo fields - woo_price_withtax, woo_price_notax
+* Feature: added option for term child filter role
+-optimization: reduced number of queries in post related widgets
+
+
+version 1.5.41: 2022-11-24
+
+-bug fix: fixed post select in post query
+
+
+version 1.5.40: 2022-11-23
+
+* Feature: added integration to woocommerce multicourancy plugins
+* Feature: made some integration with translate press plugin
+* Feature: added select post and select term attribute
+* Fix: fixed dynamic loop css backgrounds with containers
+* Fix: fixed mousewheel event in the carousel
+* Fix: fixed some rare php error with filters
+
 
 version 1.5.39: 2022-11-16
 

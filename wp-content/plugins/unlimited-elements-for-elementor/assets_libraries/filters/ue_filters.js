@@ -570,7 +570,7 @@ function UEDynamicFilters(){
 	 * clear non main grid filters
 	 * hide children and just clear the main filters
 	 */
-	function clearChildFilters(objGrid, objCurrentFilter, isHideChildren){
+	function clearChildFilters(objGrid, objCurrentFilter, isHideChildren, termID){
 		
 		var objFilters = objGrid.data("filters");
 		
@@ -581,7 +581,7 @@ function UEDynamicFilters(){
 			return(false);
 		
 		var currentFilterID = objCurrentFilter.attr("id");
-		
+				
 		jQuery.each(objFilters, function(index, filter){
 			
 			var objFilter = jQuery(filter);
@@ -591,32 +591,53 @@ function UEDynamicFilters(){
 				return(true);
 						
 			var role = objFilter.data("role");
-			
-			if(role != "child" && role != "main")
+						
+			if(role != "child" && role != "main" && role != "term_child")
 				return(true);
 			
+			var isHide = false;
+			var isShow = false;
+			
 			switch(role){
+				case "term_child":
+					if(isHideChildren == true)
+						isHide = true;
+						
+					var linkedTermID = objFilter.data("childterm");
+					
+					if(linkedTermID == termID){		//show the filter
+						
+						objFilter.removeClass(g_vars.CLASS_HIDDEN);
+						objFilter.removeClass(g_vars.CLASS_INITING);
+						objFilter.removeClass(g_vars.CLASS_INITING_HIDDEN);
+					}else{
+						isHide = true;
+					}
+						
+				break;
 				case "child":
 					
-					if(isHideChildren == true){
-						
-						//hide the child filters and not refresh
-						
-						objFilter.addClass(g_vars.CLASS_HIDDEN);	
-					}
+					if(isHideChildren == true)
+						isHide = true;
 					else{
-						
 						//hide the filters and refresh
 						
 						objFilter.removeClass(g_vars.CLASS_HIDDEN);
 						
 						objFilter.addClass(g_vars.CLASS_INITING);
 						objFilter.addClass(g_vars.CLASS_INITING_HIDDEN);
+						
 					}
 					
 				break;
 			}
 						
+			//hide the child filters and not refresh
+			
+			if(isHide == true)
+				objFilter.addClass(g_vars.CLASS_HIDDEN);	
+			
+			
 			clearFilter(objFilter);
 						
 		});
@@ -887,6 +908,7 @@ function UEDynamicFilters(){
 			throw new Error("Grid not found");
 		
 		//if main filter - clear other filters
+		
 		var filterRole = objTermsFilter.data("role");
 		
 		var termID = objLink.data("id");
@@ -894,9 +916,9 @@ function UEDynamicFilters(){
 		var isHideChildren = false;
 		if(!termID)
 			isHideChildren = true;
-				
+		
 		if(filterRole == "main")
-			clearChildFilters(objGrid, objTermsFilter, isHideChildren);
+			clearChildFilters(objGrid, objTermsFilter, isHideChildren, termID);
 		
 		//refresh grid		
 		refreshAjaxGrid(objGrid);
@@ -2267,12 +2289,13 @@ function UEDynamicFilters(){
 			var filterRole = objFilter.data("role");
 			
 			var isMainFilter = (filterRole == "main");
+			var isTermChild = (filterRole == "term_child");
 			
 			//add to refresh filter if it's qualify
 			
 			var isRefresh = true;
 			
-			if(isFiltersInitMode == false && isMainFilter === true)
+			if(isFiltersInitMode == false && (isMainFilter === true || isTermChild == true))
 				isRefresh = false;
 			
 			if(isNoRefresh === true)

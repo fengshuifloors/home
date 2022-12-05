@@ -16,8 +16,11 @@ class UniteCreatorTemplateEngineWork{
 	protected $arrItems = array();
 	protected $addon = null;
 	protected $objParamsProcessor;
+	protected $isItemsFromPosts = false;
+	
 	private static $arrSetVarsCache = array();
 	private static $urlBaseCache = null;
+	
 	
 	
 	/**
@@ -38,6 +41,13 @@ class UniteCreatorTemplateEngineWork{
 	 */
 	private function outputItem($index, $itemParams, $templateName, $sap, $newLine = true){
 		
+		if($this->isItemsFromPosts == true){
+			
+			//HelperProviderUC::startDebugQueries();
+			
+			GlobalsProviderUC::$isUnderRenderPostItem = true;
+		}			
+			
 		$params = array_merge($this->arrParams, $itemParams);
 		
 		$htmlItem = $this->twig->render($templateName, $params);
@@ -51,6 +61,17 @@ class UniteCreatorTemplateEngineWork{
 		
 		if($newLine)
 			echo "\n";
+		
+		
+		if($this->isItemsFromPosts == true){
+			
+			GlobalsProviderUC::$isUnderRenderPostItem = false;
+			
+			//HelperProviderUC::printDebugQueries();
+			//dmp("check queries");exit();
+			
+		}
+		
 	}
 	
 	
@@ -65,7 +86,6 @@ class UniteCreatorTemplateEngineWork{
 		if($this->isTemplateExists($templateName) == false)
 			return(false);
 		
-				
 		if($numItem !== null){
 			$itemParams = UniteFunctionsUC::getVal($this->arrItems, $numItem);
 			if(empty($itemParams))
@@ -180,7 +200,7 @@ class UniteCreatorTemplateEngineWork{
 			$arrAttr = UniteFunctionsUC::removeArrItemsByKeys($arrAttr, GlobalsProviderUC::$arrAttrConstantKeys);
 		
 		$jsonAttr = UniteFunctionsUC::jsonEncodeForClientSide($arrAttr);
-				
+		
 		echo $jsonAttr;
 	}
 	
@@ -380,6 +400,14 @@ class UniteCreatorTemplateEngineWork{
 	 * filter uc date, clear html first, then replace the date
 	 */
 	public function filterUCDate($dateStamp, $format = "", $formatDateFrom = "d/m/Y"){
+		
+		//get the time ago string
+		
+		if($format === "time_ago"){
+			$strTimeAgo = UniteFunctionsUC::getTimeAgoString($dateStamp);
+			
+			return($strTimeAgo);
+		}
 		
 		if(empty($format))
 			$format = get_option("date_format");
@@ -1349,6 +1377,16 @@ class UniteCreatorTemplateEngineWork{
 	public function setParams($params){
 		
 		$this->arrParams = $params;
+		
+	}
+	
+	/**
+	 * set items source
+	 */
+	public function setItemsSource($source){
+		
+		if($source == "posts")
+			$this->isItemsFromPosts = true;
 		
 	}
 	
