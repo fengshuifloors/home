@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments for fengshuifloors-home-info	</title>
-	<atom:link href="http://fengshuifloors.github.io/home/comments/feed/" rel="self" type="application/rss+xml" />
-	<link>http://fengshuifloors.github.io/home</link>
+	<atom:link href="https://fengshuifloors.github.io/home/comments/feed/" rel="self" type="application/rss+xml" />
+	<link>https://fengshuifloors.github.io/home</link>
 	<description>Flooring Website</description>
 	<lastBuildDate>Tue, 01 Nov 2022 16:02:44 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,11 +20,11 @@
 	<item>
 		<title>
 		Comment on Hello world! by A WordPress Commenter		</title>
-		<link>http://fengshuifloors.github.io/home/2022/11/01/hello-world/#comment-1</link>
+		<link>https://fengshuifloors.github.io/home/2022/11/01/hello-world/#comment-1</link>
 
 		<dc:creator><![CDATA[A WordPress Commenter]]></dc:creator>
 		<pubDate>Tue, 01 Nov 2022 16:02:44 +0000</pubDate>
-		<guid isPermaLink="false">http://fengshuifloors.github.io/home/?p=1#comment-1</guid>
+		<guid isPermaLink="false">https://fengshuifloors.github.io/home/?p=1#comment-1</guid>
 
 					<description><![CDATA[Hi, this is a comment.
 To get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.
