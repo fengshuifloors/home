@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="1000mm"
+   height="707mm"
+   viewBox="0 0 1000 707"
    version="1.1"
    id="svg2557"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="logo_rightBig.svg"
+   sodipodi:docname="logo_right.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,18 +24,20 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.39052655"
-     inkscape:cx="405.86229"
-     inkscape:cy="466.03745"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:zoom="0.093848619"
+     inkscape:cx="692.60476"
+     inkscape:cy="2258.9571"
+     inkscape:window-width="1368"
+     inkscape:window-height="833"
+     inkscape:window-x="-7"
+     inkscape:window-y="-7"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer14">
     <inkscape:grid
        type="xygrid"
-       id="grid4634" />
+       id="grid4634"
+       originx="0"
+       originy="0" />
   </sodipodi:namedview>
   <defs
      id="defs2554">
@@ -253,7 +255,7 @@
      style="display:inline">
     <g
        id="g8131"
-       transform="matrix(1.9179189,0,0,1.9179189,-17.181539,-231.28452)">
+       transform="matrix(7.4599435,0,0,7.4599435,22.152642,-1148.7059)">
       <path
          id="path23937"
          style="display:inline;fill:#a49566;fill-opacity:1;stroke:#a49364;stroke-width:0.106412;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
@@ -268,7 +270,7 @@
     </g>
     <g
        id="g8127"
-       transform="matrix(2.0851013,0,0,2.0851013,-100.39594,-224.02897)">
+       transform="matrix(8.1102165,0,0,8.1102165,-301.51838,-1120.4847)">
       <path
          id="path50710"
          style="display:inline;fill:#a59364;fill-opacity:1;stroke:none;stroke-width:0.106412;stroke-dasharray:none;stroke-opacity:0.529412;stop-color:#000000"
@@ -291,7 +293,7 @@
        aria-label="floors"
        id="text52170"
        style="font-size:23.4785px;display:inline;fill:#402913;fill-opacity:0.685832;stroke-width:1.47897;stop-color:#000000"
-       transform="matrix(1.1094,0,0,1.1094,27.20002,1.8080248)">
+       transform="matrix(4.3151255,0,0,4.3151255,194.77929,-242.0684)">
       <path
          d="m 105.16011,165.44173 h -0.11464 q -0.35538,-0.10318 -0.92859,-0.20635 -0.57321,-0.11464 -1.00884,-0.11464 -1.38716,0 -2.01769,0.61906 -0.61906,0.6076 -0.61906,2.21257 v 0.43564 h 3.88634 v 1.81133 h -3.81755 v 10.99408 h -2.155256 v -10.99408 h -1.455942 v -1.81133 h 1.455942 v -0.42417 q 0,-2.28136 1.134947,-3.49656 1.134949,-1.22666 3.278739,-1.22666 0.72224,0 1.29544,0.0688 0.58467,0.0688 1.06616,0.16049 z"
          id="path53680" />
@@ -473,11 +475,11 @@
      style="display:inline">
     <path
        id="path17726-0"
-       style="fill:#b9ab86;fill-opacity:1;stroke:none;stroke-width:1.03228;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stop-color:#000000"
-       d="M 25.276637,106.92029 7.5236505,202.51338 H 55.845483 v -95.59309 z" />
+       style="fill:#b9ab86;fill-opacity:1;stroke:none;stroke-width:4.01516;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stop-color:#000000"
+       d="M 187.19682,168.10823 118.14475,539.92744 H 306.0975 V 168.10823 Z" />
     <g
        id="g15945-65"
-       transform="matrix(2.0851013,0,0,2.0851013,-117.29898,-161.59742)"
+       transform="matrix(8.1102165,0,0,8.1102165,-367.36558,-876.31911)"
        clip-path="url(#clipPath16479)">
       <path
          style="fill:#a29060;fill-opacity:1;stroke:none;stroke-width:0.495074;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stop-color:#000000"
