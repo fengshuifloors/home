@@ -537,13 +537,6 @@
     opacity: 1;
 }
 
-.premium-blog-thumb-effect-wrapper:hover .premium-blog-thumbnail-overlay a {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-}
-
 .premium-blog-clear-fix {
     clear: both;
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-27 16:10+0530\n"
+"POT-Creation-Date: 2022-12-05 10:21+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,12 +38,12 @@ msgid "Install Elementor Now"
 msgstr ""
 
 #: widgets_loader.php:157 widgets_loader.php:215 widgets_loader.php:253
-#: includes/theplus_options.php:414 includes/theplus_options.php:432
+#: includes/theplus_options.php:430 includes/theplus_options.php:448
 msgid "Invalid security"
 msgstr ""
 
 #: widgets_loader.php:161 widgets_loader.php:219 widgets_loader.php:256
-#: includes/theplus_options.php:418 includes/theplus_options.php:436
+#: includes/theplus_options.php:434 includes/theplus_options.php:452
 msgid "Invalid User"
 msgstr ""
 
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Twitter Link"
 msgstr ""
 
-#: includes/plus_addon.php:69 includes/theplus_options.php:887
+#: includes/plus_addon.php:69 includes/theplus_options.php:903
 #: modules/widgets/tp_social_embed.php:59
 #: modules/widgets/tp_social_embed.php:1720
 msgid "Instagram"
@@ -127,60 +127,60 @@ msgstr ""
 msgid "ThePlus Settings"
 msgstr ""
 
-#: includes/theplus_options.php:500 modules/widgets/tp_accordion.php:33
+#: includes/theplus_options.php:516 modules/widgets/tp_accordion.php:33
 msgid "Accordion"
 msgstr ""
 
-#: includes/theplus_options.php:509 modules/widgets/tp_adv_text_block.php:30
+#: includes/theplus_options.php:525 modules/widgets/tp_adv_text_block.php:30
 msgid "TP Text Block"
 msgstr ""
 
-#: includes/theplus_options.php:518
+#: includes/theplus_options.php:534
 msgid "Advanced Typography"
 msgstr ""
 
-#: includes/theplus_options.php:527
+#: includes/theplus_options.php:543
 msgid "Advanced Buttons"
 msgstr ""
 
-#: includes/theplus_options.php:536
+#: includes/theplus_options.php:552
 msgid "Advanced Separators"
 msgstr ""
 
-#: includes/theplus_options.php:545
+#: includes/theplus_options.php:561
 msgid "Advertisement Banner"
 msgstr ""
 
-#: includes/theplus_options.php:554 modules/widgets/tp_age_gate.php:33
+#: includes/theplus_options.php:570 modules/widgets/tp_age_gate.php:33
 msgid "Age Gate"
 msgstr ""
 
-#: includes/theplus_options.php:563
+#: includes/theplus_options.php:579
 msgid "Animated Service Boxes"
 msgstr ""
 
-#: includes/theplus_options.php:572
+#: includes/theplus_options.php:588
 msgid "Audio Player"
 msgstr ""
 
-#: includes/theplus_options.php:581
+#: includes/theplus_options.php:597
 msgid "Before After"
 msgstr ""
 
-#: includes/theplus_options.php:590 modules/widgets/tp_blockquote.php:32
+#: includes/theplus_options.php:606 modules/widgets/tp_blockquote.php:32
 #: modules/widgets/tp_blockquote.php:48
 msgid "Blockquote"
 msgstr ""
 
-#: includes/theplus_options.php:599
+#: includes/theplus_options.php:615
 msgid "Blog Listing"
 msgstr ""
 
-#: includes/theplus_options.php:608
+#: includes/theplus_options.php:624
 msgid "Breadcrumbs Bar"
 msgstr ""
 
-#: includes/theplus_options.php:617 modules/widgets/tp_flip_box.php:324
+#: includes/theplus_options.php:633 modules/widgets/tp_flip_box.php:324
 #: modules/widgets/tp_info_box.php:352
 #: modules/widgets/tp_pricing_table.php:511
 #: modules/widgets/tp_pricing_table.php:521
@@ -190,518 +190,518 @@ msgstr ""
 msgid "Button"
 msgstr ""
 
-#: includes/theplus_options.php:626 modules/widgets/tp_caldera_forms.php:30
+#: includes/theplus_options.php:642 modules/widgets/tp_caldera_forms.php:30
 #: modules/widgets/tp_caldera_forms.php:46
 msgid "Caldera Forms"
 msgstr ""
 
-#: includes/theplus_options.php:635
+#: includes/theplus_options.php:651
 msgid "Carousel Anything"
 msgstr ""
 
-#: includes/theplus_options.php:644
+#: includes/theplus_options.php:660
 msgid "Carousel Remote"
 msgstr ""
 
-#: includes/theplus_options.php:653
+#: includes/theplus_options.php:669
 msgid "Cascading Image"
 msgstr ""
 
-#: includes/theplus_options.php:662
+#: includes/theplus_options.php:678
 msgid "Chart"
 msgstr ""
 
-#: includes/theplus_options.php:671
+#: includes/theplus_options.php:687
 msgid "Circle Menu"
 msgstr ""
 
-#: includes/theplus_options.php:680
+#: includes/theplus_options.php:696
 msgid "Clients Listing"
 msgstr ""
 
-#: includes/theplus_options.php:689 modules/widgets/tp_contact_form_7.php:31
+#: includes/theplus_options.php:705 modules/widgets/tp_contact_form_7.php:31
 msgid "Contact Form 7"
 msgstr ""
 
-#: includes/theplus_options.php:698
+#: includes/theplus_options.php:714
 msgid "Count Down"
 msgstr ""
 
-#: includes/theplus_options.php:707
+#: includes/theplus_options.php:723
 msgid "Coupon Code"
 msgstr ""
 
-#: includes/theplus_options.php:716 modules/widgets/tp_dark_mode.php:33
+#: includes/theplus_options.php:732 modules/widgets/tp_dark_mode.php:33
 #: modules/widgets/tp_dark_mode.php:49
 #: modules/widgets/tp_social_embed.php:1249
 msgid "Dark Mode"
 msgstr ""
 
-#: includes/theplus_options.php:725
+#: includes/theplus_options.php:741
 msgid "Design Tool"
 msgstr ""
 
-#: includes/theplus_options.php:734
+#: includes/theplus_options.php:750
 msgid "Draw SVG"
 msgstr ""
 
-#: includes/theplus_options.php:743
+#: includes/theplus_options.php:759
 msgid "Dynamic Categories"
 msgstr ""
 
-#: includes/theplus_options.php:752
+#: includes/theplus_options.php:768
 msgid "Dynamic Device"
 msgstr ""
 
-#: includes/theplus_options.php:761
+#: includes/theplus_options.php:777
 msgid "Dynamic Listing"
 msgstr ""
 
-#: includes/theplus_options.php:770
+#: includes/theplus_options.php:786
 msgid "Dynamic Smart Showcase"
 msgstr ""
 
-#: includes/theplus_options.php:779 modules/widgets/tp_everest_form.php:30
+#: includes/theplus_options.php:795 modules/widgets/tp_everest_form.php:30
 #: modules/widgets/tp_everest_form.php:46
 msgid "Everest Form"
 msgstr ""
 
-#: includes/theplus_options.php:788 modules/widgets/tp_flip_box.php:32
+#: includes/theplus_options.php:804 modules/widgets/tp_flip_box.php:32
 msgid "Flip Box"
 msgstr ""
 
-#: includes/theplus_options.php:797 modules/widgets/tp_gallery_listout.php:32
+#: includes/theplus_options.php:813 modules/widgets/tp_gallery_listout.php:32
 msgid "Gallery Listing"
 msgstr ""
 
-#: includes/theplus_options.php:806 modules/widgets/tp_social_embed.php:61
+#: includes/theplus_options.php:822 modules/widgets/tp_social_embed.php:61
 #: modules/widgets/tp_social_embed.php:1964
 msgid "Google Map"
 msgstr ""
 
-#: includes/theplus_options.php:815 modules/widgets/tp_gravity_form.php:31
+#: includes/theplus_options.php:831 modules/widgets/tp_gravity_form.php:31
 #: modules/widgets/tp_gravity_form.php:47
 #: modules/widgets/tp_gravity_form.php:109
 msgid "Gravity Form"
 msgstr ""
 
-#: includes/theplus_options.php:824
+#: includes/theplus_options.php:840
 #: modules/widgets/tp_heading_animation.php:31
 msgid "Heading Animation"
 msgstr ""
 
-#: includes/theplus_options.php:833 modules/widgets/tp_header_extras.php:32
+#: includes/theplus_options.php:849 modules/widgets/tp_header_extras.php:32
 msgid "Header Meta Content"
 msgstr ""
 
-#: includes/theplus_options.php:842 modules/enqueue/plus-wpml.php:205
+#: includes/theplus_options.php:858 modules/enqueue/plus-wpml.php:205
 #: modules/widgets/tp_heading_title.php:31
 #: modules/widgets/tp_heading_title.php:84
 msgid "Heading Title"
 msgstr ""
 
-#: includes/theplus_options.php:851
+#: includes/theplus_options.php:867
 msgid "Hotspot"
 msgstr ""
 
-#: includes/theplus_options.php:860 modules/widgets/tp_hovercard.php:35
+#: includes/theplus_options.php:876 modules/widgets/tp_hovercard.php:35
 #: modules/widgets/tp_hovercard.php:51
 msgid "Hover Card"
 msgstr ""
 
-#: includes/theplus_options.php:869
+#: includes/theplus_options.php:885
 msgid "Creative Image"
 msgstr ""
 
-#: includes/theplus_options.php:878 modules/widgets/tp_info_box.php:32
+#: includes/theplus_options.php:894 modules/widgets/tp_info_box.php:32
 msgid "Info Box"
 msgstr ""
 
-#: includes/theplus_options.php:896
+#: includes/theplus_options.php:912
 msgid "LottieFiles Animation"
 msgstr ""
 
-#: includes/theplus_options.php:905
+#: includes/theplus_options.php:921
 msgid "Mailchimp"
 msgstr ""
 
-#: includes/theplus_options.php:914
+#: includes/theplus_options.php:930
 #: modules/widgets/tp_meeting_scheduler.php:25
 #: modules/widgets/tp_meeting_scheduler.php:43
 msgid "Meeting Scheduler"
 msgstr ""
 
-#: includes/theplus_options.php:923 modules/widgets/tp_messagebox.php:33
+#: includes/theplus_options.php:939 modules/widgets/tp_messagebox.php:33
 msgid "Message Box"
 msgstr ""
 
-#: includes/theplus_options.php:932
+#: includes/theplus_options.php:948
 #: modules/widgets/tp_navigation_menu_lite.php:141
 msgid "Mobile Menu"
 msgstr ""
 
-#: includes/theplus_options.php:941
+#: includes/theplus_options.php:957
 msgid "Morphing Layouts"
 msgstr ""
 
-#: includes/theplus_options.php:950
+#: includes/theplus_options.php:966
 msgid "Mouse Cursor"
 msgstr ""
 
-#: includes/theplus_options.php:959
+#: includes/theplus_options.php:975
 msgid "TP Navigation Menu Lite"
 msgstr ""
 
-#: includes/theplus_options.php:968
+#: includes/theplus_options.php:984
 msgid "TP Navigation Menu"
 msgstr ""
 
-#: includes/theplus_options.php:977 modules/widgets/tp_ninja_form.php:31
+#: includes/theplus_options.php:993 modules/widgets/tp_ninja_form.php:31
 #: modules/widgets/tp_ninja_form.php:47
 msgid "Ninja Form"
 msgstr ""
 
-#: includes/theplus_options.php:986 modules/widgets/tp_number_counter.php:33
+#: includes/theplus_options.php:1002 modules/widgets/tp_number_counter.php:33
 msgid "Number Counter"
 msgstr ""
 
-#: includes/theplus_options.php:995 modules/widgets/tp_post_title.php:32
+#: includes/theplus_options.php:1011 modules/widgets/tp_post_title.php:32
 #: modules/widgets/tp_post_title.php:48
 msgid "Post Title"
 msgstr ""
 
-#: includes/theplus_options.php:1004 modules/widgets/tp_post_content.php:32
+#: includes/theplus_options.php:1020 modules/widgets/tp_post_content.php:32
 #: modules/widgets/tp_post_content.php:48
 msgid "Post Content"
 msgstr ""
 
-#: includes/theplus_options.php:1013
+#: includes/theplus_options.php:1029
 #: modules/widgets/tp_post_featured_image.php:29
 msgid "Post Featured Image"
 msgstr ""
 
-#: includes/theplus_options.php:1022 modules/widgets/tp_post_meta.php:32
+#: includes/theplus_options.php:1038 modules/widgets/tp_post_meta.php:32
 #: modules/widgets/tp_post_meta.php:48
 msgid "Post Meta"
 msgstr ""
 
-#: includes/theplus_options.php:1031 modules/widgets/tp_post_author.php:32
+#: includes/theplus_options.php:1047 modules/widgets/tp_post_author.php:32
 #: modules/widgets/tp_post_author.php:48 modules/widgets/tp_post_meta.php:870
 msgid "Post Author"
 msgstr ""
 
-#: includes/theplus_options.php:1040 modules/widgets/tp_post_comment.php:32
+#: includes/theplus_options.php:1056 modules/widgets/tp_post_comment.php:32
 #: modules/widgets/tp_post_meta.php:1074 modules/widgets/tp_post_meta.php:1081
 msgid "Post Comment"
 msgstr ""
 
-#: includes/theplus_options.php:1049
+#: includes/theplus_options.php:1065
 msgid "Post Prev/Next"
 msgstr ""
 
-#: includes/theplus_options.php:1058
+#: includes/theplus_options.php:1074
 msgid "Popup Builder"
 msgstr ""
 
-#: includes/theplus_options.php:1067 modules/widgets/tp_page_scroll.php:35
+#: includes/theplus_options.php:1083 modules/widgets/tp_page_scroll.php:35
 #: modules/widgets/tp_page_scroll.php:52
 msgid "Page Scroll"
 msgstr ""
 
-#: includes/theplus_options.php:1076
+#: includes/theplus_options.php:1092
 msgid "Pre Loader"
 msgstr ""
 
-#: includes/theplus_options.php:1085
+#: includes/theplus_options.php:1101
 msgid "Pricing List"
 msgstr ""
 
-#: includes/theplus_options.php:1094 modules/widgets/tp_pricing_table.php:31
+#: includes/theplus_options.php:1110 modules/widgets/tp_pricing_table.php:31
 msgid "Pricing Table"
 msgstr ""
 
-#: includes/theplus_options.php:1103
+#: includes/theplus_options.php:1119
 msgid "Product Listing"
 msgstr ""
 
-#: includes/theplus_options.php:1112
+#: includes/theplus_options.php:1128
 msgid "Protected Content"
 msgstr ""
 
-#: includes/theplus_options.php:1121
+#: includes/theplus_options.php:1137
 msgid "Post Search"
 msgstr ""
 
-#: includes/theplus_options.php:1130 modules/widgets/tp_progress_bar.php:33
+#: includes/theplus_options.php:1146 modules/widgets/tp_progress_bar.php:33
 #: modules/widgets/tp_progress_bar.php:55
 #: modules/widgets/tp_progress_bar.php:66
 msgid "Progress Bar"
 msgstr ""
 
-#: includes/theplus_options.php:1139
+#: includes/theplus_options.php:1155
 msgid "Process Steps"
 msgstr ""
 
-#: includes/theplus_options.php:1148
+#: includes/theplus_options.php:1164
 msgid "Row Background"
 msgstr ""
 
-#: includes/theplus_options.php:1157
+#: includes/theplus_options.php:1173
 #: modules/widgets/tp_scroll_navigation.php:32
 #: modules/widgets/tp_scroll_navigation.php:48
 msgid "Scroll Navigation"
 msgstr ""
 
-#: includes/theplus_options.php:1166
+#: includes/theplus_options.php:1182
 msgid "Search bar"
 msgstr ""
 
-#: includes/theplus_options.php:1175
+#: includes/theplus_options.php:1191
 msgid "WP Search Filters"
 msgstr ""
 
-#: includes/theplus_options.php:1184
+#: includes/theplus_options.php:1200
 msgid "Site Logo"
 msgstr ""
 
-#: includes/theplus_options.php:1193 modules/widgets/tp_smooth_scroll.php:29
+#: includes/theplus_options.php:1209 modules/widgets/tp_smooth_scroll.php:29
 msgid "Smooth Scroll"
 msgstr ""
 
-#: includes/theplus_options.php:1202 modules/widgets/tp_social_embed.php:30
+#: includes/theplus_options.php:1218 modules/widgets/tp_social_embed.php:30
 msgid "Social Embed"
 msgstr ""
 
-#: includes/theplus_options.php:1211
+#: includes/theplus_options.php:1227
 msgid "Social Feed"
 msgstr ""
 
-#: includes/theplus_options.php:1220 modules/widgets/tp_social_icon.php:29
+#: includes/theplus_options.php:1236 modules/widgets/tp_social_icon.php:29
 #: modules/widgets/tp_team_member_listout.php:508
 msgid "Social Icon"
 msgstr ""
 
-#: includes/theplus_options.php:1229
+#: includes/theplus_options.php:1245
 msgid "Social Reviews"
 msgstr ""
 
-#: includes/theplus_options.php:1238
+#: includes/theplus_options.php:1254
 msgid "Social Sharing"
 msgstr ""
 
-#: includes/theplus_options.php:1247
+#: includes/theplus_options.php:1263
 msgid "Style List"
 msgstr ""
 
-#: includes/theplus_options.php:1256
+#: includes/theplus_options.php:1272
 msgid "Switcher"
 msgstr ""
 
-#: includes/theplus_options.php:1265
+#: includes/theplus_options.php:1281
 msgid "Syntax Highlighter"
 msgstr ""
 
-#: includes/theplus_options.php:1274
+#: includes/theplus_options.php:1290
 msgid "Table"
 msgstr ""
 
-#: includes/theplus_options.php:1283
+#: includes/theplus_options.php:1299
 msgid "Table Of Content"
 msgstr ""
 
-#: includes/theplus_options.php:1292 modules/widgets/tp_tabs_tours.php:33
+#: includes/theplus_options.php:1308 modules/widgets/tp_tabs_tours.php:33
 msgid "Tabs/Tours"
 msgstr ""
 
-#: includes/theplus_options.php:1301
+#: includes/theplus_options.php:1317
 #: modules/widgets/tp_team_member_listout.php:32
 msgid "Team Member Listing"
 msgstr ""
 
-#: includes/theplus_options.php:1310 includes/theplus_options.php:2102
+#: includes/theplus_options.php:1326 includes/theplus_options.php:2118
 #: modules/widgets/tp_testimonial_listout.php:31
 msgid "Testimonial"
 msgstr ""
 
-#: includes/theplus_options.php:1319 modules/widgets/tp_social_embed.php:655
+#: includes/theplus_options.php:1335 modules/widgets/tp_social_embed.php:655
 msgid "Timeline"
 msgstr ""
 
-#: includes/theplus_options.php:1328
+#: includes/theplus_options.php:1344
 msgid "Video Player"
 msgstr ""
 
-#: includes/theplus_options.php:1337
+#: includes/theplus_options.php:1353
 msgid "Unfold"
 msgstr ""
 
-#: includes/theplus_options.php:1346
+#: includes/theplus_options.php:1362
 msgid "WP Forms"
 msgstr ""
 
-#: includes/theplus_options.php:1355
+#: includes/theplus_options.php:1371
 msgid "Woo Cart"
 msgstr ""
 
-#: includes/theplus_options.php:1364
+#: includes/theplus_options.php:1380
 msgid "Woo Checkout"
 msgstr ""
 
-#: includes/theplus_options.php:1373
+#: includes/theplus_options.php:1389
 msgid "Woo My Account"
 msgstr ""
 
-#: includes/theplus_options.php:1382
+#: includes/theplus_options.php:1398
 msgid "Woo Order Track"
 msgstr ""
 
-#: includes/theplus_options.php:1391
+#: includes/theplus_options.php:1407
 msgid "Woo Single Basic"
 msgstr ""
 
-#: includes/theplus_options.php:1400
+#: includes/theplus_options.php:1416
 msgid "Woo Product Images"
 msgstr ""
 
-#: includes/theplus_options.php:1409
+#: includes/theplus_options.php:1425
 msgid "Woo Single Pricing"
 msgstr ""
 
-#: includes/theplus_options.php:1418
+#: includes/theplus_options.php:1434
 msgid "Woo Single Tabs"
 msgstr ""
 
-#: includes/theplus_options.php:1427
+#: includes/theplus_options.php:1443
 msgid "Woo Thank You"
 msgstr ""
 
-#: includes/theplus_options.php:1436
+#: includes/theplus_options.php:1452
 msgid "WP Login & Register"
 msgstr ""
 
-#: includes/theplus_options.php:1450
+#: includes/theplus_options.php:1466
 msgid "Section Scroll Animation"
 msgstr ""
 
-#: includes/theplus_options.php:1459
+#: includes/theplus_options.php:1475
 msgid "Section Custom CSS"
 msgstr ""
 
-#: includes/theplus_options.php:1468
+#: includes/theplus_options.php:1484
 msgid "Sticky Column"
 msgstr ""
 
-#: includes/theplus_options.php:1477
+#: includes/theplus_options.php:1493
 msgid "Custom/Media Width Column"
 msgstr ""
 
-#: includes/theplus_options.php:1486
+#: includes/theplus_options.php:1502
 msgid "Order AND Width Column"
 msgstr ""
 
-#: includes/theplus_options.php:1495
+#: includes/theplus_options.php:1511
 msgid "Column Custom CSS"
 msgstr ""
 
-#: includes/theplus_options.php:1504
+#: includes/theplus_options.php:1520
 msgid "Column Mouse Cursor"
 msgstr ""
 
-#: includes/theplus_options.php:1513
+#: includes/theplus_options.php:1529
 msgid "Display Condition"
 msgstr ""
 
-#: includes/theplus_options.php:1522
+#: includes/theplus_options.php:1538
 msgid "Event Tracker"
 msgstr ""
 
-#: includes/theplus_options.php:1531
+#: includes/theplus_options.php:1547
 msgid "Wrapper Link"
 msgstr ""
 
-#: includes/theplus_options.php:1540
+#: includes/theplus_options.php:1556
 #: modules/controls/group/plus-equal-height.php:45
 msgid "Equal Height"
 msgstr ""
 
-#: includes/theplus_options.php:1549
+#: includes/theplus_options.php:1565
 #: modules/controls/group/plus-glass-morphism.php:43
 msgid "Glass Morphism"
 msgstr ""
 
-#: includes/theplus_options.php:1558
+#: includes/theplus_options.php:1574
 msgid "Advanced Shadows"
 msgstr ""
 
-#: includes/theplus_options.php:1567
+#: includes/theplus_options.php:1583
 msgid "Cross Domain Copy Paste"
 msgstr ""
 
-#: includes/theplus_options.php:1878
+#: includes/theplus_options.php:1894
 msgid "Setting Panel"
 msgstr ""
 
-#: includes/theplus_options.php:1883
+#: includes/theplus_options.php:1899
 msgid "Version"
 msgstr ""
 
-#: includes/theplus_options.php:2002
+#: includes/theplus_options.php:2018
 msgid ""
 "Thank you for selecting the The Plus Addons to Supercharge your Elementor "
 "workflow, we would love to hear your experience."
 msgstr ""
 
-#: includes/theplus_options.php:2003
+#: includes/theplus_options.php:2019
 msgid "Please consider taking a few seconds, to share your valuable review"
 msgstr ""
 
-#: includes/theplus_options.php:2005
+#: includes/theplus_options.php:2021
 msgid "Sure, I will ❤"
 msgstr ""
 
-#: includes/theplus_options.php:2006
+#: includes/theplus_options.php:2022
 msgid "Already done 😊"
 msgstr ""
 
-#: includes/theplus_options.php:2010 includes/theplus_options.php:2012
+#: includes/theplus_options.php:2026 includes/theplus_options.php:2028
 msgid "Need Help? 😥"
 msgstr ""
 
-#: includes/theplus_options.php:2041 includes/theplus_options.php:2134
+#: includes/theplus_options.php:2057 includes/theplus_options.php:2150
 msgid "Enable All"
 msgstr ""
 
-#: includes/theplus_options.php:2044
+#: includes/theplus_options.php:2060
 #: modules/widgets/tp_meeting_scheduler.php:86
 #: modules/widgets/tp_post_meta.php:96
 msgid "All"
 msgstr ""
 
-#: includes/theplus_options.php:2045
+#: includes/theplus_options.php:2061
 msgid "Free"
 msgstr ""
 
-#: includes/theplus_options.php:2046
+#: includes/theplus_options.php:2062
 msgid "Freemium"
 msgstr ""
 
-#: includes/theplus_options.php:2047
+#: includes/theplus_options.php:2063
 msgid "Pro"
 msgstr ""
 
-#: includes/theplus_options.php:2057 includes/theplus_options.php:2140
+#: includes/theplus_options.php:2073 includes/theplus_options.php:2156
 msgid "Disable Unused Widgets"
 msgstr ""
 
-#: includes/theplus_options.php:2061 includes/theplus_options.php:2144
+#: includes/theplus_options.php:2077 includes/theplus_options.php:2160
 msgid "Scan Unused Widgets"
 msgstr ""
 
-#: includes/theplus_options.php:2066
+#: includes/theplus_options.php:2082
 msgid "Search.."
 msgstr ""
 
-#: includes/theplus_options.php:2085 modules/widgets/tp_accordion.php:865
+#: includes/theplus_options.php:2101 modules/widgets/tp_accordion.php:865
 #: modules/widgets/tp_adv_text_block.php:175
 #: modules/widgets/tp_blockquote.php:2147
 #: modules/widgets/tp_caldera_forms.php:2433
@@ -723,46 +723,46 @@ msgstr ""
 msgid "Plus Extras"
 msgstr ""
 
-#: includes/theplus_options.php:2086
+#: includes/theplus_options.php:2102
 msgid ""
 "List of features added in The Plus Addons for Elementor. You can enable/"
 "disable them from below."
 msgstr ""
 
-#: includes/theplus_options.php:2101 includes/plus-options/post-type.php:50
+#: includes/theplus_options.php:2117 includes/plus-options/post-type.php:50
 #: modules/widgets/tp_clients_listout.php:33
 msgid "Clients"
 msgstr ""
 
-#: includes/theplus_options.php:2103
+#: includes/theplus_options.php:2119
 msgid "Team Member"
 msgstr ""
 
-#: includes/theplus_options.php:2128
+#: includes/theplus_options.php:2144
 msgid "Elementor Free & Pro Widgets Manager"
 msgstr ""
 
-#: includes/theplus_options.php:2129
+#: includes/theplus_options.php:2145
 msgid ""
 "You may enable/disable any widgets as well as scan widgets to auto disable "
 "all at once. Below is a collection of widgets for Elementor Free and "
 "Elementor Pro version."
 msgstr ""
 
-#: includes/theplus_options.php:2263
+#: includes/theplus_options.php:2279
 msgid "Clients Post Type Settings"
 msgstr ""
 
-#: includes/theplus_options.php:2264
+#: includes/theplus_options.php:2280
 msgid "Use below settings to configure your “Clients” custom post type."
 msgstr ""
 
-#: includes/theplus_options.php:2269
+#: includes/theplus_options.php:2285
 msgid "Select Post Type Type"
 msgstr ""
 
-#: includes/theplus_options.php:2276 includes/theplus_options.php:2352
-#: includes/theplus_options.php:2428 includes/theplus_options.php:2511
+#: includes/theplus_options.php:2292 includes/theplus_options.php:2368
+#: includes/theplus_options.php:2444 includes/theplus_options.php:2527
 #: modules/controls/group/plus-adv-shadow.php:47
 #: modules/controls/group/plus-adv-shadow.php:225
 #: modules/controls/group/plus-adv-shadow.php:363
@@ -838,50 +838,50 @@ msgstr ""
 msgid "Disable"
 msgstr ""
 
-#: includes/theplus_options.php:2277 includes/theplus_options.php:2353
-#: includes/theplus_options.php:2429
+#: includes/theplus_options.php:2293 includes/theplus_options.php:2369
+#: includes/theplus_options.php:2445
 msgid "ThePlus Post Type"
 msgstr ""
 
-#: includes/theplus_options.php:2278 includes/theplus_options.php:2354
-#: includes/theplus_options.php:2430
+#: includes/theplus_options.php:2294 includes/theplus_options.php:2370
+#: includes/theplus_options.php:2446
 msgid "Prebuilt Theme Based"
 msgstr ""
 
-#: includes/theplus_options.php:2282 includes/theplus_options.php:2358
-#: includes/theplus_options.php:2434
+#: includes/theplus_options.php:2298 includes/theplus_options.php:2374
+#: includes/theplus_options.php:2450
 msgid "Post Name : (Keep Blank if you want to keep default Name)"
 msgstr ""
 
-#: includes/theplus_options.php:2283
+#: includes/theplus_options.php:2299
 msgid ""
 "Enter value for clients custom post type name. Default: \"theplus_clients\""
 msgstr ""
 
-#: includes/theplus_options.php:2293 includes/theplus_options.php:2369
-#: includes/theplus_options.php:2445
+#: includes/theplus_options.php:2309 includes/theplus_options.php:2385
+#: includes/theplus_options.php:2461
 msgid "Post Title : (Keep Blank if you want to keep default Title)"
 msgstr ""
 
-#: includes/theplus_options.php:2294
+#: includes/theplus_options.php:2310
 msgid "Enter value for clients custom post title name. Default: \"Tp Clients\""
 msgstr ""
 
-#: includes/theplus_options.php:2304 includes/theplus_options.php:2380
+#: includes/theplus_options.php:2320 includes/theplus_options.php:2396
 msgid "Category Taxonomy Value : (Keep Blank if you want to keep default Name)"
 msgstr ""
 
-#: includes/theplus_options.php:2305
+#: includes/theplus_options.php:2321
 msgid ""
 "Enter value for Category Taxonomy Value. Default : \"theplus_clients_cat\" "
 msgstr ""
 
-#: includes/theplus_options.php:2315 includes/theplus_options.php:2391
-#: includes/theplus_options.php:2467
+#: includes/theplus_options.php:2331 includes/theplus_options.php:2407
+#: includes/theplus_options.php:2483
 msgid "Prebuilt Post Name : (You can find that from here)"
 msgstr ""
 
-#: includes/theplus_options.php:2316
+#: includes/theplus_options.php:2332
 #, php-format
 msgid ""
 "Enter the value of your current post type name which is prebuilt with your "
@@ -890,11 +890,11 @@ msgid ""
 "screenshot</a> for how to get that value from URL of your current post type."
 msgstr ""
 
-#: includes/theplus_options.php:2326 includes/theplus_options.php:2402
+#: includes/theplus_options.php:2342 includes/theplus_options.php:2418
 msgid "Prebuilt Category Taxonomy Value : (You can find that from here)"
 msgstr ""
 
-#: includes/theplus_options.php:2327
+#: includes/theplus_options.php:2343
 #, php-format
 msgid ""
 "Enter the value of your current Category Taxonomy Value which is prebuilt "
@@ -904,36 +904,36 @@ msgid ""
 "taxonomy."
 msgstr ""
 
-#: includes/theplus_options.php:2339
+#: includes/theplus_options.php:2355
 msgid "Testimonial Post Type Settings"
 msgstr ""
 
-#: includes/theplus_options.php:2340
+#: includes/theplus_options.php:2356
 msgid "Use below settings to configure your “Testimonial” custom post type."
 msgstr ""
 
-#: includes/theplus_options.php:2345
+#: includes/theplus_options.php:2361
 msgid "Select Post type Type"
 msgstr ""
 
-#: includes/theplus_options.php:2359
+#: includes/theplus_options.php:2375
 msgid ""
 "Enter value for testimonial custom post type name. Default: "
 "\"theplus_testimonial\""
 msgstr ""
 
-#: includes/theplus_options.php:2370
+#: includes/theplus_options.php:2386
 msgid ""
 "Enter value for testimonial custom post title name. Default: \"TP "
 "Testimonials\""
 msgstr ""
 
-#: includes/theplus_options.php:2381
+#: includes/theplus_options.php:2397
 msgid ""
 "Enter value for Category Taxonomy Value. Default :\"theplus_testimonial_cat\""
 msgstr ""
 
-#: includes/theplus_options.php:2392
+#: includes/theplus_options.php:2408
 #, php-format
 msgid ""
 "Enter the value of your current post type name which is prebuilt with your "
@@ -942,7 +942,7 @@ msgid ""
 "screenshot</a> for how to get that value from URL of your current post type."
 msgstr ""
 
-#: includes/theplus_options.php:2403
+#: includes/theplus_options.php:2419
 #, php-format
 msgid ""
 "Enter the value of your current Category Taxonomy Value which is prebuilt "
@@ -952,41 +952,41 @@ msgid ""
 "taxonomy."
 msgstr ""
 
-#: includes/theplus_options.php:2415
+#: includes/theplus_options.php:2431
 msgid "Team Member Post Type Settings"
 msgstr ""
 
-#: includes/theplus_options.php:2416
+#: includes/theplus_options.php:2432
 msgid "Use below settings to configure your “Team Member” custom post type."
 msgstr ""
 
-#: includes/theplus_options.php:2421
+#: includes/theplus_options.php:2437
 msgid "Select Team Member Post Type"
 msgstr ""
 
-#: includes/theplus_options.php:2435
+#: includes/theplus_options.php:2451
 msgid ""
 "Enter value for team member custom post type name. Default: "
 "\"theplus_team_member\""
 msgstr ""
 
-#: includes/theplus_options.php:2446
+#: includes/theplus_options.php:2462
 msgid ""
 "Enter value for team member custom post type title. Default: \"TP Team "
 "Members\""
 msgstr ""
 
-#: includes/theplus_options.php:2456
+#: includes/theplus_options.php:2472
 msgid "Category Taxonomy Value (Keep Blank if you want to keep default Name)"
 msgstr ""
 
-#: includes/theplus_options.php:2457
+#: includes/theplus_options.php:2473
 msgid ""
 "Enter value for Category Taxonomy Value. Default : \"theplus_team_member_cat"
 "\""
 msgstr ""
 
-#: includes/theplus_options.php:2468
+#: includes/theplus_options.php:2484
 #, php-format
 msgid ""
 "Enter the value of your current post type name which is prebuilt with your "
@@ -995,11 +995,11 @@ msgid ""
 "screenshot</a> for how to get that value from URL of your current post type."
 msgstr ""
 
-#: includes/theplus_options.php:2478
+#: includes/theplus_options.php:2494
 msgid "Prebuilt Category Taxonomy Value (You can find that from here)"
 msgstr ""
 
-#: includes/theplus_options.php:2479
+#: includes/theplus_options.php:2495
 #, php-format
 msgid ""
 "Enter the value of your current Category Taxonomy Value which is prebuilt "
@@ -1009,19 +1009,19 @@ msgid ""
 "taxonomy."
 msgstr ""
 
-#: includes/theplus_options.php:2504 modules/helper-function.php:550
+#: includes/theplus_options.php:2520 modules/helper-function.php:550
 #: modules/widgets/tp_blog_listout.php:476
 msgid "Lazy Load"
 msgstr ""
 
-#: includes/theplus_options.php:2505
+#: includes/theplus_options.php:2521
 msgid ""
 "We are adding Lazy Load Functionality in each of our widgets. It's in beta "
 "version at this moment but completely implemented very soon. It will help "
 "you drastically in Google Web Vitals. "
 msgstr ""
 
-#: includes/theplus_options.php:2512
+#: includes/theplus_options.php:2528
 #: modules/controls/group/plus-adv-shadow.php:46
 #: modules/controls/group/plus-adv-shadow.php:224
 #: modules/controls/group/plus-adv-shadow.php:362
@@ -1097,59 +1097,59 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: includes/theplus_options.php:2516
+#: includes/theplus_options.php:2532
 msgid "Lazy Load Type"
 msgstr ""
 
-#: includes/theplus_options.php:2517
+#: includes/theplus_options.php:2533
 msgid "Choose Type of animation you want in Lazy Load using above options."
 msgstr ""
 
-#: includes/theplus_options.php:2523
+#: includes/theplus_options.php:2539
 msgid "Fade In"
 msgstr ""
 
-#: includes/theplus_options.php:2524
+#: includes/theplus_options.php:2540
 msgid "Double Circle"
 msgstr ""
 
-#: includes/theplus_options.php:2525
+#: includes/theplus_options.php:2541
 msgid "Simple Circle"
 msgstr ""
 
-#: includes/theplus_options.php:2526
+#: includes/theplus_options.php:2542
 msgid "Blur Image"
 msgstr ""
 
-#: includes/theplus_options.php:2527
+#: includes/theplus_options.php:2543
 msgid "Skeleton"
 msgstr ""
 
-#: includes/theplus_options.php:2562
+#: includes/theplus_options.php:2578
 msgid "Cache Manager"
 msgstr ""
 
-#: includes/theplus_options.php:2569
+#: includes/theplus_options.php:2585
 msgid "Smart Optimised (Recommended)"
 msgstr ""
 
-#: includes/theplus_options.php:2570
+#: includes/theplus_options.php:2586
 msgid "On Demand Assets"
 msgstr ""
 
-#: includes/theplus_options.php:2587
+#: includes/theplus_options.php:2603
 msgid "Custom CSS"
 msgstr ""
 
-#: includes/theplus_options.php:2588
+#: includes/theplus_options.php:2604
 msgid "Add Your Custom CSS Styles"
 msgstr ""
 
-#: includes/theplus_options.php:2594
+#: includes/theplus_options.php:2610
 msgid "Custom JS"
 msgstr ""
 
-#: includes/theplus_options.php:2595
+#: includes/theplus_options.php:2611
 msgid "Add Your Custom JS Scripts"
 msgstr ""
 
@@ -1254,15 +1254,15 @@ msgid "Notable additions made to The Plus Addons for Elementor."
 msgstr ""
 
 #: includes/welcome-page.php:99
-msgid "Update : Elementor Beta : Loop Grid Compatibility"
+msgid "Update : Smooth Scroll : Firefox Compatibility"
 msgstr ""
 
 #: includes/welcome-page.php:100
-msgid "Update : POT File Update"
+msgid "Update : MetaBox : Condition Improvement"
 msgstr ""
 
 #: includes/welcome-page.php:101
-msgid "Fix : Slick CSS Image URL Bug"
+msgid "Fix : Minor bug fixes and Improvements"
 msgstr ""
 
 #: includes/welcome-page.php:104 includes/welcome-page.php:116
@@ -1274,15 +1274,15 @@ msgid "Lite Full Change log"
 msgstr ""
 
 #: includes/welcome-page.php:111
-msgid "Update : Performance : Infobox : JS Load condition based"
+msgid "Fix : LottieFiles Animation : Play Speed Issue Solved"
 msgstr ""
 
 #: includes/welcome-page.php:112
-msgid "Update : Performance : Advanced Button :JS Load condition based"
+msgid "Update : Row Background : Container Compatibility"
 msgstr ""
 
 #: includes/welcome-page.php:113
-msgid "Update : Performance : Message Box : JS Load condition based"
+msgid "Update : Search Filter : UI Controller improvement"
 msgstr ""
 
 #: includes/welcome-page.php:116
@@ -3109,7 +3109,7 @@ msgstr ""
 #: modules/widgets/tp_post_comment.php:552
 #: modules/widgets/tp_post_comment.php:648
 #: modules/widgets/tp_post_comment.php:956
-#: modules/widgets/tp_post_content.php:139
+#: modules/widgets/tp_post_content.php:153
 #: modules/widgets/tp_post_featured_image.php:232
 #: modules/widgets/tp_post_meta.php:438 modules/widgets/tp_post_meta.php:623
 #: modules/widgets/tp_post_meta.php:744 modules/widgets/tp_post_meta.php:992
@@ -3291,8 +3291,8 @@ msgstr ""
 #: modules/widgets/tp_post_comment.php:485
 #: modules/widgets/tp_post_comment.php:558
 #: modules/widgets/tp_post_comment.php:576
-#: modules/widgets/tp_post_content.php:145
-#: modules/widgets/tp_post_content.php:197
+#: modules/widgets/tp_post_content.php:159
+#: modules/widgets/tp_post_content.php:211
 #: modules/widgets/tp_post_meta.php:292 modules/widgets/tp_post_meta.php:447
 #: modules/widgets/tp_post_meta.php:486 modules/widgets/tp_post_meta.php:632
 #: modules/widgets/tp_post_meta.php:657 modules/widgets/tp_post_meta.php:1001
@@ -3322,7 +3322,7 @@ msgstr ""
 #: modules/widgets/tp_hovercard.php:844 modules/widgets/tp_hovercard.php:999
 #: modules/widgets/tp_hovercard.php:1526
 #: modules/widgets/tp_post_featured_image.php:249
-#: modules/widgets/tp_post_featured_image.php:293
+#: modules/widgets/tp_post_featured_image.php:294
 msgid "Transition css"
 msgstr ""
 
@@ -3441,7 +3441,7 @@ msgstr ""
 #: modules/widgets/tp_post_comment.php:479
 #: modules/widgets/tp_post_comment.php:570
 #: modules/widgets/tp_post_comment.php:1008
-#: modules/widgets/tp_post_content.php:191
+#: modules/widgets/tp_post_content.php:205
 #: modules/widgets/tp_post_featured_image.php:273
 #: modules/widgets/tp_post_meta.php:477 modules/widgets/tp_post_meta.php:648
 #: modules/widgets/tp_post_meta.php:805 modules/widgets/tp_post_meta.php:1031
@@ -4138,6 +4138,7 @@ msgstr ""
 #: modules/widgets/tp_hovercard.php:149 modules/widgets/tp_info_box.php:48
 #: modules/widgets/tp_page_scroll.php:76
 #: modules/widgets/tp_page_scroll.php:126
+#: modules/widgets/tp_post_content.php:81
 #: modules/widgets/tp_pricing_table.php:497
 #: modules/widgets/tp_social_icon.php:45 modules/widgets/tp_tabs_tours.php:52
 #: modules/widgets/tp_tabs_tours.php:78 modules/widgets/tp_tabs_tours.php:86
@@ -4505,7 +4506,7 @@ msgstr ""
 #: modules/widgets/tp_number_counter.php:74
 #: modules/widgets/tp_number_counter.php:103
 #: modules/widgets/tp_post_comment.php:919
-#: modules/widgets/tp_post_content.php:81
+#: modules/widgets/tp_post_content.php:95
 #: modules/widgets/tp_post_featured_image.php:119
 #: modules/widgets/tp_post_search.php:63 modules/widgets/tp_post_title.php:108
 #: modules/widgets/tp_pricing_table.php:1895
@@ -4592,7 +4593,7 @@ msgstr ""
 #: modules/widgets/tp_post_author.php:359
 #: modules/widgets/tp_post_comment.php:418
 #: modules/widgets/tp_post_comment.php:543
-#: modules/widgets/tp_post_content.php:130
+#: modules/widgets/tp_post_content.php:144
 #: modules/widgets/tp_post_meta.php:595 modules/widgets/tp_post_title.php:203
 #: modules/widgets/tp_post_title.php:389
 #: modules/widgets/tp_pricing_table.php:1254
@@ -4649,7 +4650,7 @@ msgstr ""
 #: modules/widgets/tp_post_author.php:93
 #: modules/widgets/tp_post_author.php:122
 #: modules/widgets/tp_post_comment.php:924
-#: modules/widgets/tp_post_content.php:86
+#: modules/widgets/tp_post_content.php:100
 #: modules/widgets/tp_post_featured_image.php:124
 #: modules/widgets/tp_post_meta.php:152 modules/widgets/tp_post_meta.php:179
 #: modules/widgets/tp_post_search.php:67
@@ -4689,7 +4690,7 @@ msgstr ""
 #: modules/widgets/tp_post_author.php:97
 #: modules/widgets/tp_post_author.php:126
 #: modules/widgets/tp_post_comment.php:928
-#: modules/widgets/tp_post_content.php:90
+#: modules/widgets/tp_post_content.php:104
 #: modules/widgets/tp_post_featured_image.php:128
 #: modules/widgets/tp_post_meta.php:156 modules/widgets/tp_post_meta.php:183
 #: modules/widgets/tp_post_search.php:71 modules/widgets/tp_post_title.php:117
@@ -4731,7 +4732,7 @@ msgstr ""
 #: modules/widgets/tp_post_author.php:101
 #: modules/widgets/tp_post_author.php:130
 #: modules/widgets/tp_post_comment.php:932
-#: modules/widgets/tp_post_content.php:94
+#: modules/widgets/tp_post_content.php:108
 #: modules/widgets/tp_post_featured_image.php:132
 #: modules/widgets/tp_post_meta.php:160 modules/widgets/tp_post_meta.php:187
 #: modules/widgets/tp_post_search.php:75
@@ -5779,8 +5780,8 @@ msgstr ""
 #: modules/widgets/tp_post_comment.php:758
 #: modules/widgets/tp_post_comment.php:989
 #: modules/widgets/tp_post_comment.php:1041
-#: modules/widgets/tp_post_content.php:172
-#: modules/widgets/tp_post_content.php:224
+#: modules/widgets/tp_post_content.php:186
+#: modules/widgets/tp_post_content.php:238
 #: modules/widgets/tp_post_featured_image.php:168
 #: modules/widgets/tp_post_meta.php:778 modules/widgets/tp_post_meta.php:839
 #: modules/widgets/tp_post_meta.php:1304 modules/widgets/tp_post_meta.php:1345
@@ -5905,7 +5906,7 @@ msgstr ""
 #: modules/widgets/tp_post_comment.php:405
 #: modules/widgets/tp_post_comment.php:620
 #: modules/widgets/tp_post_comment.php:907
-#: modules/widgets/tp_post_content.php:117
+#: modules/widgets/tp_post_content.php:131
 #: modules/widgets/tp_post_meta.php:727 modules/widgets/tp_post_meta.php:1258
 #: modules/widgets/tp_post_meta.php:1375 modules/widgets/tp_post_title.php:190
 #: modules/widgets/tp_post_title.php:338
@@ -5980,8 +5981,8 @@ msgstr ""
 #: modules/widgets/tp_post_comment.php:748
 #: modules/widgets/tp_post_comment.php:982
 #: modules/widgets/tp_post_comment.php:1034
-#: modules/widgets/tp_post_content.php:165
-#: modules/widgets/tp_post_content.php:217
+#: modules/widgets/tp_post_content.php:179
+#: modules/widgets/tp_post_content.php:231
 #: modules/widgets/tp_post_featured_image.php:161
 #: modules/widgets/tp_post_meta.php:767 modules/widgets/tp_post_meta.php:828
 #: modules/widgets/tp_post_meta.php:1297 modules/widgets/tp_post_meta.php:1338
@@ -7009,7 +7010,7 @@ msgstr ""
 #: modules/widgets/tp_info_box.php:2183 modules/widgets/tp_info_box.php:2380
 #: modules/widgets/tp_info_box.php:2408
 #: modules/widgets/tp_number_counter.php:1536
-#: modules/widgets/tp_smooth_scroll.php:291
+#: modules/widgets/tp_smooth_scroll.php:308
 #: modules/widgets/tp_tabs_tours.php:286 modules/widgets/tp_tabs_tours.php:568
 #: modules/widgets/tp_team_member_listout.php:781
 #: modules/widgets/tp_testimonial_listout.php:637
@@ -7042,7 +7043,7 @@ msgstr ""
 #: modules/widgets/tp_info_box.php:2184 modules/widgets/tp_info_box.php:2381
 #: modules/widgets/tp_info_box.php:2409
 #: modules/widgets/tp_number_counter.php:1537
-#: modules/widgets/tp_smooth_scroll.php:290
+#: modules/widgets/tp_smooth_scroll.php:307
 #: modules/widgets/tp_tabs_tours.php:287 modules/widgets/tp_tabs_tours.php:569
 #: modules/widgets/tp_team_member_listout.php:782
 #: modules/widgets/tp_testimonial_listout.php:638
@@ -9533,14 +9534,14 @@ msgstr ""
 #: modules/widgets/tp_hovercard.php:846 modules/widgets/tp_hovercard.php:1001
 #: modules/widgets/tp_hovercard.php:1528
 #: modules/widgets/tp_post_featured_image.php:251
-#: modules/widgets/tp_post_featured_image.php:295
+#: modules/widgets/tp_post_featured_image.php:296
 msgid "all .3s linear"
 msgstr ""
 
 #: modules/widgets/tp_hovercard.php:860 modules/widgets/tp_hovercard.php:1016
 #: modules/widgets/tp_hovercard.php:1540
 #: modules/widgets/tp_post_featured_image.php:260
-#: modules/widgets/tp_post_featured_image.php:307
+#: modules/widgets/tp_post_featured_image.php:309
 msgid "Transform css"
 msgstr ""
 
@@ -10673,15 +10674,27 @@ msgstr ""
 msgid "Excerpt"
 msgstr ""
 
-#: modules/widgets/tp_post_content.php:110
+#: modules/widgets/tp_post_content.php:84
+msgid "Elementor"
+msgstr ""
+
+#: modules/widgets/tp_post_content.php:85
+msgid "Wordpress"
+msgstr ""
+
+#: modules/widgets/tp_post_content.php:124
 msgid "Excerpts"
 msgstr ""
 
-#: modules/widgets/tp_post_content.php:291
+#: modules/widgets/tp_post_content.php:278
+msgid "Block Re-rendering halted"
+msgstr ""
+
+#: modules/widgets/tp_post_content.php:343
 msgid "Pages:"
 msgstr ""
 
-#: modules/widgets/tp_post_content.php:291
+#: modules/widgets/tp_post_content.php:343
 #: modules/widgets/tp_social_embed.php:88
 msgid "Page"
 msgstr ""
@@ -10742,7 +10755,7 @@ msgid "Large"
 msgstr ""
 
 #: modules/widgets/tp_post_featured_image.php:263
-#: modules/widgets/tp_post_featured_image.php:310
+#: modules/widgets/tp_post_featured_image.php:312
 msgid "skew(-25deg)"
 msgstr ""
 
@@ -10969,7 +10982,7 @@ msgid "Icon Adjust"
 msgstr ""
 
 #: modules/widgets/tp_post_search.php:815
-#: modules/widgets/tp_smooth_scroll.php:281
+#: modules/widgets/tp_smooth_scroll.php:298
 msgid "Responsive"
 msgstr ""
 
@@ -11594,7 +11607,39 @@ msgstr ""
 msgid "Fixed Support"
 msgstr ""
 
+#: modules/widgets/tp_smooth_scroll.php:279
+msgid "Allowed Browsers"
+msgstr ""
+
+#: modules/widgets/tp_smooth_scroll.php:283
+msgid "Mobile Browsers"
+msgstr ""
+
+#: modules/widgets/tp_smooth_scroll.php:284
+msgid "IeWin7"
+msgstr ""
+
+#: modules/widgets/tp_smooth_scroll.php:285
+msgid "Edge"
+msgstr ""
+
+#: modules/widgets/tp_smooth_scroll.php:286
+msgid "Chrome"
+msgstr ""
+
+#: modules/widgets/tp_smooth_scroll.php:287
+msgid "Safari"
+msgstr ""
+
 #: modules/widgets/tp_smooth_scroll.php:288
+msgid "Firefox"
+msgstr ""
+
+#: modules/widgets/tp_smooth_scroll.php:289
+msgid "Other"
+msgstr ""
+
+#: modules/widgets/tp_smooth_scroll.php:305
 msgid "Tablet/Mobile Smooth Scroll"
 msgstr ""
 

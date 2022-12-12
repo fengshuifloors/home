@@ -245,7 +245,8 @@
          */
         function fullWidthContent($item) {
 
-            var $parentSec = $scope.closest('.elementor-top-section, .e-con'),
+            var isContainer = elementorFrontend.config.experimentalFeatures.container,
+                $parentSec = isContainer ? $scope.closest('.e-con').parents('.e-con').last() : $scope.closest('.elementor-top-section'),
                 width = $parentSec.outerWidth(),
                 sectionLeft = $parentSec.offset().left - $item.offset().left;
 

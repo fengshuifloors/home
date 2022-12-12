@@ -2190,6 +2190,8 @@ class Premium_Icon_List extends Widget_Base {
 
 		$settings = $this->get_settings_for_display();
 
+		$id = $this->get_id();
+
 		$this->add_render_attribute( 'box', 'class', 'premium-bullet-list-box' );
 
 		if ( 'blur' === $settings['hover_effect_type'] ) {
@@ -2248,7 +2250,13 @@ class Premium_Icon_List extends Widget_Base {
 
 					$link_url = ( 'url' === $item['link_select'] ) ? $item['link'] : get_permalink( $item['existing_page'] );
 
-					$this->add_render_attribute( $item_link, 'class', 'premium-bullet-list-link' );
+					$this->add_render_attribute(
+						$item_link,
+						array(
+							'class'      => 'premium-bullet-list-link',
+							'aria-label' => $item['list_title'],
+						)
+					);
 
 					if ( 'url' === $item['link_select'] ) {
 						$this->add_link_attributes( $item_link, $link_url );
@@ -2552,7 +2560,6 @@ class Premium_Icon_List extends Widget_Base {
 				if( 'yes' === item.show_list_link ) {
 
 					view.addRenderAttribute( itemLink, 'class', 'premium-bullet-list-link' );
-
 
 					if( ('' != item.link.url) || ('' != item.existing_page) ) {
 						view.addRenderAttribute(itemLink, 'href', linkUrl);

@@ -1,7 +1,7 @@
+/*Smooth Scroll*/
 ( function ( $ ) {
 	"use strict";
 	var WidgetSmoothScrollHandler = function ($scope, $) {
-
 		$(document).ready(function($) {
 			var $container = $('.plus-smooth-scroll', $scope);
 			if($container.length){
@@ -17,8 +17,9 @@
 					data_arrowScroll=($container.attr("data-arrowScroll") == undefined) ? 50 : $container.attr("data-arrowScroll"),				
 					data_touchpadSupport=($container.attr("data-touchpadSupport") == undefined) ? 0 : $container.attr("data-touchpadSupport"),				
 					data_fixedBackground=($container.attr("data-fixedBackground") == undefined) ? 1 : $container.attr("data-fixedBackground"),				
-					data_tablet_off=($container.attr("data-tablet-off") == undefined) ? 50 : $container.attr("data-tablet-off");				
-				
+					data_tablet_off=($container.attr("data-tablet-off") == undefined) ? 50 : $container.attr("data-tablet-off"),
+                    data_Basic = ($container.attr("data-basicdata")) ? JSON.parse($container.attr("data-basicdata")) : [];
+                   
 					if(!$('body').hasClass("plus-smooth-scroll-tras")){
 					    $('body').addClass("plus-smooth-scroll-tras");
 					    $('head').append('<style>.plus-smooth-scroll-tras .magic-scroll .parallax-scroll,.plus-smooth-scroll-tras .magic-scroll .scale-scroll,.plus-smooth-scroll-tras .magic-scroll .both-scroll{-webkit-transition: -webkit-transform 0s ease .0s;-ms-transition: -ms-transform 0s ease .0s;-moz-transition: -moz-transform 0s ease .0s;-o-transition: -o-transform 0s ease .0s;transition: transform 0s ease .0s;will-change: transform;}</style>');
@@ -29,14 +30,14 @@
 						    if(!$('body').hasClass("plus-smooth-scroll-tras")){
 					            $('body').addClass("plus-smooth-scroll-tras");
 						    }
-						    SmoothScroll({frameRate:data_frameRate,animationTime:data_animationTime,stepSize:data_stepSize,pulseAlgorithm:data_pulseAlgorithm,pulseScale:data_pulseScale,pulseNormalize:data_pulseNormalize,accelerationDelta:data_accelerationDelta,accelerationMax:data_accelerationMax,keyboardSupport:data_keyboardSupport,arrowScroll:data_arrowScroll,touchpadSupport:data_touchpadSupport,fixedBackground:data_fixedBackground});
+						    SmoothScroll({frameRate:data_frameRate,animationTime:data_animationTime,stepSize:data_stepSize,pulseAlgorithm:data_pulseAlgorithm,pulseScale:data_pulseScale,pulseNormalize:data_pulseNormalize,accelerationDelta:data_accelerationDelta,accelerationMax:data_accelerationMax,keyboardSupport:data_keyboardSupport,arrowScroll:data_arrowScroll,touchpadSupport:data_touchpadSupport,fixedBackground:data_fixedBackground,allowedBrowsers:data_Basic.Browsers});
 						}else{
 						    if($('body').hasClass("plus-smooth-scroll-tras")){
 					            $('body').removeClass("plus-smooth-scroll-tras");
 						    }
 						}
 				}else{
-					SmoothScroll({frameRate:data_frameRate,animationTime:data_animationTime,stepSize:data_stepSize,pulseAlgorithm:data_pulseAlgorithm,pulseScale:data_pulseScale,pulseNormalize:data_pulseNormalize,accelerationDelta:data_accelerationDelta,accelerationMax:data_accelerationMax,keyboardSupport:data_keyboardSupport,arrowScroll:data_arrowScroll,touchpadSupport:data_touchpadSupport,fixedBackground:data_fixedBackground})
+					SmoothScroll({frameRate:data_frameRate,animationTime:data_animationTime,stepSize:data_stepSize,pulseAlgorithm:data_pulseAlgorithm,pulseScale:data_pulseScale,pulseNormalize:data_pulseNormalize,accelerationDelta:data_accelerationDelta,accelerationMax:data_accelerationMax,keyboardSupport:data_keyboardSupport,arrowScroll:data_arrowScroll,touchpadSupport:data_touchpadSupport,fixedBackground:data_fixedBackground,allowedBrowsers:data_Basic.Browsers})
 				}
 				
 			

@@ -5,7 +5,7 @@ Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_c
 Requires at least: 5.0
 Tested Up To: 6.1.1
 Requires PHP: 7.0
-Stable Tag: 4.9.40
+Stable Tag: 4.9.42
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -103,6 +103,7 @@ Each widget and addon has been tested on different screen sizes, mobile devices,
 * [**Background Transition Widget**](https://premiumaddons.com/elementor-color-transition-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create fancy, colorful, and eye-catching webpages using background Color Transition Widget. It allows you to have a seamless transition between sections background colors.
 * [**Multi-Scroll Widget**](https://premiumaddons.com/multi-scroll-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Elementor widget available that allows you to create attractive multi-scroll effect. It can be used to create full landing pages or use it inside any page.
 * [**Custom Mouse Cursor Global Addon**](https://premiumaddons.com/elementor-custom-mouse-cursor-global-feature/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add a custom mouse cursor to any section, column, or widget. You can select between Font Awesome icon, custom SVGs, image or Lottie animation.
+* [**Magic Scroll Global Addon**](https://premiumaddons.com/elementor-magic-scroll-global-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create outstanding scroll animations to any column/widget with just few clicks and control every single detail in the animation scene.
 * [**Badge Global Addon**](https://premiumaddons.com/elementor-badge-global-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add an icon, image, Lottie animation, or SVG blob shape badge to any section, column, or widget.
 * [**Animated Blob Generator**](https://premiumaddons.com/elementor-animated-blob-generator/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple animated blob layers to your sections with a wide range of smart customization options.
 * [**Lottie Animations Section Addon**](https://premiumaddons.com/elementor-lottie-animations-section-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple Lottie Animations easily to any section with allot of customization and interactivity options.
@@ -218,6 +219,19 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.9.42 =
+
+- Tweak: Mega Menu widget performance improved.
+- Fixed: CSS class not properly added in Bullet List widget.
+- Fixed: Mega Menu widget compatibility issue with Flex Container element.
+
+= 4.9.41 =
+
+- Tweak: Added Transition Speed option for carousel in Blog widget.
+- Tweak: Bullet List widget HTML markup improved for better SEO optimization.
+- Tweak: Added alternative method to detect location in Display Conditions feature.
+- Fixed: Image is clicked twice to navigate to the post's page on iOS in Blog widget.
 
 = 4.9.40 =
 

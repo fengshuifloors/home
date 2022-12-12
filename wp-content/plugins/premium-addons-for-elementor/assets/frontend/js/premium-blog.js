@@ -73,7 +73,8 @@
                     layoutSettings.fade = 'yes' === settings.premium_blog_carousel_fade ? true : false;
                     layoutSettings.center = 'yes' === settings.premium_blog_carousel_center ? true : false;
                     layoutSettings.dots = 'yes' === settings.premium_blog_carousel_dots ? true : false;
-                    layoutSettings.speed = '' !== settings.premium_blog_carousel_autoplay_speed ? parseInt(settings.premium_blog_carousel_autoplay_speed) : 5000;
+                    layoutSettings.speed = '' !== settings.carousel_speed ? parseInt(settings.carousel_speed) : 300;
+                    layoutSettings.autoplaySpeed = '' !== settings.premium_blog_carousel_autoplay_speed ? parseInt(settings.premium_blog_carousel_autoplay_speed) : 5000;
 
                 }
 
@@ -228,7 +229,8 @@
                     ],
                     autoplay: settings.autoPlay,
                     rows: 0,
-                    autoplaySpeed: settings.speed,
+                    speed: settings.speed,
+                    autoplaySpeed: settings.autoplaySpeed,
                     nextArrow: nextArrow,
                     prevArrow: prevArrow,
                     fade: settings.fade,

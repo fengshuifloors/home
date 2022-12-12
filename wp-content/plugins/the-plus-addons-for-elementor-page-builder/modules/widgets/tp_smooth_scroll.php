@@ -274,6 +274,23 @@ class L_ThePlus_Smooth_Scroll extends Widget_Base {
 				'default' => 'yes',
 			]
 		);
+		$this->add_control('browsers',
+			[
+				'label' => __( 'Allowed Browsers', 'tpebl' ),
+				'type' => Controls_Manager::SELECT2,
+				'multiple' => true,
+				'options' => [
+					'mobile'  => __( 'Mobile Browsers', 'tpebl' ),
+					'ieWin7' => __( 'IeWin7', 'tpebl' ),
+					'edge' => __( 'Edge', 'tpebl' ),
+					'chrome' => __( 'Chrome', 'tpebl' ),
+					'safari' => __( 'Safari', 'tpebl' ),
+					'firefox' => __( 'Firefox', 'tpebl' ),
+					'other' => __( 'Other', 'tpebl' ),
+				],
+				'default' => [],
+			]
+		);
 		$this->end_controls_section();
 		$this->start_controls_section(
 			'content_responsive_section',
@@ -310,13 +327,23 @@ class L_ThePlus_Smooth_Scroll extends Widget_Base {
 		$arrowScroll = $settings['arrowScroll']["size"];
 		$touchpadSupport = ($settings['touchpadSupport']=='yes') ? '1' : '0';
 		$fixedBackground = ($settings['fixedBackground']=='yes') ? '1' : '0';
-		
+		$Browsers = !empty($settings['browsers']) ? $settings['browsers'] : ["ieWin7","chrome","firefox","safari"];
+		$Browsers = json_encode($Browsers);
+		$SmoothScroll_Array = array(
+			'Browsers' => !empty($settings['browsers']) ? $settings['browsers'] : ["ieWin7","chrome","firefox","safari"],
+		);
+		$SmoothScroll_Data = htmlspecialchars(json_encode($SmoothScroll_Array), ENT_QUOTES, 'UTF-8');
+
 		if(!empty($settings['tablet_off_scroll']) && $settings['tablet_off_scroll']=='yes'){
 			$tablet_off=' data-tablet-off="yes"';
 		}else{
 			$tablet_off=' data-tablet-off="no"';
 		}
-		echo '<div class="plus-smooth-scroll" data-frameRate="'.esc_attr($frameRate).'" data-animationTime="'.esc_attr($animationTime).'" data-stepSize="'.esc_attr($stepSize).'" data-pulseAlgorithm="'.esc_attr($pulseAlgorithm).'" data-pulseScale="'.esc_attr($pulseScale).'" data-pulseNormalize="'.esc_attr($pulseNormalize).'" data-accelerationDelta="'.esc_attr($accelerationDelta).'" data-accelerationMax="'.esc_attr($accelerationMax).'" data-keyboardSupport="'.esc_attr($keyboardSupport).'" data-arrowScroll="'.esc_attr($arrowScroll).'" data-touchpadSupport="'.esc_attr($touchpadSupport).'" data-fixedBackground="'.esc_attr($fixedBackground).'" '.$tablet_off.'></div>';
+		echo '<div class="plus-smooth-scroll" data-frameRate="'.esc_attr($frameRate).'" data-animationTime="'.esc_attr($animationTime).'" data-stepSize="'.esc_attr($stepSize).'" data-pulseAlgorithm="'.esc_attr($pulseAlgorithm).'" data-pulseScale="'.esc_attr($pulseScale).'" data-pulseNormalize="'.esc_attr($pulseNormalize).'" data-accelerationDelta="'.esc_attr($accelerationDelta).'" data-accelerationMax="'.esc_attr($accelerationMax).'" data-keyboardSupport="'.esc_attr($keyboardSupport).'" data-arrowScroll="'.esc_attr($arrowScroll).'" data-touchpadSupport="'.esc_attr($touchpadSupport).'" data-fixedBackground="'.esc_attr($fixedBackground).'" '.$tablet_off.' data-basicdata= "'.esc_attr($SmoothScroll_Data).'" >';
+		
+		echo '<script>var smoothAllowedBrowsers = '.($Browsers).'</script>';
+
+		echo '</div>';
 	}
 	
     protected function content_template() {

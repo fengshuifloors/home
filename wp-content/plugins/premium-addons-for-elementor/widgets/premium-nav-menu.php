@@ -3415,7 +3415,7 @@ class Premium_Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'pa_nav_item_bg_active',
 				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .premium-main-nav-menu > .premium-active-item',
+				'selector' => '{{WRAPPER}} .premium-main-nav-menu > .premium-active-item > .premium-menu-link',
 			)
 		);
 
@@ -4367,7 +4367,7 @@ class Premium_Nav_Menu extends Widget_Base {
 
 		if ( 'wordpress_menu' === $menu_type ) {
 
-			$is_valid = $this->is_valid_menu( $settings['pa_nav_menus'] );
+			$is_valid = $this->is_valid_menu( $menu_id );
 
 			if ( ! $is_valid ) {
 				?>
@@ -4495,35 +4495,36 @@ class Premium_Nav_Menu extends Widget_Base {
 						$this->add_vertical_toggler();
 					}
 
-					if ( 'custom' === $settings['menu_type'] ) {
-						$this->get_custom_menu();
-					}
-
 					if ( 'wordpress_menu' === $menu_type ) {
-						if ( in_array( $settings['pa_nav_menu_layout'], array( 'hor', 'ver' ), true ) ) {
-							$args = array(
-								'container'       => 'div',
-								'container_class' => 'premium-nav-menu-container premium-nav-default',
-								'menu'            => $settings['pa_nav_menus'],
-								'menu_class'      => 'premium-nav-menu premium-main-nav-menu',
-								'echo'            => true,
-								'fallback_cb'     => 'wp_page_menu',
-								'walker'          => new Pa_Nav_Menu_Walker( $settings ),
-							);
-
-							wp_nav_menu( $args );
-						}
-
-						$mobile_args = array(
-							'container'       => 'div',
-							'container_class' => 'premium-mobile-menu-container',
-							'menu'            => $settings['pa_nav_menus'],
-							'menu_class'      => 'premium-mobile-menu premium-main-mobile-menu premium-main-nav-menu',
-							'echo'            => true,
-							'fallback_cb'     => 'wp_page_menu',
-							'walker'          => new Pa_Nav_Menu_Walker( $settings, true ),
+						$args = array(
+							'container'   => '',
+							'menu'        => $menu_id,
+							'menu_class'  => 'premium-nav-menu premium-main-nav-menu',
+							'echo'        => false,
+							'fallback_cb' => 'wp_page_menu',
+							'walker'      => new Pa_Nav_Menu_Walker( $settings ),
 						);
 
+						$menu_html = wp_nav_menu( $args );
+
+						if ( in_array( $settings['pa_nav_menu_layout'], array( 'hor', 'ver' ), true ) ) {
+							?>
+							<div class="premium-nav-menu-container premium-nav-default">
+								<?php echo $menu_html; ?>
+							</div>
+							<?php
+						}
+					} else {
+						?>
+						<div class="premium-nav-menu-container">
+							<ul class="premium-nav-menu premium-main-nav-menu">
+								<?php
+									$menu_html = $this->get_custom_menu();
+									echo $menu_html;
+								?>
+							</ul>
+						</div>
+						<?php
 					}
 
 					if ( 'slide' === $settings['pa_mobile_menu_layout'] || 'slide' === $settings['pa_nav_menu_layout'] ) {
@@ -4544,9 +4545,22 @@ class Premium_Nav_Menu extends Widget_Base {
 					}
 
 					if ( 'wordpress_menu' === $menu_type ) {
-						wp_nav_menu( $mobile_args );
+						?>
+							<div class="premium-mobile-menu-container">
+								<?php echo $this->mobile_menu_filter( $menu_html, $menu_id ); ?>
+							</div>
+							<?php
+
 					} else {
-						$this->get_custom_menu( 'mobile' );
+						?>
+						<div class="premium-mobile-menu-container">
+							<ul class="premium-mobile-menu premium-main-mobile-menu premium-main-nav-menu">
+								<?php
+									echo $menu_html;
+								?>
+							</ul>
+						</div>
+						<?php
 					}
 
 					if ( 'slide' === $settings['pa_mobile_menu_layout'] || 'slide' === $settings['pa_nav_menu_layout'] ) {
@@ -4620,15 +4634,23 @@ class Premium_Nav_Menu extends Widget_Base {
 		return $is_valid;
 	}
 
+	private function mobile_menu_filter( $menu_html, $menu_id ) {
+
+		// Increment the mobile menu id & change its classes to mobile menu classes.
+		$slug    = 'menu-' . wp_get_nav_menu_object( $menu_id )->slug;
+		$search  = array( 'id="' . $slug . '"', 'class="premium-nav-menu premium-main-nav-menu"' );
+		$replace = array( 'id="' . $slug . '-1"', 'class="premium-mobile-menu premium-main-mobile-menu premium-main-nav-menu"' );
+
+		return str_replace( $search, $replace, $menu_html );
+	}
+
 	/**
 	 * Get Custom Menu.
 	 *
 	 * @access private
 	 * @since 4.9.4
-	 *
-	 * @param string $device device.
 	 */
-	private function get_custom_menu( $device = '' ) {
+	private function get_custom_menu() {
 
 		$settings = $this->get_settings_for_display();
 
@@ -4648,174 +4670,152 @@ class Premium_Nav_Menu extends Widget_Base {
 		$is_link     = false;
 		$html_output = '';
 
-		if ( 'mobile' === $device ) {
+		foreach ( $menu_items as $index => $item ) {
 
-			$this->add_render_attribute( 'menu_container' . $device, 'class', 'premium-mobile-menu-container' );
-			$this->add_render_attribute( 'nav_menu' . $device, 'class', array( 'premium-mobile-menu', 'premium-main-mobile-menu', 'premium-main-nav-menu' ) );
-		} else {
+			$item_link = $this->get_repeater_setting_key( 'link', 'menu_items', $index );
 
-			$this->add_render_attribute( 'menu_container' . $device, 'class', 'premium-nav-menu-container' );
-			$this->add_render_attribute( 'nav_menu' . $device, 'class', array( 'premium-nav-menu', 'premium-main-nav-menu' ) );
+			if ( ! empty( $item['link']['url'] ) ) {
 
-		}
+				$this->add_link_attributes( $item_link, $item['link'] );
+			}
 
-		?>
+			$this->add_render_attribute(
+				'menu-item-' . $index,
+				array(
+					// 'id'    => 'premium-nav-menu-item-' . $item['_id'],
+					'class' => array(
+						'menu-item',
+						'premium-nav-menu-item',
+						'elementor-repeater',
+						'elementor-repeater-item-' . $item['_id'],
+					),
+				)
+			);
 
-		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'menu_container' . $device ) ); ?>>
-			<ul <?php echo wp_kses_post( $this->get_render_attribute_string( 'nav_menu' . $device ) ); ?>>
-				<?php
-				foreach ( $menu_items as $index => $item ) {
+			if ( 'submenu' === $item['item_type'] ) {
 
-					$item_link = $this->get_repeater_setting_key( 'link', 'menu_items', $index ) . $device;
+				if ( 'link' === $item['menu_content_type'] ) {
 
-					if ( ! empty( $item['link']['url'] ) ) {
-
-						$this->add_link_attributes( $item_link, $item['link'] );
+					// If no submenu items was rendered before.
+					if ( false === $is_child ) {
+						$html_output .= "<ul class='premium-sub-menu'>";
+						$is_link      = true;
 					}
 
+					$this->add_render_attribute( 'menu-item-' . $index, 'class', 'premium-sub-menu-item' );
+
+					if ( 'yes' === $item['badge_switcher'] ) {
+						$this->add_render_attribute( 'menu-item-' . $index, 'class', 'has-pa-badge' );
+
+						if ( '' !== $badge_effect ) {
+							$this->add_render_attribute( 'menu-item-' . $index, 'class', 'premium-badge-' . $badge_effect );
+						}
+					}
+
+					$html_output .= '<li ' . $this->get_render_attribute_string( 'menu-item-' . $index ) . '>';
+
+					$html_output .= '<a ' . $this->get_render_attribute_string( $item_link ) . " class='premium-menu-link premium-sub-menu-link'>";
+
+					$html_output .= $this->get_icon_html( $item, 'sub-' );
+
+					$html_output .= $item['text'];
+
+					$html_output .= $this->get_badge_html( $item, 'sub-' );
+
+					$html_output .= '</a>';
+					$html_output .= '</li>';
+				} else {
+
 					$this->add_render_attribute(
-						'menu-item-' . $index . $device,
+						'menu-content-item-' . $item['_id'],
 						array(
-							'id'    => 'premium-nav-menu-item-' . $item['_id'],
-							'class' => array(
-								'menu-item',
-								'premium-nav-menu-item',
-								'elementor-repeater',
-								'elementor-repeater-item-' . $item['_id'],
-							),
+							// 'id'    => 'premium-mega-content-' . $item['_id'],
+							'class' => 'premium-mega-content-container',
 						)
 					);
 
-					if ( 'submenu' === $item['item_type'] ) {
-
-						if ( 'link' === $item['menu_content_type'] ) {
-
-							// If no submenu items was rendered before.
-							if ( false === $is_child ) {
-								$html_output .= "<ul class='premium-sub-menu'>";
-								$is_link      = true;
-							}
-
-							$this->add_render_attribute( 'menu-item-' . $index . $device, 'class', 'premium-sub-menu-item' );
-
-							if ( 'yes' === $item['badge_switcher'] ) {
-								$this->add_render_attribute( 'menu-item-' . $index . $device, 'class', 'has-pa-badge' );
-
-								if ( '' !== $badge_effect ) {
-									$this->add_render_attribute( 'menu-item-' . $index . $device, 'class', 'premium-badge-' . $badge_effect );
-								}
-							}
-
-							$html_output .= '<li ' . $this->get_render_attribute_string( 'menu-item-' . $index . $device ) . '>';
-
-							$html_output .= '<a ' . $this->get_render_attribute_string( $item_link ) . " class='premium-menu-link premium-sub-menu-link'>";
-
-							$html_output .= $this->get_icon_html( $item, 'sub-' );
-
-							$html_output .= $item['text'];
-
-							$html_output .= $this->get_badge_html( $item, 'sub-' );
-
-							$html_output .= '</a>';
-							$html_output .= '</li>';
-						} else {
-
-							$this->add_render_attribute(
-								'menu-content-item-' . $item['_id'],
-								array(
-									'id'    => 'premium-mega-content-' . $item['_id'],
-									'class' => 'premium-mega-content-container',
-								)
-							);
-
-							if ( 'yes' === $item['section_position'] ) {
-								$this->add_render_attribute( 'menu-content-item-' . $item['_id'], 'class', 'premium-mega-content-centered' );
-							}
-
-							$html_output .= '<div ' . $this->get_render_attribute_string( 'menu-content-item-' . $item['_id'] ) . '>';
-
-							$temp_id      = empty( $item['submenu_item'] ) ? $item['live_temp_content'] : $item['submenu_item'];
-							$html_output .= $this->getTemplateInstance()->get_template_content( $temp_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-							$html_output .= '</div>';
-
-						}
-
-						$is_child    = true;
-						$is_sub_menu = true;
-
-					} else {
-
-						$next_item_exists   = array_key_exists( $index + 1, $menu_items );
-						$next_item_is_child = $next_item_exists && 'submenu' === $menu_items[ $index + 1 ]['item_type'];
-
-						if ( $next_item_is_child ) {
-							$this->add_render_attribute( 'menu-item-' . $index . $device, 'class', 'menu-item-has-children' );
-						}
-
-						if ( 'yes' === $item['badge_switcher'] ) {
-							$this->add_render_attribute( 'menu-item-' . $index . $device, 'class', 'has-pa-badge' );
-						}
-
-						if ( 'yes' === $item['section_full_width'] ) {
-							$this->add_render_attribute( 'menu-item-' . $index . $device, 'data-full-width', 'true' );
-						}
-
-						if ( $next_item_exists ) {
-							if ( 'submenu' === $menu_items[ $index + 1 ]['item_type'] && 'custom_content' === $menu_items[ $index + 1 ]['menu_content_type'] ) {
-								$this->add_render_attribute( 'menu-item-' . $index . $device, 'class', 'premium-mega-nav-item' );
-							}
-						}
-
-						$is_child = false;
-
-						// If we need to create a new main item.
-						if ( true === $is_sub_menu ) {
-							$is_sub_menu = false;
-
-							if ( $is_link ) {
-								$html_output .= '</ul>';
-								$is_link      = false;
-							}
-
-							$html_output .= '</li>';
-						}
-
-						$html_output .= '<li ' . $this->get_render_attribute_string( 'menu-item-' . $index . $device ) . '>';
-
-						$html_output .= '<a ' . $this->get_render_attribute_string( $item_link ) . " class='premium-menu-link premium-menu-link-parent'>";
-
-							$html_output .= $this->get_icon_html( $item );
-
-							$html_output .= $item['text'];
-
-						if ( array_key_exists( $index + 1, $menu_items ) ) {
-							$has_icon = ! empty( $settings['submenu_icon']['value'] );
-
-							if ( 'submenu' === $menu_items[ $index + 1 ]['item_type'] && $has_icon ) {
-								$icon_class   = 'premium-dropdown-icon ' . $settings['submenu_icon']['value'];
-								$html_output .= sprintf( '<i class="%1$s"></i>', $icon_class );
-							}
-						}
-
-						$html_output .= $this->get_badge_html( $item );
-
-						$html_output .= '</a>';
-
+					if ( 'yes' === $item['section_position'] ) {
+						$this->add_render_attribute( 'menu-content-item-' . $item['_id'], 'class', 'premium-mega-content-centered' );
 					}
 
-					?>
+					$html_output .= '<div ' . $this->get_render_attribute_string( 'menu-content-item-' . $item['_id'] ) . '>';
 
-					<?php
+					$temp_id      = empty( $item['submenu_item'] ) ? $item['live_temp_content'] : $item['submenu_item'];
+					$html_output .= $this->getTemplateInstance()->get_template_content( $temp_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					$html_output .= '</div>';
 
 				}
 
-				echo $html_output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				?>
-			</ul>
-		</div>
+				$is_child    = true;
+				$is_sub_menu = true;
 
-		<?php
+			} else {
 
+				$next_item_exists   = array_key_exists( $index + 1, $menu_items );
+				$next_item_is_child = $next_item_exists && 'submenu' === $menu_items[ $index + 1 ]['item_type'];
+
+				if ( $next_item_is_child ) {
+					$this->add_render_attribute( 'menu-item-' . $index, 'class', 'menu-item-has-children' );
+				}
+
+				if ( 'yes' === $item['badge_switcher'] ) {
+					$this->add_render_attribute( 'menu-item-' . $index, 'class', 'has-pa-badge' );
+				}
+
+				if ( 'yes' === $item['section_full_width'] ) {
+					$this->add_render_attribute( 'menu-item-' . $index, 'data-full-width', 'true' );
+				}
+
+				if ( $next_item_exists ) {
+					if ( 'submenu' === $menu_items[ $index + 1 ]['item_type'] && 'custom_content' === $menu_items[ $index + 1 ]['menu_content_type'] ) {
+						$this->add_render_attribute( 'menu-item-' . $index, 'class', 'premium-mega-nav-item' );
+					}
+				}
+
+				$is_child = false;
+
+				// If we need to create a new main item.
+				if ( true === $is_sub_menu ) {
+					$is_sub_menu = false;
+
+					if ( $is_link ) {
+						$html_output .= '</ul>';
+						$is_link      = false;
+					}
+
+					$html_output .= '</li>';
+				}
+
+				$html_output .= '<li ' . $this->get_render_attribute_string( 'menu-item-' . $index ) . '>';
+
+				$html_output .= '<a ' . $this->get_render_attribute_string( $item_link ) . " class='premium-menu-link premium-menu-link-parent'>";
+
+					$html_output .= $this->get_icon_html( $item );
+
+					$html_output .= $item['text'];
+
+				if ( array_key_exists( $index + 1, $menu_items ) ) {
+					$has_icon = ! empty( $settings['submenu_icon']['value'] );
+
+					if ( 'submenu' === $menu_items[ $index + 1 ]['item_type'] && $has_icon ) {
+						$icon_class   = 'premium-dropdown-icon ' . $settings['submenu_icon']['value'];
+						$html_output .= sprintf( '<i class="%1$s"></i>', $icon_class );
+					}
+				}
+
+				$html_output .= $this->get_badge_html( $item );
+
+				$html_output .= '</a>';
+
+			}
+
+			?>
+
+			<?php
+
+		}
+
+		return $html_output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**

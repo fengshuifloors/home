@@ -36,12 +36,12 @@
             },
 
             addSettingsTriggers: function () {
-                let _this = this,
+                var _this = this,
                     pos = $('body').hasClass('rtl') ? 'right' : 'left';
 
                 $('#menu-to-edit .menu-item').each(function () {
 
-                    let itemTrigger = _this.getTriggerHtml(this);
+                    var itemTrigger = _this.getTriggerHtml(this);
 
                     $(this).addClass('premium-menu-item');
                     $(this).append(itemTrigger);
@@ -120,8 +120,8 @@
 
                 if (settings) {
 
-                    let isChecked = 'true' == settings.mega_content_enabled ? true : false;
-                    let isFullWidth = 'true' == settings.full_width_mega_content ? true : false;
+                    var isChecked = 'true' == settings.mega_content_enabled ? true : false,
+                        isFullWidth = 'true' == settings.full_width_mega_content ? true : false;
 
                     $('#pa-megamenu-icon-type').val(settings.item_icon_type)
                     _this.iconPicker.val(settings.item_icon);
@@ -163,7 +163,6 @@
             checkIconType: function () {
 
                 if ('icon' === $("#pa-megamenu-icon-type").val()) {
-
                     $(".premium-lottie-settings").addClass("premium-setting-hidden");
                     $(".premium-icon-settings").removeClass("premium-setting-hidden");
                 } else {
@@ -180,7 +179,7 @@
 
                 $btnIcon.addClass("loading").removeClass("loader-hidden");
 
-                let itemSettings = {
+                var itemSettings = {
                     item_id: _this.currentItemId,
                     item_depth: _this.currenItemDepth,
                     item_icon_type: $('#pa-megamenu-icon-type').val(),
@@ -230,13 +229,13 @@
             },
 
             getItemId: function ($item) {
-                let id = $($item).attr('id').replace('menu-item-', '');
+                var id = $($item).attr('id').replace('menu-item-', '');
 
                 return id;
             },
 
             getItemDepth: function ($item) {
-                let depth = $($item).attr('class').match(/menu-item-depth-\d/);
+                var depth = $($item).attr('class').match(/menu-item-depth-\d/);
 
                 if (depth.length) {
                     return depth[0].replace('menu-item-depth-', '');
@@ -246,11 +245,11 @@
             },
 
             getTriggerHtml: function ($item) {
-                let itemId = this.getItemId($item),
+                var itemId = this.getItemId($item),
                     itemDepth = this.getItemDepth($item);
 
-                return `<span class="premium-menu-item-settings" data-id="${itemId}" data-item-depth="${itemDepth}">Premium Menu</span>`;
-                // add a logo or an icon to the trigger.
+                return '<span class="premium-menu-item-settings" data-id="' + itemId + '" data-item-depth="' + itemDepth + '">Premium Menu</span>';
+
             },
         }
 

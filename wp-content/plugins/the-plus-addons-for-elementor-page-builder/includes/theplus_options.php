@@ -141,6 +141,22 @@ class L_Theplus_Elementor_Plugin_Options
 		}
 		
 		if(defined( 'ELEMENTOR_PRO_VERSION' ) && Utils::has_pro()){
+
+			/*New Added*/
+			$experiments_manager_loop = Plugin::$instance->experiments;
+			if($experiments_manager_loop->is_feature_active( 'loop' )){
+				$option_name_ele380loopreset ='ele380loop_default_plus_options';
+				if ( is_admin() && get_option( $option_name_ele380loopreset ) !== false ) {
+				} else if( is_admin() ){
+					$widgets_list = $this->tp_ele_get_registered_widgets();
+					$ele_wid_options=[];
+					$ele_wid_options['elementor_check_elements']= array_keys($widgets_list);				
+					update_option( 'theplus_elementor_widget',$ele_wid_options, $deprecated, $autoload );
+					update_option( $option_name_ele380loopreset,$value, $deprecated, $autoload );
+				}	
+			}
+
+
 			$option_name_pro ='elepro_default_plus_options';
 			if ( is_admin() && get_option( $option_name_pro ) !== false ) {
 			} else if( is_admin() ){

@@ -61,7 +61,6 @@ class Admin_Notices {
 
 		self::$notices = array(
 			'pa-review',
-			'bf22_notice',
 		);
 
 		delete_option( 'magic_scroll_notice' );
@@ -105,8 +104,6 @@ class Admin_Notices {
 		if ( Helper_Functions::check_hide_notifications() ) {
 			return;
 		}
-
-		$this->get_bf_notice();
 
 	}
 
@@ -232,54 +229,6 @@ class Admin_Notices {
 		<?php
 
 	}
-
-	/**
-	 *
-	 * Shows admin notice for Black Friday Sale.
-	 *
-	 * @since 4.9.39
-	 * @access public
-	 *
-	 * @return void
-	 */
-	public function get_bf_notice() {
-
-		$papro_path = 'premium-addons-pro/premium-addons-pro-for-elementor.php';
-
-		$is_papro_installed = Helper_Functions::is_plugin_installed( $papro_path );
-
-		$license_status = get_option( 'papro_license_status' );
-
-		$bf_notice = get_option( 'bf22_notice' );
-
-		if ( ( $is_papro_installed && 'valid' === $license_status ) || '1' === $bf_notice ) {
-			return;
-		}
-
-		$link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/black-friday/', 'wp-dash', 'bf22-notification', 'bf22' );
-
-		?>
-
-		<div class="error pa-notice-wrap pa-new-feature-notice pa-review-notice">
-			<div class="pa-img-wrap">
-				<img src="<?php echo PREMIUM_ADDONS_URL . 'admin/images/pa-logo-symbol.png'; ?>">
-			</div>
-			<div class="pa-text-wrap">
-				<p>
-					<?php echo __( 'Black Friday! Get <b>25% Discount</b> for a Limited Time Only', 'premium-addons-for-elementor' ); ?>
-					<a class="button button-primary" href="<?php echo esc_url( $link ); ?>" target="_blank">
-						<span><?php echo __( 'Get The Deal', 'premium-addons-for-elementor' ); ?></span>
-					</a>
-				</p>
-			</div>
-			<div class="pa-notice-close" data-notice="bf22">
-				<span class="dashicons dashicons-dismiss"></span>
-			</div>
-		</div>
-
-		<?php
-	}
-
 
 	/**
 	 * Renders an admin notice error message

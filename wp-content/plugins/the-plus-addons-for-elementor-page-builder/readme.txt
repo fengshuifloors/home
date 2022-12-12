@@ -2,9 +2,9 @@
 Contributors: posimyththemes, ankitposimyth, nirmalkavaiya, sagarpatel124
 Tags: Elementor, elementor widgets, elements, elementor addon, elementor templates, elementor widgets, extensions
 Requires at least: 5.7.0
-Tested up to: 6.0
+Tested up to: 6.1
 Requires PHP: 5.6
-Stable tag: 5.1.14
+Stable tag: 5.1.15
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -278,6 +278,11 @@ We have the most advanced caching architecture, Which will never bloat your site
 
 
 == Changelog ==
+
+= 5.1.15 =
+Update : Smooth Scroll : Firefox Compatibility
+Update : MetaBox : Condition Improvement
+Fix : Minor bug fixes and Improvements
 
 = 5.1.14 =
 Added : Post Content : Get WordPress editor content option in single page

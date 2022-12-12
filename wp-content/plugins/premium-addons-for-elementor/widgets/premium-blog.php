@@ -1246,6 +1246,24 @@ class Premium_Blog extends Widget_Base {
 		);
 
 		$this->add_control(
+			'carousel_speed',
+			array(
+				'label'              => __( 'Transition Speed (ms)', 'premium-addons-for-elementor' ),
+				'description'        => __( 'Set the speed of the carousel animation in milliseconds (ms)', 'premium-addons-for-elementor' ),
+				'type'               => Controls_Manager::NUMBER,
+				'default'            => 300,
+				'render_type'        => 'template',
+				'selectors'          => array(
+					'{{WRAPPER}} .premium-blog-wrap .slick-slide' => 'transition: all {{VALUE}}ms !important',
+				),
+				'condition'          => array(
+					'premium_blog_carousel' => 'yes',
+				),
+				'frontend_available' => true,
+			)
+		);
+
+		$this->add_control(
 			'premium_blog_carousel_center',
 			array(
 				'label'              => __( 'Center Mode', 'premium-addons-for-elementor' ),
