@@ -292,6 +292,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			$arrBuiltIn = array(
 			 	"post"=>"post",
 			 	"page"=>"page",
+			 	"attachment"=>"attachment",
 			 );
 			 
 			 $arrCustomTypes = get_post_types(array('_builtin' => false));
@@ -612,6 +613,20 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			return($arrTerms);
 		}
 		
+		/**
+		 * get post single taxonomy terms
+		 */
+		public static function getPostSingleTermsTitles($postID, $taxonomyName){
+			
+			$arrTerms = self::getPostSingleTerms($postID, $taxonomyName);
+			if(empty($arrTerms))
+				return(array());
+				
+			$output = UniteFunctionsUC::assocToArrayNames($arrTerms, "name");
+			
+			return($output);
+		}
+		
 		
 		/**
 		 * get post terms with all taxonomies
@@ -709,6 +724,40 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			}
 			
 			return($arrTitles);
+		}
+		
+		/**
+		 * get post terms id's
+		 * if empty - get current post term id's
+		 */
+		public static function getPostTermIDs($post = null){
+			
+			if(empty($post))
+				$post = get_post();			
+			
+			if(empty($post))
+				return(array());
+				
+			$arrTermsWithTax = self::getPostTerms($post);
+
+			if(empty($arrTermsWithTax))
+				return(array());
+			
+			$arrTermIDs = array();
+			
+			foreach($arrTermsWithTax as $terms){
+				
+				if(empty($terms))
+					continue;
+				
+				foreach($terms as $term){
+					$termID = UniteFunctionsUC::getVal($term, "term_id");
+					$arrTermIDs[] = $termID;
+				}
+				
+			}
+			
+			return($arrTermIDs);
 		}
 		
 		
@@ -1284,8 +1333,8 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			$arr[self::SORTBY_PARENT] = __("Parent Post", "unlimited-elements-for-elementor");
 			$arr["post__in"] = __("Preserve Posts In Order", "unlimited-elements-for-elementor");
 			
-			$arr[self::SORTBY_META_VALUE] = __("Custom Field Value", "unlimited-elements-for-elementor");
-			$arr[self::SORTBY_META_VALUE_NUM] = __("Custom Field Value (numeric)", "unlimited-elements-for-elementor");
+			$arr[self::SORTBY_META_VALUE] = __("Meta Field Value", "unlimited-elements-for-elementor");
+			$arr[self::SORTBY_META_VALUE_NUM] = __("Meta Field Value (numeric)", "unlimited-elements-for-elementor");
 			
 			return($arr);
 		}
@@ -1350,21 +1399,28 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			
 			if(isset(self::$cacheTermCustomFields[$cacheKey]))
 				return(self::$cacheTermCustomFields[$cacheKey]);
-						
-			$isAcfActive = UniteCreatorAcfIntegrate::isAcfActive();
+									
+			$arrMeta = self::getTermMeta($termID, $addPrefixes);
 			
-			if($isAcfActive == false){
-				$arrMeta = self::getTermMeta($termID, $addPrefixes);
+			if(empty($arrMeta))
+				return(array());
+			
+			$isAcfActive = UniteCreatorAcfIntegrate::isAcfActive();
 				
+			if($isAcfActive == false)
 				return($arrMeta);
-			}
+				
+			//merge with acf
 			
 			$objAcf = self::getObjAcfIntegrate();
 			$arrCustomFields = $objAcf->getAcfFields($termID, "term",$addPrefixes);
 			
-			self::$cacheTermCustomFields[$cacheKey] = $arrCustomFields;
+			if(!empty($arrCustomFields))
+				$arrMeta = array_merge($arrMeta, $arrCustomFields);
 			
-			return($arrCustomFields);
+			self::$cacheTermCustomFields[$cacheKey] = $arrMeta;
+			
+			return($arrMeta);
 		}
 		
 		/**
@@ -1417,8 +1473,14 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			
 			//get acf
 			if($isAcfActive){
+				
 				$objAcf = self::getObjAcfIntegrate();
 				$arrCustomFields = $objAcf->getAcfFields($postID, "post", $addPrefixes, $imageSize);
+				
+				//if emtpy - get from regular meta
+				if(empty($arrCustomFields))
+					$arrCustomFields = self::getPostMeta($postID, false, $prefix);
+				
 				
 			}else{		//without acf - get regular custom fields
 								
@@ -1545,6 +1607,41 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			return($arrImage);
 		}
 
+		
+		/**
+		 * get term meta
+		 */
+		public static function getPostImage($postID, $metaKey){
+			
+			if(empty($postID) || $postID === "current")
+				$postID = get_post();
+			
+			if(empty($postID))
+				return(null);
+
+			if($metaKey == "debug"){
+				
+				$arrMeta = get_post_meta($postID);
+				
+				dmp("post: $postID meta: ");
+				
+				dmp($arrMeta);
+			}
+				
+			if(empty($metaKey))
+				return(null);
+			
+			$attachmentID = get_post_meta($postID,$metaKey, true);
+			
+			if(empty($attachmentID))
+				return(null);
+			
+			$arrImage = self::getAttachmentData($attachmentID);
+			
+			return($arrImage);
+		}
+		
+		
 		
 		/**
 		 * get pods meta keys
@@ -1887,6 +1984,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			return($arrQuery);
 		}
 		
+		
 		/**
 		 * get taxanomy query
 		 */
@@ -1937,9 +2035,14 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				return($arrQuery);
 				
 			//check and add relation
-			if($categoryRelation === "OR" && $numQueryItems > 1)
-				$arrQuery["relation"] = "OR";
+			if($categoryRelation === "OR" && $numQueryItems > 1){
+				
+				$arrQuery = array($arrQuery);
+				
+				$arrQuery[0]["relation"] = "OR";
+			}
 			
+				
 			return($arrQuery);			
 		}
 		
@@ -2228,7 +2331,8 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			
 			self::$cachePostContent[$postID] = $post->post_content;
 			
-			$isEditMode = HelperUC::isElementorEditMode();
+			$isEditMode = GlobalsProviderUC::$isInsideEditor;
+			
 			if($isEditMode == false)
 				$content = get_the_content( null, false, $post);
 			else
@@ -2479,11 +2583,21 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 						
 			if(empty($arrAttachmentIDs))
 				return(false);
-				
-			_prime_post_caches($arrAttachmentIDs);
 			
+			self::cachePostMetaQueries($arrAttachmentIDs);
 		}
 		
+		/**
+		 * cache post meta queries by id's
+		 */
+		public static function cachePostMetaQueries($arrPostIDs){
+			
+			if(empty($arrPostIDs))
+				return(false);
+			
+			_prime_post_caches($arrPostIDs);
+			
+		}
 		
 		/**
 		 * get post terms queries
@@ -3097,6 +3211,8 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				
 			$arrData["name"] = $name;
 			
+			$arrData["user_login"] = UniteFunctionsUC::getVal($userData, "user_login");
+			
 			$arrData["email"] = UniteFunctionsUC::getVal($userData, "user_email");
 			
 			$arrData["url_posts"] = $urlPosts;
@@ -3228,6 +3344,9 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			
 			$arrUsersShort = array();
 			
+			$arrNames = array();
+			$arrAlternative = array();
+			
 			foreach($arrUsers as $objUser){
 				
 				$userID = $objUser->ID;
@@ -3237,10 +3356,31 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 					$name = $userData->user_nicename;
 				if(empty($name))
 					$name = $userData->user_login;
+				
+				$login = $userData->user_login;
+				$alternativeName = $name." ({$login})";
+					
+				
+				//avoid duplicate names
+				
+				if(isset($arrNames[$name])){
+					
+					$oridinalUserID = $arrNames[$name];
+					
+					$arrUsersShort[$oridinalUserID] = $arrAlternative[$name];
+					
+					$name = $alternativeName;
+					
+				}else{
+					$arrAlternative[$name] = $alternativeName;
+				}
+				
+				$arrNames[$name] = $userID;
 					
 				$arrUsersShort[$userID] = $name;
 			}
 			
+						
 			self::$cacheAuthorsShort = $arrUsersShort;
 			
 			if($addCurrentUser == true){
@@ -3328,12 +3468,32 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		public static function a___________OTHER_FUNCTIONS__________(){}
 		
 		/**
+		 * get wordpress language
+		 */
+		public static function getLanguage(){
+			
+			$locale = get_locale();
+			if(is_string($locale) == false)
+				return("en");
+			
+			$pos = strpos($locale, "_");
+			
+			if($pos === false)
+				return($locale);
+				
+			$lang = substr($locale, 0, $pos);
+			
+			return($lang);
+		}
+		
+		
+		/**
 		 * get install plugin slug
 		 */
-		public static function getInstallPluginLink($slug){
+		public static function getInstallPluginLink($slug = 'doubly'){
 			
 			$action = 'install-plugin';
-			$slug = 'doubly';
+			
 			$urlInstall = wp_nonce_url(
 			    add_query_arg(
 			        array(

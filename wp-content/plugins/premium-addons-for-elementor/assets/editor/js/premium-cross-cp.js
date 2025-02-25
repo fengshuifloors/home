@@ -100,70 +100,75 @@
     });
     var c = ["section", "column", "widget", "container"],
         d = [];
-    c.forEach(function (a, e) {
-        elementor.hooks.addFilter("elements/" + c[e] + "/contextMenuGroups", function (a, f) {
-            return d.push(f), a.push({
-                name: "premium_" + c[e],
-                actions: [{
-                    name: "premium_addons_copy",
-                    title: "PA | Copy Element",
-                    icon: "pa-dash-icon",
-                    callback: function () {
-                        var a = {};
 
-                        a.eletype = "widget" == c[e] ? f.model.get("widgetType") : null;
-                        a.elecode = f.model.toJSON();
+    elementor.on('preview:loaded', function () {
 
-                        xdLocalStorage.setItem("premium-c-p-element", JSON.stringify(a), function () {
-                            elementor.notifications.showToast({
-                                message: elementor.translate('Copied')
+        c.forEach(function (a, e) {
+            elementor.hooks.addFilter("elements/" + c[e] + "/contextMenuGroups", function (a, f) {
+                return d.push(f), a.push({
+                    name: "premium_" + c[e],
+                    actions: [{
+                        name: "premium_addons_copy",
+                        title: "PA | Copy Element",
+                        icon: "pa-dash-icon",
+                        callback: function () {
+                            var a = {};
+
+                            a.eletype = "widget" == c[e] ? f.model.get("widgetType") : null;
+                            a.elecode = f.model.toJSON();
+
+                            xdLocalStorage.setItem("premium-c-p-element", JSON.stringify(a), function () {
+                                elementor.notifications.showToast({
+                                    message: elementor.translate('Copied')
+                                });
                             });
-                        });
 
 
-                    }
-                }, {
-                    name: "premium_addons_paste",
-                    title: "PA | Paste Element",
-                    icon: "pa-dash-icon",
-                    callback: function () {
-                        xdLocalStorage.getItem("premium-c-p-element", function (a) {
-                            PACopyPasteHandler.b(JSON.parse(a.value), f)
-                        })
-                    }
-                },
-                {
-                    name: "premium_addons_copy_all",
-                    title: "PA | Copy All Content",
-                    icon: "pa-dash-icon",
-                    callback: function () {
-                        var copiedSections = Object.values(elementor.getPreviewView().children._views).map(function (e) {
-                            return e.getContainer();
-                        });
-                        var allSections = copiedSections.map(function (e) {
-                            return e.model.toJSON();
-                        });
-                        xdLocalStorage.setItem('premium-c-p-all', JSON.stringify(allSections), function (a) {
-                            elementor.notifications.showToast({
-                                message: elementor.translate('Copied')
+                        }
+                    }, {
+                        name: "premium_addons_paste",
+                        title: "PA | Paste Element",
+                        icon: "pa-dash-icon",
+                        callback: function () {
+                            xdLocalStorage.getItem("premium-c-p-element", function (a) {
+                                PACopyPasteHandler.b(JSON.parse(a.value), f)
+                            })
+                        }
+                    },
+                    {
+                        name: "premium_addons_copy_all",
+                        title: "PA | Copy All Content",
+                        icon: "pa-dash-icon",
+                        callback: function () {
+                            var copiedSections = Object.values(elementor.getPreviewView().children._views).map(function (e) {
+                                return e.getContainer();
                             });
-                        });
-                    }
-                },
-                {
-                    name: "premium_addons_paste_all",
-                    title: "PA | Paste All Content",
-                    icon: "pa-dash-icon",
-                    callback: function () {
-                        var allSections = '';
-                        xdLocalStorage.getItem('premium-c-p-all', function (a) {
-                            allSections = JSON.parse(a.value);
-                            PACopyPasteHandler.pasteAll(JSON.stringify(allSections));
-                        });
-                    }
-                },
-                ]
-            }), a
+                            var allSections = copiedSections.map(function (e) {
+                                return e.model.toJSON();
+                            });
+                            xdLocalStorage.setItem('premium-c-p-all', JSON.stringify(allSections), function (a) {
+                                elementor.notifications.showToast({
+                                    message: elementor.translate('Copied')
+                                });
+                            });
+                        }
+                    },
+                    {
+                        name: "premium_addons_paste_all",
+                        title: "PA | Paste All Content",
+                        icon: "pa-dash-icon",
+                        callback: function () {
+                            var allSections = '';
+                            xdLocalStorage.getItem('premium-c-p-all', function (a) {
+                                allSections = JSON.parse(a.value);
+                                PACopyPasteHandler.pasteAll(JSON.stringify(allSections));
+                            });
+                        }
+                    },
+                    ]
+                }), a
+            })
         })
-    })
+
+    });
 })(jQuery);

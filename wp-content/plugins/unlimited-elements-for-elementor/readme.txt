@@ -3,7 +3,7 @@ Contributors: unitecms, valiano, iritmega
 Donate link: http://unlimited-elements.com/
 Tags: elementor, elements, addons, elementor addons, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor
 Requires at least: 3.5
-Tested up to: 6.1
+Tested up to: 6.2
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,11 +13,6 @@ The best package of Free Elementor Addons. +100 Free Elementor Widgets, +10 Free
 
 
 == Description ==
-
-BLACK FRIDAY SALE STARTS NOW!
-Grab the PRO version for 50% off. <a href='https://unlimited-elements.com/pricing/' target='_blank'>Get It Now</a>
-
-<br><br>
 
 Take your Elementor page building experience to the next level with Unlimited Elements for Elementor. This is the last widget pack you will need. Find everything in one place and get more than +100 free widgets for your Elementor website. All our elements are easy to use and built with our unique Widget Creator framework. 
 <a href="https://unlimited-elements.com/elementor-widgets/">CHECK OUT THE DEMOS</a>
@@ -1242,6 +1237,199 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 3. Navigate to Unlimited Elements in the WordPress side menu and install the widget you want by hovering over it and clicking install.
 
 == Changelog ==
+
+
+version 1.5.62 2023-05-14:
+
+* Feature: added "edit template" link in template selector
+* Feature: added hidden template edit button to top bar
+* Feature: added option for dynamic popup link to connect to many links in the widget
+* Fix: solved some php error with parse dynamic settings in php 8.1
+* Fix: getMetaValue error in products
+* Fix: fixed doubly css includes in some cases
+
+
+version 1.5.61 - 2023-05-07:
+
+* Feature: added support for woocommerce jet wishlist
+* Feature: did option to disable third party hooks in ajax
+* Fix: click on link on sync didn't worked
+* Fix: added some protections to nonce and to file manager zip exctract 
+* Change: updated freemius sdk to 2.5.7 version.
+
+
+
+version 1.5.60 - 2023-04-30:
+
+* Feature: added functionality to get cart number of products 
+* Fix: fixed link field settings for multisoure
+* Fix: fixed some bugs with regular price in woocommerce widgets
+* Fix: filters js file loaded in editor as well
+* Fix: fixed some small php bug regarding "pathBase"
+* Fix: fixed conditions in multiple select control
+* Change: updated unite gallery version
+* Change: disabled autoload in update_option for the catalog variable
+
+
+version 1.5.59: 2023-04-09
+
+* Feature: added multiple select to condition attributes in widget editor
+* Change: updated freemius sdk to the latest version
+* Fix: fixed empty post meta fields in case that acf plugin is on
+* Fix: fixed some bug with avoid duplicates option and filters in single grid
+* Fix: made some corrections in case that post query show wrong init selected terms values
+* Fix: the post carousel goes to random item after ajax refresh
+* Fix: fixed jet engine custom fields integration
+
+
+version 1.5.58: 2023-03-26
+
+* Feature: added dynamic popup functionality to multisource widgets
+* Fix: fixed missing arguments in the_post action
+* Fix: fixed some php multisource error
+* Fix: fixed some product ajax search related issues
+* Fix: fixed some small but with ajax refresh and sync
+
+
+version 1.5.57: 2023-03-20
+
+* Feature: improved the multisource selectors
+* Feature: added option to get image from post meta in post fields - widget editor
+* Fix: added "skins" folder to unite gallery
+* Fix: added more compatability to woo commerce grids with discounts plugins
+* Fix: fixed same uc_id in dynamic templates
+
+
+version 1.5.56: 2023-03-13:
+
+* Feature: added option authors by dynamic field in post query
+* Feature: done some integration with flycart discounts
+* Feature: added option to show post type and post type title in posts fields
+* Feature: added option to add multiple values in multisource
+* Fix: fixed get posts by terms meta field - add taxonomy
+* Fix: fixed responsive css in dynamic loop
+* Fix: fixed dynamic loop with jet engine acf fields
+* Fix: fixed slider control units for vh, vx and % 
+* Fix: added "before today" for past year in date qury
+* Change: the uc_id will not change now when page refresh
+
+
+
+version 1.5.55: 2023-02-23:
+
+* Fix: fixed wpml integrate fields
+* Fix: fixed some write file error, will not crash if happend
+* Fix: fixed entrance animation js on popup
+* Fix: fixed strip tags in intro from content
+* Fix: fixed some php 8.1 issues
+* Fix: fixed some post intro with html tags issues
+* Change: do_action function is working now in free version
+
+
+version 1.5.54: 2023-02-15
+
+* Change: added some define variable that indicate the under ajax search
+* Change: added "collect", and "output" to schema types in content accordion widget for example
+* Feature: added wpml auto translate integration
+* Feature: added option to select "all taxonomies" in exclude terms in terms selection
+* Feature: added option - only direct children to terms select include by
+* Feature: added option to post select to get posts by terms from curent meta field
+* Fix: preserve tags when truncate
+* Fix: fixed load more with second meta add in post query
+
+
+version 1.5.53: 2023-02-07
+
+* Fix: keep exclude terms in grid when filtering with "override terms" mode
+* Fix: fixed get_terms() not found php error from 1.5.52 version
+
+
+version 1.5.52: 2023-02-06
+
+* Change: done some protection agains infinite loops in templates
+* Fix: fixed popup button type conditions
+* Fix: fixed term meta fields in multisource
+* Fix: fixed exclude term not found in post select
+
+version 1.5.51: 2023-01-31
+
+* Feature: added version to js comment output
+* Feature: connected the galleies to remote play / stop like the carousels
+* Feature: added some error message when image size attribute is missing in multisource
+* Feature: added dynamic popup special attribute type
+* Fix: fixed title source and description source in multisource gallery for products.
+* Fix: added supress filtres to ajax search query
+
+
+version 1.5.50: 2023-01-24
+
+* Feature: added "media" to post types select in advanced post query
+* Feature: improved the date time attribute
+
+
+version 1.5.49: 2023-01-23
+
+* Fix: fixed some js optimization issues 
+* Fix: fixed filters related small js bug
+
+
+version 1.5.48: 2023-01-19
+
+* Feature: added gallery to multisource
+* Feature: added post type override selectin current post query options
+* Fix: fixed remote play with carousel
+* Fix: fixed some multisource and ajax related bugs
+* Fix: fixed popular posts plugin integration multiple post types
+* Fix: fixed background widgets some problematic attribute names
+* Fix: fixed include terms by current post terms in some cases.
+* Fix: fixed default url_assets value in multisoure
+* Fix: fixed dark mode svg icons
+
+
+version 1.5.47: 2023-01-10
+
+* Feature: added more units to slider attribute
+* Feature: added "any" post type to post types select
+* Feature: added include and exclude current post terms in terms selection
+* Feature: added option to carousel - scroll to head - force
+* Feature: allow import widgets with theme activate
+* Fix: fixed dynamic template render css for dynamic popup
+* Fix: fixed users list select by manual
+
+
+version 1.5.46: 2023-01-08
+
+* Feature: set the items image size chooser work for certain image
+* Feature: made option to put js script in saparate tags with id's for optimization plugins like wprocket
+* Feature: enriched the uc_lang variable. now it's always showing the current language
+* Feature: added user_login variable to the users list output
+* Feature: has put the preview link always as a help link in widget edit panel.
+* Change: updated the multisource that it works better with items images
+* Change: allow html tags in post intro (excerpt) in widgets
+* Fix: fixed filters with sync multiple grid issues
+* Fix: fixed the exclude users list with similar names
+
+
+version 1.5.45: 2022-12-26
+
+* Feature: added json decode filter to twig
+* Feature: added catalog images from shortpixel for speed loading
+* Feature: done multisource group setting
+* Fix: fixed entrance animation on ajax refresh
+* Fix: done sync pause / play between carousels
+
+
+version 1.5.44: 2022-12-19
+
+* Change: updated freemius to the latest version
+* Fix: fixed remote play / pause button
+* Fix: fixed search filter unicode phrase
+* Fix: fixed entrance animation appear on scroll
+* Feature: added video gallery responsive options
+* Fix: fixed some owl carousel size on init bug
+* Fix: fixed js widgets under the dynamic grid template like flipbox
+
+
 
 version 1.5.43: 2022-12-04
 

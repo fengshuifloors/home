@@ -542,7 +542,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		 * modify after init settings
 		 */
 		protected function modifyAfterInit(){
-		    
+		    			
 			//set spacial items type if exists
 			$specialType = $this->getItemsSpecialType();
 			
@@ -566,6 +566,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			    }
 				
 			}
+			
 			
 			//add image fields			
 			if($specialType == self::ITEMS_TYPE_IMAGE){
@@ -1113,6 +1114,52 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		}
 		
 		/**
+		 * get listing type - if exists
+		 */
+		public function getListingTypes(){
+			
+			$paramsDynamic = $this->getParams(UniteCreatorDialogParam::PARAM_LISTING);
+			
+			if(empty($paramsDynamic))
+				return(array());
+			
+			$arrTypes = array();
+			
+			foreach($paramsDynamic as $param){
+				$useFor = UniteFunctionsUC::getVal($param, "use_for");
+				$arrTypes[] = $useFor;
+			}
+						
+			if(empty($arrTypes))
+				return(array());
+				
+			return($arrTypes);
+		}
+		
+		
+		/**
+		 * check if has remote
+		 */
+		public function hasRemote(){
+			
+			$arrTypes = $this->getListingTypes();
+						
+			return(in_array("remote",$arrTypes));
+		}
+		
+		
+		/**
+		 * check if has remote
+		 */
+		public function hasMultisource(){
+			
+			$arrTypes = $this->getListingTypes();
+			
+			return(in_array("items",$arrTypes));
+		}
+		
+		
+		/**
 		 * get special type
 		 */
 		public function getSpecialType(){
@@ -1125,8 +1172,29 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		 */
 		public function getItemsType(){
 			
-			
 			return($this->itemsType);
+		}
+		
+		/**
+		 * return if has simple items, or multisource not with post list
+		 */
+		public function isHasSimpleItems(){
+			
+			if($this->hasItems == false)
+				return(false);
+			
+			//has items
+				
+			if($this->specialType == "multisource")
+				return(true);
+			
+			//other types - false
+			
+			if(!empty($this->specialType))
+				return(false);
+				
+			
+			return(true);
 		}
 		
 		
@@ -1844,31 +1912,48 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				$objSettings->addGlobalParam("source", "addon", UniteSettingsUC::TYPE_IMAGE);
 			}
 			
+		
 			//choose if add items chooser
 			
 			if(!empty($this->params) || $this->hasItems){
 				
-				$objSettings->addSap(esc_html__("General","unlimited-elements-for-elementor"),"config",true);
+				if(empty($this->paramsCats))
+					$objSettings->addSap(esc_html__("General","unlimited-elements-for-elementor"),"config",true);
 				
 				if($this->hasItems == true){
-															
-					//$this->itemsType == self::ITEMS_TYPE_IMAGE
-					$objSettings->addItemsPanel($this, $source);
-					$objSettings->addHr("after_items_hr");
+					
+					if($this->itemsType == self::ITEMS_TYPE_IMAGE && $isOutputSidebar == true){
+						
+						$objSettings->addGallery("uc_items","",__("Select Images","unlimited-elements-for-elementor"));
+						
+					}else{
+						
+						//for wide settings - add items panel
+						
+						if($isOutputSidebar == false){
+							$objSettings->addItemsPanel($this, $source);
+							$objSettings->addHr("after_items_hr");
+						}
+						
+						
+					}
+										
 				}
 				
-				$objSettings->initByCreatorParams($arrParams);
+				$objSettings->initByCreatorParams($arrParams, $this->paramsCats);
 			}
 			
-			//add repeater
-			/*
-			 * add repeater
-			if($this->hasItems == true){
-				$objSettings->addSap(esc_html__("Edit Items","unlimited-elements-for-elementor"),"items");
-				$objSettings->addItemsPanelRepeater($this, $source);
-			}
-			*/
+			
+			//add items repeater
+			
+			if($this->hasItems == true && $isOutputSidebar == true){
 				
+				$objSettings->addSap(esc_html__("Items","unlimited-elements-for-elementor"),"items");
+				$objSettings->addItemsPanelRepeater($this, $source);
+				
+			}
+			
+			
 			//add fonts
 			$isFontsPanelEnabled = $this->objProcessor->isFontsPanelEnabled();
 			$arrFontParamNames = $this->objProcessor->getAllParamsNamesForFonts();

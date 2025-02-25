@@ -62,7 +62,7 @@ class Url_String extends Condition {
 			return;
 		}
 
-		$url = filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_STRING );
+		$url = sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
 
 		if ( ! $url ) {
 			return false;

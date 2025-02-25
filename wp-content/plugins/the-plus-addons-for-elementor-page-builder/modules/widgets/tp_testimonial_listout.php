@@ -63,6 +63,126 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 			]
 		);
 		$this->add_control(
+			'layout',
+			[
+				'label' => esc_html__( 'Layout', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'carousel',
+				'options' => [
+					'grid' => esc_html__( 'Grid', 'theplus' ),
+					'masonry' => esc_html__( 'Masonry', 'theplus' ),
+					'carousel' => esc_html__( 'Carousel', 'theplus' ),
+				],
+			]
+		);
+		$this->add_control(
+			'tlContentFrom',
+			[
+				'label' => esc_html__( 'Select Source', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'tlcontent',
+				'options' => [
+					'tlcontent' => esc_html__( 'Post Type', 'theplus' ),
+					'tlrepeater' => esc_html__( 'Repeater', 'theplus' ),
+				],
+			]
+		);
+		$repeater = new \Elementor\Repeater();
+		$repeater->add_control(
+            'testiAuthor',
+            [   
+            	'label' => esc_html__( 'Testimonial Content', 'theplus' ),
+				'type' => Controls_Manager::WYSIWYG,
+				'default' => '',
+				'placeholder' => esc_html__( 'Enter Testimonial Content', 'theplus' ),
+				'dynamic' => ['active'   => true,],
+            ]
+        );
+		$repeater->add_control(
+			'testiTitle',
+			[
+				'label' => esc_html__( 'Testimonial Title', 'theplus' ),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => ['active' => true,],
+				'default' => '',
+				'placeholder' => esc_html__( 'Enter Testimonial Title', 'theplus' ),
+			]
+		);
+		$repeater->add_control(
+			'testiLabel',
+			[
+				'label' => esc_html__( 'Author Name', 'theplus' ),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => ['active' => true,],
+				'default' => '',
+				'placeholder' => esc_html__( 'Enter Author Name', 'theplus' ),
+			]
+		);
+		$repeater->add_control(
+			'testiDesign',
+			[
+				'label' => esc_html__( 'Author Designation', 'theplus' ),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => ['active' => true,],
+				'default' => '',
+				'placeholder' => esc_html__( 'Enter Designation', 'theplus' ),
+			]
+		);
+		$repeater->add_control(
+			'testiImage',[
+				'label' => esc_html__( 'Author Image', 'theplus' ),
+				'type' => Controls_Manager::MEDIA,
+				'dynamic' => ['active'   => true,],
+			]
+		);
+		$repeater->add_control(
+			'testiLogo',[
+				'label' => esc_html__( 'Company Logo', 'theplus' ),
+				'type' => Controls_Manager::MEDIA,
+				'dynamic' => ['active'   => true,],
+			]
+		);
+		$repeater->add_control(
+			'testiLogoNote',
+			[				
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => 'Note : This is just for style 4.',
+				'content_classes' => 'tp-widget-description',
+			]
+		);
+		$this->add_control(
+			'testiAllList',
+			[
+				'label' => esc_html__( 'Manage Testimonials', 'theplus' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),			
+				'default' => [
+					[	
+						'testiAuthor' => 'I have been using the software from XYZ Business for a few weeks now and it has exceeded my expectations. It is user-friendly, efficient, and the customer support team is always available to help. Highly recommend this software!',	
+						'testiTitle' => 'Outstanding Support',				
+						'testiLabel' => 'Emily Thompson',
+						'testiDesign' => 'CEO of CodeCraft Inc.',
+					],
+					[	
+						'testiAuthor' => 'I have been using the software from XYZ Business for a few weeks now and it has exceeded my expectations. It is user-friendly, efficient, and the customer support team is always available to help. Highly recommend this software!',
+						'testiTitle' => 'Improved Productivity',					
+						'testiLabel' => 'Benjamin Reed',
+						'testiDesign' => 'Founder of X Community',
+					],
+					[	
+						'testiAuthor' => 'I have been using the software from XYZ Business for a few weeks now and it has exceeded my expectations. It is user-friendly, efficient, and the customer support team is always available to help. Highly recommend this software!',
+						'testiTitle' => 'Highly recommend',					
+						'testiLabel' => 'Rachel Johnson',
+						'testiDesign' => 'COO of AppFinity Solutions',
+					],
+				],
+				'title_field' => '{{{ testiLabel }}}',
+				'condition' => [
+					'tlContentFrom' => 'tlrepeater',
+				],
+			]
+		);
+		$this->add_control(
 			'style_pro_options',
 			[
 				'label' => esc_html__( 'Unlock more possibilities', 'tpebl' ),
@@ -76,11 +196,84 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 			]
 		);
 		$this->end_controls_section();
+		/*columns*/
+		$this->start_controls_section(
+			'columns_section',
+			[
+				'label' => esc_html__( 'Columns Manage', 'tpebl' ),
+				'tab' => Controls_Manager::TAB_CONTENT,
+				'condition' => [
+					'layout!' => ['carousel']
+				],
+			]
+		);
+		$this->add_control(
+			'desktop_column',
+			[
+				'label' => esc_html__( 'Desktop Column', 'tpebl' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '3',
+				'options' => l_theplus_get_columns_list(),
+				'condition' => [
+					'layout!' => ['carousel']
+				],
+			]
+		);
+		$this->add_control(
+			'tablet_column',
+			[
+				'label' => esc_html__( 'Tablet Column', 'tpebl' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '4',
+				'options' => l_theplus_get_columns_list(),
+				'condition' => [
+					'layout!' => ['carousel']
+				],
+			]
+		);
+		$this->add_control(
+			'mobile_column',
+			[
+				'label' => esc_html__( 'Mobile Column', 'tpebl' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '6',
+				'options' => l_theplus_get_columns_list(),
+				'condition' => [
+					'layout!' => ['carousel']
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'columns_gap',
+			[
+				'label' => esc_html__( 'Columns Gap/Space Between', 'tpebl' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'default' =>[
+					'top' => "15",
+					'right' => "15",
+					'bottom' => "15",
+					'left' => "15",				
+				],
+				'separator' => 'before',
+				'condition' => [
+					'layout!' => ['carousel']
+				],
+				'selectors' => [
+					'{{WRAPPER}} .testimonial-list .post-inner-loop .grid-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+		/*columns*/
 		$this->start_controls_section(
 			'content_source_section',
 			[
 				'label' => esc_html__( 'Content Source', 'tpebl' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
+				'condition' => [
+					'tlContentFrom!' => 'tlrepeater',
+				],
 			]
 		);
 		$this->add_control(
@@ -162,7 +355,7 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => esc_html__( 'Show', 'tpebl' ),
 				'label_off' => esc_html__( 'Hide', 'tpebl' ),
-				'default' => 'no',				
+				'default' => 'no',
 			]
 		);
 		$this->add_control(
@@ -175,6 +368,289 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 				'classes' => 'plus-pro-version',
 				'condition'    => [
 					'display_thumbnail' => [ 'yes' ],
+				],
+			]
+		);
+		$this->add_control(
+			'caroByheight',
+			[
+				'label' => esc_html__( 'Content Limit By', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => [
+					'' => esc_html__( 'Default', 'theplus' ),
+					'height' => esc_html__( 'Height', 'theplus' ),
+					'text-limit' => esc_html__( 'Text Limit', 'theplus' ),
+				],
+				'condition' => [
+					'tlContentFrom' => ['tlrepeater'],
+					'layout' => ['carousel']
+				],
+			]
+		);
+		$this->add_responsive_control(
+            'contentHei',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Content Height(px)', 'theplus'),
+				'size_units' => [ 'px'],
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'range' => [
+					'px' => [
+						'min'	=> 1,
+						'max'	=> 500,
+						'step' => 1,
+					],
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}} .testimonial-list .testimonial-list-content .entry-content' => 'height: {{SIZE}}{{UNIT}};overflow-y: auto; padding-right: 5px;',
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'grid'],
+							]
+						],
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'carousel'],
+								['name' => 'caroByheight', 'operator' => '===', 'value' => 'height']
+							]
+						],
+					]
+				],
+            ]
+        );
+		$this->add_responsive_control(
+            'titleHei',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Title Height(px)', 'theplus'),
+				'size_units' => [ 'px'],
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'range' => [
+					'px' => [
+						'min'	=> 1,
+						'max'	=> 500,
+						'step' => 1,
+					],
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}} .testimonial-list .testimonial-list-content .testimonial-author-title' => 'height: {{SIZE}}{{UNIT}};overflow-y: auto; padding-right: 5px;',
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'grid'],
+							]
+						],
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'carousel'],
+								['name' => 'caroByheight', 'operator' => '===', 'value' => 'height']
+							]
+						],
+					]
+				],
+            ]
+        );
+		$this->add_control(
+			'cntscrollOn',
+			[
+				'label' => esc_html__( 'Content Scroll', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'on-hover',
+				'options' => [
+					'on-hover' => esc_html__( 'On Hover', 'theplus' ),
+					'visible' => esc_html__( 'Visible', 'theplus' ),
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'grid'],
+							]
+						],
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'carousel'],
+								['name' => 'caroByheight', 'operator' => '===', 'value' => 'height']
+							]
+						],
+					]
+				],
+			]
+		);
+		$this->add_control(
+			'descByLimit',
+			[
+				'label' => esc_html__( 'Excerpt Limit', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => esc_html__( 'Default', 'theplus' ),
+					'letters' => esc_html__( 'By Letters', 'theplus' ),
+					'words' => esc_html__( 'By Words', 'theplus' ),
+				],
+				'condition' => [
+					'tlContentFrom' => ['tlrepeater'],
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'masonry'],
+							]
+						],
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'carousel'],
+								['name' => 'caroByheight', 'operator' => '===', 'value' => 'text-limit']
+							]
+						],
+					]
+				],
+			]
+		);
+		$this->add_control(
+			'descLimit',
+			[
+				'label' => esc_html__( 'Maximum Letters/Words', 'theplus' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 0,
+				'max' => 1000,
+				'step' => 1,
+				'default' => 30,
+				'condition' => [
+					'tlContentFrom' => ['tlrepeater'],
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'masonry'],
+								['name' => 'descByLimit', 'operator' => '!==', 'value' => 'default'],
+							]
+						],
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'carousel'],
+								['name' => 'caroByheight', 'operator' => '===', 'value' => 'text-limit'],
+								['name' => 'descByLimit', 'operator' => '!==', 'value' => 'default'],
+							]
+						],
+					]
+				],
+			]
+		);	
+		$this->add_control(
+			'titleByLimit',
+			[
+				'label' => esc_html__( 'Title Limit', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'default',
+				'options' => [
+					'default' => esc_html__( 'Default', 'theplus' ),
+					'letters' => esc_html__( 'By Letters', 'theplus' ),
+					'words' => esc_html__( 'By Words', 'theplus' ),
+				],
+				'condition' => [
+					'layout' => ['carousel'],
+					'tlContentFrom' => ['tlrepeater'],
+					'caroByheight' => ['text-limit']
+				],
+			]
+		);
+		$this->add_control(
+			'titleLimit',
+			[
+				'label' => esc_html__( 'Maximum Letters/Words', 'theplus' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 0,
+				'max' => 1000,
+				'step' => 1,
+				'default' => 30,
+				'condition' => [
+					'layout' => ['carousel'],
+					'tlContentFrom' => ['tlrepeater'],
+					'caroByheight' => ['text-limit'],
+					'titleByLimit!' => 'default',
+				],
+			]
+		);	
+		$this->add_control(
+			'redmorTxt',
+			[
+				'label' => esc_html__( 'Read More', 'theplus' ),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => ['active' => true,],
+				'separator' => 'before',
+				'default' => esc_html__( 'Read More', 'theplus' ),
+				'placeholder' => esc_html__( 'Enter Read More', 'theplus' ),
+				'condition' => [
+					'tlContentFrom' => ['tlrepeater'],
+					'layout' => ['masonry','carousel'],
+					'caroByheight' => ['text-limit'],
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+						'terms' => [
+								['name' => 'descByLimit', 'operator' => '!=', 'value' => 'default']
+							]
+						],
+						[
+						'terms' => [
+								['name' => 'titleByLimit', 'operator' => '!=', 'value' => 'default']
+							]
+						],
+					]
+				],
+			]
+		);
+		$this->add_control(
+			'redlesTxt',
+			[
+				'label' => esc_html__( 'Read Less', 'theplus' ),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => ['active' => true,],
+				'default' => esc_html__( 'Read Less', 'theplus' ),
+				'placeholder' => esc_html__( 'Enter Read Less', 'theplus' ),
+				'condition' => [
+					'tlContentFrom' => ['tlrepeater'],
+					'layout' => ['masonry','carousel'],
+					'caroByheight' => ['text-limit'],
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+						'terms' => [
+								['name' => 'descByLimit', 'operator' => '!=', 'value' => 'default']
+							]
+						],
+						[
+						'terms' => [
+								['name' => 'titleByLimit', 'operator' => '!=', 'value' => 'default']
+							]
+						],
+					]
 				],
 			]
 		);
@@ -512,6 +988,211 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 		$this->end_controls_tabs();		
 		$this->end_controls_section();
 		/*Content Background*/
+		/*Read More/Less*/
+		$this->start_controls_section(
+			'section_readML_style',
+			[
+				'label' => esc_html__('Read More/Less', 'theplus'),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'tlContentFrom' => ['tlrepeater'],
+				],
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'masonry'],
+								['name' => 'descByLimit', 'operator' => '!==', 'value' => 'default']
+							]
+						],
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'carousel'],
+								['name' => 'titleByLimit', 'operator' => '!==', 'value' => 'default']
+							]
+						],
+					]
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'readTypo',
+				'label' => esc_html__( 'Typography', 'theplus' ),
+				'scheme' => Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .testimonial-list .testimonial-content-text .entry-content a.testi-readbtn,{{WRAPPER}} .testimonial-list .testimonial-content-text .entry-content a.testi-readbtn',
+			]
+		);
+		$this->start_controls_tabs( 'tabs_readML_style' );
+		$this->start_controls_tab(
+			'tab_readML_normal',
+			[
+				'label' => esc_html__( 'Normal', 'theplus' ),				
+			]
+		);
+		$this->add_control(
+			'readColor',
+			[
+				'label' => esc_html__( 'Color', 'theplus' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .testimonial-list .testimonial-list-content .entry-content a.testi-readbtn,{{WRAPPER}} .testimonial-list .testimonial-list-content .entry-content a.testi-readbtn' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'tab_readML_hover',
+			[
+				'label' => esc_html__( 'Hover', 'theplus' ),
+			]
+		);
+		$this->add_control(
+			'readmhvrColor',
+			[
+				'label' => esc_html__( 'Color', 'theplus' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .testimonial-list .testimonial-list-content:hover .entry-content a.testi-readbtn,{{WRAPPER}} .testimonial-list .testimonial-list-content:hover .entry-content a.testi-readbtn' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+		$this->end_controls_section();
+		/*Read More/Less*/
+		/*Scroll Bar*/
+		$this->start_controls_section(
+			'scroll_testi_section',
+			[
+				'label' => esc_html__( 'Scroll Bar', 'theplus' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'grid'],
+							]
+						],
+						[
+						'terms' => [
+								['name' => 'layout', 'operator' => '===', 'value' => 'carousel'],
+								['name' => 'caroByheight', 'operator' => '===', 'value' => 'height']
+							]
+						],
+					]
+				],
+			]
+		);
+		$this->start_controls_tabs( 'scroll_Tl_style' );
+		$this->start_controls_tab(
+			'scrollTl_Bar',
+			[
+				'label' => esc_html__( 'Scrollbar', 'theplus' ),
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'  => 'tesSclBg',
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .testimonial-list-content .entry-content::-webkit-scrollbar,{{WRAPPER}} .testimonial-list-content .testimonial-author-title::-webkit-scrollbar',
+			]
+		);
+		$this->add_responsive_control(
+			'tesSclWidth',
+			[
+				'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Width', 'theplus'),
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 100,
+						'step' => 1,
+					],
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}} .testimonial-list-content .entry-content::-webkit-scrollbar,{{WRAPPER}} .testimonial-list-content .testimonial-author-title::-webkit-scrollbar' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'scrollTl_Tmb',
+			[
+				'label' => esc_html__( 'Thumb', 'theplus' ),
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'tesThumbBg',
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .testimonial-list-content .entry-content::-webkit-scrollbar-thumb,{{WRAPPER}} .testimonial-list-content .testimonial-author-title::-webkit-scrollbar-thumb',
+			]
+		);
+		$this->add_responsive_control(
+			'tesThumbBrs',
+			[
+				'label' => esc_html__( 'Border Radius', 'theplus' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .testimonial-list-content .entry-content::-webkit-scrollbar-thumb,{{WRAPPER}} .testimonial-list-content .testimonial-author-title::-webkit-scrollbar-thumb' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',				
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'tesThumbBsw',
+				'selector' => '{{WRAPPER}} .testimonial-list-content .entry-content::-webkit-scrollbar-thumb,{{WRAPPER}} .testimonial-list-content .testimonial-author-title::-webkit-scrollbar-thumb',
+			]
+		);
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'scrollTl_Trk',
+			[
+				'label' => esc_html__( 'Track', 'theplus' ),
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'tesTrackBg',
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .testimonial-list-content .entry-content::-webkit-scrollbar-track,{{WRAPPER}} .testimonial-list-content .testimonial-author-title::-webkit-scrollbar-track',
+			]
+		);
+		$this->add_responsive_control(
+			'tesTrackBRs',
+			[
+				'label' => esc_html__( 'Border Radius', 'theplus' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .testimonial-list-content .entry-content::-webkit-scrollbar-track,{{WRAPPER}} .testimonial-list-content .testimonial-author-title::-webkit-scrollbar-track' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',				
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'tesTrackBsw',
+				'selector' => '{{WRAPPER}} .testimonial-list-content .entry-content::-webkit-scrollbar-track,{{WRAPPER}} .testimonial-list-content .testimonial-author-title::-webkit-scrollbar-track',
+			]
+		);
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+		$this->end_controls_section();
+		/*Scroll Bar*/
 		/*Post Featured Image*/
 		$this->start_controls_section(
             'section_post_image_style',
@@ -543,6 +1224,9 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
             [
                 'label' => esc_html__('Carousel Options', 'tpebl'),
                 'tab' => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'layout' => ['carousel']
+				],
             ]
         );
 		$this->add_control(
@@ -876,6 +1560,30 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 				],
 			]
 		);
+		$this->add_control('arrow_y_space',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Position Y', 'theplus'),
+				'size_units' => ['px','%'],
+				'range' => [
+					'px' => [
+						'min' => -100,
+						'max' => 500,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .slick-nav' => 'top: {{SIZE}}{{UNIT}};',					
+				],
+				'condition' => [
+					'slider_arrows' => 'yes',
+				],
+            ]
+        );
 		$this->add_control(
 			'slider_center_mode',
 			[
@@ -1117,18 +1825,31 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 		$this->end_controls_section();
 	}
 	
-	 protected function render() {
-
+	protected function render() {
         $settings = $this->get_settings_for_display();
 		$query = $this->get_query_args();
 		$post_name=l_theplus_testimonial_post_name();
 		$taxonomy_name=l_theplus_testimonial_post_category();
 		
 		$style=$settings["style"];
+		$layout = !empty($settings['layout']) ? $settings['layout'] : 'carousel';
 		$post_title_tag=$settings["post_title_tag"];
 		$post_category=$settings['post_category'];
+		$tlContentFrom = !empty($settings['tlContentFrom']) ? $settings['tlContentFrom'] : 'tlcontent';
+		$testiAllList = !empty($settings['testiAllList']) ? $settings['testiAllList'] : [];
+
+		$content_alignment_4='content-left';
 		
-		$content_alignment_4='content-left';		
+		$descByLimit = !empty($settings['descByLimit']) ? $settings['descByLimit'] : 'default';
+		$descLimit = !empty($settings['descLimit']) ? $settings['descLimit'] : 30 ;
+		$cntscrollOn = !empty($settings['cntscrollOn']) ? $settings['cntscrollOn'] : 'on-hover';
+		$caroByheight = !empty($settings['caroByheight']) ? $settings['caroByheight'] : '';
+
+		$titleByLimit = !empty($settings['titleByLimit']) ? $settings['titleByLimit'] : 'default';
+		$titleLimit = !empty($settings['titleLimit']) ? $settings['titleLimit'] : 30 ;
+
+		$redmorTxt = !empty($settings['redmorTxt']) ? $settings['redmorTxt'] : '';
+		$redlesTxt = !empty($settings['redlesTxt']) ? $settings['redlesTxt'] : '';
 		
 		//animation load
 		$animation_effects=$settings["animation_effects"];
@@ -1153,11 +1874,47 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 			}
 		}
 
+		//columns
+		$desktop_class=$tablet_class=$mobile_class='';
+		if($layout!='carousel'){
+			$desktop_class='tp-col-lg-'.esc_attr($settings['desktop_column']);
+			$tablet_class='tp-col-md-'.esc_attr($settings['tablet_column']);
+			$mobile_class='tp-col-sm-'.esc_attr($settings['mobile_column']);
+			$mobile_class .=' tp-col-'.esc_attr($settings['mobile_column']);
+		}
+
+		//layout
+		$layout_attr=$data_class='';
+		if($layout!=''){			
+			if($layout!='grid'){
+				$data_class .=l_theplus_get_layout_list_class($layout);
+				$layout_attr .=l_theplus_get_layout_list_attr($layout);
+			}else{
+				$data_class .=' list-isotope';
+			}
+		}else{
+				$data_class .=' list-isotope';
+		}
 
 		$data_class='';
-		
-		$data_class .=' list-carousel-slick ';
+		if($layout == 'carousel'){
+			$data_class .=' list-carousel-slick ';
+		}
 		$data_class .=' testimonial-'.$style;
+
+
+		$readAttr = [];
+		$attr = '';
+		if($layout == 'masonry' || ( $layout == 'carousel' && $caroByheight == 'text-limit' )){
+			
+			$readAttr['readMore'] = $redmorTxt;
+			$readAttr['readLess'] = $redlesTxt;
+			
+			$readAttr = htmlspecialchars(json_encode($readAttr), ENT_QUOTES, 'UTF-8');
+
+			$attr = 'data-readData = \'' .$readAttr. '\'';
+		}
+
 		
 		$output=$data_attr='';
 				
@@ -1166,38 +1923,73 @@ class L_ThePlus_Testimonial_ListOut extends Widget_Base {
 		
 		$data_attr .=' data-id="'.esc_attr($uid).'"';
 		$data_attr .=' data-style="'.esc_attr($style).'"';
-		$data_attr .=$this->get_carousel_options();
-		
-		if ( ! $query->have_posts() ) {
-			$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "Posts not found", "tpebl" ).'</h3>';
-		}else{
-			if($style=='style-1' || $style=='style-2' || $style=='style-4'){
-				$output .= '<div id="theplus-testimonial-post-list" class="testimonial-list '.esc_attr($uid).' '.esc_attr($data_class).' '.esc_attr($animated_class).'" '.$data_attr.' '.$animation_attr.' data-enable-isotope="1">';
-				
-				
-					$output .= '<div class="tp-row post-inner-loop '.esc_attr($uid).' '.esc_attr($content_alignment_4).'">';
-					while ( $query->have_posts() ) {
-					
-						$query->the_post();
-						$post = $query->post;
-						
-						//grid item loop
-						$output .= '<div class="grid-item">';				
-						if(!empty($style)){
-							ob_start();
-							include L_THEPLUS_PATH. 'includes/testimonial/testimonial-'.esc_attr($style).'.php'; 
-							$output .= ob_get_contents();
-							ob_end_clean();
+		if($layout=='carousel'){
+		   $data_attr .=$this->get_carousel_options();
+		}
+
+		if(!empty($tlContentFrom) && $tlContentFrom == 'tlrepeater'){
+			if(!empty($testiAllList)) {
+				$index=1;
+				if($style=='style-1' || $style=='style-2' || $style=='style-4'){
+					$output .= '<div id="theplus-testimonial-post-list" class="testimonial-list '.esc_attr($uid).' '.esc_attr($data_class).' '.esc_attr($animated_class).'" '.$layout_attr.' '.$data_attr.' '.$animation_attr.' data-enable-isotope="1">';
+						$output .= '<div class="tp-row post-inner-loop '.esc_attr($uid).' '.esc_attr($content_alignment_4).'">';
+						foreach($testiAllList as $item) {
+							$testiAuthor = !empty($item['testiAuthor']) ? $item['testiAuthor'] : '';
+							$testiTitle = !empty($item['testiTitle']) ? $item['testiTitle'] : '';
+							$testiLabel = !empty($item['testiLabel']) ? $item['testiLabel'] : '';
+							$testiDesign = !empty($item['testiDesign']) ? $item['testiDesign'] : '';
+							$testiImage = !empty($item['testiImage']['url']) ? $item['testiImage']['url'] : '';
+							$testiImageId = !empty($item['testiImage']['id']) ? $item['testiImage']['id'] : '';
+							$testiLogo = !empty($item['testiLogo']['url']) ? $item['testiLogo']['url'] : '';
+							//grid item loop
+							$output .= '<div class="grid-item '.$desktop_class.' '.$tablet_class.' '.$mobile_class.'">';
+								if(!empty($style)){
+									ob_start();
+									include L_THEPLUS_PATH. 'includes/testimonial/testimonial-'.esc_attr($style).'.php'; 
+									$output .= ob_get_contents();
+									ob_end_clean();
+								}
+							$output .='</div>';
+							$index++;
 						}
 						$output .='</div>';
-						
-						$i++;
-					}
 					$output .='</div>';
-				
-				$output .='</div>';
+				}else{
+					$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "This Style Premium Version", "tpebl" ).'</h3>';
+				}
+			}
+		}else{
+			if ( ! $query->have_posts() ) {
+				$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "Posts not found", "tpebl" ).'</h3>';
 			}else{
-				$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "This Style Premium Version", "tpebl" ).'</h3>';
+				if($style=='style-1' || $style=='style-2' || $style=='style-4'){
+					$output .= '<div id="theplus-testimonial-post-list" class="testimonial-list '.esc_attr($uid).' '.esc_attr($data_class).' '.esc_attr($animated_class).'" '.$layout_attr.' '.$data_attr.' '.$animation_attr.' data-enable-isotope="1">';
+					
+					
+						$output .= '<div class="tp-row post-inner-loop '.esc_attr($uid).' '.esc_attr($content_alignment_4).'">';
+						while ( $query->have_posts() ) {
+						
+							$query->the_post();
+							$post = $query->post;
+							
+							//grid item loop
+							$output .= '<div class="grid-item '.$desktop_class.' '.$tablet_class.' '.$mobile_class.'">';				
+							if(!empty($style)){
+								ob_start();
+								include L_THEPLUS_PATH. 'includes/testimonial/testimonial-'.esc_attr($style).'.php'; 
+								$output .= ob_get_contents();
+								ob_end_clean();
+							}
+							$output .='</div>';
+							
+							$i++;
+						}
+						$output .='</div>';
+					
+					$output .='</div>';
+				}else{
+					$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "This Style Premium Version", "tpebl" ).'</h3>';
+				}
 			}
 		}
 		

@@ -105,6 +105,73 @@ class L_ThePlus_Clients_ListOut extends Widget_Base {
             ]
         );
 		$this->add_control(
+			'clientContentFrom',
+			[
+				'label' => esc_html__( 'Select Source', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'clcontent',
+				'options' => [
+					'clcontent' => esc_html__( 'Post Type', 'theplus' ),
+					'clrepeater' => esc_html__( 'Repeater', 'theplus' ),
+				],
+			]
+		);
+		$repeater = new \Elementor\Repeater();
+		$repeater->add_control(
+			'clientLinkMaskLabel',
+			[
+				'label' => esc_html__( 'Client Name', 'theplus' ),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => ['active' => true,],
+				'default' => '',
+				'placeholder' => esc_html__( 'Enter Client Name', 'theplus' ),
+			]
+		);
+		$repeater->add_control(
+			'clientlink',
+			[
+				'label' => esc_html__( 'Client URL', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'theplus' ),
+				'show_external' => true,
+				'default' => ['url' => '#',],
+				'dynamic' => ['active'   => true,],
+			]
+		);
+		$repeater->add_control(
+			'clientImage',[
+				'label' => esc_html__( 'Client Logo', 'theplus' ),
+				'type' => Controls_Manager::MEDIA,
+				'dynamic' => ['active'   => true,],
+			]
+		);
+		$this->add_control(
+			'clientLinkMaskList',
+			[
+				'label' => esc_html__( 'Manage Clients', 'theplus' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),			
+				'default' => [
+					[
+						'clientLinkMaskLabel' => esc_html__( 'SoftPro Solutions', 'theplus' ),						
+					],
+					[						
+						'clientLinkMaskLabel' => esc_html__( 'TechZone Systems', 'theplus' ),	
+					],
+					[						
+						'clientLinkMaskLabel' => esc_html__( 'DataPro Technologies', 'theplus' ),
+					],
+					[						
+						'clientLinkMaskLabel' => esc_html__( 'CodeWorks Inc.', 'theplus' ),
+					],
+				],
+				'title_field' => '{{{ clientLinkMaskLabel }}}',
+				'condition' => [
+					'clientContentFrom' => 'clrepeater',
+				],
+			]
+		);
+		$this->add_control(
 			'plus_pro_layout_options',
 			[
 				'label' => esc_html__( 'Unlock more possibilities', 'tpebl' ),
@@ -123,6 +190,9 @@ class L_ThePlus_Clients_ListOut extends Widget_Base {
 			[
 				'label' => esc_html__( 'Content Source', 'tpebl' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
+				'condition' => [
+					'clientContentFrom!' => 'clrepeater',
+				],
 			]
 		);
 		$this->add_control(
@@ -365,7 +435,8 @@ class L_ThePlus_Clients_ListOut extends Widget_Base {
 				'options' => l_theplus_post_loading_option(),
 				'separator' => 'before',
 				'condition' => [
-					'layout!' => ['carousel']
+					'layout!' => ['carousel'],
+					'clientContentFrom!' => 'clrepeater',
 				],
 			]
 		);
@@ -378,7 +449,8 @@ class L_ThePlus_Clients_ListOut extends Widget_Base {
 				'description' => theplus_pro_ver_notice(),
 				'classes' => 'plus-pro-version',
 				'condition'    => [
-					'layout!' => ['carousel']
+					'layout!' => ['carousel'],
+					'clientContentFrom!' => 'clrepeater',
 				],
 			]
 		);
@@ -970,6 +1042,8 @@ class L_ThePlus_Clients_ListOut extends Widget_Base {
 		$post_category=$settings['post_category'];
 		
 		$display_post_title=$settings['display_post_title'];
+		$clientContentFrom = !empty($settings['clientContentFrom']) ? $settings['clientContentFrom'] : 'clcontent';
+		$clientLinkMaskList = !empty($settings['clientLinkMaskList']) ? $settings['clientLinkMaskList'] : [];
 		
 		//animation load
 		$animation_effects=$settings["animation_effects"];
@@ -1039,33 +1113,63 @@ class L_ThePlus_Clients_ListOut extends Widget_Base {
 		if($layout!='carousel'){
 			$d_flex='d-flex flex-row';
 		}
-		if ( ! $query->have_posts() ) {
-			$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "Posts not found", "tpebl" ).'</h3>';
+		if(!empty($clientContentFrom) && $clientContentFrom == 'clrepeater'){
+			if(!empty($clientLinkMaskList)) {
+				if($layout!='carousel'){
+						$index=1;
+						$output .= '<div id="pt-plus-clients-post-list" class="clients-list '.esc_attr($uid).' '.esc_attr($data_class).' '.$animated_class.'" '.$layout_attr.' '.$data_attr.' '.$animation_attr.' data-enable-isotope="1">';
+							$output .= '<div class="tp-row post-inner-loop '.esc_attr($layout_style).'  '.esc_attr($d_flex).' flex-wrap tp-align-items-center '.esc_attr($uid).'">';
+								foreach($clientLinkMaskList as $item) {
+									$clientLinkMaskLabel = !empty($item['clientLinkMaskLabel']) ? $item['clientLinkMaskLabel'] : '';
+									$clientlink = !empty($item['clientlink']['url']) ? $item['clientlink']['url'] : '';
+									$clientImage = !empty($item['clientImage']['url']) ? $item['clientImage']['url'] : '';
+									$clientImageId = !empty($item['clientImage']['id']) ? $item['clientImage']['id'] : '';
+									//grid item loop
+									$output .= '<div class="grid-item flex-column flex-wrap '.$desktop_class.' '.$tablet_class.' '.$mobile_class.' '.$animated_columns.'">';
+										if(!empty($style)){
+											ob_start();
+											include L_THEPLUS_PATH. 'includes/client/client-'.esc_attr($style).'.php'; 
+											$output .= ob_get_contents();
+											ob_end_clean();
+										}
+									$output .='</div>';
+									$index++;
+								}
+							$output .='</div>';
+						$output .='</div>';
+				}else{
+					$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "Carousel Layout Premium Version.", "tpebl" ).'</h3>';
+				}
+			}
 		}else{
-			if($layout!='carousel'){
-				$output .= '<div id="pt-plus-clients-post-list" class="clients-list '.esc_attr($uid).' '.esc_attr($data_class).' '.$animated_class.'" '.$layout_attr.' '.$data_attr.' '.$animation_attr.' data-enable-isotope="1">';
+			if ( ! $query->have_posts() ) {
+				$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "Posts not found", "tpebl" ).'</h3>';
+			}else{
+				if($layout!='carousel'){
+					$output .= '<div id="pt-plus-clients-post-list" class="clients-list '.esc_attr($uid).' '.esc_attr($data_class).' '.$animated_class.'" '.$layout_attr.' '.$data_attr.' '.$animation_attr.' data-enable-isotope="1">';
+							
+					$output .= '<div class="tp-row post-inner-loop '.esc_attr($layout_style).'  '.esc_attr($d_flex).' flex-wrap tp-align-items-center '.esc_attr($uid).'">';
+					while ( $query->have_posts() ) {
+					
+						$query->the_post();
+						$post = $query->post;				
+					
+						//grid item loop
+						$output .= '<div class="grid-item flex-column flex-wrap '.$desktop_class.' '.$tablet_class.' '.$mobile_class.' '.$animated_columns.'">';				
+						if(!empty($style)){
+							ob_start();
+							include L_THEPLUS_PATH. 'includes/client/client-'.esc_attr($style).'.php'; 
+							$output .= ob_get_contents();
+							ob_end_clean();
+						}
+						$output .='</div>';
 						
-				$output .= '<div class="tp-row post-inner-loop '.esc_attr($layout_style).'  '.esc_attr($d_flex).' flex-wrap tp-align-items-center '.esc_attr($uid).'">';
-				while ( $query->have_posts() ) {
-				
-					$query->the_post();
-					$post = $query->post;				
-				
-					//grid item loop
-					$output .= '<div class="grid-item flex-column flex-wrap '.$desktop_class.' '.$tablet_class.' '.$mobile_class.' '.$animated_columns.'">';				
-					if(!empty($style)){
-						ob_start();
-						include L_THEPLUS_PATH. 'includes/client/client-'.esc_attr($style).'.php'; 
-						$output .= ob_get_contents();
-						ob_end_clean();
 					}
 					$output .='</div>';
-					
+					$output .='</div>';
+				}else{
+					$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "Carousel Layout Premium Version.", "tpebl" ).'</h3>';
 				}
-				$output .='</div>';
-				$output .='</div>';
-			}else{
-				$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "Carousel Layout Premium Version.", "tpebl" ).'</h3>';
 			}
 		}
 				

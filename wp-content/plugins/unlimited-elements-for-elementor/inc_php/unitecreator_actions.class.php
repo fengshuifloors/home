@@ -253,6 +253,7 @@ class UniteCreatorActions{
 					HelperUC::ajaxResponseData($response);
 				break;
 				case "get_addon_output_data":
+					
 					$response = $addons->getAddonOutputData($data);
 					
 					HelperUC::ajaxResponseData($response);

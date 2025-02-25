@@ -88,7 +88,7 @@ use PremiumAddonsPro\Includes\White_Label\Helper;
 			<td><?php esc_html_e( 'Server Info', 'premium-addons-for-elementor' ); ?>:</td>
 			<td>
 			<?php
-					$server_sw = isset( $_SERVER['SERVER_SOFTWARE'] ) ? filter_var( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ), FILTER_SANITIZE_STRING ) : '';
+					$server_sw = isset( $_SERVER['SERVER_SOFTWARE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) : '';
 					echo esc_html( $server_sw );
 			?>
 			</td>

@@ -84,7 +84,7 @@
 
             $window.on("resize.premiumVerticalScroll orientationchange.premiumVerticalScroll", self.debounce(50, self.onResize));
 
-            $window.on("load", function () {
+            $(document).ready(function () {
 
                 self.setSectionsData();
 
@@ -358,8 +358,8 @@
             touchEndY = touchEvents.y;
 
             var $target = $(e.target),
-                sectionSelector = checkTemps ? ".premium-vscroll-temp" : ".elementor-top-section",
-                $section = $target.closest(sectionSelector),
+                sectionSelector = checkTemps ? ".premium-vscroll-temp" : ".elementor-top-section, .e-con",
+                $section = $target.parents(sectionSelector).length > 1 ? $target.parents(sectionSelector).last() : $target.closest(sectionSelector),
                 sectionId = $section.attr("id"),
                 newSectionId = false,
                 prevSectionId = false,
@@ -369,11 +369,11 @@
 
             $(".premium-vscroll-tooltip").hide();
 
-            if (beforeCheck()) {
+            if (self.beforeCheck()) {
                 sectionId = self.getFirstSection(sections);
             }
 
-            if (afterCheck()) {
+            if (self.afterCheck()) {
                 sectionId = self.getLastSection(sections);
             }
 
@@ -720,11 +720,11 @@
             }
         };
 
-        function getFirstSection(object) {
+        self.getFirstSection = function (object) {
             return Object.keys(object)[0];
         }
 
-        function getLastSection(object) {
+        self.getLastSection = function (object) {
             return Object.keys(object)[Object.keys(object).length - 1];
         }
 
@@ -741,8 +741,8 @@
         //Used to unset position CSS property for vertical scroll sections becuase it causes position issue for the content below the widget.
         function parallaxLastSection() {
             var $target = $(event.target),
-                sectionSelector = checkTemps ? ".premium-vscroll-temp" : ".elementor-top-section",
-                $section = $target.closest(sectionSelector),
+                sectionSelector = checkTemps ? ".premium-vscroll-temp" : ".elementor-top-section, .e-con",
+                $section = $target.parents(sectionSelector).length > 1 ? $target.parents(sectionSelector).last() : $target.closest(sectionSelector),
                 sectionId = $section.attr("id"),
                 $lastselector = checkTemps ? $instance : $("#" + sectionId),
                 animationType = $instance.find('.premium-vscroll-sections-wrap').data('animation');
@@ -767,8 +767,8 @@
             }
 
             var $target = $(event.target),
-                sectionSelector = checkTemps ? ".premium-vscroll-temp" : ".elementor-top-section",
-                $section = $target.closest(sectionSelector),
+                sectionSelector = checkTemps ? ".premium-vscroll-temp" : ".elementor-top-section, .e-con",
+                $section = $target.parents(sectionSelector).length > 1 ? $target.parents(sectionSelector).last() : $target.closest(sectionSelector),
                 sectionId = $section.attr("id"),
                 $vTarget = self.visible($instance, true, false),
                 newSectionId = false,
@@ -779,6 +779,15 @@
                 direction = 0 > delta ? "down" : "up",
                 windowScrollTop = $window.scrollTop(),
                 dotIndex = $(".premium-vscroll-dot-item.active").index();
+
+            if ($target.closest('.premium_maps_map_height').length > 0) {
+
+                var $closestMapSettings = $target.closest('.premium_maps_map_height').data('settings');
+
+                if ($closestMapSettings.scrollwheel)
+                    return;
+            }
+
 
             var curTime = new Date().getTime();
 
@@ -817,12 +826,12 @@
                 }
             }
 
-            if (beforeCheck()) {
-                sectionId = getFirstSection(sections);
+            if (self.beforeCheck()) {
+                sectionId = self.getFirstSection(sections);
             }
 
-            if (afterCheck()) {
-                sectionId = getLastSection(sections);
+            if (self.afterCheck()) {
+                sectionId = self.getLastSection(sections);
             }
 
             if (sectionId && sections.hasOwnProperty(sectionId)) {
@@ -896,9 +905,9 @@
             }
         };
 
-        function beforeCheck() {
+        self.beforeCheck = function () {
             var windowScrollTop = $window.scrollTop(),
-                firstSectionId = getFirstSection(sections),
+                firstSectionId = self.getFirstSection(sections),
                 offset = sections[firstSectionId].offset,
                 topBorder = windowScrollTop + $window.outerHeight(),
                 visible = self.visible($instance, true, false);
@@ -911,9 +920,9 @@
             return false;
         }
 
-        function afterCheck() {
+        self.afterCheck = function () {
             var windowScrollTop = $window.scrollTop(),
-                lastSectionId = getLastSection(sections),
+                lastSectionId = self.getLastSection(sections),
                 bottomBorder =
                     sections[lastSectionId].offset +
                     sections[lastSectionId].height,

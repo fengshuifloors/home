@@ -28,6 +28,10 @@ class ElementsKit_Widget_Heading extends Widget_Base {
         return Handler::get_categories();
     }
 
+    public function get_keywords() {
+        return Handler::get_keywords();
+    }
+
     public function get_help_url() {
         return 'https://wpmet.com/doc/widget-documentation/';
     }
@@ -652,7 +656,7 @@ class ElementsKit_Widget_Heading extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(), [
 			'name'		 => 'ekit_heading_focused_title_typography',
-			'selector'	 => '{{WRAPPER}} .elementskit-section-title-wraper .elementskit-section-title > span',
+			'selector'	 => '{{WRAPPER}} .elementskit-section-title-wraper .elementskit-section-title span:last-child, {{WRAPPER}} .elementskit-section-title-wraper .elementskit-section-title > span',
 			]
 		);
 
@@ -661,6 +665,7 @@ class ElementsKit_Widget_Heading extends Widget_Base {
 				'label'		 =>esc_html__( 'Text decoration color', 'elementskit-lite' ),
 				'type'		 => Controls_Manager::COLOR,
 				'selectors'	 => [
+					'{{WRAPPER}} .elementskit-section-title-wraper .elementskit-section-title span:last-child' => 'text-decoration-color: {{VALUE}};',
 					'{{WRAPPER}} .elementskit-section-title-wraper .elementskit-section-title > span' => 'text-decoration-color: {{VALUE}};',
 				],
 			]
@@ -705,7 +710,6 @@ class ElementsKit_Widget_Heading extends Widget_Base {
             array(
 				'name'     => 'ekit_heading_focused_title_secondary_bg',
 				'label'		 => esc_html__( 'Focused Title Secondary BG', 'elementskit-lite' ),
-                'default' => '',
 				'selector' => '{{WRAPPER}} .elementskit-section-title-wraper .elementskit-section-title > span',
 				'condition' => [
 					'ekit_heading_use_focused_title_bg' => 'yes',
@@ -749,7 +753,6 @@ class ElementsKit_Widget_Heading extends Widget_Base {
             array(
 				'name'     => 'ekit_heading_title_secondary_bg',
 				'label'		 => esc_html__( 'Focused Title Secondary BG', 'elementskit-lite' ),
-                'default' => '',
 				'selector' => '{{WRAPPER}} .elementskit-section-title-wraper .elementskit-section-title.text_fill > span',
 				'condition' => [
 					'ekit_heading_use_title_text_fill' => 'yes',
@@ -837,7 +840,6 @@ class ElementsKit_Widget_Heading extends Widget_Base {
             array(
 				'name'     => 'ekit_heading_sub_title_secondary_bg',
 				'label'		 => esc_html__( 'Sub Title', 'elementskit-lite' ),
-                'default' => '',
 				'selector' => '{{WRAPPER}} .elementskit-section-title-wraper .elementskit-section-subtitle',
 				'condition' => [
 					'ekit_heading_use_sub_title_text_fill' => 'yes',
@@ -1393,14 +1395,20 @@ class ElementsKit_Widget_Heading extends Widget_Base {
 			if(!empty($ekit_heading_title)):
 				if ( ! empty( $ekit_heading_link['url'] ) ) {
 					$this->add_link_attributes( 'ekit_heading_link', $ekit_heading_link );
-
-					echo('<a '.$this->get_render_attribute_string( 'ekit_heading_link' ).'> '. '<'.esc_attr($title_tag).' class="ekit-heading--title elementskit-section-title '.esc_attr($title_text_fill.''.$title_border).'">
-					'.wp_kses($ekit_title, \ElementsKit_Lite\Utils::get_kses_array()).'
-					</'.esc_attr($title_tag).'>' .'</a>');
-				}else {
-					echo ('<'.esc_attr($title_tag).' class="ekit-heading--title elementskit-section-title '.esc_attr($title_text_fill.''.$title_border).'">
-					'.wp_kses($ekit_title, \ElementsKit_Lite\Utils::get_kses_array()).'
-					</'.esc_attr($title_tag).'>');
+					echo sprintf(
+						'<a %1$s><%2$s class="ekit-heading--title elementskit-section-title %3$s">%4$s</%2$s></a>',
+						$this->get_render_attribute_string('ekit_heading_link'), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped by elementor
+						esc_attr($title_tag),
+						esc_attr($title_text_fill.''.$title_border),
+						wp_kses($ekit_title, \ElementsKit_Lite\Utils::get_kses_array())
+					);
+				} else {
+					echo sprintf(
+						'<%1$s class="ekit-heading--title elementskit-section-title %2$s">%3$s</%1$s>',
+						esc_attr($title_tag),
+						esc_attr($title_text_fill.''.$title_border),
+						wp_kses($ekit_title, \ElementsKit_Lite\Utils::get_kses_array())
+					);
 				}
 			endif;
 

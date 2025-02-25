@@ -280,7 +280,7 @@ class Premium_Progressbar extends Widget_Base {
 		$this->add_control(
 			'premium_progressbar_left_label',
 			array(
-				'label'       => __( 'Title', 'premium-addons-for-elementor' ),
+				'label'       => __( 'Left Label', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
 				'dynamic'     => array( 'active' => true ),
 				'default'     => __( 'My Skill', 'premium-addons-for-elementor' ),
@@ -309,7 +309,7 @@ class Premium_Progressbar extends Widget_Base {
 		$this->add_control(
 			'premium_progressbar_right_label',
 			array(
-				'label'       => __( 'Percentage', 'premium-addons-for-elementor' ),
+				'label'       => __( 'Right Label', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
 				'dynamic'     => array( 'active' => true ),
 				'default'     => __( '50%', 'premium-addons-for-elementor' ),

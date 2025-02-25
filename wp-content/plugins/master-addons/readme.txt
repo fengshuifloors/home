@@ -1,25 +1,26 @@
-=== Master Elementor Addons  - Image Hover Effect, Restrict Content, Header Footer Builder, Custom CSS, Mega Menu, Comment Form Builder, Custom Breakpoints, Display Tags ===
+=== Master Addons for Elementor ===
 Contributors: jwthemeltd, litonice13, masteraddons, stalukder03
 Tags: elementor, elementor addon, elementor widget, clickable column, essential widget, custom css elements, after before image comparison, image hover effects, header & footer builder, template import, elementor addons, elementor extensions,  elementor modules, elementor templates, comment form builder, mega menu, header footer builder, elements, page builder addons,addons, jewletheme, masteraddons
 Requires at least: 4.0
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 5.3
-Stable tag: 1.9.7
+Stable tag: 2.0.1
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Master Addons comes with Image Hover Effect, Restrict Content, Header Footer Builder, Custom CSS, Mega Menu, Comment Form Builder, Custom Breakpoints, Display Tags and many more.
 
 
+
 == Description ==
 
-[Master Addons for Elementor](https://master-addons.com/) provides the most comprehensive Elements & Extensions for Elementor with a user-friendly interface. It is packed with 50+ Elementor Elements & 20+ Elementor Extension.
+[Master Addons for Elementor](https://master-addons.com/) provides the most comprehensive Elements & Extensions with a user-friendly interface. It is packed with 50+ Elementor Elements & 20+ Extension.
 
-Master Elementor Addons has amazing elements and extensions that will help you to create any type of landing page. Maximum Elementor Elements are highly customizable - you can customize margin, padding, typography, border, background color, hover effects, and many more.
+Master Addons has amazing elements and extensions that will help you to create any type of landing page. Maximum Elementor Elements are highly customizable - you can customize margin, padding, typography, border, background color, hover effects, and many more.
 
-Let me mention some necessary Elementor elements: navigation menu, carousel, blog, team member, toggle content, image hover effects, and image hotspot.
+Let me mention some necessary elements: navigation menu, carousel, blog, team member, toggle content, image hover effects, and image hotspot.
 
-Elementor Display Condition, Elementor Floating Effect, Elementor Custom CSS, Elementor Tooltip, Elementor Position, and more are Elementor Extensions.
+On the other hand Display Condition, Floating Effect, Custom CSS, Tooltip, Position, and more are Elementor Extensions.
 
 == USEFUL LINKS ==
 
@@ -41,97 +42,97 @@ To use Master Addons you will have to activate Elementor plugin in your WordPres
 
 Here is the Download link for [Elementor](https://wordpress.org/plugins/elementor/) WordPress Plugin.
 
-There are 10+ Pro Elementor Elements, 8 Pro Elementor Extensions & a lots of pro feature available to unlock 100% customization. **All Star marked Elements, Extensions & features are available in the pro version.** Without further delay let’s dive into the Master Addons For Elementor Elements and Extensions list.
+There are 10+ Pro Elements, 8 Pro Extensions & a lots of pro feature available to unlock 100% customization. **All Star marked Elements, Extensions & features are available in the pro version.** Without further delay let’s dive into the Master Addons Elements and Extensions list.
 
-== Elementor Content Element ==
-1. [**Elementor Animated Headlines**](https://master-addons.com/demos/animated-headline/)
-2. [**Elementor Dual Heading**](https://master-addons.com/demos/dual-heading/)
-3. [**Elementor Gradient Headline**](https://master-addons.com/demos/gradient-headline/)
-4. [**Elementor Advanced Accordion**](https://master-addons.com/demos/advanced-accordion/)
-5. [**Elementor Advanced Tabs**](https://master-addons.com/demos/tabs/)
-6. [**Elementor Team Member**](https://master-addons.com/demos/team-member/)
-7. [**Elementor Team Slider**](https://master-addons.com/demos/team-carousel/)
-8. [**Elementor Flipbox**](https://master-addons.com/demos/flipbox/)
-9. [**Elementor Infobox**](https://master-addons.com/demos/infobox/)
-10. [**Elementor Blog**](https://master-addons.com/demos/blog-element/)
-11. [⭐ **Elementor News Ticker**](https://master-addons.com/demos/news-ticker/)
-12. [**Elementor Tooltip**](https://master-addons.com/demos/tooltip/)
-13. [**Elementor Dynamic Table**](https://master-addons.com/demos/dynamic-table/)
-14. [**Elementor Progress Bar**](https://master-addons.com/demos/progress-bar/)
-15. [**Elementor Progress Bars**](https://master-addons.com/demos/multiple-progress-bars/)
+== Content Element ==
+1. [**Animated Headlines**](https://master-addons.com/demos/animated-headline/)
+2. [**Dual Heading**](https://master-addons.com/demos/dual-heading/)
+3. [**Gradient Headline**](https://master-addons.com/demos/gradient-headline/)
+4. [**Advanced Accordion**](https://master-addons.com/demos/advanced-accordion/)
+5. [**Advanced Tabs**](https://master-addons.com/demos/tabs/)
+6. [**Team Member**](https://master-addons.com/demos/team-member/)
+7. [**Team Slider**](https://master-addons.com/demos/team-carousel/)
+8. [**Flipbox**](https://master-addons.com/demos/flipbox/)
+9. [**Infobox**](https://master-addons.com/demos/infobox/)
+10. [**Blog**](https://master-addons.com/demos/blog-element/)
+11. [⭐ **News Ticker**](https://master-addons.com/demos/news-ticker/)
+12. [**Tooltip**](https://master-addons.com/demos/tooltip/)
+13. [**Dynamic Table**](https://master-addons.com/demos/dynamic-table/)
+14. [**Progress Bar**](https://master-addons.com/demos/progress-bar/)
+15. [**Progress Bars**](https://master-addons.com/demos/multiple-progress-bars/)
 
-== Special Content Element for Elementor ==
-1. [**Elementor Table of Contents**](https://master-addons.com/wordpress-admin-dashboard-plugin/)
-2. [**Elementor Timeline**](https://master-addons.com/demos/timeline/)
-3. [⭐ **Elementor Toggle Content**](https://master-addons.com/demos/toggle-content/)
-4. [⭐ **Elementor Source Code**](https://master-addons.com/docs/addons/source-code-element/)
-5. [**Elementor Search**](https://master-addons.com/demos/search-element/)
-6. [**Elementor Blockquote**](https://master-addons.com/demos/blockquote-element/)
-7. [**Elementor Changelogs**](https://master-addons.com/changelogs/)
-8. [**Elementor Current Time**](https://master-addons.com/demos/current-time/)
-9. [⭐ **Elementor Domain Search**](https://master-addons.com/demos/domain-search/)
+== Special Content Element ==
+1. [**Table of Contents**](https://master-addons.com/wordpress-admin-dashboard-plugin/)
+2. [**Timeline**](https://master-addons.com/demos/timeline/)
+3. [⭐ **Toggle Content**](https://master-addons.com/demos/toggle-content/)
+4. [⭐ **Source Code**](https://master-addons.com/docs/addons/source-code-element/)
+5. [**Search**](https://master-addons.com/demos/search-element/)
+6. [**Blockquote**](https://master-addons.com/demos/blockquote-element/)
+7. [**Changelogs**](https://master-addons.com/changelogs/)
+8. [**Current Time**](https://master-addons.com/demos/current-time/)
+9. [⭐ **Domain Search**](https://master-addons.com/demos/domain-search/)
 
-== Elementor Marketing Element ==
-1. [**Elementor Call to Action**](https://master-addons.com/demos/call-to-action/)
-2. [**⭐Elementor Restrict Content**](https://master-addons.com/demos/restrict-content-for-elementor/)
-3. [**Elementor Counter Up**](https://master-addons.com/demos/counter-up/)
-4. [**Elementor Countdown Timer**](https://master-addons.com/demos/countdown-timer/)
-5. [**Elementor Pricing Table**](https://master-addons.com/demos/pricing-table/)
-6. [**Elementor Business Hours**](https://master-addons.com/demos/business-hours/)
-7. [**Elementor Nav Menu**](https://master-addons.com/demos/nav-menu/)
-8. [**Elementor Creative Button**](https://master-addons.com/demos/creative-button/)
-9. [**Elementor Creative Links**](https://master-addons.com/demos/creative-link/)
-10. [**Elementor Mailchimp**](https://master-addons.com/docs/addons/mailchimp-element/)
+== Marketing Element ==
+1. [**Call to Action**](https://master-addons.com/demos/call-to-action/)
+2. [**⭐Restrict Content**](https://master-addons.com/demos/restrict-content-for-elementor/)
+3. [**Counter Up**](https://master-addons.com/demos/counter-up/)
+4. [**Countdown Timer**](https://master-addons.com/demos/countdown-timer/)
+5. [**Pricing Table**](https://master-addons.com/demos/pricing-table/)
+6. [**Business Hours**](https://master-addons.com/demos/business-hours/)
+7. [**Nav Menu**](https://master-addons.com/demos/nav-menu/)
+8. [**Creative Button**](https://master-addons.com/demos/creative-button/)
+9. [**Creative Links**](https://master-addons.com/demos/creative-link/)
+10. [**Mailchimp**](https://master-addons.com/docs/addons/mailchimp-element/)
 
-== Elementor Image & Media Element ==
-1. [**Elementor Image Hover Effects**](https://master-addons.com/demos/image-hover-effects/)
-2. [**Elementor Image Comparison**](https://master-addons.com/demos/image-comparison/)
-3. [**Elementor Advanced Image**](https://master-addons.com/demos/advanced-image/)
-4. [⭐ **Elementor Image Hotspot**](https://master-addons.com/demos/image-hotspot/)
-5. [⭐ **Elementor Gallery Slider**](https://master-addons.com/demos/gallery-slider/)
-6. [**Elementor Filterable Image Gallery**](https://master-addons.com/demos/image-gallery/)
-7. [**Elementor Image Carousel**](https://master-addons.com/demos/image-carousel/)
+== Image & Media Element ==
+1. [**Image Hover Effects**](https://master-addons.com/demos/image-hover-effects/)
+2. [**Image Comparison**](https://master-addons.com/demos/image-comparison/)
+3. [**Advanced Image**](https://master-addons.com/demos/advanced-image/)
+4. [⭐ **Image Hotspot**](https://master-addons.com/demos/image-hotspot/)
+5. [⭐ **Gallery Slider**](https://master-addons.com/demos/gallery-slider/)
+6. [**Filterable Image Gallery**](https://master-addons.com/demos/image-gallery/)
+7. [**Image Carousel**](https://master-addons.com/demos/image-carousel/)
 
-== Elementor Contact Form Elements  ==
-1. [**Elementor Contact Form 7**](https://master-addons.com/demos/contact-form-design/)
-2. **Elementor Ninja Form**
-3. **Elementor WP Forms**
-4. **Elementor Gravity Forms**
-5. **Elementor Caldera Forms**
-6. **Elementor weForms**
+== Contact Form Elements  ==
+1. [**Contact Form 7**](https://master-addons.com/demos/contact-form-design/)
+2. **Ninja Form**
+3. **WP Forms**
+4. **Gravity Forms**
+5. **Caldera Forms**
+6. **weForms**
 
-== Elementor Product Compare & Feature Elements ==
-1. [⭐ **Elementor Comparison Table**](https://master-addons.com/demos/comparison-table/)
-2. [⭐ **Elementor Featured Product**](https://master-addons.com/demos/featured-product/)
-
-
-== Elementor Extension by Master Addons ==
-1. [**Elementor Custom Breakpoints**](https://master-addons.com/demos/custom-breakpoints/)
-2. [**Elementor Particles**](https://master-addons.com/demos/particles-background/)
-3. [⭐ **Elementor Animated Gradient BG**](https://master-addons.com/demos/gradient-background/)
-4. [**Elementor Reading Progress Bar**](https://master-addons.com/elementor-icons-and-4-font-library/)
-5. [**Elementor Background Slider**](https://master-addons.com/demos/background-slider/)
-6. [**Elementor Custom CSS**](https://master-addons.com/docs/addons/custom-css-extension/)
-7. **Elementor Custom JS**
-8. [**Elementor Positioning**](https://master-addons.com/demos/positioning/)
-9. **Elementor Container Extras**
-10. [**Elementor Mega Menu**](https://master-addons.com/docs/addons/navigation-menu/)
-11. [⭐ **Elementor Entrance Animation**](https://master-addons.com/demos/entrance-animation/)
-12. [⭐ **Elementor Transforms**](https://master-addons.com/demos/transforms-extension/)
-13. [⭐ **Elementor Rellax**](https://master-addons.com/demos/rellax/)
-14. [⭐ **Elementor Reveal**](https://master-addons.com/demos/reveal/)
-15. [**Elementor Header,Footer,Comment Form**](https://master-addons.com/demos/header-footer-comment-builder/)
-16. [⭐ **Elementor Display Conditions**](https://master-addons.com/demos/display-conditions/)
-17. [**Elementor Dynamic Tags**](https://master-addons.com/demos/dynamic-tags/)
-18. [⭐ **Elementor Floating Effects**](https://master-addons.com/demos/floating-effect/)
-19. [**Elementor Wrapper Link**](https://master-addons.com/docs/addons/wrapper-link/)
-20. **Elementor Post/Page Duplicator**
-21. [**Elementor Glassmorphism**](https://master-addons.com/demos/glassmorphism-extension/)
-22. [**Elementor Icons Extended**](https://master-addons.com/elementor-icons-and-4-font-library/)
-23. [⭐ **Elementor Tooltips**](https://master-addons.com/demos/ext-tooltips/)
+== Product Compare & Feature Elements ==
+1. [⭐ **Comparison Table**](https://master-addons.com/demos/comparison-table/)
+2. [⭐ **Featured Product**](https://master-addons.com/demos/featured-product/)
 
 
-== 5 Awesome Elementor Icon Library ==
+== Extension by Master Addons ==
+1. [**Custom Breakpoints**](https://master-addons.com/demos/custom-breakpoints/)
+2. [**Particles**](https://master-addons.com/demos/particles-background/)
+3. [⭐ **Animated Gradient BG**](https://master-addons.com/demos/gradient-background/)
+4. [**Reading Progress Bar**](https://master-addons.com/elementor-icons-and-4-font-library/)
+5. [**Background Slider**](https://master-addons.com/demos/background-slider/)
+6. [**Custom CSS**](https://master-addons.com/docs/addons/custom-css-extension/)
+7. **Custom JS**
+8. [**Positioning**](https://master-addons.com/demos/positioning/)
+9. **Container Extras**
+10. [**Mega Menu**](https://master-addons.com/docs/addons/navigation-menu/)
+11. [⭐ **Entrance Animation**](https://master-addons.com/demos/entrance-animation/)
+12. [⭐ **Transforms**](https://master-addons.com/demos/transforms-extension/)
+13. [⭐ **Rellax**](https://master-addons.com/demos/rellax/)
+14. [⭐ **Reveal**](https://master-addons.com/demos/reveal/)
+15. [**Header,Footer,Comment Form**](https://master-addons.com/demos/header-footer-comment-builder/)
+16. [⭐ **Display Conditions**](https://master-addons.com/demos/display-conditions/)
+17. [**Dynamic Tags**](https://master-addons.com/demos/dynamic-tags/)
+18. [⭐ **Floating Effects**](https://master-addons.com/demos/floating-effect/)
+19. [**Wrapper Link**](https://master-addons.com/docs/addons/wrapper-link/)
+20. **Post/Page Duplicator**
+21. [**Glassmorphism**](https://master-addons.com/demos/glassmorphism-extension/)
+22. [**Icons Extended**](https://master-addons.com/elementor-icons-and-4-font-library/)
+23. [⭐ **Tooltips**](https://master-addons.com/demos/ext-tooltips/)
+
+
+== 5 Awesome Icon Library ==
 Simple Line Icons
 Elementor Icons
 Ionic Font
@@ -140,334 +141,335 @@ Material Icons
 
 == ⭐ Master Addons White Label ==
 
-Master Addons White Label Branding allows you to customize your **Plugin name, plugin description, Plugin logo, Developer/Agency Name, Plugin Menu label, Plugin URL.** Also you can hide the **plugin option panel tab** that is not required for you. White label branding for this Elementor addon plugin is necessary for all agency owners who love to remove the plugin branding. Try this feature from Master Addons for Elementor Agency plan.
+Master Addons White Label Branding allows you to customize your **Plugin name, plugin description, Plugin logo, Developer/Agency Name, Plugin Menu label, Plugin URL.** Also you can hide the **plugin option panel tab** that is not required for you. White label branding is necessary for maximum agency owners who love to remove the plugin branding. Try this feature from Master Addons for Elementor Agency plan.
 
 
-## Use These Elementor Elements to Design Pages ##
+## Use These Elements to Design Pages ##
 
 Master Addons For Elementor plugin gives you access to the following widgets or elements
 
-==Elementor Animated Headlines==
 
-👉 [Animated Headlines](https://master-addons.com/demos/animated-headline/) - Check out our free Elementor Animated Headline Elements. This Elementor addon lets you make any text stand out with different colors. Not only colors but also it comes with some pre-built Animation effects like **Rotate, Typewriter, Loading Bar, Fade, Slide, Clip, Zoom, Scale & Push**. This Elementor addon will help to create an eye-catching section, especially the hero section of your page.
+== Animated Headlines==
 
-==Elementor Dual Heading==
+👉 [Animated Headlines](https://master-addons.com/demos/animated-headline/) - Check out our free Animated Headline Elements. This addon lets you make any text stand out with different colors. Not only colors but also it comes with some pre-built Animation effects like **Rotate, Typewriter, Loading Bar, Fade, Slide, Clip, Zoom, Scale & Push**. It will help to create an eye-catching section, especially the hero section of your page.
 
-👉 [Dual Heading](https://master-addons.com/demos/dual-heading/) - Dual Heading is a perfect Elementor Elements for giving your audience an interactive look at your content. This Elementor addon feature allows you to select **two different colors** for your headings and make them stand out in the document. There are two versions available for Master Addons Dual Heading elementor Element. Also, you can define icons for this elementor addon.
+== Dual Heading==
 
-==Elementor Gradient Headline==
+👉 [Dual Heading](https://master-addons.com/demos/dual-heading/) - Dual Heading is a perfect Elements for giving your audience an interactive look at your content. This addon feature allows you to select **two different colors** for your headings and make them stand out in the document. There are two versions available for this element.
+
+== Gradient Headline==
 
 👉 [Gradient Headline](https://master-addons.com/demos/gradient-headline/) - Use this Gradients Headline Element to make stylish gradient text for your websites. You can choose different colors, and positions for your Headline in order to make them look great on all screen sizes. This is the best way to grab your reader's eye without wasting time on coding.
 
-==Elementor Advanced Accordion==
+== Advanced Accordion==
 
-👉 [Advanced Accordion](https://master-addons.com/demos/advanced-accordion/) - Present your Content in a discreet way to your audience with Elementor Accordion Addon. With the help of this widget, you can save space without affecting the content. It includes a drag and drop interface that allows you to quickly and easily add accordion elements with any number of QA (Question & Answer), or General information. There are **unlimited customization possibilities** to create a unique Accordion layout. With the help of Elementor Saved Section or Saved Page, you can easily create **nested Elementor Accordion**.
+👉 [Advanced Accordion](https://master-addons.com/demos/advanced-accordion/) - Present your Content in a discreet way to your audience with Accordion element. It can save space without affecting the content. It includes a drag and drop interface that allows you to quickly and easily add accordion elements with any number of QA (Question & Answer), or General information. There are **unlimited customization possibilities** to create a unique Accordion layout. With the help of Elementor Saved Section or Saved Page, you can easily create **nested Accordion**.
 
-==Elementor Advanced Tabs==
+== Advanced Tabs==
 
-👉 [Advanced Tabs](https://master-addons.com/demos/tabs/) - This Elementor Tabs Widget allows you to add interactive content on your Elementor Page editor via drag and drop. This Elementor tabs Widget offers **horizontal tabs, elementor vertical tabs, Responsive (mobile-friendly) tabs, and Tabular Tabs**. Create nested Tabs as many as you want. With the help of the saved section feature, you can create Elementor Nested Tabs.
+👉 [Advanced Tabs](https://master-addons.com/demos/tabs/) - This Tabs Widget allows you to add interactive content on your Elementor Page editor via drag and drop. It offers **horizontal tabs, elementor vertical tabs, Responsive (mobile-friendly) tabs, and Tabular Tabs**. Create nested Tabs as many as you want. With the help of the saved section feature, you can create  Nested Tabs.
 
-==Elementor Team Member==
+== Team Member==
 
-👉 [Team Member](https://master-addons.com/demos/team-member/) - Elementor Team Member by Master Addons has made it easier than ever to share your team members & design the layout in a creative way. You can upload **a bio, Name, Job Title, Pictures, and social media** for each member. This way you can give a face to the team that is making your business possible. You can pick a layout from our pre-built style and add text, images, social links and more. We've made it really easy to customize the style and make it look just the way you want!
+👉 [Team Member](https://master-addons.com/demos/team-member/) - Team Member by Master Addons has made it easier than ever to share your team members & design the layout in a creative way. You can upload **a bio, Name, Job Title, Pictures, and social media handle** for each member. This way you can give a face to the team that is making your business possible. You can pick a layout from our pre-built style and add text, images, social links and more. We've made it really easy to customize the style and make it look just the way you want!
 
-==Team Slider Element For Elementor==
+==Team Slider Element ==
 
-👉 [Elementor Team Slider](https://master-addons.com/demos/team-carousel/) - Introducing the Master Elementor Addons team carousel Elements. This widget makes it easy to showcase your team members with a carousel/slider that includes Name, Job Title, Image, Social URL, and arrow to navigate. You can also customize the carousel with your preferences. There are **multiple variations available** of the Elementor Team Carousel widget. You have to select the best team slider layout and input all data of your team members properly. In this way, you can easily arrange a nice Team Carousel or slider on the Elementor Page editor.
+👉 [Team Slider](https://master-addons.com/demos/team-carousel/) - Introducing the Master Addons team carousel Elements. This widget makes it easy to showcase your team members with a carousel/slider that includes Name, Job Title, Image, Social URL, and arrow to navigate. You can also customize the carousel with your preferences. There are **multiple variations available** of the Elementor Team Carousel widget. You have to select the best team slider layout and input all data of your team members properly. In this way, you can easily arrange a nice Team Carousel or slider on the Elementor Page editor.
 
-==Flat & 3D Flipbox Element for Elementor==
+==Flat & 3D Flipbox Element ==
 
-👉 [Elementor Flipbox](https://master-addons.com/demos/flipbox/) - FlipBox helps you to deliver messages in a beautiful way with before and after effects. Elementor Flip box widget by Master Addons will help you to create amazing flip box content on your elementor page editor. There is a lot of variation available on our elementor Flipbox widget. Check all the demos of the **Master Addons flip box elementor widget**.
+👉 [Flipbox](https://master-addons.com/demos/flipbox/) - FlipBox helps you to deliver messages in a beautiful way with before and after effects. Flip box widget by Master Addons will help you to create amazing flip box content on your webpage. There is a lot of variation available on our Flipbox widget. Check all the demos of the **Master Addons flip box widget**.
 
-==Creative Infobox element for Elementor Plugin==
+==Creative Infobox element ==
 
-👉 [Elementor Infobox](https://master-addons.com/demos/infobox/) - The Elementor Info Box widget by Master Addons is an easy way to create beautiful information boxes with your text. This widget can be used in a lot of different ways and it also offers a ton of design options. The great thing about this elementor widget is that it doesn’t just fully customizable, but it comes with **20+ different box styles**. With this info box widget, you have the flexibility to customize the **Heading, Description, Icon, Color, Font, Text size, margin, padding, border,** etc.
+👉 [Infobox](https://master-addons.com/demos/infobox/) - An easy way to create beautiful information boxes with your text. This widget can be used in a lot of different ways and it also offers a ton of design options. Great thing is that it doesn’t just fully customizable, but it comes with **20+ different box styles**. With this info box widget, you have the flexibility to customize the **Heading, Description, Icon, Color, Font, Text size, margin, padding, border,** etc.
 
 ==Blog Post Element==
 
-👉 [Elementor Blog](https://master-addons.com/demos/blog-element/) - The Elementor Post widget allows you to create a **custom layout of your post** and display it to your visitors. Elementor Grid post layout, Elementor List post layout, Elementor Card post layout, Elementor masonry post layout, and Custom Column-based post layout are available in this Elementor post element by Master Addons. You can select any post type and display them on your page. Also, there is a feature to create a filterable post page based on category.
+👉 [Blog](https://master-addons.com/demos/blog-element/) - The Post widget allows you to create a **custom layout of your post** and display it to your visitors. Grid post layout, List post layout, Card post layout, masonry post layout, and Custom Column-based post layout are available in this post element by Master Addons. You can select any post type and display them on your page. Also, there is a feature to create a filterable post page based on category.
 
-==⭐News Ticker Element for Elementor==
+==⭐News Ticker Element ==
 
-👉 [News Ticker](https://master-addons.com/demos/news-ticker/) - Do you like to add a highlighted section with popular posts on your blog? Here Master Addons will fulfill your demand. Elementor Newstickers addon will help you to set popular posts in your blog. That’s not the only use of the newsticker plugin. Not only for popular posts, you can customize the filter criteria and showcase your desired post, or post type. Elementor Newsticker widget by Master Addons offers RSS Feed to showcase content on the newsticker. You can change the elementor newsticker widget **label text, Title, Showcase post thumbnail, highlight words, show date, and specify the height too**. Also, this Elementor news ticker comes with multiple animations and you can also control the animation interval and speed. Select your desired post type on post query then select category or tags whatever you like. You can also limit newsticker items and order them on DESC or ASC.
+👉 [News Ticker](https://master-addons.com/demos/news-ticker/) - Do you like to add a highlighted section with popular posts on your blog? Here Master Addons will fulfill your demand. Newstickers element will help you to set popular posts in your blog. Not only for popular posts, you can customize the filter criteria and showcase your desired post, or post type. It offers RSS Feed to showcase content on the newsticker. You can change the newsticker widget **label text, Title, Showcase post thumbnail, highlight words, show date, and specify the height too**. Also, this news ticker comes with multiple animations and you can also control the animation interval and speed. Select your desired post type on post query then select category or tags whatever you like. You can also limit newsticker items and order them on DESC or ASC.
 
 ==Tooltip Element for Text, Icon, Image==
 
-👉 [Elementor Tooltip](https://master-addons.com/demos/tooltip/) - Give your website visitors more knowledge and offer them more information about any topic with the Advanced Elementor tooltip module by Master Addons. When you enable the tooltip, you can set the **position, arrow & animation** of it. You can also set whether it'll show up when someone hovers over something or clicks on it. You can add Image, Text, and Icon as tooltips. If you like to add tooltips in the elementor section or any elementor elements then you need to use Master Addons Tooltips Extension for Elementor. With the help of the Tooltip element, you can only define image, text and icon.
+👉 [Tooltip](https://master-addons.com/demos/tooltip/) - Give your website visitors more knowledge and offer them more information about any topic with the Advanced tooltip. When you enable the tooltip, you can set the **position, arrow & animation** of it. You can also set whether it'll show up when someone hovers over something or clicks on it. You can add Image, Text, and Icon as tooltips. If you like to add tooltips in the elementor section or any elements then you need to use Master Addons Tooltips Extension. With the help of the Tooltip element, you can only define image, text and icon.
 
-==Dynamic Table For Elementor Page builder==
+==Dynamic Table ==
 
-👉 [Elementor Dynamic Table](https://master-addons.com/demos/dynamic-table/) - If you are not a Developer, designing the perfect interactive table for your data can be difficult. This free Elementor Table widget will help you to design any type of Table in Elementor page editor. It is an easy-to-use drag and drop interface that automatically creates responsive tables for you. You can customize your table with lots of different options including **borders, colors, columns, and sub columns**. Moreover, if you use the Elementor Data table widget you can add images and icons to your table, which makes the tables more readable. Check out the various demos of the Elementor data table widget at Master Addons to get a better idea of what's possible.
+👉 [Dynamic Table](https://master-addons.com/demos/dynamic-table/) - If you are not a Developer, designing the perfect interactive table for your data can be difficult. This free Table widget will help you to design any type of Table in Elementor page editor. It is an easy-to-use drag and drop interface that automatically creates responsive tables for you. You can customize your table with lots of different options including **borders, colors, columns, and sub columns**. Moreover, you can add images and icons to your table, which makes the tables more readable.
 
 ==Single Progress Bar or Skill Bar Element==
 
-👉 [Elementor Progress Bar](https://master-addons.com/demos/progress-bar/) - This Elementor widget lets you create animated progress bars. Elementor Progress Bar widgets allow you to display stats in a fun & functional way. This widget offers various ways to style stats like % or numbers, and comes with four pre-designed styles. These Elementor skill bars styles are **line, line bubble, circle, & fan**. You can customize the title color, front bar color, back bar color, value color. Not only the color but in your elementor page builder editor, you can define the typography for different labels too.
+👉 [Progress Bar](https://master-addons.com/demos/progress-bar/) - This widget lets you create animated progress bars.  Progress Bar widgets allow you to display stats in a fun & functional way. This widget offers various ways to style stats like % or numbers, and comes with four pre-designed styles. These skill bars styles are **line, line bubble, circle, & fan**. You can customize the title color, front bar color, back bar color, value color, and typography too.
 
 ==Group of Multicolor Progress Bar Element==
 
-👉 [Elementor Progress Bars](https://master-addons.com/demos/multiple-progress-bars/) - Whenever you like to showcase multiple elementor progress bars, you need this elementor addon. This Addon will help you to showcase a group of progress bar elements in a creative way. You can use multiple colors for different skill bars and change the typography style too. There is no limitation to add Elementor progress bars in this addon. Align the elementor progress bar percentage, color, typography and padding to create a perfect skill bar.
+👉 [Progress Bars](https://master-addons.com/demos/multiple-progress-bars/) - Whenever you like to showcase multiple progress bars, you need this addon. This Addon will help you to showcase a group of progress bar elements in a creative way. You can use multiple colors for different skill bars and change the typography style too. Align the progress bar percentage, color, typography and padding to create a perfect skill bar.
 
 **Special Content Element for Elementor**
 
-==Table Of Contents for Elementor Plugin==
+==Table Of Contents ==
 
-👉 [Elementor Table of Contents](https://master-addons.com/wordpress-admin-dashboard-plugin/) - This is a free Elementor Table of Contents elements by Master Addons. It will help you to showcase your blog posts in a table view. This way you can quickly browse through the headlines and read any article without having to scroll down. Elementor TOC plugin by Master Addons is easy to customize. You can **hide any specific headline from Table of content too**. Also you can customize this Elementor table of content widget easily. This Elementor addon will fulfil your desire for Table of Content and will help your reader to enjoy your content.
+👉 [Table of Contents](https://master-addons.com/wordpress-admin-dashboard-plugin/) - This is a free Table of Contents elements by Master Addons. It will help you to showcase your blog posts in a table view. This way you can quickly browse through the headlines and read any article without having to scroll down. TOC plugin by Master Addons is easy to customize. You can **hide any specific headline from Table of content too**. This Elementor addon will fulfil your desire for Table of Content and will help your reader to enjoy your content.
 
-==Custom or Post Timeline Element for Elementor Plugin==
+==Custom or Post Timeline Element ==
 
-👉 [Elementor Timeline](https://master-addons.com/demos/timeline/) - This free Elementor Timeline widget will help you to design a custom timeline. You can add as many items as you need in this Elementor timeline addon. Generally people use a timeline to create a roadmap. But that’s not the only use of the Elementor Timeline. You can use this Elementor Timeline elements for any step by step guideline too. Also it has the post timeline selection option. If you want to showcase your post’s in a timeline view, then this Elementor addon is for you. This addon will allow you to set your elementor timeline in a **horizontal and vertical layout**. The timeline slider addon will help you to input all of your necessary content without taking too much space. You can control the Elementor timeline carousel animation, arrow, style, color, margin, padding and many more.
+👉 [Timeline](https://master-addons.com/demos/timeline/) - This free Timeline widget will help you to design a custom timeline. You can add as many items as you need in this timeline addon. Generally people use a timeline to create a roadmap. But that’s not the only use of the Timeline. You can use this Timeline elements for any step by step guideline too. Also it has the post timeline selection option. If you want to showcase your post’s in a timeline view. This addon will allow you to set your timeline in a **horizontal and vertical layout**. The timeline slider addon will help you to input all of your necessary content without taking too much space. You can control the timeline carousel animation, arrow, style, color, margin, padding and many more.
 
 ==⭐Toggle Content to Create switcher Section in Elementor==
 
-👉 [Elementor Toggle Content](https://master-addons.com/demos/toggle-content/) - A premium Elementor content toggle addon that comes with Elementor Content switcher widget. **Master Addons pricing page is designed with this Elementor Toggle Element**. You can arrange an Elementor saved template or section to assign for Toggle element content. Also, you can simply input text, image, icon, video in Toggle content element. Generally most of the people use this Elementor Elements on Pricing Page (Price Switcher). Whenever you like to showcase monthly and yearly pricing , you will need this Elementor Toggle content extension.
+👉 [Toggle Content](https://master-addons.com/demos/toggle-content/) - A premium content toggle addon that comes with Elementor Content switcher widget. **Master Addons pricing page is designed with this Toggle Element**. You can arrange an Elementor saved template or section to assign for Toggle element content. Also, you can simply input text, image, icon, video in Toggle content element. Generally most of the people use this Elements on Pricing Page (Price Switcher). Whenever you like to showcase monthly and yearly pricing , you will need this Toggle content extension.
 
-==⭐ Source Code for Elementor to highlight code in your post or docs==
+==⭐ Source Code to highlight code in your post or docs==
 
-👉 [Elementor Source Code](https://master-addons.com/docs/addons/source-code-element/) - Elementor Source Code Widget is a wonderful way to **insert code in your documentation or tutorial posts**. It's a quick way to display codes on the page via Elementor Editor. Elementor Source Code addon by Master Addons supports 70+ different languages and has 9 different source code themes to make your page more attractive. You can easily enable the copy button for this Elementor Source Code element and also enable line number too. Set the “Copy“ button visibility on hover or always in this Elementor Addon. As it’s a 100% customizable Elementor addon, you can change the button text, after copied button text, typography, color, and many more.
+👉 [Source Code](https://master-addons.com/docs/addons/source-code-element/) - Elementor Source Code Widget is a wonderful way to **insert code in your documentation or tutorial posts**. It's a quick way to display codes on the page via Elementor Editor. Source Code addon by Master Addons supports 70+ different languages and has 9 different source code themes to make your page more attractive. You can easily enable the copy button for this Source Code element and also enable line number too. Set the “Copy“ button visibility if it's necessry for you. As it’s a 100% customizable addon, you can change the button text, after copied button text, typography, color, and many more.
 
-==Add Search Form or Popup For Elementor Plugin==
+==Add Search Form or Popup ==
 
-👉 [Elementor Search](https://master-addons.com/demos/search-element/) - Elementor Search element by Master Addons is an easy way to create a custom search bar for your users, with just a few clicks. This elementor addon is great if you want your visitors to find the right content quickly by searching for any of their favorite blog categories and other criteria. It comes with 2 different types. **First one is general Form search and second is popup**. You need to select an icon from the elementor icon library and whenever someone click on your icon, it will show a popup search bar. You can also customize the Elementor search bar popup content too.
+👉 [Search](https://master-addons.com/demos/search-element/) -  Search element by Master Addons is an easy way to create a custom search bar for your users, with just a few clicks. This elements is great if you want your visitors to find the right content quickly by searching for any of their favorite blog categories and other criteria. It comes with 2 different types. **First one is general Form search and second is popup**. You need to select an icon from the elementor icon library and whenever someone click on your icon, it will show a popup search bar. You can also customize the search bar popup content too.
 
-==Creative Blockquote For Elementor==
+==Creative Blockquote ==
 
-👉 [Elementor Blockquote](https://master-addons.com/demos/blockquote-element/) - Wondering to display someone's Quote in your Post, Page, or Docs? Elementor Blockquote elements by Master Addons will help you on this. Blockquote is a necessary extension that has the ability to present quotes in a creative way. You can customize the **typography, color** for this Elementor blockquote addon plugin. There are simple color and gradient background type available for the blockquote element. Align the text, Change color, Customize the border for this element to create an awesome blockquote section.
+👉 [Blockquote](https://master-addons.com/demos/blockquote-element/) - Wondering to display someone's Quote in your Post, Page, or Docs? Blockquote elements by Master Addons will help you on this. Blockquote is a necessary extension that has the ability to present quotes in a creative way. You can customize the **typography, color** for this blockquote addon plugin. There are simple color and gradient background type available for the blockquote element. Align the text, Change color, Customize the border for this element to create an awesome blockquote section.
 
-==Changelogs For Elementor Page builder plugin==
+==Changelogs elements==
 
-👉 [Elementor Changelogs](https://master-addons.com/changelogs/) - It’s necessary to release updates for digital products like WordPress Plugin. Here Elementor Changelogs module will help you to arrange your fixings in a nice way. This Elementor Changelog element by Master Addons is fully customizable and you can change the **color, font size, typography, border,** whatever you want. People always love to check the changelog page for WordPress Plugin or any other digital product. With the help of Elementor Changelog extension, you can easily create a special changelog page and update it frequently for your visitors.
+👉 [Changelogs](https://master-addons.com/changelogs/) - It’s necessary to release updates for digital products like WordPress Plugin. Here Changelogs module will help you to arrange your fixings in a nice way. This Changelog element by Master Addons is fully customizable and you can change the **color, font size, typography, border,** whatever you want. People always love to check the changelog page for WordPress Plugin or any other digital product. With the help of Changelog extension, you can easily create a special changelog page and update it frequently for your visitors.
 
 ==Current Time based on WordPress Configuration==
 
-👉 [Elementor Current Time](https://master-addons.com/demos/current-time/) - This elementor addon will help you to showcase the exact time based on your setting. The maximum newspaper or magazine blog needs this feature. They like to **showcase the current time to their visitors**. With the help of Elementor Current time element, you can do it without coding. Also, it offers different types of style and time variation. Using the Date time format example, you can showcase or Hide **Date, Year, Month, Local Time** on the Elementor page editor.
+👉 [Current Time](https://master-addons.com/demos/current-time/) - This elements will help you to showcase the exact time based on your setting. The maximum newspaper or magazine blog needs this feature. They like to **showcase the current time to their visitors**. With the help of Current time element, you can do it without coding. Also, it offers different types of style and time variation. Using the Date time format example, you can showcase or Hide **Date, Year, Month, Local Time** on the Elementor page editor.
 
-==⭐Domain Search For Elementor==
+==⭐Domain Search ==
 
-👉 [Domain Search](https://master-addons.com/demos/domain-search/) - Elementor Domain Search element is a useful tool for those website owners who like to run their **Domain hosting service** or likes to work on affiliates under any existing Hosting company. Master Addons Domain search extension will help you to configure domain search system on elementor page editor. Just drag and drop the Elementor Domain search module and you are ready to customize it. You can change the **Submit button layout, Icon, Customize the default text notification and more**. Overall this Domain search element for Elementor is enough to start your journey.
+👉 [Domain Search](https://master-addons.com/demos/domain-search/) - Domain Search element is a useful tool for those website owners who like to run their **Domain hosting service** or likes to work on affiliates under any existing Hosting company. Master Addons Domain search element will help you to configure domain search system on any landing page. Just drag and drop the Domain search module and you are ready to customize it. You can change the **Submit button layout, Icon, Customize the default text notification and more**. Overall this Domain search element is enough to start your journey.
 
 **Best Marketing Element for Elementor Page builder**
 
-==Best Call To Action Element for Elementor==
+==Best Call To Action Element ==
 
-👉 [Elementor Call to Action](https://master-addons.com/demos/call-to-action/) - If you use Elementor page builder to create WordPress pages, install this Elementor Call to Action addon. It will encourage your visitors to make decisions and by this way you will get more leads. The Call to Action button is a brilliant marketing addon for anyone using Elementor. It includes a **wide range of design styles** and layouts so you can customize them to suit your website. This also lets you add CTAs throughout your site, ensuring that visitors are directed to the content they want with just one click. You can also use this Elementor Call to action module for something more like giving people access to your special offer’s or features and products. By this way, you are able to generate more clicks and leads.
+👉 [Call to Action](https://master-addons.com/demos/call-to-action/) - It will encourage your visitors to make decisions and by this way you will get more leads. The Call to Action button is a brilliant marketing addon for anyone using Elementor. It includes a **wide range of design styles** and layouts so you can customize them to suit your website. This also lets you add CTAs throughout your site, ensuring that visitors are directed to the content they want with just one click. You can also use this Elementor Call to action module for something more like giving people access to your special offer’s or features and products. By this way, you are able to generate more clicks and leads.
 
-==⭐Content Locker Element for Elementor Page Builder Plugin==
+==⭐Content Locker Element==
 
-👉 [Restrict Content](https://master-addons.com/demos/restrict-content-for-elementor/) - Elementor Restrict content elements is a very creative feature developed by Master Addons. It will help you to lock your special content in the Elementor Page editor. This Elementor content restriction extension comes with different types of conditions like **Elementor password locker, Elementor User Based locker, Elementor age based condition, Elementor Math captcha**. Now you can easily protect your content from unwanted traffic. Also the customization of this Elementor Restrict Content element is huge, you can change layout, color, typography easily. Not only this but also you can define a popup locker for this Elementor Content locker extension.
+👉 [Restrict Content](https://master-addons.com/demos/restrict-content-for-elementor/) - Restrict content elements is a very creative feature developed by Master Addons. It will help you to lock your special content on your landing page. This content restriction extension comes with different types of conditions like **password locker, User Based locker, age based condition, Math captcha**. Now you can easily protect your content from unwanted traffic. Also the customization of this Restrict Content element is huge, you can change layout, color, typography easily. Not only this but also you can define a popup locker for this Elementor Content locker element.
 
-==Counter UP addon for Elementor==
+==Counter UP addon ==
 
-👉 [Elementor Counter Up](https://master-addons.com/demos/counter-up/) - This is a **free Elementor Counter up widget** by Master Addons. You can use this Elementor Counter element to showcase your business statistics and more fun facts on your Elementor based Website. It’s easy to design Counter up in the Elementor page editor. Just drag and drop the Elementor Counter up element by Master Addons and you are ready to go. There are different types of layout available in this counter up element. You can define the icon position and add suffix & prefix to stand out your elementor counter box.
+👉 [Counter Up](https://master-addons.com/demos/counter-up/) - This is a **free Counter up widget** by Master Addons. You can use this Counter element to showcase your business statistics and more fun facts on your Elementor based Website. It’s easy to design Counter up in your landing page. Just drag and drop the Counter up element by Master Addons and you are ready to go. There are different types of layout available in this counter up element. You can define the icon position and add suffix & prefix to stand out your counter box.
 
-==Countdown Timer Element for Elementor Plugin==
+==Countdown Timer Element ==
 
-👉 [Elementor Countdown Timer](https://master-addons.com/demos/countdown-timer/) - This attractive Elementor countdown elementor widget lets you display a countdown clock that works with your Elementor website and can help reinforce **marketing campaigns or promotions**. Add an Elementor countdown widget to your site that will remind your customers about the upcoming discount or news. You can set the timer for when the event begins, and can use this to prod them into taking certain actions before the event ends. This **Elementor Countdown addon will boost your marketing strategy** and will help you generate more action. It is a 100% customizable Elementor addon , you can define the date, select which value you like to showcase in your elementor page editor or website. Set the alignment and style based on your content.
+👉 [Countdown Timer](https://master-addons.com/demos/countdown-timer/) - This attractive countdown widget lets you display a countdown clock and can help reinforce **marketing campaigns or promotions**. Add an countdown widget to your site that will remind your customers about the upcoming discount or news. You can set the timer for when the event begins, and can use this to prod them into taking certain actions before the event ends. This **Countdown addon will boost your marketing strategy** and will help you generate more action. It is a 100% customizable element, you can define the date, select which value you like to showcase in your page editor or website. Set the alignment and style based on your content.
 
-==Pricing Table for Elementor Plugin==
+==Pricing Table ==
 
-👉 [Elementor Pricing Table](https://master-addons.com/demos/pricing-table/) - Elementor Pricing Table element by MA enables you to create a beautiful pricing table with lots of customizations and slick appearance. Also it has an Elementor Toggle Content element, which will help you to **create switchers in Elementor pricing table**. With this Elementor pricing table addon, you have a huge opportunity to create stunning pricing tables to manage our products pricing pages. This Master Addons element comes with tons of customization possibilities that is enough to create any type of creative Pricing table in Elementor page editor. You can take a look at our pricing table demo page. We’ve created a lot of demos for your inspiration. In this Elementor pricing table addon you will get multiple layouts, if you like to switch the layout then you are one step away only. Just click and the entire elementor pricing table design will be changed.
+👉 [Pricing Table](https://master-addons.com/demos/pricing-table/) - Pricing Table element by MA enables you to create a beautiful pricing table with lots of customizations and slick appearance. Also it has a Toggle Content element, which will help you to **create switchers in pricing table**. With this pricing table addon, you have a huge opportunity to create stunning pricing tables to manage our products pricing pages. This Master Addons element comes with tons of customization possibilities that is enough to create any type of creative Pricing table. You can take a look at our pricing table demo page. We’ve created a lot of demos for your inspiration. In this pricing table addon you will get multiple layouts, if you like to switch the layout then you are one step away only.
 
-==Business Hours Element for Elementor==
+==Business Hours Element ==
 
-👉 [Elementor Business Hours](https://master-addons.com/demos/business-hours/) - Who doesn't want to see a tabular form of the business hours? If you are running your website on Elementor page builder then it’s hard to create section and inner section to arrange elementor business hours element. With the help of Elementor Business hours element by Master Addons, you can easily achieve your goal. The customers will be able to know when your business is open or not. This **elementor business hours widget is easy to work with**. You can add this elementor element in anywhere in your website. With the help of Elementor Header Footer builder by Master Addons, you can **add this business hour widget in footer area too**. By this way, it will be applied to all of your pages dynamically. This Elementor Business hour’s widget come with 5 design preset and custom business table. That means you are free to arrange any type of content within the business hours element. If you have a booking system then just enable button and set your Booking URL.
+👉 [Business Hours](https://master-addons.com/demos/business-hours/) - Who doesn't want to see a tabular form of the business hours? If you are running your website on Elementor then it’s hard to create section and inner section to arrange business hours section. With the help of our Business hours element, you can easily achieve your goal. The customers will be able to know when your business is open or not. This **business hours widget is easy to work with**. You can add this element in anywhere in your website. With the help of our Header Footer builder by Master Addons, you can **add this business hour widget in footer area too**. By this way, it will be applied to all of your pages dynamically. This Business hour’s widget come with 5 design preset and custom business table. That means you are free to arrange any type of content within the business hours element. If you have a booking system then just enable button and set your Booking URL.
 
-==Navigation Menu Element to Design Header & Footer for Elementor==
+==Navigation Menu Element to Design Header & Footer ==
 
-👉 [Elementor Nav Menu](https://master-addons.com/demos/nav-menu/) - This is a free Elementor Nav Menu widget by Master Addons. This Elementor menu addon will **bring live to your Elementor Website header**. Customization of this Elementor Nav menu element is super easy then before. Whatever you customize you can see it on live. **This Elementor menu addon offers Mobile Menu, Elementor Drop down menu, Responsive Elementor Nav Menu, Create hamburger menu (Choose icon yourself), Elementor off canvas menu, and more**. You can define hover effects on this Elementor nav menu extension. Using this nav menu element, you can design Elementor mega menu from appearance>Menus too. There are different types of off-canvas system, select the best one for your use.
+👉 [Nav Menu](https://master-addons.com/demos/nav-menu/) - This is a free Nav Menu widget by Master Addons. This menu addon will **bring live to your Website header**. Customization of this Nav menu element is super easy then before. Whatever you customize you can see it on live. **This menu addon offers Mobile Menu, Drop down menu, Responsive Nav Menu, Create hamburger menu (Choose icon yourself), off canvas menu, and more**. You can define hover effects on this nav menu element. Using this nav menu element, you can design Elementor mega menu from appearance>Menus too. There are different types of off-canvas system, select the best one for your use.
 
-==30+ Creative Button For Elementor==
+==30+ Creative Button ==
 
-👉 [Elementor Creative Button](https://master-addons.com/demos/creative-button/) - Would you like to create a more appealing design for your website by using Custom made Elementor buttons element? A button is necessary to create Call to action and redirect your visitors to the right page. With the help of Maste Addons Elementor button element you can customize it on your way. This button addon comes with a **30+ special button hover effect and before and after text**. Create emotion with our creative Elementor button widget and generate leads. Don’t forget to check our Creative Elementor button demo to get more ideas on its design.
+👉 [Creative Button](https://master-addons.com/demos/creative-button/) - Would you like to create a more appealing design for your website by using Custom made Elementor buttons element? A button is necessary to create Call to action and redirect your visitors to the right page. With the help of Maste Addons button element you can customize it on your way. This button addon comes with a **30+ special button hover effect and before and after text**. Create emotion with our creative button widget and generate leads. Don’t forget to check our Creative button demo to get more ideas on its design.
 
-==20+ Creative Links Element for Elementor Plugin==
+==20+ Creative Links Element ==
 
-👉 [Elementor Creative Links](https://master-addons.com/demos/creative-link/) - Master Addons introduced Elementor Creative links elements to the world. Always Using the Creative button is not a good idea, here Elementor Create links addon comes. With the help of Creative links addon, you can input **some eye catching text and link it to your desired page**. Add in some effects for your links to a website using the Master Addons creative Animated Link widget for Elementor. This widget has plenty of hover effects that you can use on your website's links. The elementor animated creative link addon is perfect for when you want to add a little animation to your website's text. You can even preview different animations in this widget on the Elementor editor.
+👉 [Creative Links](https://master-addons.com/demos/creative-link/) - Master Addons introduced Creative links elements to the world. Always Using the Creative button is not a good idea, creative linkes is necessary sometimes. With the help of Creative links addon, you can input **some eye catching text and link it to your desired page**. Add some effects for your links to a website using the Master Addons creative Animated Link widget. This widget has plenty of hover effects that you can use on your website's links. The animated creative link addon is perfect for when you want to add a little animation to your website's text.
 
-==Mailchimp Element For Elementor==
+==Mailchimp Element ==
 
-👉 [Elementor Mailchimp](https://master-addons.com/docs/addons/mailchimp-element/) - Add your Mailchimp Forms to the Elementor page editor with Master Addons Mailchimp Widget for Elementor. By default you can’t input any Mailchimp form to the Elementor page editor, but with the help of Master Addons Mailchimp form addon, you can do it and customize it. Not only this but you can easily select your **mailchimp email collection list** with the help of this Elementor Mailchimp addon. You don’t need the pro version to work with this addon. With the help of the default Mailchimp plugin, you can create a form and insert that form in the Elementor page editor via the Master Addons plugin.
+👉 [Mailchimp](https://master-addons.com/docs/addons/mailchimp-element/) - Add your Mailchimp Forms to the page editor with Master Addons Mailchimp Widget. By default you can’t input any Mailchimp form inside your page, but with the help of Master Addons Mailchimp form element, you can do it and customize it. Not only this but you can easily select your **mailchimp email collection list** with the help of this Mailchimp element. You don’t need the pro version to work with this addon. With the help of the default Mailchimp plugin, you can create a form and insert that form inside your page via the Master Addons plugin.
 
 **Best Image & Media Element for Elementor**
 
-==20+ Unique Image Hover Effects For Elementor==
+==20+ Unique Image Hover Effects ==
 
-👉 [Elementor Image Hover Effects](https://master-addons.com/demos/image-hover-effects/) - Don’t you think sometimes it’s necessary to put a title and description of your image? If you want to give your website’s images some added flair, try this Elementor Image Hover Effect Widget by Master Addons. It provides **20+ customizable hover effects**. This doesn’t mean you are stuck within this 20+ pre built elementor image hover effects style. You can customize each style and apply multiple filters to create different types of effects based on your creativity. Image hover Effect Elementor addons is a great way to make your site more interactive. If you want to capture your visitors' attention, you will need the Image Hover Effect widget in your Elementor widget library. If you're thinking about testing it out, be sure to check out their demo page.
+👉 [Image Hover Effects](https://master-addons.com/demos/image-hover-effects/) - Don’t you think sometimes it’s necessary to put a title and description of your image? If you want to give your website’s images some added flair, try this Image Hover Effect Widget by Master Addons. It provides **20+ customizable hover effects**. This doesn’t mean you are stuck within this 20+ pre built image hover effects style. You can customize each style and apply multiple filters to create different types of effects based on your creativity. Image hover Effect is a great way to make your site more interactive. If you want to capture your visitors attention, you will need the Image Hover Effect widget in your Elementor widget library. If you're thinking about testing it out, be sure to check out their demo page.
 
-==Image Comparison Element for Elementor Plugin==
+==Image Comparison Element ==
 
-👉 [Elementor Image Comparison](https://master-addons.com/demos/image-comparison/) - DO you like to showcase before and after photos in your website? If you are a photographer, Editor, Designer this is a must recommend Elementor addon for you. The Elementor image compare elements will help you to **add before and after photos with ribbon text too**. Not only this but you can set horizontal and vertical layout, change the label color, set border, control mouse move and click, and many more. Our Elementor image comparison widget will compare your two images Old Vs New in a visually appealing manner. It has perfect resolution and will be able to recognize any major changes in the product. You can check what you are doing in the live elementor page editor, try to customize whatever you want and then check the elementor image comparison section properly before updating your page.
+👉 [Image Comparison](https://master-addons.com/demos/image-comparison/) - Do you like to showcase before and after photos in your website? If you are a photographer, Editor, Designer this image comparison elements is for you. The image compare elements will help you to **add before and after photos with ribbon text too**. Not only this but you can set horizontal and vertical layout, change the label color, set border, control mouse move and click, and many more. Our image comparison widget will compare your two images Old Vs New in a visually appealing manner. It has perfect resolution and will be able to recognize any major changes in the product. You can check what you are doing in the live elementor page editor, try to customize whatever you want and then check the image comparison section properly before updating your page.
 
-==Elementor Advanced Image Element==
+== Advanced Image Element==
 
-👉 [Elementor Advanced Image](https://master-addons.com/demos/advanced-image/) - Do you like to display different image on hover? If yes, then Elementor Advanced Image element is for you. You can easily set a **different image on hover using this elementor addon**. You can also set ribbon for your image, then select the ribbon style for this advanced image element. Finally you have to select the Elementor advanced image ribbon position and ribbon size. You will have the following setting in this Elementor Advanced image addon : Elementor lightbox effect, Elementor image alignment, 5 Preload image effect for this elementor addon, Elementor image tilt effect, & Elementor colorized shadow. After creating an Elementor advanced image, you can easily define the color, font size, typography from the style tab.
+👉 [Advanced Image](https://master-addons.com/demos/advanced-image/) - Do you like to display different image on hover? If yes, then Advanced Image element is for you. You can easily set a **different image on hover using this element**. You can also set ribbon for your image, then select the ribbon style for this advanced image element. Finally you have to select the  advanced image ribbon position and ribbon size. You will have the following setting in this Advanced image addon : lightbox effect, image alignment, 5 Preload image effect, image tilt effect, & colorized shadow. After creating an Elementor advanced image, you can easily define the color, font size, typography from the style tab.
 
-==⭐Elementor Image Hotspot Plugin==
+== Image Hotspot element==
 
-👉 [Image Hotspot](https://master-addons.com/demos/image-hotspot/) - An Elementor image Hotspot addon is a great asset for your website if you want to point out specific places or offer more information from an image. You can use it for many purposes, like **highlighting a product** or **explaining different stuff from an image**. You can also customize the elementor image hotspot appearance according to your site's design and content with the help of this Elementor hotspot settings panel. Our Elementor image hotspot addon allows you to create unlimited hotspot and drag and drop the hotspot to their desired position. Also, our image hotspot tooltip has 2 variations, it can be triggered on click or on hover. You may noticed many elementor hotspot elements that their tooltip goes away when you move your mouse from the hotspot, but in this Master Addons elementor image hotspot widget - it offers you what you prefer. You can keep your tooltip content though you move your mouse from the elementor hotspot point.
+👉 [Image Hotspot](https://master-addons.com/demos/image-hotspot/) - The image hotspost is a great asset for your website if you want to point out specific places or offer more information from an image. You can use it for many purposes, like **highlighting a product** or **explaining different stuff from an image**. You can also customize the image hotspot appearance according to your site's design and content with the help of this hotspot settings panel. Our image hotspot element allows you to create unlimited hotspot and drag and drop the hotspot to their desired position. Also, our image hotspot tooltip has 2 variations, it can be triggered on click or on hover. You may noticed many hotspot elements that their tooltip goes away when you move your mouse from the hotspot, but in this Master Addons image hotspot widget - it offers you what you prefer. You can keep your tooltip content though you move your mouse from the hotspot point.
 
-==⭐Elementor Gallery Slider Element==
+==⭐ Gallery Slider Element==
 
-👉 [ Gallery Slider](https://master-addons.com/demos/gallery-slider/) - Elementor Gallery Slider addon is enough to showcase a group of photos in a gallery with a slider. Your all elementor gallery thumb will be placed on top, left, right, or bottom position. You can define the position of the Elementor Gallery slider thumb. Whenever you click on any thumb the larger version will\ appear on the slider. You can control the Elementor gallery thumb column from the gallery slider settings panel. Also there you can define image size, custom url and caption for this elementor gallery slider extension.
+👉 [ Gallery Slider](https://master-addons.com/demos/gallery-slider/) - Gallery Slider addon is enough to showcase a group of photos in a gallery with a slider. Your all gallery thumb will be placed on top, left, right, or bottom position. You can define the position of the Gallery slider thumb. Whenever you click on any thumb the larger version will\ appear on the slider. You can control the gallery thumb column from the gallery slider settings panel. Also there you can define image size, custom url and caption for this gallery slider extension.
 
-==Elementor Filterable Image Gallery Addon==
+== Filterable Image Gallery Element==
 
-👉 [Filterable Image Gallery](https://master-addons.com/demos/image-gallery/) - You can easily showcase your recent photos, memories, events etc on your Website using Elementor Gallery element. But when it comes to presenting your work in a filterable way, the general Elementor Gallery addon is unable to meet your criteria. Here Elementor Filterable image gallery elements come, you can **create different labels and categories here then upload your images on specific labels**. You can also set label name & description on this Elementor filterable gallery widget. If you think you need to redirect your images to a new link, then you can do it too. Also by default your all elementor filterable gallery images will open via popup. There is a option to hide filter navigation also you can hide “All“ from the filter nav menu.
+👉 [Filterable Image Gallery](https://master-addons.com/demos/image-gallery/) - You can easily showcase your recent photos, memories, events etc on your Website using Gallery element. But when it comes to presenting your work in a filterable way, the general Elementor Gallery addon is unable to meet your criteria. Here Filterable image gallery elements come, you can **create different labels and categories here then upload your images on specific labels**. You can also set label name & description on this filterable gallery widget. If you think you need to redirect your images to a new link, then you can do it too. Also by default your all filterable gallery images will open via popup. There is a option to hide filter navigation also you can hide “All“ from the filter nav menu.
 
-==Elementor Image Carousel Addon==
+== Image Carousel Addon==
 
-👉 [Elementor Image Carousel](https://master-addons.com/demos/image-carousel/) - Elementor image carousel widget is a great way to showcase your photos and keep your visitors interested in curiosity on what image will be the next. The elementor image carousel widget **automatically adjusts to the width of its container** and has a lot of options that allow you to create anything for an Awesome image carousel. You can hide elementor **image carousel arrow from a mobile device**, it will give you some extra space. There are a total 6 types of navigation available on Elementor image carousel addon. Enable to disable scrollbar, set arrow position, sect next previous icon and many more controls available on this elementor addon. There is an option called carousel settings - here you can define slides per column, layout, height, autoplay speed, slides to scroll, grab cursor, drag free mode, loop, observer and so on. Make sure to explore this Elementor Image carousel addon demo.
+👉 [Image Carousel](https://master-addons.com/demos/image-carousel/) - Image carousel widget is a great way to showcase your photos and keep your visitors interested in curiosity on what image will be the next. The image carousel widget **automatically adjusts to the width of its container** and has a lot of options that allow you to create anything for an Awesome image carousel. You can hide **image carousel arrow from a mobile device**, it will give you some extra space. There are a total 6 types of navigation available on image carousel addon. Enable to disable scrollbar, set arrow position, sect next previous icon and many more controls available on this element. There is an option called carousel settings - here you can define slides per column, layout, height, autoplay speed, slides to scroll, grab cursor, drag free mode, loop, observer and so on. Make sure to explore this Image carousel demo.
 
 
-**Elementor Product Compare & Feature Elements**
+** Product Compare & Feature Elements**
 
-==⭐Product Comparison Table Element For Elementor Page builder==
+==⭐Product Comparison Table Element==
 
-👉 [Comparison Table](https://master-addons.com/demos/comparison-table/) - Elementor pricing table is not enough to compare different products' features and pricing. This Elementor Product Comparison element comes with a lot of handy features to satisfy your needs. You will get **4 Elementor Product Compare layouts** and be able to add a maximum of **6 products in a single elementor comparison table**. You can insert product title, price, features using this elementor addon. One more thing, you can add unlimited features and also select Yes/No checkbox or any custom icon or text variation. Don’t forget to check our Elementor comparison table demo to learn how actually this Elementor addon works. If you are an affiliate marketer and like to showcase some related product on your blog post or page, then this Elementor addon will satisfy you. It’s a must have Elementor addons for Affiliate marketing.
+👉 [Comparison Table](https://master-addons.com/demos/comparison-table/) - Elementor pricing table is not enough to compare different products features and pricing. This Product Comparison element comes with a lot of handy features to satisfy your needs. You will get **4 Product Compare layouts** and be able to add a maximum of **6 products in a single  comparison table**. You can insert product title, price, features using this element. One more thing, you can add unlimited features and also select Yes/No checkbox or any custom icon or text variation. Don’t forget to check our Product comparison table demo to learn how actually this feature works. If you are an affiliate marketer and like to showcase some related product on your blog post or page, then this product comparison element will satisfy you.
 
-==⭐Elementor Featured Product Element for Ecommerce Website==
+==⭐ Featured Product Element==
 
-👉 [Featured Product](https://master-addons.com/demos/featured-product/) - Elementor Featured product element comes with **3 different creative layouts**. You don’t need a plugin like WooCommerce to showcase your products. If you have a few products then this Elementor Addon will help you to display the products to your visitors. You can also use this **Elementor Featured product addon for Affiliate products**. The eye-catching design will attract your visitors and maybe you will grab more sales. You must check the Elementor Featured product demo to get some inspiration.
+👉 [Featured Product](https://master-addons.com/demos/featured-product/) - Featured product element comes with **3 different creative layouts**. You don’t need a plugin like WooCommerce to showcase your products. If you have a few products then this element will help you to display the products to your visitors. You can also use this ** Featured product element for Affiliate products**. The eye-catching design will attract your visitors and maybe you will grab more sales. You must check the Featured product demo to get some inspiration.
 
 
 **Elementor Form Elements**
 
-==Elementor Contact Form 7 Element==
+== Contact Form 7 Element==
 
-👉 [Elementor Contact Form 7](https://master-addons.com/demos/contact-form-design/) - Elementor Contact Form 7 addon will help you to add existing contact forms inside your any page or post via elementor page editor. **It’s too hard to design contact form 7 layout with Custom CSS code**. But using this Elementor contact form 7 element by Master Addons will solve the problem. Now you can easily **design your existing form in elementor page editor**. You can change the layout, typography, margin, padding, border, background color, text color, and so on. This elementor addon comes with 10 unique contact form 7 (CF7) variations. Feel free to enjoy the demo and documentation by Master Addons and you will learn what you can do with this Elementor CF7 module.
+👉 [Contact Form 7](https://master-addons.com/demos/contact-form-design/) - Contact Form 7 addon will help you to add existing contact forms inside your any page or post via elementor page editor. **It’s too hard to design contact form 7 layout with Custom CSS code**. This contact form 7 element will solve the problem. Now you can easily **design your existing form in elementor page editor**. You can change the layout, typography, margin, padding, border, background color, text color, and so on. This elements comes with 10 unique contact form 7 (CF7) variations. Feel free to enjoy the demo and documentation by Master Addons and you will learn what you can do with this CF7 Element.
 
-==Ninja Form Element For Elementor Page Builder Plugin==
+==Ninja Form Element For Page Builder Plugin==
 
-👉 Elementor Ninja Form - With this Elementor Ninja Form widget you can insert forms created with the popular Ninja Forms plugin. There's a number of options to configure the styling of these fields to make sure they look their best on your website! This Elementor Ninja form addons is the **best solution for all ninja forms users**. You don’t need to get the pro versions of Ninja Form to work with this Elementor module. This ninja form elementor addon will work fine with both free and pro version of ninja form. You can design your Ninja form via this elementor ninja form addon. There is an option to **change color, typography, margin, padding, border, box shadow and many more** for this Elementor Ninja form builder addon.
+👉 Elementor Ninja Form - With Ninja Form widget you can insert forms created with the popular Ninja Forms plugin. There's a number of options to configure the styling of these fields to make sure they look their best on your website! This Ninja form addons is the **best solution for all ninja forms users**. You don’t need to get the pro versions of Ninja Form to work with this element. This ninja form element will work fine with both free and pro version of ninja form. You can design your Ninja form via this element. There is an option to **change color, typography, margin, padding, border, box shadow and many more** for this Ninja form builder element.
 
-==WP Forms For Elementor Plugin==
+==WP Forms ==
 
-👉 Elementor WP Forms - WPForms is a WordPress plugin that allows you to create beautiful looking forms for your website. It is an easy-to-use and powerful form builder that works on WordPress. But it’s not easy to customize WP Forms via Elementor page builder. Master Addons Developed an addon called Elementor WP Forms element. With this addon, you can easily customize WP Forms layout, color, typo, margin, padding, etc without any technical knowledge.
+👉 WP Forms - WPForms is a WordPress plugin that allows you to create beautiful looking forms for your website. It is an easy-to-use and powerful form builder that works on WordPress. But it’s not easy to customize WP Forms via Elementor page builder. Master Addons Developed an element called WP Forms element. With this addon, you can easily customize WP Forms layout, color, typo, margin, padding, etc without any technical knowledge.
 
-==Gravity forms element for Elementor Plugin==
+==Gravity forms element ==
 
-👉 Elementor Gravity Forms - Gravity forms are a powerful tool for collecting information and creating different type contact forms. However, they can seem a little plain in their default format. With the Master Addons plugin, you can customize the appearance of your Gravity forms to match your needs and brand. The Gravity forms is a premium plugin but the customization is not so easy for all users. If you are an Elementor user then editing Gravity Forms via elementor page editor will be awesome for you. Here Master Addons introduce Elementor Gravity forms element. With the help of this gravity forms addon, you can easily customize your full gravity form including typography. This Elementor Gravity form is so powerful that it allows you to change the default color, margin, padding and other CSS tweaks from the Elementor page editor.
+👉 Gravity Forms - Gravity forms are a powerful tool for collecting information and creating different type contact forms. However, they can seem a little plain in their default format. With the Master Addons plugin, you can customize the appearance of your Gravity forms to match your needs and brand. The Gravity forms is a premium plugin but the customization is not so easy for all users. If you are an Elementor user then editing Gravity Forms via editor will be awesome for you. Here Master Addons introduce Gravity forms element. With the help of this gravity forms addon, you can easily customize your full gravity form including typography. This Gravity form is so powerful that it allows you to change the default color, margin, padding and other CSS tweaks from the editor.
 
-==Caldera Forms for Elementor Plugin==
+==Caldera Forms ==
 
-👉 Elementor Caldera Forms - Caldera forms are a great way to collect feedback, ideas, and input from your audience. The challenge is that Caldera Forms doesn't have a drag-and-drop editor like the Page Builder in WordPress. Good news is with the help of Elementor Caldera Forms element you can customize the form in a very creative way. Without elementor addon you can customize the Caldera Forms too, but you must be expert in CSS. Within this elementor addon, you can easily customize everything including margin, padding, typography on the Elementor page editor.
+👉 Caldera Forms - Caldera forms are a great way to collect feedback, ideas, and input from your audience. The challenge is that Caldera Forms doesn't have a drag-and-drop editor like the Page Builder in WordPress. Good news is with the help of Elementor Caldera Forms element you can customize the form in a very creative way. Without the Caldera Forms element you can customize the Caldera Forms too, but you must be expert in CSS. using this elements, you can easily customize everything including margin, padding, typography on the page editor.
 
-==weForms For Elementor Page Builder Plugin==
+==weForms For Page Builder Plugin==
 
-👉 Elementor weForms - Just like other forms, if you are a weForms user - then you can easily change the layout for your form using this Elementor weForms addon. You don’t have to be extra creative to customize forms. You can select our pre-built form style for Elementor weForms addon and update your page. If you want to retouch our pre-built layout then you can easily customize whatever you need via elementor page editor.
+👉 weForms - Just like other forms, if you are a weForms user - then you can easily change the layout for your form using this weForms element. You don’t have to be extra creative to customize forms. You can select our pre-built form style for weForms element and update your page. If you want to retouch our pre-built layout then you can easily customize whatever you need via elementor page editor.
 
 
 **Best Elementor Extensions by Master Addons**
 
-==Custom Breakpoints For Elementor Page Builder Plugin==
+==Custom Breakpoints==
 
-👉 [Elementor Custom Breakpoints](https://master-addons.com/demos/custom-breakpoints/) - **Breakpoints are used to optimize your website for different devices and sizes**. They can be used to change fonts, hide or show content based on the viewport width, and center or align elements. With this Custom Elementor Breakpoint extension, you are able to add **unlimited device width as breakpoint**. You can design your website for large screen, mid screen, laptop, desktop, mobile, tablet and so on with this Elementor Breakpoint addon. For example, your website Heading could be displayed at 95px on desktop, 65px on tablet or 35px on mobile. This Custom Elementor Breakpoint extension now includes additional breakpoints in Site Settings.
+👉 [Custom Breakpoints](https://master-addons.com/demos/custom-breakpoints/) - **Breakpoints are used to optimize your website for different devices and sizes**. They can be used to change fonts, hide or show content based on the viewport width, and center or align elements. With this Custom Breakpoint extension, you are able to add **unlimited device width as breakpoint**. You can design your website for large screen, mid screen, laptop, desktop, mobile, tablet and so on with this Breakpoint extension. For example, your website Heading could be displayed at 95px on desktop, 65px on tablet or 35px on mobile. This Custom Breakpoint extension now includes additional breakpoints in Site Settings.
 
 
 ==Particles Effect For Elementor - Polygon, Snow, Nasa==
 
-👉 [Elementor Particles](https://master-addons.com/demos/particles-background/) - Master Addons Elementor Particles extension comes with a predefined effect. But you can use **polygons, nasa, snow, and effects.** Also this elementor particle addons has a lot of customization possibilities. You can define the number of particles, color, speed, size for your particles. You must try this Elementor particles addon by Master Addons to create an attractive section on the Elementor page editor.
+👉 [Particles](https://master-addons.com/demos/particles-background/) - Particles extension comes with a predefined effect like **polygons, nasa, snow, and effects.** Also this particle extension has a lot of customization possibilities. You can define the number of particles, color, speed, size for your particles. Try this particles and create an attractive section for your landing page.
 
-==⭐Animated Gradient Background for Elementor Section or Column==
+==⭐Animated Gradient Background for Section or Column==
 
-👉 [Elementor Animated Gradient BG](https://master-addons.com/demos/gradient-background/) - Have you ever looked for a way to have a gradient background on your sections and columns in Elementor? If so, then you'll be happy to hear that there is now a way! With our Elementor Animated Gradient Background extension, you can create amazing gradient backgrounds for your Elementor sections and columns by adjusting the gradient angle and styling it with multiple colors.
+👉 [Animated Gradient BG](https://master-addons.com/demos/gradient-background/) - Have you ever looked for a way to have a gradient background on your sections and columns? If so, then you'll be happy to hear that there is now a way! With our  Animated Gradient Background extension, you can create amazing gradient backgrounds for your Elementor sections and columns by adjusting the gradient angle and styling it with multiple colors.
 
-==Eye-catching Reading Progress Bar for Elementor Editor==
+==Eye-catching Reading Progress Bar==
 
-👉 [Elementor Reading Progress Bar](https://master-addons.com/elementor-icons-and-4-font-library/) - Elementor Reading Progress Bar helps to engage readers and encourage them to read the content till the end of the article. Elementor Reading Progress Bar has been introduced to make it easier for you to add a progress bar for posts and pages. In one place, you can control retroactively what settings the indicator should have. Using the Master Addons plugin, you can easily create and customize awesome Elementor Reading progress bars for any post, page or post type.
+👉 [Reading Progress Bar](https://master-addons.com/elementor-icons-and-4-font-library/) - Reading Progress Bar helps to engage readers and encourage them to read the content till the end of the article. Reading Progress Bar has been introduced to make it easier for you to add a progress bar for posts and pages. In one place, you can control retroactively what settings the indicator should have. Using the Master Addons plugin, you can easily create and customize awesome Reading progress bars for any post, page or post type.
 
-==Transitional Elementor Background Slider with Ken Burns effect==
+==Transitional Background Slider with Ken Burns effect==
 
-👉 [Elementor Background Slider](https://master-addons.com/demos/background-slider/) - A free Elementor Background slider extension that allows you to add images as a gallery on the Elementor section or columns background. This Elementor Background slider addon comes with **25 Transitions and 10 Ken Burns effects**. You can select Custom Overlay for this Elementor Addon or can select any 9 pre-built overlay templates. Control the animation duration to make your Elementor section background stand out to your visitors.
+👉 [Background Slider](https://master-addons.com/demos/background-slider/) - A free Background slider extension that allows you to add images as a gallery on the section or columns background. This Background slider addon comes with **25 Transitions and 10 Ken Burns effects**. You can select Custom Overlay too or can select any 9 pre-built overlay templates. Control the animation duration to make your section background stand out to your visitors.
 
-==Custom CSS For Elementor==
+==Custom CSS ==
 
-👉 [Elementor Custom CSS](https://master-addons.com/docs/addons/custom-css-extension/) - Elementor is a front-end drag and drop page builder Plugin. With the Custom CSS for Elementor plugin, you can quickly **write the CSS codes for a specific device**. This is a handy tool for cross-device support in your Elementor widgets. All you have to do is enable Custom CSS for Elementor from the Master Addons extension manager. This is a Free Custom CSS plugin for Elementor.
+👉 [Custom CSS](https://master-addons.com/docs/addons/custom-css-extension/) - Elementor is a front-end drag and drop page builder Plugin. With this free Custom CSS extension, you can quickly **write the CSS codes for a specific device**. All you have to do is enable Custom CSS from the Master Addons extension manager.
 
-==Custom JS for Elementor==
+==Custom JS ==
 
-👉 Elementor Custom JS - To create an interactive web page you must use JavaScript. Unfortunately there was no Custom JS field available for Elementor Page Editor. Now Master Addons for Elementor plugin brings this amazing Elementor Extension. You can easily input your necessary custom JS code in Elementor Editor. After opening your post or page via Elementor editor, just navigate to Settings> Advanced option. You will get the Custom JS option for Elementor page editor there.
+👉 Custom JS - To create an interactive web page you must use JavaScript. Unfortunately there was no Custom JS field available for Elementor Page Editor. Now Master Addons for Elementor plugin brings this amazing Extension. You can easily input your necessary custom JS code in the Editor. After opening your post or page via Elementor editor, just navigate to Settings> Advanced option. You will get the Custom JS option there.
 
-==Elemeentor Positioning Addon for Any Element==
+== Positioning Addon for Any Element==
 
-👉 [Elementor Positioning](https://master-addons.com/demos/positioning/) - What if you can place any Elementor elements or section anywhere in your Elementor page? With the help of Elementor Position extension you can easily do it without hassle. There are 4 types of positions available right now, Default, Static, Relative, Absolute. In Elementor Editor, you can also define position for different devices too. For example, you can set a position for Desktop and another position for Laptop. Master Addons Elementor Position extension is enough to put your content wherever you need.
+👉 [Positioning](https://master-addons.com/demos/positioning/) - What if you can place any elements or section anywhere in your Elementor page? With the help of Position extension you can easily do it without hassle. There are 4 types of positions available right now, Default, Static, Relative, Absolute. In the Editor, you can also define position for different devices too. For example, you can set a position for Desktop and another position for Laptop. This Position extension is enough to put your content wherever you need.
 
-==Elementor Container Extras Extension==
+== Container Extras Extension==
 
-👉 Elementor Container Extras -  Overwrite the default Elementor Section & Column width/height with this Elementor Container Extra extension. This Elementor Addon will help you to creatively arrange your webpage by defining your sections width and height. Now you can define the width in PX, EM, %, VW value with this Elementor extension. Also, with the help of Elementor position extension you can define the position of your Elementor sections. By using both Elementor Extension, you are able to create a nice landing page via Elementor Editor.
+👉 Container Extras -  Overwrite the default Section & Column width/height with this Container Extra extension. This extension will help you to creatively arrange your webpage by defining your sections width and height. Now you can define the width in PX, EM, %, VW value with this extension. Also, with the help of position extension you can define the position of your Elementor sections. By using both Extension, you are able to create a nice landing page.
 
-==Mega Menu For Elementor Addon==
+==Mega Menu==
 
-👉 [Elementor Mega Menu](https://master-addons.com/docs/addons/navigation-menu/) - If you want to create a mega menu with Elementor, you can use the Elementor Mega Menu widget by Master Addons. It'll help you create any type of Elementor megamenu which is impossible with default widget items like the Menu. In addition, our Master Addons For Elementor Menus plugin lets you design an easy nav menu specifically for your e-commerce site or blog. Our Elementor Mega Menu extension will allow you to create menus like Etsy, Estee Lauder, Evernote. The Mega Menu for Elementor is the best solution for when you need detailed menus. it’s a groundbreaking item that can bet your customer’s attention.
+👉 [Mega Menu](https://master-addons.com/docs/addons/navigation-menu/) - If you want to create a mega menu, you can use the  Mega Menu extension by Master Addons. It'll help you create any type of megamenu which is impossible with default element items like the Menu. In addition, our Master Addons For Elementor plugin lets you design an easy nav menu specifically for your e-commerce site or blog. Our Mega Menu extension will allow you to create menus like Etsy, Estee Lauder, Evernote. The Mega Menu is the best solution for when you need detailed menus. it’s a groundbreaking item that can bet your customer’s attention.
 
- ==⭐Elementor Entrance Animation Addon==
+ ==⭐Entrance Animation Addon==
 
-👉 [Entrance Animation](https://master-addons.com/demos/entrance-animation/) - Elementor Entrance Animation is an awesome extension for creative minds and web developers who want to create an eye-catching animation using Elementor Page Editor. You can find pre-built animations for sections developed by Master Addons for Elementor Plugin. This Entrance animation for Elementor Extension also provides a lot of customization, such as duration and delay, so the animations will be exactly what you want. There are a total maximum **100 different types of Elementor Entrance Animation available** for you. You need to select your desired Elementor Entrance Animation style and update your page.
+👉 [Entrance Animation](https://master-addons.com/demos/entrance-animation/) - Entrance Animation is an awesome extension for creative minds and web developers who want to create an eye-catching animation on webpages. You can find pre-built animations for sections developed by Master Addons for Elementor Plugin. This Entrance animation Extension also provides a lot of customization, such as duration and delay, so the animations will be exactly what you want. There are a total maximum **100 different types of Entrance Animation available** for you. You need to select your desired Entrance Animation style and update your page.
 
-==⭐Elementor CSS Transforms Extension to Translate, Rotate, Scale & Skew Elements==
+==⭐CSS Transforms Extension to Translate, Rotate, Scale & Skew Elements==
 
-👉 [Transforms](https://master-addons.com/demos/transforms-extension/) - Elementor CSS Transforms is one of the highly demandable features. This Elementor CSS Transforms extension works for every Elementor Element. You can apply different types of Transform property on any Elementor Elements or Widget. You can create a nice Elementor Transform animation by inputting Normal CSS Transform value and Hover CSS Transform value. There are **Translate, Rotate, Scale, & Skew CSS ** Transform properties available. Using your Elementor Editor, you can easily set CSS Transform to any element.
+👉 [Transforms](https://master-addons.com/demos/transforms-extension/) - CSS Transforms is one of the highly demandable features. This CSS Transforms extension works for every Element. You can create a nice Transform animation by inputting Normal CSS Transform value and Hover CSS Transform value. There are **Translate, Rotate, Scale, & Skew CSS ** Transform properties available.
 
-==⭐Elementor Rellax Extension==
+==⭐Rellax Extension==
 
-👉 [Rellax](https://master-addons.com/demos/rellax/) - Do you like to add a nice Parallax Scrolling effect on your Elementor page editor? Here Relax Extension for Elementor comes. It will help you to set an awesome Scrolling parallax effect on Elementor. You can set Speed, Percentage and also Z-Index property. Z-index in Elementor Parallax scrolling effect will help you to overlap multiple content or sections. Also, This Elementor Parallax scrolling effect extension works smoothly on responsive too. You can define multiple **parallax scrolling effects for desktop, laptop, mobile devices.** With the help of Elementor Custom Breakpoint extension by Master Addons, you can create different breakpoints too.
+👉 [Rellax](https://master-addons.com/demos/rellax/) - Do you like to add a nice Parallax Scrolling effect on your landing page? Here Relax Extension comes. It will help you to set an awesome Scrolling parallax effect. You can set Speed, Percentage and also Z-Index property. Z-index in Parallax scrolling effect will help you to overlap multiple content or sections. Also, This Parallax scrolling effect extension works smoothly on responsive too. You can define multiple **parallax scrolling effects for desktop, laptop, mobile devices.** With the help of Custom Breakpoint extension by Master Addons, you can create different breakpoints too.
 
-==⭐Elementor Reveal Extension==
+==⭐Reveal Extension==
 
-👉 [Reveal](https://master-addons.com/demos/reveal/) -  Wait, have you ever thought to reveal your Webpage content using a nice transition effect? Elementor Reveal Extension by Master Addons can help you on this. You can select the content reveal direction on the Elementor Page editor. Not only this but also you have the control to select your elementor content and reveal speed and delay. The final option is Color, you can define whether you like to use a flat color for this Elementor Reveal extension or Gradient. Select the best option that you prefer and update your Elementor Editor.
+👉 [Reveal](https://master-addons.com/demos/reveal/) -  Wait, have you ever thought to reveal your Webpage content using a nice transition effect? Reveal Extension by Master Addons can help you on this. You can select the content reveal direction on the Page editor. Not only this but also you have the control to select your content and reveal speed and delay. The final option is Color, you can define whether you like to use a flat color for this Reveal extension or Gradient. Select the best option that you prefer and update your page.
 
-==Elementor Header, Footer Builder & Comment Form Designer==
+== Header, Footer Builder & Comment Form Designer==
 
-👉 [Elementor Header,Footer,Comment Form](https://master-addons.com/demos/header-footer-comment-builder/) - We Developed this Elementor Addon plugin with Elementor Header Footer builder included. Not only the Elementor Header and Footer builder but also you will get Comment form builder via Elementor Page editor on this elementor addon plugin. You can select different type of condition on this Elementor Header Footer builder like do you like to **showcase the header on Entire site, or Singular page - If singular page then select which page, or archive page -if archive page then select your tags and category pages**. You can dynamically set your Header and Footer using this Elementor Addon plugin.
+👉 [Header,Footer,Comment Form](https://master-addons.com/demos/header-footer-comment-builder/) - We Developed this plugin with Header Footer builder included. Not only the Header and Footer builder but also you will get Comment form builder via Elementor Page editor. You can select different type of condition on this Header Footer builder like do you like to **showcase the header on Entire site, or Singular page - If singular page then select which page, or archive page -if archive page then select your tags and category pages**. You can dynamically set your Header and Footer too.
 
 ==⭐Elementor Display Conditions Extension==
 
-👉 [Display Conditions](https://master-addons.com/demos/display-conditions/) - This Elementor Addon provides conditional display features. It allows you to present different types of content depending on a **user's behavior like browser, operating system, date range, etc.** This extension helps you take complete control on what type of content you like to showcase for different types of visitors, by adding multiple conditional logic to any content. Each logic has its own purpose. This Elementor conditional logic display addon will help you to showcase exact content based on users. For example, you are running a Browser extension. Now your extension has two different variations - one for Google chrome and another for Firefox. With this Elementor Conditional display extension, you can easily create a Download button of your extension which will redirect chrome user to the Chrome store and Firefox user to the firefox store. You must try this Elementor Conditional display extension at least once to see the magic.
+👉 [Display Conditions](https://master-addons.com/demos/display-conditions/) - This extension provides conditional display features. It allows you to present different types of content depending on a **user's behavior like browser, operating system, date range, etc.** This extension helps you take complete control on what type of content you like to showcase for different types of visitors, by adding multiple conditional logic to any content. Each logic has its own purpose. This conditional logic display addon will help you to showcase exact content based on users. For example, you are running a Browser extension. Now your extension has two different variations - one for Google chrome and another for Firefox. With this Conditional display extension, you can easily create a Download button of your extension which will redirect chrome user to the Chrome store and Firefox user to the firefox store. You must try this Conditional display extension at least once to see the magic.
 
-==Elementor Dynamic Tags For a Dynamic Page==
+== Dynamic Tags For a Dynamic Page==
 
-👉 [Elementor Dynamic Tags](https://master-addons.com/demos/dynamic-tags/) -  A Free Elementor Dynamic Tags Extension that provides you to arrange a **dynamic landing page via Elementor page editor**. Master Addons Dynamic tags plugin comes with tons of tags for Author, site, Archive, Post, Media and so on. For Example, you can dynamically showcase author bio and description under your desired page or post. This Free Elementor Dynamic tags module is used by a lot of website owners. You can style your Elementor Dynamic Tags content via the page editor easily too.
+👉 [Dynamic Tags](https://master-addons.com/demos/dynamic-tags/) -  A Free Dynamic Tags Extension that provides you to arrange a **dynamic landing page**. Master Addons Dynamic tags plugin comes with tons of tags for Author, site, Archive, Post, Media and so on. For Example, you can dynamically showcase author bio and description under your desired page or post. This Free  Dynamic tags extension is used by a lot of website owners. You can style your Dynamic Tags content via the page editor easily too.
 
-==⭐Elementor Floating Effects for Any Elements==
+==⭐ Floating Effects for Any Elements==
 
-👉 [Floating Effects](https://master-addons.com/demos/floating-effect/) - Do you like to enhance the beauty of your Webpage that designed via Elementor page builder plugin? Elementor Floating Effect extension can stand out your Webpage to your visitors. You can add different type of infinite Elementor floating effect animation to any Element. For example you can add **Transform, Scale, Skew property for your any Elementor element via this Floating Effect extension**. Just wisely define your animation value and update your page.
+👉 [Floating Effects](https://master-addons.com/demos/floating-effect/) - Do you like to enhance the beauty of your Webpage?  Floating Effect extension can stand out your Webpage to your visitors. You can add different type of infinite floating effect animation to any Element. For example you can add **Transform, Scale, Skew property for your any element via this Floating Effect extension**. Just wisely define your animation value and update your page.
 
-==Elementor Wrapper Link Addon==
+== Wrapper Link Addon==
 
-👉 [Elementor Wrapper Link](https://master-addons.com/docs/addons/wrapper-link/) - Adding links on a webpage is necessary to get more pageview from your visitors. With the help of Elementor Wrapper link extension there is no limitation to add links. You can add a link to your Elementor section, Elementor column, Any Elementor Elements, or even on an entire section that is designed with a lot of Elementor Elements. Don’t skip this Elementor Wrapper link extension by Master Addons, it’s too powerful to keep your visitors busy on your website. Elementor Wrapper Links can help increase click rates of your content on any site that is designed with Elementor page builder. Elementor Wrapper Links are easy to apply and can be used on both native elements & third party Elementor Addons Widgets too.
+👉 [Wrapper Link](https://master-addons.com/docs/addons/wrapper-link/) - Adding links on a webpage is necessary to get more pageview from your visitors. With the help of Wrapper link extension there is no limitation to add links. You can add a link to your section, column, Any Elements, or even on an entire section that is designed with a lot of Elements. Don’t skip this Wrapper link extension by Master Addons, it’s too powerful to keep your visitors busy on your website. Wrapper Links can help increase click rates of your content on any site that is designed with Elementor. Wrapper Links are easy to apply and can be used on both native elements & third party Addons elements too.
 
 
-==Elementor Post/Page Duplicator Extension for Any Post Type==
+== Post/Page Duplicator Extension for Any Post Type==
 
-👉 Elementor Post/Page Duplicator - Have you ever sought a feature that allows you to duplicate your post or page designed with Elementor page builder? There are some post or page duplicator plugins which miss data from your actual page or post. With the help of Elementor Post Page Duplicator addon, now you can easily clone any post, page or post type within a single click that is made via elementor or any other page builder. It supports all third party plugins post types like WooCommerce. It can close your WooCommerce product data too. Using this Elementor Post page duplicator extension will save a lot of time for you. It’s really boring to design each post or page one by one, here this duplicator extension will work like magic for you.
+👉 Post/Page Duplicator - Have you ever thought a feature that allows you to duplicate your post or page? There are some post or page duplicator plugins which miss data from your actual page or post. With the help of Post Page Duplicator addon, now you can easily clone any post, page or post type within a single click. It supports all third party plugins post types like WooCommerce. It can clone your WooCommerce product data too. Using this Post page duplicator extension will save a lot of time for you. It’s really boring to design each post or page one by one, here this duplicator extension will work like magic for you.
 
-==Elementor Glassmorphism or Background Blur effect==
+== Glassmorphism or Background Blur effect==
 
-👉 [Elementor Glassmorphism](https://master-addons.com/demos/glassmorphism-extension/) - Another Free **Elementor Glassmorphism extension by Master Addons**. Objects with a Glassmorphism effect can have images or colors behind them, but not completely visible. This is because there is always a blur in the background that prevents objects from blending together in Glassmorphism effect. This blurring can help make interactive features like buttons and menus accessible to those with a range of abilities, but also has the benefit of giving your design a sleek frosted glass finish. In Elementor you can easily do this via Custom CSS , if you have proper knowledge on how to work with **Elementor Custom CSS.** This Elementor Glassmorphism plugin doesn’t need any extra configuration. After installing Master Addons for Elementor plugin, you can easily create **Glassmorphism effect on any element or section or column.** Don’t forget to check our Elementor Glassmorphism demo from Master Addons website.
+👉 [Glassmorphism](https://master-addons.com/demos/glassmorphism-extension/) - Another Free ** Glassmorphism extension by Master Addons**. Objects with a Glassmorphism effect can have images or colors behind them, but not completely visible. This is because there is always a blur in the background that prevents objects from blending together in Glassmorphism effect. This blurring can help make interactive features like buttons and menus accessible to those with a range of abilities, but also has the benefit of giving your design a sleek frosted glass finish. In Elementor you can easily do this via Custom CSS , if you have proper knowledge on how to work with ** Custom CSS.** This Glassmorphism extension doesn’t need any extra configuration. After installing Master Addons for Elementor plugin, you can easily create **Glassmorphism effect on any element or section or column.** Don’t forget to check our Glassmorphism demo from Master Addons website.
 
-==Elementor Icons Extended **5 Icon Library**==
+== Icons Extended **5 Icon Library**==
 
-👉 [Icons Extended](https://master-addons.com/elementor-icons-and-4-font-library/) - Many of you don’t want to stick with the **default Font Awesome icon pack in Elementor Editor**. Master Addons comes with Elementor icons extended feature. Here you will get an extra **5 icons library called Simple Line Icons, Elementor Icons, Ionic Font, Linear Icons, Material Icons pack**. This icons pack comes with a lot of icons that is enough to arrange a nice webpage using Elementor page editor. These all icons work fine with any Elementor element that has an icon picker. There is an icon picker option in your Elementor icon library, with the help of icon picker you can easily select your desired Elementor icon for your landing page.
+👉 [Icons Extended](https://master-addons.com/elementor-icons-and-4-font-library/) - Many of you don’t want to stick with the **default Font Awesome icon pack in Elementor Editor**. Master Addons comes with icons extended feature. Here you will get an extra **5 icons library called Simple Line Icons, Elementor Icons, Ionic Font, Linear Icons, Material Icons pack**. This icons pack comes with a lot of icons that is enough to arrange a nice webpage using Elementor page editor. These all icons work fine with any element that has an icon picker.
 
-==⭐ Elementor Tooltips Extension For Section or Any Element ==
+==⭐ Tooltips Extension For Section or Any Element ==
 
-👉 [Tooltips](https://master-addons.com/demos/ext-tooltips/) - You have seen our Elementor Tooltip Element before, but this is our Elementor Tooltip Extension. You can insert a tooltip in any Elementor section, Elementor column, Elementor elements. No matter if you are using a third party Elementor Addon plugin. Our Elementor Tooltip extension will work on any third party elements too. You can insert tooltip content, define tooltip position, set tooltip height width, customize the tooltip background, change text color with typography and so on.
+👉 [Tooltips](https://master-addons.com/demos/ext-tooltips/) - You have seen our Tooltip Element before, but this is our  Tooltip Extension. You can insert a tooltip in any section, column, elements. No matter if you are using a third party Elementor Addon plugin. Our Tooltip extension will work on any third party elements too. You can insert tooltip content, define tooltip position, set tooltip height width, customize the tooltip background, change text color with typography and so on.
 
 
 ==5 Awesome Elementor Icon Library==
 
-👉 **Simple Line Icons:** Input any icon from this Simple Line Icons library to your Elementor Page editor. This library provides a lot of minimal eye-catching icons.
-👉 **Elementor Icons:** I hope you are already familiar with the default Elementor Icons, this Elementor plugin allows you to input the Elementor icons inside your Elementor Editor.
-👉 **Ionic Font:** Insert some coll Ionic Font icon inside your Elementor editor and make an outstanding webpage.
-👉 **Linear Icons:** This icon library comes with some bold handy icons that are highly recommended for any online professional. Insert any icon from the Liner Icons library in your Elementor Page editor.
-👉 **Material Icons:** These bold icons will attract your visitor's intention when they visit your Website. Just enable Material icons and insert them in your elementor editor.
+👉 **Simple Line Icons:** Input any icon from this Simple Line Icons library to your webpage. This library provides a lot of minimal eye-catching icons.
+👉 **Elementor Icons:** I hope you are already familiar with the default Elementor Icons, enable this icon library and access to the default Elementor icons.
+👉 **Ionic Font:** Insert some coll Ionic Font icon inside your page and make an outstanding webpage.
+👉 **Linear Icons:** This icon library comes with some bold handy icons that are highly recommended for any online professional.
+👉 **Material Icons:** These bold icons will attract your visitor's intention when they visit your Website. Just enable Material icons and insert them on any page.
 
 
 == RollBack to Previous Version ==
-Facing any issue after Updating Master Addons for Elementor Plugin? You can try the RollBack to Previous version by this Elementor Addon plugin, it will solve your issue. If you face this type of issue don’t forget to get in touch with us via our support forum. We Master Addons for Elementor team will provide you dedicated support and solve every issue. We always try our best to test Master Addons for the Elementor plugin in our server and then release a stable update. But if somehow it conflicts with your website you can use this Rollback feature by Master Addons for Elementor plugin.
+Facing any issue after Updating Master Addons for Elementor Plugin? You can try the RollBack to Previous version, it will solve your issue. If you face this type of issue don’t forget to get in touch with us via our support forum. We Master Addons for Elementor team will provide you dedicated support and solve every issue. We always try our best to test Master Addons for the Elementor plugin in our server and then release a stable update. But if somehow it conflicts with your website you can use this Rollback feature by Master Addons for Elementor plugin.
 
 
 ==System Information==
-Are you ever curious about your WordPress Environment, Server Requirements, PHP Extensions? When you debug your Website you must check your WordPress website configuration. This Elementor Addon plugin provides you with an extra feature called System Info. With the help of System info, you can check all of your website configuration data in one place. You don’t need to login your Cpanel or contact your hosting provider to learn about the technical configuration. You will see a cross mark in server Requirements, if your Website fails to fulfill Elementor and Master Addons demand. This Elementor addon will help you to figure out the exact issue of your website.
+Are you ever curious about your WordPress Environment, Server Requirements, PHP Extensions? When you debug your Website you must check your WordPress website configuration. Master Addons provides you with an extra feature called System Info. With the help of System info, you can check all of your website configuration data in one place. You don’t need to login your Cpanel or contact your hosting provider to learn about the technical configuration. You will see a cross mark in server Requirements, if your Website fails to fulfill Elementor and Master Addons demand. It will help you to figure out the exact issue of your website.
 
 
 [Upgrade to Master Addons Pro]( https://master-addons.com/go/pricing/ )
@@ -584,11 +586,11 @@ We're adding new Features everyday. You'll get regular Updates also !
 1. Master Addons - Accordion, Call to Action, Tooltips, Team Carousel, Flipbox
 2. Master Addons - Business Hour, Image Hover Effects, Blog List Cards, Dual Heading
 3. Master Addons control Panel
-4. Elementor Image Hover Effects widget
-5. Elementor before after Image Comparison
-6. Elementor Filterable Image Gallery
-7. Gradient Headline for Elementor
-8. Elementor Gallery slider widget
+4. Image Hover Effects Element
+5. before after Image Comparison
+6. Filterable Image Gallery
+7. Gradient Headline
+8. Gallery slider widget
 
 
 == Installation ==
@@ -599,6 +601,21 @@ Paste on your Local Computer
 
 
 == Changelog ==
+= 2.0.1 (22-03-2023) =
+* Fixed: Call to undefined method Freemius_Api_WordPress::RemoteRequest() PHP fatal error issue fixed
+
+= 2.0.0 (13-03-2023) =
+* Fixed: Unsupported operand issue fixed on MA Blog widget
+* Fixed: Comment form field loading issue at backend
+* Fixed: Google re-captcha issue fixed
+* Fixed: Swiper Slider overflow issue fixed.
+
+= 1.9.9 (26-02-2023) =
+* Fixed: Compatibility check with latest WordPress and Elementor, Elementor Pro
+
+= 1.9.8 (04-01-2023) =
+* Fixed: Megamenu click/hover & width issue fixed
+
 = 1.9.6 (13-11-2022) =
 * Checked: Version Compatibility check with WordPress 6.1 and latest Elementor & Elementor Pro
 

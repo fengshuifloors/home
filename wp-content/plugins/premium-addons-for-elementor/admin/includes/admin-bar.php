@@ -40,7 +40,7 @@ class Admin_Bar {
 
 		$suffix = is_rtl() ? '-rtl' : '';
 
-		$action = isset( $_SERVER['REQUEST_URI'] ) ? filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_STRING ) : '';
+		$action = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 
 		if ( false === strpos( $action, 'action=architect' ) ) {
 

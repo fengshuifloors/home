@@ -129,7 +129,7 @@ class Addons_Integration {
 	public function live_editor_enqueue() {
 
 		wp_enqueue_script(
-			'live-editor-js',
+			'live-editor',
 			PREMIUM_ADDONS_URL . 'assets/editor/js/live-editor.js',
 			array( 'elementor-editor', 'jquery' ),
 			PREMIUM_ADDONS_VERSION,
@@ -141,7 +141,7 @@ class Addons_Integration {
 			'nonce'   => wp_create_nonce( 'pa-live-editor' ),
 		);
 
-		wp_localize_script( 'live-editor-js', 'liveEditor', $live_editor_data );
+		wp_localize_script( 'live-editor', 'liveEditor', $live_editor_data );
 
 	}
 
@@ -425,7 +425,7 @@ class Addons_Integration {
 
 		// If the assets are not ready, or file does not exist for any reson.
 		if ( ! wp_style_is( 'pa-frontend', 'enqueued' ) ) {
-			$this->register_old_styles( $dir, $is_rtl, $suffix );
+			$this->enqueue_old_styles( $dir, $is_rtl, $suffix );
 		}
 
 	}
@@ -440,9 +440,9 @@ class Addons_Integration {
 	 * @param string $is_rtl page direction.
 	 * @param string $suffix file suffix.
 	 */
-	public function register_old_styles( $directory, $is_rtl, $suffix ) {
+	public function enqueue_old_styles( $directory, $is_rtl, $suffix ) {
 
-		wp_register_style(
+		wp_enqueue_style(
 			'premium-addons',
 			PREMIUM_ADDONS_URL . 'assets/frontend/' . $directory . '/premium-addons' . $is_rtl . $suffix . '.css',
 			array(),
@@ -571,7 +571,7 @@ class Addons_Integration {
 		wp_register_script(
 			'pa-maps',
 			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/premium-maps' . $suffix . '.js',
-			array( 'jquery', 'pa-maps-api' ),
+			array( 'jquery' ),
 			PREMIUM_ADDONS_VERSION,
 			true
 		);
@@ -632,7 +632,6 @@ class Addons_Integration {
 			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/headroom' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_ADDONS_VERSION
-			// true
 		);
 
 		wp_register_script(
@@ -645,22 +644,22 @@ class Addons_Integration {
 
 		if ( $maps_settings['premium-map-cluster'] ) {
 			wp_register_script(
-				'google-maps-cluster',
-				'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js',
+				'pa-maps-cluster',
+				PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/markerclusterer' . $suffix . '.js',
 				array(),
-				PREMIUM_ADDONS_VERSION,
+				'1.0.1',
 				false
 			);
 		}
 
 		if ( $maps_settings['premium-map-disable-api'] && '1' !== $maps_settings['premium-map-api'] ) {
-			$api = sprintf( 'https://maps.googleapis.com/maps/api/js?key=%1$s&language=%2$s', $maps_settings['premium-map-api'], $locale );
+			$api = sprintf( 'https://maps.googleapis.com/maps/api/js?key=%1$s&callback=initMap&language=%2$s', $maps_settings['premium-map-api'], $locale );
 			wp_register_script(
 				'pa-maps-api',
 				$api,
 				array(),
 				PREMIUM_ADDONS_VERSION,
-				false
+				true
 			);
 		}
 
@@ -735,6 +734,14 @@ class Addons_Integration {
 		wp_register_script(
 			'pa-fontawesome-all',
 			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/fontawesome-all' . $suffix . '.js',
+			array( 'jquery' ),
+			PREMIUM_ADDONS_VERSION,
+			true
+		);
+
+		wp_register_script(
+			'pa-scrolltrigger',
+			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/scrollTrigger' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_ADDONS_VERSION,
 			true
@@ -930,7 +937,7 @@ class Addons_Integration {
 	public function enqueue_editor_cp_scripts() {
 
 		wp_enqueue_script(
-			'premium-xdlocalstorage-js',
+			'premium-xdlocalstorage',
 			PREMIUM_ADDONS_URL . 'assets/editor/js/xdlocalstorage.js',
 			null,
 			PREMIUM_ADDONS_VERSION,
@@ -940,7 +947,7 @@ class Addons_Integration {
 		wp_enqueue_script(
 			'premium-cross-cp',
 			PREMIUM_ADDONS_URL . 'assets/editor/js/premium-cross-cp.js',
-			array( 'jquery', 'elementor-editor', 'premium-xdlocalstorage-js' ),
+			array( 'jquery', 'elementor-editor', 'premium-xdlocalstorage' ),
 			PREMIUM_ADDONS_VERSION,
 			true
 		);

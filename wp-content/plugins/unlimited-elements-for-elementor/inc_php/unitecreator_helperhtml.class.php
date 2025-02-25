@@ -647,6 +647,16 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			echo "</div>";
 		}
 		
+		/**
+		 * output error message
+		 */
+		public static function outputErrorMessage($message){
+			
+			echo "<div style='color:darkred;margin:20px;'>";
+			echo $message;
+			echo "</div>";
+		}
+		
 		
 		/**
 		 * output exception in a box
@@ -896,10 +906,10 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				$isTablet = ($isTablet == "tablet");
 				
 			if($isTablet == true){
-				$output = "@media (max-width:768px){{$css}}";
+				$output = "@media (max-width:1024px){{$css}}";
 			
 			}else{
-				$output = "@media (max-width:480px){{$css}}";
+				$output = "@media (max-width:768px){{$css}}";
 			}
 			
 			return($output);

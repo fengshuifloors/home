@@ -386,7 +386,7 @@ class Premium_Grid extends Widget_Base {
 			array(
 				'label'       => __( 'Height', 'premium-addons-for-elementor' ),
 				'label_block' => true,
-				'size_units'  => array( 'px', 'em', '%' ),
+				'size_units'  => array( 'px', 'em', '%', 'custom' ),
 				'type'        => Controls_Manager::SLIDER,
 				'range'       => array(
 					'px' => array(
@@ -413,7 +413,7 @@ class Premium_Grid extends Widget_Base {
 			array(
 				'label'       => __( 'Position', 'premium-addons-for-elementor' ),
 				'label_block' => true,
-				'size_units'  => array( 'px', 'em', '%' ),
+				'size_units'  => array( 'px', 'em', '%', 'custom' ),
 				'type'        => Controls_Manager::SLIDER,
 				'condition'   => array(
 					'premium_gallery_load_more' => 'yes',
@@ -773,6 +773,18 @@ class Premium_Grid extends Widget_Base {
 				'return_value' => 'true',
 				'condition'    => array(
 					'premium_gallery_video' => 'true',
+				),
+			)
+		);
+
+		$img_repeater->add_control(
+			'download_button',
+			array(
+				'label'     => __( 'Download Button', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => array(
+					'premium_gallery_video'      => 'true',
+					'premium_gallery_video_type' => 'hosted',
 				),
 			)
 		);
@@ -1646,7 +1658,7 @@ class Premium_Grid extends Widget_Base {
 			array(
 				'label'       => __( 'Position', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SLIDER,
-				'size_units'  => array( 'px', '%', 'em' ),
+				'size_units'  => array( 'px', '%', 'em', 'custom' ),
 				'range'       => array(
 					'px' => array(
 						'min' => 0,
@@ -2720,7 +2732,12 @@ class Premium_Grid extends Widget_Base {
 
 				$image_id = apply_filters( 'wpml_object_id', $image['premium_gallery_img']['id'], 'elementor_library', true );
 
-				$alt = apply_filters( 'pa_grid_image_alt', get_post( $image_id )->post_title );
+				$image_by_id = get_post( $image_id );
+
+				$alt = '';
+				if ( isset( $image_by_id->post_title ) ) {
+					$alt = apply_filters( 'pa_grid_image_alt', get_post( $image_id )->post_title );
+				}
 
 				$this->add_render_attribute(
 					$key,
@@ -3268,6 +3285,10 @@ class Premium_Grid extends Widget_Base {
 
 		if ( $item['premium_gallery_video_loop'] ) {
 			$video_params['loop'] = '';
+		}
+
+		if ( 'yes' !== $item['download_button'] ) {
+			$video_params['controlsList'] = 'nodownload';
 		}
 
 		$video_params['preload'] = 'none';

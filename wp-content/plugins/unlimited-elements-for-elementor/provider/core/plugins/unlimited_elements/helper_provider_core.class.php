@@ -18,7 +18,8 @@ class HelperProviderCoreUC_EL{
 	public static $arrGlobalColors;
 	private static $arrCacheElementorTemplate;
 	private static $arrPostContentCache = array();
-	private static $arrTemplateContentCache = array();
+	private static $arrTemplatesCounter = array();
+	private static $isInfiniteLoopCode = false;
 	
 	
 	/**
@@ -273,6 +274,9 @@ class HelperProviderCoreUC_EL{
 				$postID = "jet_".$postID;
 			}
 			
+			if(is_string($templateType) == false)
+				$templateType = "template";
+			
 			switch($templateType){
 				case "single-post":
 					$templateType = "single";
@@ -416,6 +420,9 @@ class HelperProviderCoreUC_EL{
 	 */
 	public static function getHoverAnimationClasses($addNotChosen = false){
 		
+		if(class_exists("\Elementor\Control_Hover_Animation") == false)
+			return(array());
+		
 		$arrAnimations = \Elementor\Control_Hover_Animation::get_animations();
 		
 		$arrAnimationsNew = array();
@@ -547,7 +554,52 @@ class HelperProviderCoreUC_EL{
 		return($content);
 	}
 	
-	
+	/**
+	 * get elementor condition from param
+	 */
+	public static function paramToElementorCondition($param){
+				
+		$condition = array();
+		
+		$enableCondition = UniteFunctionsUC::getVal($param, "enable_condition");
+		if($enableCondition == true){
+			
+			$attribute = UniteFunctionsUC::getVal($param, "condition_attribute");
+			$operator = UniteFunctionsUC::getVal($param, "condition_operator");
+			$value = UniteFunctionsUC::getVal($param, "condition_value");
+			
+			if(is_array($value) && count($value) == 1){
+				$value = $value[0];
+				if($operator == "not_equal")
+					$value = "!".$value;
+			}
+			
+			$condition[$attribute] = $value;
+		}
+		
+		
+		if(empty($condition))
+			return($condition);
+		
+		$attribute2 = UniteFunctionsUC::getVal($param, "condition_attribute2");
+		
+		if(!empty($attribute2)){
+			
+			$operator = UniteFunctionsUC::getVal($param, "condition_operator2");
+			$value = UniteFunctionsUC::getVal($param, "condition_value2");
+			
+			if(is_array($value) && count($value) == 1){
+				$value = $value[0];
+				if($operator == "not_equal")
+					$value = "!".$value;
+			}
+			
+			$condition[$attribute2] = $value;
+		}
+		
+		
+		return($condition);
+	}
 	
 	private static function ______LISTING________(){}
 	
@@ -577,17 +629,41 @@ class HelperProviderCoreUC_EL{
 	 * put elementor template
 	 * protection against inifinite loop
 	 */
-	public static function putElementorTemplate($templateID){
+	public static function putElementorTemplate($templateID, $mode = null){
 		
-		if(isset(self::$arrTemplateContentCache[$templateID]))
-			return(self::$arrTemplateContentCache[$templateID]);
+		
+		if(!isset(self::$arrTemplatesCounter[$templateID]))
+			self::$arrTemplatesCounter[$templateID] = 0;
+		
+		self::$arrTemplatesCounter[$templateID]++;
+		
+		if(self::$arrTemplatesCounter[$templateID] >= 50){
+			
+			$text = __("Infinite Template Loop Found: $templateID","unlimited-elements-for-elementor");
+			
+			dmp($text);
+			
+			if(self::isInfiniteLoopCode == false){
+				echo "<script>alert('Infinite Template Loop Found with id: $templateID')</script>";
+			}
+			
+			self::$isInfiniteLoopCode = true;
+			
+			return($text);
+		}
+		
+		if($mode == "no_ue_widgets")	//in dynamic popup for example
+			GlobalsProviderUC::$isUnderNoWidgetsToDisplay = true;
 		
 		$output = self::getElementorTemplate($templateID);
-		
-		self::$arrTemplateContentCache[$templateID] = $output;
+
+
+		if($mode == "no_ue_widgets")
+			GlobalsProviderUC::$isUnderNoWidgetsToDisplay = false;
 		
 		echo $output;
 	}
+	
 	
 	/**
 	 * get jet template
@@ -611,7 +687,9 @@ class HelperProviderCoreUC_EL{
 		if(empty($templateID) || is_numeric($templateID) == false)
 			return("");
 		
+		
 		$output = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $templateID, $withCss);
+		
 		
 		return($output);
 	}
@@ -630,6 +708,10 @@ class HelperProviderCoreUC_EL{
 		
 		global $wp_query;
 		
+		//empty the infinite loop protection
+		
+		self::$arrTemplatesCounter = array();
+		
 		$originalPost = $GLOBALS['post'];
 		
 		//backup the original querified object
@@ -645,18 +727,32 @@ class HelperProviderCoreUC_EL{
 			
 		$GLOBALS['post'] = $post;
 		
+		//fix for jet engine
+		
+		$isJetExists = UniteCreatorPluginIntegrations::isJetEngineExists();
+		
+		if($isJetExists == true)
+			do_action("the_post", $post, false);
+					
+		//set the flag on dynamic ajax
+		
+		if(GlobalsProviderUC::$isUnderAjax == true){
+			GlobalsProviderUC::$isUnderAjaxDynamicTemplate = true;
+		}
+		
 		//set elementor document
 		
 		$isElementorProActive = HelperUC::isElementorProActive();
 		
 		$documentToChange = null;
 		
+		GlobalsProviderUC::$isUnderDynamicTemplateLoop = true;
+		
 		if($isElementorProActive == true){
 			
 			$currentDocument = \ElementorPro\Plugin::elementor()->documents->get_current();
 			
 			$documentToChange = \Elementor\Plugin::$instance->documents->get( $postID );
-			
 			
 			//do it from elementorIntegrate class
 			//\ElementorPro\Plugin::elementor()->documents->switch_to_document( $document );
@@ -674,8 +770,7 @@ class HelperProviderCoreUC_EL{
 			$htmlTemplate = self::getJetTemplateListingItem($templateID, $post);
 		else
 			$htmlTemplate = self::getElementorTemplate($templateID, $withCss);
-		
-		
+			
 		//add one more class
 		
 		$source = "class=\"elementor elementor-{$templateID}";
@@ -684,8 +779,11 @@ class HelperProviderCoreUC_EL{
 		$htmlTemplate = str_replace($source, $dest, $htmlTemplate);
 		
 		echo $htmlTemplate;
-		
+				
 		GlobalsUnlimitedElements::$renderingDynamicData = null;
+		
+		GlobalsProviderUC::$isUnderAjaxDynamicTemplate = false;
+		
 		
 		//restore the original queried object
 		
@@ -698,9 +796,9 @@ class HelperProviderCoreUC_EL{
 			\ElementorPro\Plugin::elementor()->documents->switch_to_document( $currentDocument );
 		}
 		
+		GlobalsProviderUC::$isUnderDynamicTemplateLoop = false;
 		
 	}
-	
 	
 	/**
 	 * put dynamic loop element style if exists
@@ -734,14 +832,48 @@ class HelperProviderCoreUC_EL{
  		
   		if(empty($arrControls))
   			return(false);
-  		  		
-  		unset($dynamicSettings["link"]);
   		
-  		$settings = @$element->parse_dynamic_settings( $dynamicSettings, $arrControls);
- 		
+  		if(is_array($arrControls) == false)
+  			return(false);
+  		
+  		if(isset($arrControls[0]) && is_string($arrControls[0]))
+  			return(false);
+  		
+  		unset($dynamicSettings["link"]);
+  		unset($dynamicSettings["eael_cta_btn_link"]);	//some protection
+		
+  		//unset dynamic settings
+  		foreach($dynamicSettings as $key => $setting){
+  			
+  			$arrControl = UniteFunctionsUC::getVal($arrControls, $key);
+  			
+  			$type = UniteFunctionsUC::getVal($arrControl, "type");
+  			  			
+  			switch($type){
+  				case "url":
+  					  					
+  					unset($dynamicSettings[$key]);
+  				break;
+  			}
+  			  
+  		}
+  		
+  		if(empty($dynamicSettings))
+  			return(false);
+  		
+  		try{
+  			
+  			
+  			$settings = @$element->parse_dynamic_settings( $dynamicSettings, $arrControls);
+			
+  		}catch(Exception $e){
+  			return(false);
+  		}
+  		
   		if(empty($settings))
 			return(false);
-  		
+		
+					
   		$strStyle = "";
   		
   		$wrapperCssKey = "#{$widgetID} .uc-post-{$postID}.elementor-{$templateID} .elementor-element.elementor-element-{$elementID}";
@@ -766,7 +898,11 @@ class HelperProviderCoreUC_EL{
   			$arrSelectors = UniteFunctionsUC::getVal($control, "selectors");
   			if(empty($arrSelectors))
   				continue;
-  				
+  			
+  			$responsive = UniteFunctionsUC::getVal($control, "responsive");
+  			
+  			$maxRes = UniteFunctionsUC::getVal($responsive, "max");
+  			  			
   			//modify the selectors
   			
   			foreach($arrSelectors as $cssKey=>$cssValue){
@@ -786,11 +922,19 @@ class HelperProviderCoreUC_EL{
   				//clear other placeholders
   				
   				$cssValue = str_replace("{{UNIT}}", "", $cssValue);
-				  				
+				 
   				if(!empty($strStyle))
   					$strStyle .= "\n";
   				
-  				$strStyle .= $cssKey."{{$cssValue}}\n";
+  				$styleToAdd = $cssKey."{{$cssValue}}"; 
+  				
+  				if($maxRes == "tablet")
+  					$styleToAdd = HelperHtmlUC::wrapCssMobile($styleToAdd, true);
+  				else
+  				if($maxRes == "mobile")
+  					$styleToAdd = HelperHtmlUC::wrapCssMobile($styleToAdd);
+  				  					
+  				$strStyle .= $styleToAdd."\n";
   				
   			}
   			
@@ -799,10 +943,11 @@ class HelperProviderCoreUC_EL{
   		
   		if(empty($strStyle))
   			return(false);
+		
   			
   		//output the style
   		
-  		$strOutput = "<style type='text/css'>\n";
+  		$strOutput = "<style type='text/css' data-type='dynamic-loop-item'>\n";
   		$strOutput .= $strStyle;
   		$strOutput .= "</style>";
 		

@@ -85,6 +85,17 @@
             this.setArrowDropdown();
             this.checkDropdown();
             this.onEdit();
+            this.megaMenuClick();
+        }
+
+        megaMenuClick(){
+            // Menu Settings Megamenu Trigger Effect
+            if ($('.jltma-has-megamenu').hasClass('jltma-megamenu-click')) {
+                $('.jltma-megamenu-click').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).find('.dropdown-menu.jltma-megamenu').toggleClass("show");
+                });
+            }
         }
 
 

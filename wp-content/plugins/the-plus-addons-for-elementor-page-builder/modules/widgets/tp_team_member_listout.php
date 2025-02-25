@@ -49,6 +49,194 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
+		$this->add_control('selctSource',
+			[
+				'label' => esc_html__( 'Select Source', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'post',
+				'options' => [
+					'post' => esc_html__( 'Post Type', 'theplus' ),
+					'repeater' => esc_html__( 'Repeater', 'theplus' ),
+				],
+			]
+		);
+		$repeater = new \Elementor\Repeater();
+
+		$repeater->add_control('memberTitle',
+			[
+				'label' => esc_html__( 'Member Name', 'theplus' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('tmImage',
+			[
+				'label' => esc_html__( 'Member Image', 'theplus' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+		$repeater->add_control('designationTeam',
+			[
+				'label' => esc_html__( 'Designation', 'theplus' ),
+				'type' => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Enter Designation', 'theplus' ),
+			]
+		);
+		$repeater->add_control('customUrl',
+			[
+				'label' => esc_html__( 'Single Page Url ', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'theplus' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('websiteLink',
+			[
+				'label' => esc_html__( 'Website ', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'theplus' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('fbLink',
+			[
+				'label' => esc_html__( 'Facebook ', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'theplus' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('twitterLink',
+			[
+				'label' => esc_html__( 'Twitter ', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'theplus' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('instaLink',
+			[
+				'label' => esc_html__( 'Instagram ', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'theplus' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('gooogleLink',
+			[
+				'label' => esc_html__( 'Google ', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'theplus' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('linkdinLink',
+			[
+				'label' => esc_html__( 'Linkedin ', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'theplus' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('emailLink',
+			[
+				'label' => esc_html__( 'Email ', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'example@domain.com', 'theplus' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('phnLink',
+			[
+				'label' => esc_html__( 'Phone ', 'theplus' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( '+1 (xxx) xxx-xx-xx', 'theplus' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+		$repeater->add_control('clientCategory',
+			[
+				'label' => esc_html__( 'Category (For Filter)', 'theplus' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => '',
+				'placeholder' => esc_html__( 'e.g. Category1, Category2', 'theplus' ),	
+				'title' => 'you can add multiple with separated by comma.',
+				'label_block' => true,							
+			]
+		);
+		$this->add_control('tmList',
+			[
+				'label' => esc_html__( 'Mebmber List', 'theplus' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'memberTitle' => esc_html__( 'Title #1', 'theplus' ),
+					],
+				],
+				'title_field' => '{{{ memberTitle }}}',
+				'condition' => [
+					'selctSource' => 'repeater'
+				],
+			]
+		);
 		$this->add_control(
 			'style',
 			[
@@ -102,7 +290,7 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 				],
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'content_alignment',
 			[
 				'label' => esc_html__( 'Content Alignment', 'tpebl' ),
@@ -120,6 +308,9 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 						'title' => esc_html__( 'Right', 'tpebl' ),
 						'icon' => 'eicon-text-align-right',
 					],
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .team-member-list .post-content-bottom' => 'text-align: {{VALUE}};',
 				],
 				'default' => 'center',
 				'label_block' => false,
@@ -513,6 +704,75 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 				],
             ]
         );
+		$this->add_responsive_control(
+            'social_icon_size',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Icon Size', 'theplus'),
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 200,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}} .team-member-list.team-style-1 .team-social-content .team-social-list li a i' => 'font-size: {{SIZE}}{{UNIT}}',
+				],
+            ]
+        );
+		$this->add_responsive_control(
+            'social_icon_width',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Icon Width', 'theplus'),
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 250,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}} .team-member-list.team-style-1 .team-social-content .team-social-list li a' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};line-height: {{SIZE}}{{UNIT}};',
+				],
+            ]
+        );
+		$this->add_responsive_control(
+            'social_icon_offset',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Icon Offset', 'theplus'),
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => '',
+				],
+				'render_type' => 'ui',
+				'selectors' => [
+					'{{WRAPPER}} .team-member-list.team-style-1 .team-social-content .team-social-list li a i' => 'transform: translateY({{SIZE}}{{UNIT}});',
+				],
+            ]
+        );
 		$this->start_controls_tabs( 'tabs_social_icon_style' );
 		$this->start_controls_tab(
 			'tab_social_icon_normal',
@@ -592,6 +852,15 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 				'label' => esc_html__( 'Normal', 'tpebl' ),
 			]
 		);
+		$this->add_responsive_control('ImageOverlay',
+			[
+				'label' => esc_html__( 'Overlay Background Color', 'theplus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors'  => [
+					'{{WRAPPER}} .team-list-content .tp-image-overlay' => 'background: {{VALUE}}',
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),
 			[
@@ -612,6 +881,17 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 			'tab_image_shadow_hover',
 			[
 				'label' => esc_html__( 'Hover', 'tpebl' ),
+			]
+		);
+		$this->add_responsive_control(
+			'ImageOverlayHover',
+			[
+				'label' => esc_html__( 'Overlay Hover Background Color', 'theplus' ),
+				'type' => Controls_Manager::COLOR,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .team-list-content:hover .tp-image-overlay' => 'background: {{VALUE}}',
+				],
 			]
 		);
 		$this->add_group_control(
@@ -657,6 +937,16 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
                 'tab' => Controls_Manager::TAB_STYLE,
 			]
         );
+		$this->add_responsive_control('content_bi_padding',
+			[
+				'label' => esc_html__( 'Content Padding', 'theplus' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .team-member-list .post-content-bottom' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_responsive_control(
 			'content_inner_padding',
 			[
@@ -980,8 +1270,7 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 		$this->end_controls_section();
 	}
 		
-	 protected function render() {
-
+	protected function render() {
         $settings = $this->get_settings_for_display();
 		$query_args = $this->get_query_args();
 		$query = new \WP_Query( $query_args );
@@ -989,10 +1278,13 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 		$layout=$settings["layout"];
 		$team_name=l_theplus_team_member_post_name();
 		$team_taxonomy=l_theplus_team_member_post_category();
+		$display_thumbnail=$settings['display_thumbnail'];
 		
 		$post_title_tag=$settings["post_title_tag"];
 		$display_designation=$settings["display_designation"];
 		$display_social_icon=$settings["display_social_icon"];
+		$selctSource = !empty($settings['selctSource']) ? $settings['selctSource'] : 'post';
+		$tmList = !empty($settings['tmList']) ? $settings['tmList'] : [];
 		
 		$post_category=$settings['post_category'];
 		
@@ -1051,100 +1343,86 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 		}
 		
 		$data_class .=' team-'.$style;
-		
-		
 		$output=$data_attr='';		
-		
 		$uid=uniqid("post");
-		
 		$data_attr .=' data-id="'.esc_attr($uid).'"';
 		$data_attr .=' data-style="'.esc_attr($style).'"';
-		
-		if ( ! $query->have_posts() ) {
-			$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "Posts not found", "tpebl" ).'</h3>';
-		}else{
-			if($style=="style-1" && $layout!='carousel'){	
+		$tpRow = '<div id="'.esc_attr($uid).'" class="tp-row post-inner-loop '.esc_attr($uid).' '.esc_attr($content_alignment).'">';
+		if(!empty($selctSource) && $selctSource == 'repeater'){
+			if(!empty($tmList)){
+				$index = 1;
 				$output .= '<div id="theplus-team-member-list" class="team-member-list '.esc_attr($uid).' '.esc_attr($data_class).' '.$animated_class.'" '.$layout_attr.' '.$data_attr.' '.$animation_attr.' data-enable-isotope="1">';
-								
-				$output .= '<div id="'.esc_attr($uid).'" class="tp-row post-inner-loop '.esc_attr($uid).' '.esc_attr($content_alignment).'">';
-				while ( $query->have_posts() ) {
-				
-					$query->the_post();
-					$post = $query->post;
+				$output .= $tpRow;
+				foreach($tmList as $item){
+					$R_Designation = !empty($item['designationTeam']) ? $item['designationTeam'] : '';
+					$member_url = !empty($item['customUrl']['url']) ? $item['customUrl']['url'] : '';
+					$member_urlBlank = !empty($item['customUrl']['is_external']) ? '_blank' : '';
+					$member_urlNofollow = !empty($item['customUrl']['nofollow']) ? 'nofollow' : '';										
+					$tmTitle = !empty($item['memberTitle']) ? $item['memberTitle'] : '';
+					$imgID = !empty($item['tmImage']['id']) ? $item['tmImage']['id'] : '';
+
+					$output .= '<div class="grid-item '.$desktop_class.' '.$tablet_class.' '.$mobile_class.' '.$animated_columns.'">';
+
+					$designation='<div class="member-designation">'.esc_html($R_Designation).'</div>';
 					
-					
-					$designation='';
-					$designation_team = get_post_meta( get_the_ID(), 'theplus_tm_designation', true );
-					if ( ! empty( $designation_team ) ) {
-						$designation='<div class="member-designation">'.esc_html($designation_team).'</div>';
-					}					
-					
-					$website = get_post_meta( get_the_ID(), 'theplus_tm_website_url', true );
-					$facebook_link = get_post_meta( get_the_ID(), 'theplus_tm_face_link', true );
-					$google_link = get_post_meta( get_the_ID(), 'theplus_tm_googgle_link', true );
-					$insta_link = get_post_meta( get_the_ID(), 'theplus_tm_insta_link', true );
-					$twit_link = get_post_meta( get_the_ID(), 'theplus_tm_twit_link', true );
-					$linked_link = get_post_meta( get_the_ID(), 'theplus_tm_linked_link', true );
-					$email_link = get_post_meta( get_the_ID(), 'theplus_tm_email_link', true );
-					$phone_link = get_post_meta( get_the_ID(), 'theplus_tm_phone_link', true );
-					$team_social_contnet='';
-					if(!empty($website) || !empty($facebook_link) || !empty($google_link) || !empty($insta_link) || !empty($twit_link) || !empty($linked_link) || !empty($email_link) || !empty($phone_link)){
-						$team_social_contnet .='<div class="team-social-content">';
-							$team_social_contnet .='<ul class="team-social-list">';
-								if(!empty($website)){
-									$team_social_contnet .='<li class="team-profile-link"><a href="'.esc_url($website).'" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>';
-								}
-								if(!empty($facebook_link)){
-									$team_social_contnet .='<li class="fb-link"><a href="'.esc_url($facebook_link).'" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>';
-								}
-								if(!empty($twit_link)){
-									$team_social_contnet .='<li class="twitter-link"><a href="'.esc_url($twit_link).'" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>';
-								}
-								if(!empty($insta_link)){
-									$team_social_contnet .='<li class="instagram-link"><a href="'.esc_url($insta_link).'" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>';
-								}
-								if(!empty($google_link)){
-									$team_social_contnet .='<li class="gplus-link"><a href="'.esc_url($google_link).'" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>';
-								}
-								if(!empty($linked_link)){
-									$team_social_contnet .='<li class="linkedin-link"><a href="'.esc_url($linked_link).'" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>';
-								}
-								if(!empty($email_link)){
-									$team_social_contnet .='<li class="team-profile-link"><a href="mailto:'.esc_attr($email_link).'" target="_blank"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>';
-								}
-								if(!empty($phone_link)){
-									$team_social_contnet .='<li class="team-profile-link"><a href="tel:'.esc_attr($phone_link).'" target="_blank"><i class="fa fa-phone" aria-hidden="true"></i></a>';
-								}
-							$team_social_contnet .='</ul>';
-						$team_social_contnet .='</div>';
-					}
-					
-					//grid item loop
-					$output .= '<div class="grid-item '.$desktop_class.' '.$tablet_class.' '.$mobile_class.' '.$animated_columns.'">';				
+					$team_social_contnet = $this->get_sociallinks($item);
+
 					if(!empty($style)){
 						ob_start();
-						include L_THEPLUS_PATH. 'includes/team-member/team-member-'.esc_attr($style).'.php'; 
+						include L_THEPLUS_PATH. 'includes/team-member/team-member-'.esc_attr($style).'.php';
 						$output .= ob_get_contents();
 						ob_end_clean();
 					}
+					$output .= '</div>';
+					$index++;
+				}
+				$output .= '</div>';
+				$output .= '</div>';
+			}
+		}else{
+			if ( ! $query->have_posts() ) {
+				$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "Posts not found", "tpebl" ).'</h3>';
+			}else{
+				if($style=="style-1" && $layout!='carousel'){
+					$output .= '<div id="theplus-team-member-list" class="team-member-list '.esc_attr($uid).' '.esc_attr($data_class).' '.$animated_class.'" '.$layout_attr.' '.$data_attr.' '.$animation_attr.' data-enable-isotope="1">';
+					$member_urlBlank=$member_urlNofollow="";
+					
+					$output .= $tpRow;
+					while ( $query->have_posts() ) {
+						$query->the_post();
+						$post = $query->post;
+						
+						$designation='';
+						$designation_team = get_post_meta( get_the_ID(), 'theplus_tm_designation', true );
+						if ( ! empty( $designation_team ) ) {
+							$designation='<div class="member-designation">'.esc_html($designation_team).'</div>';
+						}
+
+						$team_social_contnet = $this->get_sociallinks($query);
+						
+						//grid item loop
+						$output .= '<div class="grid-item '.$desktop_class.' '.$tablet_class.' '.$mobile_class.' '.$animated_columns.'">';				
+						if(!empty($style)){
+							ob_start();
+							include L_THEPLUS_PATH. 'includes/team-member/team-member-'.esc_attr($style).'.php'; 
+							$output .= ob_get_contents();
+							ob_end_clean();
+						}
+						$output .='</div>';
+						
+					}
 					$output .='</div>';
 					
+					$output .='</div>';
+				}else{
+					$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "This Style Premium Version", "tpebl" ).'</h3>';
 				}
-				$output .='</div>';
-				
-				$output .='</div>';
-			}else{
-				$output .='<h3 class="theplus-posts-not-found">'.esc_html__( "This Style Premium Version", "tpebl" ).'</h3>';
 			}
 		}
 			
 			echo $output;
 			wp_reset_postdata();
 	}
-	
-    protected function content_template() {
-	
-    }
 	
 	protected function get_query_args() {
 		$settings = $this->get_settings_for_display();
@@ -1195,5 +1473,93 @@ class L_ThePlus_Team_Member_ListOut extends Widget_Base {
 		$query_args['paged'] = $paged;
 		
 		return $query_args;
-	}	
+	}
+
+	Protected function get_sociallinks($item){
+		$settings = $this->get_settings_for_display();
+		$selctSource = !empty($settings['selctSource']) ? $settings['selctSource'] : 'post';
+
+		$customUrl=$website=$facebook_link=$google_link=$insta_link=$twit_link=$linked_link=$email_link=$phone_link="";
+		$websiteBlank=$fbLinkBlank=$googleLinkBlank=$instaLinkBlank=$twitLinkBlank=$linkedLinkBlank=$emailLinkBlank=$phoneLinkBlank='_blank';
+		$websiteNofollow=$fbLinkNofollow=$googleLinkNofollow=$instaLinkNofollow=$twitLinkNofollow=$linkedLinkNofollow=$emailLinkNofollow=$phoneLinkNofollow="";
+		if( $selctSource == "repeater" ){
+			$website = !empty($item['websiteLink']['url']) ? $item['websiteLink']['url'] : '';
+			$websiteBlank = !empty($item['websiteLink']['is_external']) ? '_blank' : '';
+			$websiteNofollow = !empty($item['websiteLink']['nofollow']) ? 'nofollow' : '';
+
+			$facebook_link = !empty($item['fbLink']['url']) ? $item['fbLink']['url'] : '';
+			$fbLinkBlank = !empty($item['fbLink']['is_external']) ? '_blank' : '';
+			$fbLinkNofollow = !empty($item['fbLink']['nofollow']) ? 'nofollow' : '';
+
+			$google_link = !empty($item['gooogleLink']['url']) ? $item['gooogleLink']['url'] : '';
+			$googleLinkBlank = !empty($item['gooogleLink']['is_external']) ? '_blank' : '';
+			$googleLinkNofollow = !empty($item['gooogleLink']['nofollow']) ? 'nofollow' : '';
+			
+			$insta_link = !empty($item['instaLink']['url']) ? $item['instaLink']['url'] : '';
+			$instaLinkBlank = !empty($item['instaLink']['is_external']) ? '_blank' : '';
+			$instaLinkNofollow = !empty($item['instaLink']['nofollow']) ? 'nofollow' : '';
+
+			$twit_link = !empty($item['twitterLink']['url']) ? $item['twitterLink']['url'] : '';
+			$twitLinkBlank = !empty($item['twitterLink']['is_external']) ? '_blank' : '';
+			$twitLinkNofollow = !empty($item['twitterLink']['nofollow']) ? 'nofollow' : '';
+
+			$linked_link = !empty($item['linkdinLink']['url']) ? $item['linkdinLink']['url'] : '';
+			$linkedLinkBlank = !empty($item['linkdinLink']['is_external']) ? '_blank' : '';
+			$linkedLinkNofollow = !empty($item['linkdinLink']['nofollow']) ? 'relnofollow' : '';
+
+			$email_link = !empty($item['emailLink']['url']) ? $item['emailLink']['url'] : '';
+			$emailLinkBlank = !empty($item['emailLink']['is_external']) ? '_blank' : '';
+			$emailLinkNofollow = !empty($item['emailLink']['nofollow']) ? 'nofollow' : '';
+
+			$phone_link = !empty($item['phnLink']['url']) ? $item['phnLink']['url'] : '';
+			$phoneLinkBlank = !empty($item['phnLink']['is_external']) ? '_blank' : '';
+			$phoneLinkNofollow = !empty($item['phnLink']['nofollow']) ? 'nofollow' : '';
+		}else if( $selctSource == "post" ){
+			$website = get_post_meta( get_the_ID(), 'theplus_tm_website_url', true );
+			$facebook_link = get_post_meta( get_the_ID(), 'theplus_tm_face_link', true );
+			$google_link = get_post_meta( get_the_ID(), 'theplus_tm_googgle_link', true );
+			$insta_link = get_post_meta( get_the_ID(), 'theplus_tm_insta_link', true );
+			$twit_link = get_post_meta( get_the_ID(), 'theplus_tm_twit_link', true );
+			$linked_link = get_post_meta( get_the_ID(), 'theplus_tm_linked_link', true );
+			$email_link = get_post_meta( get_the_ID(), 'theplus_tm_email_link', true );
+			$phone_link = get_post_meta( get_the_ID(), 'theplus_tm_phone_link', true );
+		}
+
+		$team_social_contnet='';
+		if(!empty($website) || !empty($facebook_link) || !empty($google_link) || !empty($insta_link) || !empty($twit_link) || !empty($linked_link) || !empty($email_link) || !empty($phone_link)){
+			$team_social_contnet .='<div class="team-social-content">';
+				$team_social_contnet .='<ul class="team-social-list">';
+					if(!empty($website)){
+						$team_social_contnet .='<li class="team-profile-link"><a rel="'.esc_attr($websiteNofollow).'" href="'.esc_url($website).'" target="'.esc_attr($websiteBlank).'"><i class="fa fa-globe" aria-hidden="true"></i></a>';
+					}
+					if(!empty($facebook_link)){
+						$team_social_contnet .='<li class="fb-link"><a rel="'.esc_attr($fbLinkNofollow).'" "href="'.esc_url($facebook_link).'" target="'.esc_attr($fbLinkBlank).'"><i class="fa fa-facebook" aria-hidden="true"></i></a>';
+					}
+					if(!empty($twit_link)){
+						$team_social_contnet .='<li class="twitter-link"><a rel="'.esc_attr($twitLinkNofollow).'" href="'.esc_url($twit_link).'" target="'.esc_attr($twitLinkBlank).'"><i class="fa fa-twitter" aria-hidden="true"></i></a>';
+					}
+					if(!empty($insta_link)){
+						$team_social_contnet .='<li class="instagram-link"><a rel="'.esc_attr($instaLinkNofollow).'" href="'.esc_url($insta_link).'" target="'.esc_attr($instaLinkBlank).'"><i class="fa fa-instagram" aria-hidden="true"></i></a>';
+					}
+					if(!empty($google_link)){
+						$team_social_contnet .='<li class="gplus-link"><a rel="'.esc_attr($googleLinkNofollow).'" href="'.esc_url($google_link).'" target="'.esc_attr($googleLinkBlank).'"><i class="fa fa-google-plus" aria-hidden="true"></i></a>';
+					}
+					if(!empty($linked_link)){
+						$team_social_contnet .='<li class="linkedin-link"><a rel="'.esc_attr($linkedLinkNofollow).'" href="'.esc_url($linked_link).'" target="'.esc_attr($linkedLinkBlank).'"><i class="fa fa-linkedin" aria-hidden="true"></i></a>';
+					}
+					if(!empty($email_link)){
+						$team_social_contnet .='<li class="team-profile-link"><a rel="'.esc_attr($emailLinkNofollow).'" href="mailto:'.esc_attr($email_link).'" target="'.esc_attr($emailLinkBlank).'"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>';
+					}
+					if(!empty($phone_link)){
+						$team_social_contnet .='<li class="team-profile-link"><a rel="'.esc_attr($phoneLinkNofollow).'" href="tel:'.esc_attr($phone_link).'" target="'.esc_attr($phoneLinkBlank).'"><i class="fa fa-phone" aria-hidden="true"></i></a>';
+					}
+				$team_social_contnet .='</ul>';
+			$team_social_contnet .='</div>';
+		}
+
+		return $team_social_contnet;
+	}
+
+	protected function content_template() {
+    }
 }

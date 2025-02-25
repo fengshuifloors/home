@@ -2816,14 +2816,14 @@
 
 
                 // Menu Settings Megamenu Trigger Effect
-                if ($('.jltma-has-megamenu').hasClass('jltma-megamenu-click')) {
-                    $('li.jltma-megamenu-click').on('click', function (e) {
-                        e.preventDefault;
-                        e.stopPropagation();
-                        $(this).toggleClass("show");
-                        $('.dropdown-menu.jltma-megamenu').toggleClass("show");
-                    });
-                }
+                // if ($('.jltma-has-megamenu').hasClass('jltma-megamenu-click')) {
+                //     $('.jltma-megamenu-click').on('click', function (e) {
+                //         e.preventDefault();
+                //         e.stopPropagation();
+                //         $(this).toggleClass("show");
+                //         $('.dropdown-menu.jltma-megamenu').toggleClass("show");
+                //     });
+                // }
                 // else {
                 //     $('.jltma-has-megamenu').on('hover', function (e) {
                 //         e.preventDefault;

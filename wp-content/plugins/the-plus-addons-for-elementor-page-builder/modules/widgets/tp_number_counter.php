@@ -845,7 +845,7 @@ class L_ThePlus_Number_Counter extends Widget_Base {
 				],
             ]
         );
-		$this->add_control(
+		$this->add_responsive_control(
             'image_width',
             [
                 'type' => Controls_Manager::SLIDER,

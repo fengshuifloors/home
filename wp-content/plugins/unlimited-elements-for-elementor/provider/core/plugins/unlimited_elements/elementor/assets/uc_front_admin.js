@@ -105,6 +105,6 @@ function ucDocReady(fn) {
 ucDocReady(function(){
 	
 	window.parent.g_objUCElementorEditorAdmin.initFrontEndInteraction(window, elementorFrontend);
-		
+	
 });
 

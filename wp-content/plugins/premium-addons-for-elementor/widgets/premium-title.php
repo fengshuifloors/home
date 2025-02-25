@@ -545,9 +545,10 @@ class Premium_Title extends Widget_Base {
 				'label'        => __( 'Icon Position', 'premium-addons-for-elementor' ),
 				'type'         => Controls_Manager::SELECT,
 				'options'      => array(
-					'row'         => __( 'Before', 'premium-addons-for-elementor' ),
-					'row-reverse' => __( 'After', 'premium-addons-for-elementor' ),
-					'column'      => __( 'Top', 'premium-addons-for-elementor' ),
+					'row'            => __( 'Before', 'premium-addons-for-elementor' ),
+					'row-reverse'    => __( 'After', 'premium-addons-for-elementor' ),
+					'column'         => __( 'Top', 'premium-addons-for-elementor' ),
+					'column-reverse' => __( 'Bottom', 'premium-addons-for-elementor' ),
 				),
 				'default'      => 'row',
 				'toggle'       => false,
@@ -647,12 +648,13 @@ class Premium_Title extends Widget_Base {
 			)
 		);
 
-		$this->add_responsive_control(
+		$this->add_control(
 			'premium_title_align_flex',
 			array(
-				'label'     => __( 'Alignment', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::CHOOSE,
-				'options'   => array(
+				'label'        => __( 'Alignment', 'premium-addons-for-elementor' ),
+				'type'         => Controls_Manager::CHOOSE,
+				'prefix_class' => 'premium-title-',
+				'options'      => array(
 					'flex-start' => array(
 						'title' => __( 'Left', 'premium-addons-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
@@ -666,13 +668,13 @@ class Premium_Title extends Widget_Base {
 						'icon'  => 'eicon-text-align-right',
 					),
 				),
-				'default'   => 'flex-start',
-				'toggle'    => false,
-				'selectors' => array(
+				'default'      => 'flex-start',
+				'selectors'    => array(
 					'{{WRAPPER}}:not(.premium-title-icon-column) .premium-title-header' => 'justify-content: {{VALUE}}',
 					'{{WRAPPER}}.premium-title-icon-column .premium-title-header' => 'align-items: {{VALUE}}',
 				),
-				'condition' => array(
+				'toggle'       => false,
+				'condition'    => array(
 					'premium_title_style' => array( 'style3', 'style4' ),
 				),
 			)
@@ -924,7 +926,7 @@ class Premium_Title extends Widget_Base {
 			array(
 				'label'      => __( 'Horizontal Offset', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', '%' ),
+				'size_units' => array( 'px', 'em', '%', 'custom' ),
 				'range'      => array(
 					'px' => array(
 						'min' => -500,
@@ -953,7 +955,7 @@ class Premium_Title extends Widget_Base {
 			array(
 				'label'      => __( 'Vertical Offset', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', '%' ),
+				'size_units' => array( 'px', 'em', '%', 'custom' ),
 				'range'      => array(
 					'px' => array(
 						'min' => -500,
@@ -1227,7 +1229,7 @@ class Premium_Title extends Widget_Base {
 					'premium_title_style!' => array( 'style8', 'style9' ),
 					'background_style!'    => '',
 				),
-				'selector'  => '{{WRAPPER}} .premium-title-header',
+				'selector'  => '{{WRAPPER}}:not(.premium-title-clipped) .premium-title-header, {{WRAPPER}}.premium-title-clipped .premium-title-text',
 			)
 		);
 
@@ -1240,7 +1242,7 @@ class Premium_Title extends Widget_Base {
 					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-title-style2' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}:not(.premium-title-clipped) .premium-title-style2, {{WRAPPER}}.premium-title-clipped .premium-title-text' => 'background-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_title_style' => 'style2',
@@ -1258,7 +1260,7 @@ class Premium_Title extends Widget_Base {
 					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-title-style3' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}:not(.premium-title-clipped) .premium-title-style3, {{WRAPPER}}.premium-title-clipped .premium-title-text' => 'background-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_title_style' => 'style3',
@@ -1575,7 +1577,7 @@ class Premium_Title extends Widget_Base {
 			array(
 				'label'      => __( 'Width', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', '%' ),
+				'size_units' => array( 'px', 'em', '%', 'custom' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 1,
@@ -1604,7 +1606,7 @@ class Premium_Title extends Widget_Base {
 			array(
 				'label'      => __( 'Height', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em' ),
+				'size_units' => array( 'px', 'em', 'custom' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 1,
@@ -1990,26 +1992,14 @@ class Premium_Title extends Widget_Base {
 
 		if ( 'yes' === $settings['link_switcher'] ) {
 
-			$link = '';
-
 			if ( 'link' === $settings['link_selection'] ) {
 
-				$link = get_permalink( $settings['existing_link'] );
+				$this->add_render_attribute( 'link', 'href', get_permalink( $settings['existing_link'] ) );
 
 			} else {
 
-				$link = $settings['custom_link']['url'];
+				$this->add_link_attributes( 'link', $settings['custom_link'] );
 
-			}
-
-			$this->add_render_attribute( 'link', 'href', $link );
-
-			if ( ! empty( $settings['custom_link']['is_external'] ) ) {
-				$this->add_render_attribute( 'link', 'target', '_blank' );
-			}
-
-			if ( ! empty( $settings['custom_link']['nofollow'] ) ) {
-				$this->add_render_attribute( 'link', 'rel', 'nofollow' );
 			}
 		}
 
@@ -2096,7 +2086,7 @@ class Premium_Title extends Widget_Base {
 			<?php if ( 'style7' === $selected_style ) : ?>
 				</div>
 			<?php endif; ?>
-			<?php if ( 'yes' === $settings['link_switcher'] && ! empty( $link ) ) : ?>
+			<?php if ( 'yes' === $settings['link_switcher'] ) : ?>
 				<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'link' ) ); ?>></a>
 			<?php endif; ?>
 		</<?php echo wp_kses_post( $title_tag ); ?>>

@@ -368,7 +368,7 @@ class Helper_Functions {
 
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-		$is_active = is_plugin_active( $slug );
+		$is_active = in_array( $slug, (array) get_option( 'active_plugins', array() ), true );
 
 		return $is_active;
 
@@ -484,6 +484,10 @@ class Helper_Functions {
 	public static function get_vimeo_video_data( $video_id ) {
 
 		$vimeo_data = wp_remote_get( 'http://www.vimeo.com/api/v2/video/' . intval( $video_id ) . '.php' );
+
+		if ( is_wp_error( $vimeo_data ) ) {
+			return false;
+		}
 
 		if ( isset( $vimeo_data['response']['code'] ) ) {
 

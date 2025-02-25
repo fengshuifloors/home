@@ -64,7 +64,7 @@ param2=value2',
 			return;
 		}
 
-		$url = wp_parse_url( filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_STRING ) );
+		$url = wp_parse_url( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) );
 
 		if ( ! $url || ! isset( $url['query'] ) || empty( $url['query'] ) ) {
 			return false;

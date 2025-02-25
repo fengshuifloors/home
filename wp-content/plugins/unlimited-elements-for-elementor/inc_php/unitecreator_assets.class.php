@@ -805,12 +805,14 @@ class UniteCreatorAssets{
 
 		
 	}
-	
+		
 	
 	/**
 	 * create folder
 	 */
 	protected function createFolder($path, $folderName){
+		
+		$folderName = trim($folderName);
 		
 		$pathCreate = $this->validateCreateNewFileFolder($path, $folderName, false);
 		
@@ -842,6 +844,8 @@ class UniteCreatorAssets{
 	 * rename file to new name
 	 */
 	protected function renameFile($path, $filename, $newFilename){
+		
+		$newFilename = trim($newFilename);
 		
 		$path = $this->sanitizePath($path);
 		
@@ -956,6 +960,22 @@ class UniteCreatorAssets{
 		return(false);
 	}
 	
+	/**
+	 * check and delete php files from the zipped
+	 */
+	private function checkDeletePHPFiles($path){
+		
+		$arrPHPFiles = UniteFunctionsUC::getFileListTree($path, "php");
+		
+		if(empty($arrPHPFiles))
+			return(false);
+
+		UniteFunctionsUC::deleteListOfFiles($arrPHPFiles);
+		
+		UniteFunctionsUC::throwError("Found some php files in the zip, please check this file.");
+		
+	}
+	
 	
 	/**
 	 * unzip file
@@ -965,10 +985,13 @@ class UniteCreatorAssets{
 		$path = $this->sanitizePath($path);
 		$this->validateFilename($filename);
 		$filepath = $path.$filename;
-		UniteFunctionsUC::validateFilepath($filepath);
 		
+		UniteFunctionsUC::validateFilepath($filepath);
+				
 		$zip = new UniteZipUC();
 		$zip->extract($filepath, $path);
+		
+		$this->checkDeletePHPFiles($path);
 		
 	}
 	

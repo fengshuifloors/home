@@ -104,6 +104,9 @@ Class L_Plus_Library
 		if(in_array('tp-team-member-listout',$elements)){
 			$merge[] = 'plus-listing-masonry';
 		}
+		if(in_array('tp-testimonial-listout',$elements)){
+			$merge[] = 'plus-listing-masonry';
+		}
 		if(in_array('tp-page-scroll',$elements)){
 			$merge[] = 'tp-fullpage';
 		}		

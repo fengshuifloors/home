@@ -1,6 +1,206 @@
 
 
 
+version 1.5.62:
+
+-bug fix: solved some php error with parse dynamic settings in php 8.1
+-bug fix: getMetaValue error in products
+-feature: added "edit template" link in template selector
+-feature: added hidden template edit button to top bar
+-feature: added option for dynamic popup link to connect to many links in the widget
+-bug fix: fixed doubly css includes in some cases
+
+
+
+version 1.5.61:
+
+change: updated freemius sdk to 2.5.7 version.
+-feature: added support for woocommerce jet wishlist
+-feature: did option to disable third party hooks in ajax
+-bug fix: click on link on sync didn't worked
+-bug fix: added some protections to nonce and to file manager zip exctract 
+
+
+version 1.5.60:
+
+-bug fix: fixed link field settings for multisoure
+-bug fix: fixed some bugs with regular price in woocommerce widgets
+-bug fix: filters js file loaded in editor as well
+-bug fix: fixed some small php bug regarding "pathBase"
+-change: updated unite gallery version
+-change: disabled autoload in update_option for the catalog variable
+-feature: added functionality to get cart number of products 
+-bug fix: fixed conditions in multiple select control
+
+
+
+version 1.5.59:
+
+-bug fix: fixed empty post meta fields in case that acf plugin is on
+-feature: added multisource field: post term
+-bug fix: fixed some bug with avoid duplicates option and filters in single grid
+-bug fix: made some corrections in case that post query show wrong init selected terms values
+-bug fix: the post carousel goes to random item after ajax refresh
+-feature: added multiple select to condition attributes in widget editor
+-bug fix: fixed jet engine custom fields integration
+-change: updated freemius sdk to the latest version
+
+
+
+version 1.5.58:
+
+-bug fix: fixed missing arguments in the_post action
+-feature: added dynamic popup functionality to multisource widgets
+-bug fix: fixed some php multisource error
+-bug fix: fixed some product ajax search related issues
+-bug fix: fixed some small but with ajax refresh and sync
+
+
+version 1.5.57:
+
+-feature: improved the multisource selectors
+-feature: added option to get image from post meta in post fields - widget editor
+-bug fix: added "skins" folder to unite gallery
+-bug fix: added more compatability to woo commerce grids with discounts plugins
+-bug fix: fixed same uc_id in dynamic templates
+
+
+version 1.5.56:
+
+feature: added option authors by dynamic field in post query
+bug fix: fixed get posts by terms meta field - add taxonomy
+bug fix: fixed responsive css in dynamic loop
+bug fix: fixed dynamic loop with jet engine acf fields
+bug fix: fixed slider control units for vh, vx and % 
+change: the uc_id will not change now when page refresh
+feature: done some integration with flycart discounts
+bug fix: added "before today" for past year in date qury
+feature: added option to show post type and post type title in posts fields
+
+
+
+version 1.5.55:
+
+-bug fix: fixed wpml integrate fields
+-bug fix: fixed some write file error, will not crash if happend
+-bug fix: fixed entrance animation js on popup
+-bug fix: fixed strip tags in intro from content
+-change: do_action function is working now in free version
+-bug fix: fixed some php 8.1 issues
+-bug fix: fixed some post intro with html tags issues
+
+
+version 1.5.54:
+
+-change: added some define variable that indicate the under ajax search
+-change: added "collect", and "output" to schema types in content accordion widget for example
+-feature: added wpml auto translate integration
+-feature: added option to select "all taxonomies" in exclude terms in terms selection
+-bug fix: preserve tags when truncate
+-bug fix: fixed load more with second meta add in post query
+-feature: added option - only direct children to terms select include by
+-feature: added option to post select to get posts by terms from curent meta field
+
+
+version 1.5.53:
+
+-bug fix: keep exclude terms in grid when filtering with "override terms" mode
+-bug fix: fixed get_terms() not found php error from 1.5.52 version
+
+
+version 1.5.52:
+
+-change: done some protection agains infinite loops in templates
+-bug fix: fixed popup button type conditions
+-bug fix: fixed term meta fields in multisource
+-bug fix: fixed exclude term not found in post select
+
+
+version 1.5.51:
+
+-feature: added version to js comment output
+-feature: connected the galleies to remote play / stop like the carousels
+-feature: added some error message when image size attribute is missing in multisource
+-bug fix: fixed title source and description source in multisource gallery for products.
+-bug fix: added supress filtres to ajax search query
+-feature: added dynamic popup special attribute type
+
+
+version 1.5.50:
+
+-feature: added "media" to post types select in advanced post query
+-feature: improved the date time attribute
+
+
+version 1.5.49:
+
+-bug fix: fixed some js optimization issues 
+-bug fix: fixed filters related small js bug
+-bug fix: fixed lord icon
+
+
+version 1.5.48:
+
+-bug fix: fixed popular posts plugin integration multiple post types
+-feature: added gallery to multisource
+-bug fix: fixed background widgets some problematic attribute names
+-bug fix: fixed include terms by current post terms in some cases.
+-bug fix: fixed default url_assets value in multisoure
+-bug fix: fixed dark mode svg icons
+-feature: added post type override selectin current post query options
+-bug fix: fixed remote play with carousel
+-bug fix: fixed some multisource and ajax related bugs
+
+
+
+version 1.5.47:
+
+-feature: added more units to slider attribute
+-bug fix: fixed dynamic template render css for dynamic popup
+-feature: added "any" post type to post types select
+-feature: added include and exclude current post terms in terms selection
+-feature: added option to carousel - scroll to head - force
+-feature: allow import widgets with theme activate
+-bug fix: fixed users list select by manual
+
+
+
+version 1.5.46:
+
+-feature: set the items image size chooser work for certain image
+-change: updated the multisource that it works better with items images
+-feature: made option to put js script in saparate tags with id's for optimization plugins like wprocket
+-bug fix: fixed filters with sync multiple grid issues
+-feature: enriched the uc_lang variable. now it's always showing the current language
+-feature: added user_login variable to the users list output
+-bug fix: fixed the exclude users list with similar names
+-feature: has put the preview link always as a help link in widget edit panel.
+-change: allow html tags in post intro (excerpt) in widgets
+
+
+
+version 1.5.45:
+
+-bug fix: fixed entrance animation on ajax refresh
+-bug fix: done sync pause / play between carousels
+-feature: added json decode filter to twig
+-feature: added catalog images from shortpixel for speed loading
+-feature: done multisource group setting
+
+
+
+version 1.5.44:
+
+-change: updated freemius to the latest version
+-bug fix: fixed remote play / pause button
+-bug fix: fixed search filter unicode phrase
+-bug fix: fixed entrance animation appear on scroll
+-feature: added video gallery responsive options
+-bug fix: fixed some owl carousel size on init bug
+-bug fix: fixed js widgets under the dynamic grid template like flipbox
+
+
+
 version 1.5.43:
 
 -bug fix: fixed pods multiple image data

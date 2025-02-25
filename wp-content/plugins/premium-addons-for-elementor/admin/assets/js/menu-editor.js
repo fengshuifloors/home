@@ -206,6 +206,7 @@
                         settings: itemSettings
                     },
                     success: function (res) {
+                        console.log(res)
                         $btnIcon.removeClass("loading dashicons-admin-generic").addClass("dashicons-yes");
 
                         $btn.find("span").text('Settings Saved');

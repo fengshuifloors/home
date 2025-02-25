@@ -1,11 +1,11 @@
-=== Premium Addons for Elementor (Blog Post Listing, Mega Menu Builder, WooCommerce Products Grid, Carousel, Free Templates) ===
+=== Premium Addons for Elementor ===
 Contributors: Leap13, Rimoun
 Tags: elementor, elementor addons, widgets, elementor elements, templates
 Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme
 Requires at least: 5.0
-Tested Up To: 6.1.1
+Tested Up To: 6.2.1
 Requires PHP: 7.0
-Stable Tag: 4.9.42
+Stable Tag: 4.9.56
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -20,7 +20,10 @@ Supercharge your [Elementor Page Builder](https://wordpress.org/plugins/elemento
 ### Useful Links
 [Support](https://my.leap13.com/contact-support/) | [Docs](https://premiumaddons.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) | [Video Tutorials](https://www.youtube.com/channel/UCXcJ9BeO2sKKHor7Q9VglTQ) | [Facebook Group](https://facebook.com/groups/premiumAddons) | [Upgrade to Pro](https://premiumaddons.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
 
-### New: SVG Draw Widget
+### New: Premium Templates Portal
+Now, you can browse a wide range of Elementor page and section templates LIVE on PremiumTemplates.io [Check it out now!](https://premiumtemplates.io/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
+
+### SVG Draw Widget
 You can now draw any Font Awesome icon or SVG path using Premium SVG Draw widget. Not just that, we have added Draw Icon option in all premium widgets that has icon option in them. [Check it out now!](https://premiumaddons.com/elementor-svg-draw-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
 ### Three transition effects added to Vertical Scroll one page navigation widget
@@ -44,8 +47,8 @@ Show off your products in an elegant way using Premium Woo Products Widget that 
 ### Equal Height Feature
 Now, you can make your columns, widgets or any selector you want the same height with just ONE click using [Equal Height feature](https://premiumaddons.com/docs/elementor-column-equal-height/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) in section settings -> Advanced tab.
 
-### Pre-made Templates
-NEW: Ever-growing [Section Templates Library](https://premiumaddons.com/premium-templates-for-elementor/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) Available on both Premium Addons Free and PRO versions. Browse, preview, and insert the template you like in your page/post with just ONE click. You can also select to insert the templates without media files (images, videos, etc.) to prevent overloading your WordPress Media Library with large files.
+### Pre-made Section and Page Templates
+NEW: Ever-growing [Section/Page Templates Library](https://premiumaddons.com/premium-templates-for-elementor/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) Available on both Premium Addons Free and PRO versions. Browse, preview, and insert the template you like in your page/post with just ONE click. You can also select to insert the templates without media files (images, videos, etc.) to prevent overloading your WordPress Media Library with large files.
 
 ### Lottie Animations Integration
 You can now use [Lottie Animations in ALL our widgets](https://premiumaddons.com/elementor-lottie-animations-section-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme). Whatever widget that have an image or icon option now have also the option to add a Lottie animation. Lottie animations are open source, lightweight and available for free, Use them now to make your Elementor pages more eye-catching.
@@ -219,6 +222,93 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.9.56 =
+
+- Tweak: CSS files loading improved.
+- Fixed: PHP warning: post_title is undefined in Media Grid widget.
+
+= 4.9.55 =
+
+- Fixed: Mega Menu widget conflict with Elementor Sticky option.
+
+= 4.9.54 =
+
+- Fixed: Mega Menu widget loading issues.
+- Fixed: SVG Draw widget not working inside Horizontal Scroll widget.
+- Fixed: Page jumps to top issue on mobile devices with SVG Draw widget.
+
+= 4.9.53 =
+
+- Tweak: Links HTML markup improved for better SEO in Blog widget.
+- Fixed: PHP warning: get_page_by_title() is deprecated.
+
+= 4.9.52 =
+
+- Tweak: Added Search Field in Premium Templates popup.
+- Tweak: Improved compatibility between Vertical Scroll and Google Maps widget.
+- Fixed: Mega Menu not showing when WP Rocket is installed.
+
+= 4.9.51 =
+
+- Tweak: Added custom size unit for range controls in some widgets.
+- Fixed: Submenu Minimum Width option improved in Mega Menu widget.
+
+= 4.9.50 =
+
+- Fixed: Full Section Scroll option not working with Elementor Flexbox Containers.
+- Fixed: Console error in Google Maps widget.
+
+= 4.9.49 =
+
+- New: Added full pages templates in Premium Templates for Elementor - [here](https://premiumaddons.com/premium-templates-for-elementor/).
+- Tweak: Added Content Alignment option in Testimonials.
+- Tweak: Apply Aspect Ratio using CSS in Video Box widget.
+- Tweak: Apply Submenu Item Icon option in Mega Menu widget.
+- Fixed: Dual Heading strings not appearing in WPML.
+- Fixed: Filter tabs not working on RTL sites in Blog widget.
+- Fixed: PHP warning showing in General tab in plugin settings page.
+
+= 4.9.48 =
+
+- Tweak: Added Close Menu After Click option in Mega Menu widget.
+- Tweak: Added load Google Maps on Scroll option for better performance.
+- Tweak: Google Maps widget options rearranged for better UX.
+- Tweak: Added responsive controls for Center Padding option in Carousel widget.
+- Fixed: Background Image option in Video Box widget not working on RTL sites.
+- Fixed: Custom link attributes not working for some widgets.
+- Fixed: Switchers not showing in Mega Menu window.
+- Fixed: WPML compatibility issues.
+
+= 4.9.47 =
+
+- New: Added Advanced Marker option in Google Maps widget - [here](https://premiumaddons.com/google-maps-widget-for-elementor-page-builder/).
+- Tweak: Added styling options for marker info container in Google Maps widget.
+- Tweak: Use Time Range display condition to show/hide content before/after specific time.
+- Tweak: Render images` Alt attribute in Woocommerce Products Listing widget.
+- Tweak: CSS files size minimized for better performance.
+- Fixed: Fatal error when WPML is active on a multisite network level, but deactivated on a site level.
+
+= 4.9.46 =
+
+- Fixed: Copy/Paste Element buttons not showing on Elementor editor.
+- Fixed: Icon Color and Stroke Color not applied on SVG icons when SVG Draw option is disabled in Bullet List widget.
+- Fixed: Clipped Background effect in Heading widget not working with older macOS versions.
+
+= 4.9.45 =
+
+- Tweak: Added option to show/hide download button for self-hosted videos in Media Grid widget.
+- Tweak: Added option to align icon to bottom in Heading widget.
+- Fixed: PHP Warning `Constant FILTER_SANITIZE_STRING is deprecated` with PHP v8.1
+
+= 4.9.44 =
+
+- Fixed: Mega Menu widget not working since v4.9.43
+
+= 4.9.43 =
+
+- Tweak: Added VH unit for Height option in Modal Box widget.
+- Fixed: Console errors in Mega Menu widget.
 
 = 4.9.42 =
 

@@ -4,7 +4,11 @@
     var PremiumNavMenuHandler = function ($scope, $) {
 
         // we don't need to wait for content dom load since the script is loaded in the footer.
-        $scope.find('.premium-nav-widget-container').removeClass('elementor-invisible');
+        // $scope.find('.premium-nav-widget-container').removeClass('premium-addons-invisible');
+
+        if (!elementorFrontend.isEditMode() ) {
+            $scope.find('.premium-nav-widget-container').css({ visibility: 'visible', opacity: 1 });
+        }
 
         var settings = $scope.find('.premium-nav-widget-container').data('settings');
 
@@ -22,6 +26,7 @@
             stickyIndex = 'stickyPos' + $scope.data('id'),
             stickyWidthIndex = 'stickyWidth' + $scope.data('id'),
             disablePageScroll = $scope.hasClass('premium-disable-scroll-yes') ? true : false,
+            delay = getComputedStyle($scope[0]).getPropertyValue('--pa-mega-menu-delay') || 300,
             hoverTimeout;
 
         /**
@@ -60,6 +65,24 @@
             });
         }
 
+        // close mobile menu after clicking.
+        if (settings.closeAfterClick) {
+            $menuContainer.find('.premium-menu-link').on('click.paAfterClick', function () {
+                // check if it has children
+                var hasChildern = itemHasChildren(this);
+
+                if (!hasChildern) {
+                    // close mobile menu
+                    if ('slide' === settings.mainLayout || 'slide' === settings.mobileLayout) {
+                        // if ($scope.hasClass('premium-nav-slide')) {
+                        $hamMenuCloser.click();
+                    } else {
+                        $menuToggler.click();
+                    }
+                }
+            });
+        }
+
         var isMobileMenu = null,
             isDesktopMenu = null;
 
@@ -70,13 +93,6 @@
         }
 
         checkStickyEffect();
-
-        // Set menu items to full width.
-        function checkMegaContentWidth() {
-            $fullWidthItems.each(function (index, item) {
-                fullWidthContent($(item));
-            });
-        }
 
         if (['hor', 'ver'].includes(settings.mainLayout)) {
 
@@ -101,7 +117,7 @@
 
                     hoverTimeout = setTimeout(function () {
                         $scope.find('.premium-item-hovered').removeClass('premium-item-hovered');
-                    }, 300);
+                    }, delay);
                 });
 
                 // we need to make sure that premium-item-hover is not removed when hovering over a sub/mega menu.
@@ -240,14 +256,26 @@
             });
         }
 
+        //************Helper Funcitons */
+
+        // Set menu items to full width.
+        function checkMegaContentWidth() {
+            $fullWidthItems.each(function (index, item) {
+                fullWidthContent($(item));
+            });
+        }
+
         /**
          * Full Width Mega Content.
          */
         function fullWidthContent($item) {
 
             var isContainer = elementorFrontend.config.experimentalFeatures.container,
-                $parentSec = isContainer ? $scope.closest('.e-con').parents('.e-con').last() : $scope.closest('.elementor-top-section'),
-                width = $parentSec.outerWidth(),
+                $parentSec = $scope.parents('.e-con').last();
+
+            $parentSec = !isContainer || $parentSec.length < 1 ? $scope.closest('.elementor-top-section') : $parentSec;
+
+            var width = $parentSec.outerWidth(),
                 sectionLeft = $parentSec.offset().left - $item.offset().left;
 
             $($item).removeClass('premium-mega-item-static').find('.premium-mega-content-container, > .premium-sub-menu').css({
@@ -297,8 +325,12 @@
 
             if (!$menu.length) return;
 
-            var $parentSec = $($scope).closest('.elementor-top-section, .e-con'),
-                width = $($parentSec).outerWidth(),
+            var isContainer = elementorFrontend.config.experimentalFeatures.container,
+                $parentSec = $scope.parents('.e-con').last();
+
+            $parentSec = !isContainer || $parentSec.length < 1 ? $scope.closest('.elementor-top-section') : $parentSec;
+
+            var width = $($parentSec).outerWidth(),
                 widgetTop = $scope.offset().top,
                 parentBottom = $($parentSec).offset().top + $($parentSec).outerHeight(),
                 stretchTop = parentBottom - widgetTop,
@@ -341,8 +373,7 @@
 
             } else {
                 $(window).off('scroll.PaStickyNav');
-
-                $('<div class="' + stickyProps.spacerClass + '"></div>').remove(); // remove spacer
+                $( '.' + stickyProps.spacerClass ).remove(); // remove spacer
                 $('#' + stickyProps.targetId).removeClass('premium-sticky-parent premium-sticky-active premium-sticky-parent-' + $scope.data('id')).css({ // unset style
                     top: 'unset',
                     width: 'inherit',
@@ -476,8 +507,8 @@
         function addBadge(badge, targetsIndex) {
 
             var badgeHtml = getBadgeHtml(badge),
-                targets = $scope.find('.premium-nav-menu-container ' + badge.selector + ':not(.has-pa-badge)')
-            mobileTargets = $scope.find('.premium-mobile-menu-container ' + badge.selector + ':not(.has-pa-badge)'),
+                targets = $scope.find('.premium-nav-menu-container ' + badge.selector + ':not(.has-pa-badge)'),
+                mobileTargets = $scope.find('.premium-mobile-menu-container ' + badge.selector + ':not(.has-pa-badge)'),
                 hoverEffectClass = '' !== settings.hoverEffect ? 'premium-badge-' + settings.hoverEffect : '';
 
             for (var index = 0; index < targetsIndex.length; index++) {
@@ -500,6 +531,14 @@
 
         function getBadgeHtml(badge) {
             return '<span class="premium-rn-badge elementor-repeater-item-' + badge.id + '">' + badge.text + '</span>';
+        }
+
+        /**
+         * @param {link} $item .premium-menu-link
+         * @returns boolean
+         */
+        function itemHasChildren($item) {
+            return $($item).parent('.premium-nav-menu-item').hasClass('menu-item-has-children');
         }
     };
 

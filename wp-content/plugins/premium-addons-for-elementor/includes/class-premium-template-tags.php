@@ -99,7 +99,7 @@ class Premium_Template_Tags {
 
 		$all_posts = get_posts(
 			array(
-				'posts_per_page'         => -1,
+				'posts_per_page'         => 100,
 				'post_type'              => array( 'page', 'post' ),
 				'update_post_term_cache' => false,
 				'update_post_meta_cache' => false,
@@ -129,11 +129,27 @@ class Premium_Template_Tags {
 	 */
 	public function get_id_by_title( $title ) {
 
-		$template = get_page_by_title( $title, OBJECT, 'elementor_library' );
+		$args = array(
+			'post_type'      => 'elementor_library',
+			'post_status'    => 'publish',
+			'posts_per_page' => 1,
+			'title'          => $title,
+		);
 
-		$template_id = isset( $template->ID ) ? $template->ID : $title;
+		$query = new \WP_Query( $args );
 
-		return $template_id;
+		$post_id = '';
+
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				$post_id = get_the_ID();
+
+			}
+			wp_reset_postdata();
+		}
+
+		return $post_id;
 	}
 
 	/**
@@ -207,7 +223,7 @@ class Premium_Template_Tags {
 	 * @return array
 	 */
 	public static function get_authors() {
-		$users = get_users();
+		$users = get_users( array( 'role__in' => array( 'administrator', 'editor', 'author', 'contributor' ) ) );
 
 		$options = array();
 
@@ -959,14 +975,14 @@ class Premium_Template_Tags {
 						</div>
 						<?php if ( in_array( $skin, array( 'modern', 'cards' ), true ) ) : ?>
 							<div class="premium-blog-effect-container <?php echo esc_attr( 'premium-blog-' . $post_effect . '-effect' ); ?>">
-								<a class="premium-blog-post-link" href="<?php the_permalink(); ?>" target="<?php echo esc_attr( $target ); ?>"></a>
+								<a class="premium-blog-post-link" href="<?php the_permalink(); ?>" target="<?php echo esc_attr( $target ); ?>"><span><?php esc_html( the_title() ); ?></span></a>
 								<?php if ( 'squares' === $settings['premium_blog_hover_color_effect'] ) { ?>
 									<div class="premium-blog-squares-square-container"></div>
 								<?php } ?>
 							</div>
 						<?php else : ?>
 							<div class="premium-blog-thumbnail-overlay">
-								<a class="elementor-icon" href="<?php the_permalink(); ?>" target="<?php echo esc_attr( $target ); ?>" aria-hidden="true"></a>
+								<a class="elementor-icon" href="<?php the_permalink(); ?>" target="<?php echo esc_attr( $target ); ?>" aria-hidden="true"><span><?php esc_html( the_title() ); ?></span></a>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -1173,7 +1189,7 @@ class Premium_Template_Tags {
 
 		$doc_id     = isset( $_POST['page_id'] ) ? sanitize_text_field( wp_unslash( $_POST['page_id'] ) ) : '';
 		$elem_id    = isset( $_POST['widget_id'] ) ? sanitize_text_field( wp_unslash( $_POST['widget_id'] ) ) : '';
-		$active_cat = isset( $_POST['category'] ) ? sanitize_text_field( wp_unslash( $_POST['category'] ) ) : '';
+		$active_cat = isset( $_POST['category'] ) ? wp_unslash( $_POST['category'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		$elementor = Plugin::$instance;
 		$meta      = $elementor->documents->get( $doc_id )->get_elements_data();
@@ -1330,11 +1346,13 @@ class Premium_Template_Tags {
 			<span class="premium-woo-product-category">
 				<?php
 					global $product;
-					$product_categories = function_exists( 'wc_get_product_category_list' ) ? wc_get_product_category_list( get_the_ID(), ',', '', '' ) : $product->get_categories( ',', '', '' );
+					$product_categories = function_exists( 'wc_get_product_category_list' ) ? wc_get_product_category_list( get_the_ID(), '&', '', '' ) : $product->get_categories( '&', '', '' );
 
 					$product_categories = wp_strip_all_tags( $product_categories );
+
 				if ( $product_categories ) {
-					list( $parent_cat ) = explode( ',', $product_categories );
+					list( $parent_cat ) = explode( '&', $product_categories );
+
 					echo esc_html( $parent_cat );
 				}
 				?>

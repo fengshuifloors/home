@@ -769,8 +769,8 @@ function l_registered_widgets(){
 		'tp-team-member-listout' => [
 			'dependency' => [
 				'css' => [					
-					L_THEPLUS_PATH . DIRECTORY_SEPARATOR .  'assets/css/extra/tp-bootstrap-grid.css',
-					L_THEPLUS_PATH . DIRECTORY_SEPARATOR .'assets/css/main/team-member-list/plus-team-member.css',
+					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/css/extra/tp-bootstrap-grid.css',
+					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/css/main/team-member-list/plus-team-member.css',
 				],
 				'js' => [					
 					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/js/main/posts-listing/plus-posts-listing.min.js',
@@ -780,15 +780,17 @@ function l_registered_widgets(){
 		'tp-testimonial-listout' => [
 			'dependency' => [
 				'css' => [
-					L_THEPLUS_PATH . DIRECTORY_SEPARATOR .'assets/css/extra/slick.min.css',
-					L_THEPLUS_PATH . DIRECTORY_SEPARATOR .  'assets/css/extra/tp-bootstrap-grid.css',
-					L_THEPLUS_PATH . DIRECTORY_SEPARATOR .'assets/css/main/plus-extra-adv/plus-slick-carousel.min.css',
-					L_THEPLUS_PATH . DIRECTORY_SEPARATOR .'assets/css/main/testimonial/plus-testimonial.min.css',
+					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/css/extra/slick.min.css',
+					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/css/extra/tp-bootstrap-grid.css',
+					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/css/main/plus-extra-adv/plus-slick-carousel.min.css',
+					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/css/main/testimonial/plus-testimonial.min.css',
 				],
 				'js' => [
 					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/js/extra/imagesloaded.pkgd.min.js',
 					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/js/extra/slick.min.js',
 					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/js/main/general/plus-slick-carousel.min.js',
+					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/js/main/testimonial/plus-testimonial.min.js',
+					L_THEPLUS_PATH . DIRECTORY_SEPARATOR . 'assets/js/main/posts-listing/plus-posts-listing.min.js',
 				],
 			],
 		],

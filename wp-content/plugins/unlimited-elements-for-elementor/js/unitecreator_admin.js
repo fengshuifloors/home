@@ -1647,6 +1647,8 @@ function UniteCreatorAdmin(){
 		//change files event
 		g_settingsItem.setEventOnChange(onSettingsItemsChange);
 		
+		onSettingsItemsChange();
+		
 		//expand click
 		jQuery(".uc-tabcontent-link-expand").on("click",function(){
 			

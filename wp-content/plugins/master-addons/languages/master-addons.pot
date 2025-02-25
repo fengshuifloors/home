@@ -1,4 +1,4 @@
-# Copyright (C) 2022 MasterAddons
+# Copyright (C) 2023 MasterAddons
 # This file is distributed under the same license as the MasterAddons package.
 msgid ""
 msgstr ""
@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-11-24 11:01+0000\n"
+"POT-Creation-Date: 2023-01-04 08:02+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -9231,7 +9231,7 @@ msgid "<span class=\"dashicons dashicons-yes\"></span> <span class=\"jltma-chang
 msgstr ""
 
 #: ../inc/admin/promotions.php:87
-msgid "<span class=\"dashicons dashicons-yes\"></span> <span class=\"jltma-changes-list\">\"Current Time\" addon -  Name of the Month made translatable</span><br>"
+msgid "<span class=\"dashicons dashicons-yes\"></span> <span class=\"jltma-changes-list\">Megamenu click/hover & width issue fixed</span><br>"
 msgstr ""
 
 #. translators: 1: Plugin name, 2: Wordpress.org Link, 3: Wordpress.org title

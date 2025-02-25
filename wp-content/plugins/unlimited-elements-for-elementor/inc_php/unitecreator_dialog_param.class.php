@@ -68,6 +68,7 @@ class UniteCreatorDialogParamWork{
 	const PARAM_SPECIAL = "uc_special";
 	const PARAM_POST_SELECT = "uc_post_select";
 	const PARAM_TERM_SELECT = "uc_term_select";
+	const PARAM_RAW_HTML = "uc_raw_html";
 	
 	const PARAM_VAR_GET = "uc_var_get";
 	const PARAM_VAR_FILTER = "uc_var_filter";
@@ -906,13 +907,30 @@ class UniteCreatorDialogParamWork{
 			</label>
 			
 			<div class="unite-inputs-sap"></div>
-			
+						
 			<input type="text" name="multisource_included_attributes" value="" class="unite-input-link">
 					
-			<br><br>
+			<div class="unite-dialog-description-left">
 			
 			* <?php esc_html_e("list here all the fields that will be included in the multisource comma saparated like ","unlimited-elements-for-elementor")?> 
 				<b>title,image,other</b>		
+			</div>
+			
+			<div class="unite-inputs-sap-double"></div>
+			
+			<label class="unite-inputs-label">
+				<?php _e("Default Values", "unlimited-elements-for-elementor")?>: 
+			</label>
+						
+			<div class="unite-inputs-sap"></div>
+			
+			<input type="text" name="multisource_attributes_defaults" value="" class="unite-input-link">
+			
+			<div class="unite-dialog-description-left">
+			
+			* <?php esc_html_e("comma saparated defalut values of the items fields. exampe:field=value,field2=value2","unlimited-elements-for-elementor")?> 
+			</div>
+			
 		</div>
 		
 		
@@ -2015,6 +2033,26 @@ class UniteCreatorDialogParamWork{
 	
 	
 	/**
+	 * sort main params
+	 */
+	private function sortMainParams(){
+		
+		
+		$arrParams = array();
+		
+		foreach($this->arrParams as $type){
+			$text = UniteFunctionsUC::getVal($this->arrParamsTypes, $type);
+			$arrParams[$type] = $text;
+		}
+		
+		asort($arrParams);
+		
+		$this->arrParams = array_keys($arrParams);
+		
+	}
+	
+	
+	/**
 	 * init the params dialog
 	 */
 	public function init($type, $addon){
@@ -2034,7 +2072,7 @@ class UniteCreatorDialogParamWork{
 				
 		switch($this->type){
 			case self::TYPE_MAIN:
-								
+				
 				$this->initMainParams();
 				$this->initItemParams(); 
 			break;
@@ -2051,6 +2089,12 @@ class UniteCreatorDialogParamWork{
 				UniteFunctionsUC::throwError("Wrong param dialog type: $type");
 			break;
 		}
+		
+    	$isSortParams = HelperProviderCoreUC_EL::getGeneralSetting("alphabetic_attributes");
+		$isSortParams = UniteFunctionsUC::strToBool($isSortParams);
+    	
+		if($isSortParams == true)
+			$this->sortMainParams();
 		
 	}
 	

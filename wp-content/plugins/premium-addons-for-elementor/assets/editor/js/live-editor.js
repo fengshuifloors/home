@@ -188,7 +188,7 @@
         });
     }
 
-    function checkLiveTemplateControl(sectionName, elementorEditor) {
+    function checkLiveTemplateControl() {
 
         setTimeout(function () {
 

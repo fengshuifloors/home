@@ -485,7 +485,7 @@ class UniteCreatorEntranceAnimations{
   
     //check and add animation
     function ueCheckEntranceAnimation(objElement, step, classItem, order){
-                
+        
         var isStarted = objElement.data("ue_entrance_animation_started");
         
         if(isStarted === true)
@@ -542,8 +542,8 @@ class UniteCreatorEntranceAnimations{
 		
 			?>
 
-/* entrance animation js */		
-	
+/* entrance animation js*/	
+
 <?php 
 	if($isInsideEditor == false){
 		HelperHtmlUC::putJSFunc_isElementInViewport();
@@ -561,18 +561,38 @@ jQuery(document).ready(function(){
   }
   ?>
   
-  var objElement = jQuery("#<?php echo $id?>");
+  function initUEEntranceAnimation(){
   
-  if(typeof ueCheckEntranceAnimation == "undefined"){     
-     return(false);
-  }
+	  var objElement = jQuery("#<?php echo $id?>");
+	  
+	  if(objElement.length == 0)
+	  	 return(false);
+	   
+	   if(typeof ueCheckEntranceAnimation == "undefined"){     
+	      return(false);
+	   }
     	
-    ueCheckEntranceAnimation(objElement, <?php echo $animationStep?>,"<?php echo $classItem?>", "<?php echo $order?>");
+	    ueCheckEntranceAnimation(objElement, <?php echo $animationStep?>,"<?php echo $classItem?>", "<?php echo $order?>");
+	    
+	    jQuery(window).on("scroll", function(){
+	    	ueCheckEntranceAnimation(objElement, <?php echo $animationStep?>, "<?php echo $classItem?>", "<?php echo $order?>")
+	    });
     
-    jQuery(window).on("scroll", function(){
-    	ueCheckEntranceAnimation(objElement,"<?php echo $animationType?>", <?php echo $animationStep?>, "<?php echo $classItem?>", "<?php echo $order?>")
-    });
-   
+	    objElement.on("uc_ajax_refreshed", function(){
+	        
+	        objElement.removeData("ue_entrance_animation_started");
+	    	
+	    	ueCheckEntranceAnimation(objElement, <?php echo $animationStep?>, "<?php echo $classItem?>", "<?php echo $order?>")
+	    });
+		
+	return(true);  
+  }
+       
+  var isInited = initUEEntranceAnimation();
+  
+  if(isInited == false)
+	  jQuery(document).on("elementor/popup/show", initUEEntranceAnimation);
+  
 });			
 			<?php 
 			
