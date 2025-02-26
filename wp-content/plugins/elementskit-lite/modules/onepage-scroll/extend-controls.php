@@ -17,11 +17,6 @@ class ElementsKit_Extend_Onepage_Scroll {
 		add_action( 'elementor/element/section/section_advanced/after_section_end', array( $this, 'register_section_controls' ) );
 
 		/**
-		 * Flexbox Container Support
-		 */
-		add_action( 'elementor/element/container/section_layout/after_section_end', array( $this, 'register_section_controls' ) );
-
-		/**
 		 * Navigation Markup
 		 */
 		add_action( 'wp_footer', array( $this, 'generate_navigation_markup' ) );
@@ -71,20 +66,18 @@ class ElementsKit_Extend_Onepage_Scroll {
 				'tab'   => Controls_Manager::TAB_SETTINGS,
 			)
 		);
-
-		$element->add_control(
-			'ekit_onepagescroll',
-			array(
-				'label'              => esc_html__( 'Enable Onepage Scroll', 'elementskit-lite' ),
-				'type'               => Controls_Manager::SWITCHER,
-				'return_value'       => 'block',
-				'frontend_available' => true,
-				'selectors'          => array(
-					'div.onepage_scroll_nav' => 'display: {{VALUE}};',
-				),
-			)
-		);
-
+			$element->add_control(
+				'ekit_onepagescroll',
+				array(
+					'label'              => esc_html__( 'Enable Onepage Scroll', 'elementskit-lite' ),
+					'type'               => Controls_Manager::SWITCHER,
+					'return_value'       => 'block',
+					'frontend_available' => true,
+					'selectors'          => array(
+						'div.onepage_scroll_nav' => 'display: {{VALUE}};',
+					),
+				)
+			);
 		$element->end_controls_section();
 	}
 
@@ -101,18 +94,16 @@ class ElementsKit_Extend_Onepage_Scroll {
 				'hide_in_inner' => true,
 			)
 		);
-
-		$element->add_control(
-			'ekit_has_onepagescroll',
-			array(
-				'label'              => esc_html__( 'Enable Section', 'elementskit-lite' ),
-				'type'               => Controls_Manager::SWITCHER,
-				'frontend_available' => true,
-				'return_value'       => 'section',
-				'prefix_class'       => 'ops-',
-			)
-		);
-
+			$element->add_control(
+				'ekit_has_onepagescroll',
+				array(
+					'label'              => esc_html__( 'Enable Section', 'elementskit-lite' ),
+					'type'               => Controls_Manager::SWITCHER,
+					'frontend_available' => true,
+					'return_value'       => 'section',
+					'prefix_class'       => 'ops-',
+				)
+			);
 		$element->end_controls_section();
 	}
 

@@ -13,8 +13,7 @@ function UEDynamicFilters(){
 		TERMS_LIST:"terms_list",
 		SEARCH: "search",
 		SELECT: "select",
-		SUMMARY: "summary",
-		GENERAL: "general"
+		SUMMARY: "summary"
 	};
 	
 	var g_vars = {
@@ -32,14 +31,9 @@ function UEDynamicFilters(){
 		EVENT_BEFORE_REFRESH: "uc_before_ajax_refresh",	   //on grid
 		EVENT_AJAX_REFRESHED: "uc_ajax_refreshed",	   //on grid
 		EVENT_AJAX_REFRESHED_BODY: "uc_ajax_refreshed_body",	   //on grid
-		
 		EVENT_INIT_FILTER:"init_filter",
-		EVENT_INIT_FILTER_TYPE:"init_filter_type",
-		EVENT_GET_FILTER_DATA:"get_filter_data",
-		
 		ACTION_REFRESH_GRID: "uc_refresh",	//listen on grid
 		ACTION_GET_FILTERS_URL: "uc_get_filters_url",	//listen on grid
-		ACTION_FILTER_CHANGE: "uc_filter_change",	//listen on grid
 		
 		REFRESH_MODE_PAGINATION: "pagination",
 		REFRESH_MODE_LOADMORE: "loadmore",
@@ -259,7 +253,7 @@ function UEDynamicFilters(){
 		
 		//in case there are nothing:
 		var objGrids = getAllGrids();
-		
+				
 		if(objGrids.length == 0)
 			return(null);
 		
@@ -462,7 +456,7 @@ function UEDynamicFilters(){
 	/**
 	 * get element layout data
 	 */
-	function getElementLayoutData(objElement, addSyncedGrids){
+	function getElementLayoutData(objElement){
 		
 		if(!objElement || objElement.length == 0)
 			throw new Error("Element not found");
@@ -480,26 +474,15 @@ function UEDynamicFilters(){
 			throw new Error("widget id not found");
 		
 		//get synced grids
-		var objSyncedData = null;
 		
-		//add sync if allowed and available
+		var objSyncedData = getSyncedWidgetData(objElement);
 		
-		if(addSyncedGrids){
+		if(g_showDebug && objSyncedData){
 			
-			var objSyncedData = getSyncedWidgetData(objElement);
-			
-			if(g_showDebug && objSyncedData){
-				
-				trace("sync data");
-				trace(objSyncedData);
-			}
-		}else{
-			
-			if(g_showDebug)
-				trace("skip sync grid");
-			
+			trace("sync data");
+			trace(objSyncedData);
 		}
-
+		
 		//get layout id
 		var objLayout = objWidget.parents(".elementor");
 		
@@ -559,23 +542,6 @@ function UEDynamicFilters(){
 	
 	
 	function ________FILTERS_______________(){}
-	
-	/**
-	 * get the parent
-	 */
-	function getFiltersParent(objFilters){
-		
-		//init the events
-		var objParent = objFilters.parents(".elementor");
-		
-		if(objParent.length > 1)
-			objParent = jQuery(objParent[0]);
-		
-		if(objParent.length == 0)
-			objParent = objFilters.parents("body");
-		
-		return(objParent);
-	}
 	
 	
 	/**
@@ -819,15 +785,9 @@ function UEDynamicFilters(){
 		if(!numItems)
 			numItems = null;
 		
-		//affect only single grids
-		
-		var isSingleGridOnly = objFilter.data("affect_single_grid");
-		
-			
 		var data = {};
 		data.offset = nextOffset;
 		data.numItems = numItems;
-		data.singlegrid = isSingleGridOnly;
 		
 		return(data);
 	}
@@ -910,7 +870,7 @@ function UEDynamicFilters(){
 		var className = "uc-selected";
 		
 		event.preventDefault();
-		
+				
 		var objLink = jQuery(this);
 		
 		if(objLink.hasClass("uc-grid-filter")){
@@ -1014,9 +974,20 @@ function UEDynamicFilters(){
 		if(objSelected.length > 1)
 			objSelected = jQuery(objSelected[0]);
 		
-		var objTerm = getFilterElementData(objSelected);
+		var id = objSelected.data("id");
+		var slug = objSelected.data("slug");
+		var taxonomy = objSelected.data("taxonomy");
 		
-		return(objTerm);		
+		if(!taxonomy)
+			return(null);
+		
+		var objTerm = {
+			"id": id,
+			"slug": slug,
+			"taxonomy": taxonomy
+		};
+		
+		return(objTerm);
 	}
 
 	/**
@@ -1047,21 +1018,11 @@ function UEDynamicFilters(){
 	
 	function ________GENERAL_FILTER_______________(){}
 	
-	/**
-	 * init general filter
-	 */
-	function initGeneralFilter(objFilter){
-		
-		objFilter.on(g_vars.ACTION_FILTER_CHANGE, onGeneralFilterChange);
-		
-		
-	}
-	
 	
 	/**
 	 * on general filter change
 	 */
-	function onGeneralFilterChange(){
+	function onFilterChange(){
 		
 		var objFilter = jQuery(this);
 		
@@ -1177,51 +1138,7 @@ function UEDynamicFilters(){
 	
 	function ________DATA_______________(){}
 	
-	
-	/**
-	 * handle term, add to taxonomy array
-	 */
-	function buildTermsQuery_handleTerm(objTerm, arrTax1){
-		
-		var taxonomy = objTerm["taxonomy"];
-		var slug = objTerm["slug"];
-		
-		var objTax = getVal(arrTax1, taxonomy);
-		if(!objTax)
-			objTax = {};
-		
-		objTax[slug] = true;
-		arrTax1[taxonomy] = objTax;
-		
-		return(arrTax1);
-	}
 	 	
-	/**
-	 * get slugs string
-	 */
-	function buildTermsQuery_getStrSlugs(objSlugs, isGroup){
-		
-		var strSlugs = "";
-		
-		var moreThenOne = false;
-		for (var slug in objSlugs){
-			
-			if(strSlugs){
-				moreThenOne = true;
-				strSlugs += ".";
-			}
-			
-			strSlugs += slug;
-		}
-		
-		//add "and"
-		if(moreThenOne == true && isGroup !== true)
-			strSlugs += ".*";
-		
-		return(strSlugs);
-	}
-	
-	
 	/**
 	 * build terms query
 	 * ucterms=product_cat~shoes.dress;cat~123.43;
@@ -1231,89 +1148,55 @@ function UEDynamicFilters(){
 		var query = "";
 				
 		//break by taxonomy
-		
 		var arrTax = {};
-		var arrGroupTax = {};
-		
 		jQuery.each(arrTerms, function(index, objTerm){
 			
-			//group term
-			if(jQuery.isArray(objTerm) && objTerm.length != 0){
-				
-				jQuery.each(objTerm, function(index, groupTerm){
-					arrGroupTax = buildTermsQuery_handleTerm(groupTerm, arrGroupTax);
-				});
-				
-				return(true);
-			}
+			var taxonomy = objTerm["taxonomy"];
+			var slug = objTerm["slug"];
 			
-			arrTax = buildTermsQuery_handleTerm(objTerm, arrTax);
+			var objTax = getVal(arrTax, taxonomy);
+			if(!objTax)
+				objTax = {};
+			
+			objTax[slug] = true;
+			arrTax[taxonomy] = objTax;
 			
 		});
-		
 		
 		//combine the query
 		
-		if(jQuery.isEmptyObject(arrTax) && jQuery.isEmptyObject(arrGroupTax))
+		if(!arrTax)
 			return(null);
 		
-		
-		//build group slugs
-		jQuery.each(arrGroupTax,function(taxonomy, objSlugs){
+		jQuery.each(arrTax,function(taxonomy,objSlugs){
 			
-			var strSlugs = buildTermsQuery_getStrSlugs(objSlugs, true);
-			
-			strAdd = "|"+strSlugs+"|";
-			
-			var objTax = getVal(arrTax, taxonomy);
-			if(!objTax){
-				objTax = {};
+			var strSlugs = "";
+						
+			var moreThenOne = false;
+			for (var slug in objSlugs){
 				
-				strAdd = strSlugs;	
+				if(strSlugs){
+					moreThenOne = true;
+					strSlugs += ".";
+				}
+				
+				strSlugs += slug;
 			}
 			
-			objTax[strSlugs] = true;
-			
-			arrTax[taxonomy] = objTax;
-		});
-				
-		
-		jQuery.each(arrTax,function(taxonomy, objSlugs){
-			
-			var strSlugs = buildTermsQuery_getStrSlugs(objSlugs);
+			//add "and"
+			if(moreThenOne == true)
+				strSlugs += ".*";
 			
 			var strTax = taxonomy+"~"+strSlugs;
-			
+						
 			if(query)
 				query += ";";
 			
 			query += strTax;
 			
 		});
-		
-		
+				
 		return(query);
-	}
-	
-	/**
-	 * get selected filter element data
-	 */
-	function getFilterElementData(objElement){
-		
-		var id = objElement.data("id");
-		var slug = objElement.data("slug");
-		var taxonomy = objElement.data("taxonomy");
-		
-		if(!taxonomy)
-			return(null);
-		
-		var objTerm = {
-			"id": id,
-			"slug": slug,
-			"taxonomy": taxonomy
-		};
-		
-		return(objTerm);
 	}
 	
 	
@@ -1411,33 +1294,12 @@ function UEDynamicFilters(){
 	 */
 	function operateAjax_setHtmlGrid(response, objGrid, isLoadMore){
 		
-		if(g_showDebug == true){
-			trace("set html grid, response: ");
-			trace(response);
-			
-			trace("obj grid:");
-			trace(objGrid);
-		}
-		
 		if(objGrid.length == 0)
 			return(false);
-						
+				
 		var objItemsWrapper = getGridItemsWrapper(objGrid);
 		var objItemsWrapper2 = getGridItemsWrapper(objGrid, true);
 		
-		if(g_showDebug == true){
-			trace("items wrapper 1: ");
-			trace(objItemsWrapper);
-			
-			trace("items wrapper 2:");
-			trace(objItemsWrapper2);
-		}
-		
-		
-		if(!objItemsWrapper || objItemsWrapper.length == 0)
-			throw new Error("Missing items wrapper: .uc-items-wrapper");
-		
-	
 		operateAjax_setHtmlDebug(response, objGrid);
 		
 		//set grid items
@@ -1445,7 +1307,7 @@ function UEDynamicFilters(){
 		//if init filters mode, and no items response - don't set
 		if(response.hasOwnProperty("html_items") == false)
 			return(false);
-				
+		
 		var htmlItems = getVal(response, "html_items");
 		
 		var htmlItems2 = null;
@@ -1465,7 +1327,7 @@ function UEDynamicFilters(){
 		
 		//show / hide empty message if available and empty response
 		var objEmptyMessage = getGridEmptyMessage(objGrid);
-				
+		
 		if(objEmptyMessage){
 			if(htmlItems == "")
 				objEmptyMessage.show();
@@ -1474,21 +1336,19 @@ function UEDynamicFilters(){
 		}
 		
 		//set the query data
-		var queryDataOriginal = getVal(response, "query_data");
+		var queryData = getVal(response, "query_data");
 		var queryIDs = getVal(response,"query_ids");
 		
-		var queryData = jQuery.extend({}, queryDataOriginal);
-		
 		//add to old data
-				
+		
 		if(isLoadMore == true){
-			
+						
 			var currentQueryData = objGrid.attr("querydata");
-			
 			var objCurrentData = jQuery.parseJSON(currentQueryData);
 			var currentNumPosts = getVal(objCurrentData, "count_posts");
 			
 			queryData.count_posts += currentNumPosts;
+			
 			
 			var currentQueryIDs = objGrid.data("postids");
 			
@@ -1496,11 +1356,12 @@ function UEDynamicFilters(){
 				queryIDs = currentQueryIDs + "," + queryIDs;
 		}
 		
+		
 		//query data replace
 		
+		objGrid.removeAttr("querydata");
+		
 		if(queryData){
-			
-			objGrid.removeAttr("querydata");
 			
 			var jsonData = JSON.stringify(queryData);
 			objGrid.attr("querydata", jsonData);
@@ -1522,15 +1383,10 @@ function UEDynamicFilters(){
 			return(false);
 		}
 		
-		
 		if(!htmlItems2)
 			htmlItems2 = "";
 		
 		if(isLoadMore === true){
-			
-			if(g_showDebug == true){
-				trace("append load more");
-			}
 			
 			objItemsWrapper.append(htmlItems);
 			
@@ -1538,10 +1394,9 @@ function UEDynamicFilters(){
 				objItemsWrapper.append(htmlItems2);
 			
 		}else{
-			
 			objItemsWrapper.html(htmlItems);
 			
-			if(objItemsWrapper2 && objItemsWrapper2.length)
+			if(objItemsWrapper2)
 				objItemsWrapper2.html(htmlItems2);
 			
 		}
@@ -1553,20 +1408,13 @@ function UEDynamicFilters(){
 	 * refresh synced grids
 	 */
 	function operateAjax_setHtmlSyngGrids(response, objGrid, isLoadMore){
-				
+		
 		var objSyncWidgetsResponse = getVal(response, "html_sync_widgets");
-		
-		if(g_showDebug == true){
-			trace("set html sync grids");
-			trace(objSyncWidgetsResponse);
-		}
-		
-		var queryData = getVal(response,"query_data");
-		
+				
 		if(!objSyncWidgetsResponse)
 			return(false);
 		
-		jQuery.each(objSyncWidgetsResponse, function(elementID, childResponse){
+		jQuery.each(objSyncWidgetsResponse, function(elementID, response){
 			
 			var objGridWidget = getGridFromElementorElementID(elementID);
 			
@@ -1575,13 +1423,11 @@ function UEDynamicFilters(){
 			
 			objGridWidget.removeClass(g_vars.CLASS_REFRESH_SOON);
 			
-			childResponse.query_data = queryData;
+			operateAjax_setHtmlGrid(response, objGridWidget, isLoadMore);
 			
-			operateAjax_setHtmlGrid(childResponse, objGridWidget, isLoadMore);
-						
-			objGridWidget.trigger(g_vars.EVENT_AJAX_REFRESHED);
+			objGrid.trigger(g_vars.EVENT_AJAX_REFRESHED);
 			g_objBody.trigger(g_vars.EVENT_AJAX_REFRESHED_BODY, [objGridWidget]);
-						
+			
 		});
 		
 	}
@@ -2109,8 +1955,8 @@ function UEDynamicFilters(){
 		});
 		
 		showMultipleAjaxLoaders(objFiltersToReload, true);
-				
-		if(g_lastSyncGrids && isLoadMore !== true)
+		
+		if(g_lastSyncGrids)
 			showMultipleAjaxLoaders(g_lastSyncGrids, true);
 		
 		
@@ -2305,7 +2151,6 @@ function UEDynamicFilters(){
 		var objTaxIDs = {};
 		var strSelectedTerms = "";
 		var search = "";
-		var addSyncedGrids = true;
 		
 		
 		//get ajax options
@@ -2360,11 +2205,6 @@ function UEDynamicFilters(){
 						offset = loadMoreData.offset;
 						numItems = loadMoreData.numItems;
 						
-						var isSingleGrid = loadMoreData.singlegrid;
-						
-						if(isSingleGrid == true)
-							addSyncedGrids = false;
-												
 						if(!offset)
 							urlAjax = null;
 						
@@ -2422,26 +2262,6 @@ function UEDynamicFilters(){
 					
 					search = objInput.val();
 					search = search.trim();
-					
-				break;
-				case g_types.GENERAL:
-					
-					var filterDataObj = {};
-					objFilter.trigger(g_vars.EVENT_GET_FILTER_DATA, filterDataObj);
-					
-					var filterData = getVal(filterDataObj,"output");
-					
-					//add terms
-					var dataTerms = getVal(filterData,"terms");
-					
-					if(dataTerms && dataTerms.length){
-						
-						if(dataTerms.length == 1)		//single term
-							arrTerms.push(dataTerms[0]);
-						else
-							arrTerms.push(dataTerms);	//multiple (grouping)
-					}
-					
 					
 				break;
 				default:
@@ -2530,24 +2350,13 @@ function UEDynamicFilters(){
 		if(urlAjax == null)
 			return(null);
 		
-		var dataLayout = getElementLayoutData(objGrid, addSyncedGrids);
+		var dataLayout = getElementLayoutData(objGrid);
 		
 		var widgetID = dataLayout["widgetid"];
 		var layoutID = dataLayout["layoutid"];
 		
-		//disable synced
-		
-		if(addSyncedGrids == false){
-			
-			var syncedWidgetIDs = false;
-			g_lastSyncGrids = null;
-			
-		}else{
-			
-			var syncedWidgetIDs = getVal(dataLayout,"synced_widgetids");
-			g_lastSyncGrids = getVal(dataLayout,"synced_grids");
-		}
-		
+		var syncedWidgetIDs = getVal(dataLayout,"synced_widgetids");
+		g_lastSyncGrids = getVal(dataLayout,"synced_grids");
 		
 		var urlFilterString = "";
 		
@@ -2596,7 +2405,7 @@ function UEDynamicFilters(){
 		//search
 		if(search){
 			search = encodeURIComponent(search);
-			//search = escape(search);
+			search = escape(search);
 			urlAjax += "&ucs=" + search;
 			
 			urlFilterString = addUrlParam(urlFilterString, "ucs=" + search);
@@ -2604,7 +2413,7 @@ function UEDynamicFilters(){
 		
 		//avoid duplicates - exclude, disable the offset
 		
-		if(objGrid.hasClass("uc-avoid-duplicates") && isLoadMoreMode == true){
+		if(objGrid.hasClass("uc-avoid-duplicates")){
 			
 			var strExcludePostIDs = getExcludePostIDs();
 			
@@ -2644,7 +2453,10 @@ function UEDynamicFilters(){
 	function getExcludePostIDs(){
 		
 		var objGrids = jQuery(".uc-avoid-duplicates");
-				
+		
+		if(objGrids.length == 0)
+			return("");
+		
 		var strIDs = "";
 		
 		jQuery.each(objGrids, function(index, grid){
@@ -2739,7 +2551,7 @@ function UEDynamicFilters(){
 	function initFilter(objFilter, type){
 		
 		var objGrid = getClosestGrid(objFilter);
-		
+				
 		var error = "Filter Parent not found! Please put the posts element on the page, and turn on 'Enable Post Filtering' option on it";
 		
 		if(!objGrid){			
@@ -2765,11 +2577,7 @@ function UEDynamicFilters(){
 			case g_types.SELECT:
 				initSelectFilter(objFilter);
 			break;
-			case g_types.GENERAL:		//general filter events
-				initGeneralFilter(objFilter);
-			break;
 		}
-		
 		
 		objFilter.trigger(g_vars.EVENT_INIT_FILTER);
 		
@@ -2779,11 +2587,17 @@ function UEDynamicFilters(){
 	/**
 	 * init filter events by types
 	 */
-	function initFilterEventsByTypes(arrTypes, arrGeneralTypes, objFilters, objParent){
+	function initFilterEventsByTypes(arrTypes, objFilters){
 		
 		if(!arrTypes || arrTypes.length == 0)
 			return(false);
-				
+		
+		//init the events
+		var objParent = objFilters.parents(".elementor");
+		
+		if(objParent.length > 1)
+			objParent = jQuery(objParent[0]);
+		
 		for(var type in arrTypes){
 						
 			switch(type){
@@ -2813,32 +2627,16 @@ function UEDynamicFilters(){
 					
 				break;
 				case g_types.SUMMARY:
+					
 					//do nothing for now
-				break;
-				case g_types.GENERAL:
-					//the init is from the general types
+					
 				break;
 				default:
 					trace("init by type - unrecognized type: "+type);
 				break;
 			}
 		}
-		
-		if(!arrGeneralTypes || arrGeneralTypes.length == 0)
-			return(false);
-		
-		
-		//init the general types
-		
-		for(var generalType in arrGeneralTypes){
-			
-			var objFirstFilter = arrGeneralTypes[generalType];
-			
-			objFirstFilter.trigger(g_vars.EVENT_INIT_FILTER_TYPE,[objParent]);
-			
-		}
-		
-		
+				
 	}
 	
 	
@@ -2863,9 +2661,6 @@ function UEDynamicFilters(){
 			return(false);
 		
 		var arrTypes = {};
-		var arrGeneralTypes = {};
-		
-		var objParent = getFiltersParent(objFilters);
 		
 		jQuery.each(objFilters, function(index, filter){
 			
@@ -2873,28 +2668,13 @@ function UEDynamicFilters(){
 			var type = getFilterType(objFilter);
 			
 			initFilter(objFilter, type);
-				
-			//collect the general type
-			
+						
 			arrTypes[type] = true;
-			
-			if(type == g_types.GENERAL){
-				var generalType = objFilter.data("generaltype");
-				
-				if(!generalType){
-					trace(objFilter);
-					throw new Error("The filter is missing generaltype data");
-				}
-				
-				if(arrGeneralTypes.hasOwnProperty(generalType) == false)
-					arrGeneralTypes[generalType] = objFilter;
-				
-			}
 			
 		});
 		
 		
-		initFilterEventsByTypes(arrTypes, arrGeneralTypes, objFilters, objParent);
+		initFilterEventsByTypes(arrTypes, objFilters);
 		
 	}
 	
@@ -2952,6 +2732,7 @@ function UEDynamicFilters(){
 		});
 		
 		
+		
 		objGrids.on(g_vars.ACTION_GET_FILTERS_URL,function(){
 			
 			var objGrid = jQuery(this);
@@ -3001,37 +2782,6 @@ function UEDynamicFilters(){
 		
 		
 	}
-
-	/**
-	 * validate the grids
-	 */
-	function validateGrid(objGrid){
-		
-		//check for |raw absence
-		
-		var isAjax = objGrid.data("ajax");
-		
-		if(isAjax === "'true'")
-			showElementError(objGrid, "This grid configured wrong way, missing |raw in html attributes");
-		
-	}
-	
-	
-	/**
-	 * add some validation to the grids
-	 */
-	function validateGrids(){
-		
-		var objGrids = getAllGrids();
-		
-		jQuery.each(objGrids, function(index, grid){
-			
-			var objGrid = jQuery(grid);
-			
-			validateGrid(objGrids);
-		});
-	}
-	
 	
 	/**
 	 * init
@@ -3063,10 +2813,8 @@ function UEDynamicFilters(){
 		//init remote object if exists
 		if(typeof UERemoteConnection == "function")
 			g_remote = window.ueRemoteConnection;
-		
-		validateGrids();
-		
-		//init the single grid object
+			
+		//init the grid object
 		initGridObject();
 		
 		initFilters();
@@ -3107,16 +2855,6 @@ function UEDynamicFilters(){
 		
 	};
 	
-	/**
-	 * get filter element data
-	 */
-	this.getFilterElementData = function(objElement){
-		
-		var objData = getFilterElementData(objElement);
-		
-		return(objData);
-	}
-	
 	
 	/**
 	 * init the class
@@ -3128,14 +2866,11 @@ function UEDynamicFilters(){
 			return(false);
 		}
 		
-		jQuery("document").ready(function(){
-			setTimeout(init, 200);
-		});
+		jQuery("document").ready(init);
 		
 	}
 	
 	construct();
-	
 }
 
 g_ucDynamicFilters = new UEDynamicFilters();

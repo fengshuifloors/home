@@ -28,10 +28,6 @@ class ElementsKit_Widget_Image_Accordion extends Widget_Base {
         return Handler::get_categories();
     }
 
-    public function get_keywords() {
-        return Handler::get_keywords();
-    }
-
     public function get_help_url() {
         return 'https://wpmet.com/doc/image-accordion/';
     }
@@ -371,7 +367,6 @@ class ElementsKit_Widget_Image_Accordion extends Widget_Base {
           ],
         ]
       );
-      
 	   $this->add_control(
         'ekit_img_accordion_active_background_text',
         [
@@ -385,7 +380,9 @@ class ElementsKit_Widget_Image_Accordion extends Widget_Base {
         Group_Control_Background::get_type(),
             array(
                 'name'     => 'ekit_img_accordion_bg_active_color',
+                'default' => '',
                 'selector' => '{{WRAPPER}} .elementskit-single-image-accordion:before',
+
 			)
         );
       $this->add_responsive_control(
@@ -754,6 +751,7 @@ class ElementsKit_Widget_Image_Accordion extends Widget_Base {
             Group_Control_Background::get_type(),
             array(
                 'name'     => 'ekit_img_accordion_btn_bg_hover_color_group',
+                'default' => '',
                 'selector' => '{{WRAPPER}} .elementskit-accordion-content .elementskit-btn:hover',
             )
         );
@@ -985,25 +983,11 @@ class ElementsKit_Widget_Image_Accordion extends Widget_Base {
 
                         ?>
                         <span class="elementskit-icon-wraper ekit-image-accordion-actions">
-                        <?php if($item['ekit_img_accordion_enable_pupup'] == 'yes') { 
+                        <?php if($item['ekit_img_accordion_enable_pupup'] == 'yes') { ?>
+                                <a href="<?php echo esc_url($item['ekit_img_accordion_bg']['url']); ?>" class="icon-outline circle" data-elementor-open-lightbox="yes">
+                                <?php
 
-							$this->add_lightbox_data_attributes( 'link' . $key, 
-								$item['ekit_img_accordion_bg']['id'], 
-								$item['ekit_img_accordion_enable_pupup'], 
-								$this->get_id() 
-							);
-
-							$this->add_render_attribute( 'link' . $key, 
-								[
-									'href' =>  esc_url($item['ekit_img_accordion_bg']['url']),
-									'aria-label' => "pupup-button", 
-									'class' => "icon-outline circle",
-								]
-							);
-							?>
-                                <a <?php $this->print_render_attribute_string( 'link' . $key ); ?>>
-                                <?php 
-									$migrated = isset( $item['__fa4_migrated']['ekit_img_accordion_pup_up_icons'] );
+                                    $migrated = isset( $item['__fa4_migrated']['ekit_img_accordion_pup_up_icons'] );
                                     // Check if its a new widget without previously selected icon using the old Icon control
                                     $is_new = empty( $item['ekit_img_accordion_pup_up_icon'] );
                                     if ( $is_new || $migrated ) {
@@ -1021,7 +1005,6 @@ class ElementsKit_Widget_Image_Accordion extends Widget_Base {
                         <?php if($item['ekit_img_accordion_enable_project_link'] == 'yes') {
                                 if ( ! empty( $item['ekit_img_accordion_project_link']['url'] ) ) {
                                     $this->add_link_attributes( 'button-2' . $key, $item['ekit_img_accordion_project_link'] );
-									$this->add_render_attribute( 'button-2' . $key, ['role' => "link", 'aria-label' => "button-link"] );
                                 }
                             ?>
                                 <a <?php echo $this->get_render_attribute_string( 'button-2' . esc_attr($key) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped by elementor ?> class="icon-outline circle">

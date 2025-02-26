@@ -265,17 +265,17 @@ class Testimonial extends Widget_Base {
     $this->add_control(
       'eael_testimonial_is_gradient_background',
       [
-          'label' => __('Use Gradient Background', 'essential-addons-for-elementor-lite'),
+          'label' => __('Use Gradient Background', 'essential-addons-elementor'),
           'type' => Controls_Manager::SWITCHER,
-          'label_on' => __('Show', 'essential-addons-for-elementor-lite'),
-          'label_off' => __('Hide', 'essential-addons-for-elementor-lite'),
+          'label_on' => __('Show', 'essential-addons-elementor'),
+          'label_off' => __('Hide', 'essential-addons-elementor'),
           'return_value' => 'yes',
       ]
     );
     $this->add_control(
         'eael_testimonial_background',
         [
-            'label' => esc_html__('Background Color', 'essential-addons-for-elementor-lite'),
+            'label' => esc_html__('Background Color', 'essential-addons-elementor'),
             'type' => Controls_Manager::COLOR,
             'default' => '',
             'selectors' => [
@@ -290,7 +290,7 @@ class Testimonial extends Widget_Base {
         \Elementor\Group_Control_Background::get_type(),
         [
             'name' => 'eael_testimonial_gradient_background',
-            'label' => __('Gradient Background', 'essential-addons-for-elementor-lite'),
+            'label' => __('Gradient Background', 'essential-addons-elementor'),
             'types' => ['classic', 'gradient'],
             'selector' => '{{WRAPPER}} .eael-testimonial-item',
             'condition' => [

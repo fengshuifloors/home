@@ -175,7 +175,6 @@ export const installAstra = ( storedState ) => {
 
 		wp.updates.installTheme( {
 			slug: themeSlug,
-			ajax_nonce: astraSitesVars._ajax_nonce,
 		} );
 
 		// eslint-disable-next-line no-undef

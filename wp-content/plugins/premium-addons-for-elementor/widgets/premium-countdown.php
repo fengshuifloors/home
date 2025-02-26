@@ -183,15 +183,12 @@ class Premium_Countdown extends Widget_Base {
 			'premium_countdown_date_time',
 			array(
 				'label'          => __( 'Due Date', 'premium-addons-for-elementor' ),
-				'description'    => __( 'Date format is (yyyy/mm/dd). Time format is (hh:mm:ss). Example: 2020-01-01 09:30.', 'premium-addons-for-elementor' ),
 				'type'           => Controls_Manager::DATE_TIME,
 				'picker_options' => array(
 					'format' => 'Ym/d H:m:s',
 				),
 				'default'        => gmdate( 'Y/m/d H:m:s', strtotime( '+ 1 Day' ) ),
-				'dynamic'        => array(
-					'active' => true,
-				),
+				'description'    => __( 'Date format is (yyyy/mm/dd). Time format is (hh:mm:ss). Example: 2020-01-01 09:30.', 'premium-addons-for-elementor' ),
 				'condition'      => array(
 					'premium_countdown_type' => 'fixed',
 				),

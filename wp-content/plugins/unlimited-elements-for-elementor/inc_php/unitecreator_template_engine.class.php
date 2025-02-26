@@ -20,7 +20,6 @@ class UniteCreatorTemplateEngineWork{
 	
 	private static $arrSetVarsCache = array();
 	private static $urlBaseCache = null;
-	private static $arrCollectedSchemaItems = array();
 	
 	
 	
@@ -42,36 +41,15 @@ class UniteCreatorTemplateEngineWork{
 	 */
 	private function outputItem($index, $itemParams, $templateName, $sap, $newLine = true){
 		
-		GlobalsProviderUC::$isUnderItem = true;
-		
 		if($this->isItemsFromPosts == true){
 			
 			//HelperProviderUC::startDebugQueries();
 			
 			GlobalsProviderUC::$isUnderRenderPostItem = true;
+		}			
 			
-			//save post id
-			
-			$arrItem = UniteFunctionsUC::getVal($itemParams, "item");
-						
-			$postType = UniteFunctionsUC::getVal($arrItem, "object_type");
-			
-			GlobalsProviderUC::$lastObjectID = UniteFunctionsUC::getVal($arrItem, "object_id");
-			
-			//woo commerce global object product save			
-			
-			if($postType == "product" && function_exists("wc_get_product")){
-				
-				global $product; 
-				$product = wc_get_product(GlobalsProviderUC::$lastObjectID);
-			}
-			
-		}
-		
 		$params = array_merge($this->arrParams, $itemParams);
 		
-		GlobalsProviderUC::$lastItemParams = $params;
-				
 		$htmlItem = $this->twig->render($templateName, $params);
 		
 		if(!empty($sap)){
@@ -93,9 +71,6 @@ class UniteCreatorTemplateEngineWork{
 			//dmp("check queries");exit();
 			
 		}
-		
-		GlobalsProviderUC::$isUnderItem = false;
-		
 		
 	}
 	
@@ -245,11 +220,10 @@ class UniteCreatorTemplateEngineWork{
 	}
 	
 	
-	
 	/**
 	 * put html items schema
 	 */
-	public function putSchemaItems($titleKey = "title", $contentKey = "content",$schemaType = "faq", $isCollect = false){
+	public function putSchemaItems($titleKey = "title", $contentKey = "content",$schemaType = "faq"){
 		
 		if(empty($titleKey))
 			$titleKey = "title";
@@ -257,34 +231,11 @@ class UniteCreatorTemplateEngineWork{
 		if(empty($contentKey))
 			$contentKey = "content";
 
-		$arrWidgetItems = $this->arrItems;
-		
-		if($isCollect == true){
-			
-			self::$arrCollectedSchemaItems = array_merge(self::$arrCollectedSchemaItems, $arrWidgetItems); 
-			
-			return(false);
-		}
-		
-		//output 
-		
-		// combine from collected and empty the collected
-		
-		if(empty($arrWidgetItems))
-			$arrWidgetItems = array();
-		
-		if(!empty(self::$arrCollectedSchemaItems)){
-			
-			$arrWidgetItems = array_merge(self::$arrCollectedSchemaItems, $arrWidgetItems);
-			
-			self::$arrCollectedSchemaItems = array();
-		}
-		
-		$arrItems = HelperUC::$operations->getArrSchema($arrWidgetItems, "faq",$titleKey, $contentKey);
+		$arrItems = HelperUC::$operations->getArrSchema($this->arrItems, "faq",$titleKey, $contentKey);
 		
 		if(empty($arrItems))
 			return(false);
-					
+		
 		$jsonItems = json_encode($arrItems);
 		
 		$htmlSchema = '<script type="application/ld+json">'.$jsonItems.'</script>';
@@ -300,16 +251,16 @@ class UniteCreatorTemplateEngineWork{
 	 * check and put schema items by param
 	 */
 	public function checkPutSchemaItems($paramName){
-		
+				
 		$param = $this->addon->getParamByName($paramName);
 		
 		$type = UniteFunctionsUC::getVal($param, "type");
 		
 		if($type != UniteCreatorDialogParam::PARAM_SPECIAL)
 			return(false);
-		
+			
 		$arrValues = UniteFunctionsUC::getVal($param, "value");
-				
+		
 		if(empty($arrValues))
 			return(false);
 			
@@ -318,22 +269,10 @@ class UniteCreatorTemplateEngineWork{
 		
 		if($isEnable == false)
 			return(false);
-
-		$schemaType = UniteFunctionsUC::getVal($arrValues, $paramName."_type");
-		
+			
 		$titleName = UniteFunctionsUC::getVal($param, "schema_title_name","title");
 		$contentName = UniteFunctionsUC::getVal($param, "schema_content_name","content");
 		
-		
-		//collect items
-		if($schemaType === "collect"){
-		
-			$this->putSchemaItems($titleName, $contentName,"faq", true);
-			
-			return(false);
-		}
-
-				
 		$this->putSchemaItems($titleName, $contentName);
 		
 		
@@ -614,43 +553,14 @@ class UniteCreatorTemplateEngineWork{
 	
 	
 	/**
-	 * do some wp
+	 * do some wp action, function for override
 	 */
 	public function do_action($tag, $param = null, $param2 = null, $param3=null){
 		
-		//add debug
-		if($param === null)
-			HelperUC::addDebug("running action: $tag");
-		else
-			HelperUC::addDebug("running action: $tag",array(
-			"param"=>$param,
-			"param2"=>$param2,
-			"param3"=>$param3,
-		));
-		
-		//run action, without or with params
-		
-		if($param === null){
-			do_action($tag);
-			return(false);
-		}
-		
-		//$param exists
-		
-		if($param2 === null){
-			do_action($tag, $param);
-			return(false);
-		}
-		
-		if($param3 === null){
-			do_action($tag, $param, $param2);
-			return(false);
-		}
-		
-		do_action($tag, $param, $param2, $param3);
+		UniteFunctionsUC::throwError("The do_action() function exists only in PRO version of the plugin");
 		
 	}
-	
+
 	
 	/**
 	 * get data by filters
@@ -751,7 +661,7 @@ class UniteCreatorTemplateEngineWork{
 	 * get post author
 	 */
 	public function getPostAuthor($authorID, $getMeta = false, $getAvatar = false){
-				
+		
 		$arrUserData = UniteFunctionsWPUC::getUserDataById($authorID, $getMeta, $getAvatar);
 		
 		return($arrUserData);		
@@ -835,12 +745,12 @@ class UniteCreatorTemplateEngineWork{
 	 * put dynamic loop template, similar to put listing template
 	 */
 	public function putDynamicLoopTemplate($item, $templateID){
-			
+				
 		$widgetID = UniteFunctionsUC::getVal($this->arrParams, "uc_id");
 		
 		$objFilters = new UniteCreatorFiltersProcess();
 		$isAjax = $objFilters->isFrontAjaxRequest();
-		
+
 		if($isAjax == true)
 			$widgetID = "%uc_widget_id%";
 		
@@ -867,54 +777,17 @@ class UniteCreatorTemplateEngineWork{
 		return($price);
 	}
 
-	
 	/**
 	 * number format for woocommerce
 	 */
-	public function filterWcPrice($price, $variationID = null){
-		
+	public function filterWcPrice($price){
+
 		if(function_exists("wc_price") == false)
 			return($price);
-						
+		
 		$newPrice = wc_price($price);
 		
-		//new - exclude if the product or variation id is not given
-		
-		if(empty($variationID))
-			return($newPrice);
-		
-		if($this->isItemsFromPosts == false)
-			return($newPrice);
-					
-		if(empty(GlobalsProviderUC::$lastObjectID))
-			return($newPrice);
-		
-		if(!empty($variationID))
-			$product = wc_get_product($variationID);
-		else 
-			$product = wc_get_product(GlobalsProviderUC::$lastObjectID);
-		
-		if(empty($product))
-			return($newPrice);
-		
-		try{
-			
-			$newPrice = apply_filters("woocommerce_get_price_html",$newPrice, $product);
-			
-		}catch(Exception $e){
-		}
-		
 		return($newPrice);
-	}
-	
-	/**
-	 * json decode
-	 */
-	public function filterJsonDecode($strJson){
-		
-		$arrOutput = UniteFunctionsUC::jsonDecode($strJson);
-		
-		return($arrOutput);
 	}
 	
 	
@@ -980,9 +853,9 @@ class UniteCreatorTemplateEngineWork{
 	/**
 	 * output elementor template by id
 	 */
-	public function putElementorTemplate($templateID, $mode = null){
+	public function putElementorTemplate($templateID){
 		
-		HelperProviderCoreUC_EL::putElementorTemplate($templateID,$mode);
+		HelperProviderCoreUC_EL::putElementorTemplate($templateID);
 		
 	}
 	
@@ -1018,7 +891,7 @@ class UniteCreatorTemplateEngineWork{
 			case "get_loadmore_data":
 								
 				$objPagination = new UniteCreatorElementorPagination();
-				$strData = $objPagination->getLoadmoreData(GlobalsProviderUC::$isInsideEditor);
+				$strData = $objPagination->getLoadmoreData(UniteCreatorElementorIntegrate::$isEditMode);
 				
 				return($strData);
 			break;
@@ -1068,7 +941,7 @@ class UniteCreatorTemplateEngineWork{
 				
 				$productID = $arg1;
 				
-				$objWoo = UniteCreatorWooIntegrate::getInstance();
+				$objWoo = new UniteCreatorWooIntegrate();
 				$arrVariations = $objWoo->getProductVariations($productID);
 				
 				return($arrVariations);
@@ -1077,8 +950,8 @@ class UniteCreatorTemplateEngineWork{
 			case "get_wc_gallery":
 				
 				$productID = $arg1;
-				
-				$objWoo = UniteCreatorWooIntegrate::getInstance();
+								
+				$objWoo = new UniteCreatorWooIntegrate();
 				$arrGallery = $objWoo->getProductGallery($productID);
 				
 				return($arrGallery);
@@ -1088,14 +961,6 @@ class UniteCreatorTemplateEngineWork{
 				$arrEndpoints = UniteCreatorWooIntegrate::getWooEndpoint($arg1);
 				
 				return($arrEndpoints);
-			break;
-			case "get_woo_cart_data":
-				
-				$objWoo = UniteCreatorWooIntegrate::getInstance();
-				
-				$arrCartData = $objWoo->getCartData();
-				
-				return($arrCartData);
 			break;
 			case "get_unitegallery_js":
 				
@@ -1130,14 +995,6 @@ class UniteCreatorTemplateEngineWork{
 				//termID, meta key
 				
 				$arrImage = UniteFunctionsWPUC::getTermImage($arg1, $arg2);
-				
-				return($arrImage);
-			break;
-			case "get_post_image":
-				
-				//termID, meta key
-				
-				$arrImage = UniteFunctionsWPUC::getPostImage($arg1, $arg2);
 				
 				return($arrImage);
 			break;
@@ -1226,7 +1083,7 @@ class UniteCreatorTemplateEngineWork{
 			break;
 			case "get_product_attributes":
 				
-				$objWoo = UniteCreatorWooIntegrate::getInstance();
+				$objWoo = new UniteCreatorWooIntegrate();
 				
 				$arrAttributes = $objWoo->getProductAttributes($arg1);
 				
@@ -1265,43 +1122,6 @@ class UniteCreatorTemplateEngineWork{
 				
 					$this->checkPutSchemaItems($arg1);
 			break;
-			case "render":		//render twig template
-								
-				$html = $this->getRenderedHtml($arg1, GlobalsProviderUC::$isUnderItem);
-				echo $html;
-				
-			break;
-			case "put_post_link":	//by id
-				
-				if(!empty($arg1)){
-					$link = get_permalink($arg1);
-					echo $link;
-				}
-				
-			break;
-			case "get_encoded_image":
-				
-				$content = HelperUC::$operations->getLocalFileContentsByUrl($arg1);
-				
-				if(empty($content))
-					return(null);
-				
-				$encoded = base64_encode($content);
-				
-				return($encoded);
-			break;
-			case "put_post_type_title":	
-				
-				//print the post type title from post type
-				
-				$obj = get_post_type_object($arg1);
-				
-				if(empty($obj))
-					return(false);
-										
-				echo $obj->labels->singular_name;
-				
-			break;
 			default:
 				
 				$type = UniteFunctionsUC::sanitizeAttr($type);
@@ -1320,11 +1140,6 @@ class UniteCreatorTemplateEngineWork{
 		
 		dmp("put some test html");
 		dmP($type);
-		
-		//unset($data["current_post"]["content"]);
-		//$post = UniteFunctionsUC::getVal($data, "")
-		unset($data["content"]);
-		dmp($data);
 		
 	}
 	
@@ -1396,7 +1211,6 @@ class UniteCreatorTemplateEngineWork{
 		$filterUCDate = new Twig_SimpleFilter("ucdate", array($this, "filterUCDate"));
 		$filterPriceNumberFormat = new Twig_SimpleFilter("price_number_format", array($this, "filterPriceNumberFormat"));
 		$filterWcPrice = new Twig_SimpleFilter("wc_price", array($this, "filterWcPrice"));
-		$filterJsonDecode = new Twig_SimpleFilter("json_decode", array($this, "filterJsonDecode"));
 		
 		$putTestHtml = new Twig_SimpleFunction('putTestHTML', array($this,"putTestHTML"));
 		
@@ -1457,7 +1271,6 @@ class UniteCreatorTemplateEngineWork{
 		$this->twig->addFilter($filterUCDate);
 		$this->twig->addFilter($filterPriceNumberFormat);
 		$this->twig->addFilter($filterWcPrice);
-		$this->twig->addFilter($filterJsonDecode);
 		
 		
 		//pro functions
@@ -1585,7 +1398,7 @@ class UniteCreatorTemplateEngineWork{
 	public function setArrItems($arrItems){
 		
 		$this->arrItems = $arrItems;
-				
+		
 		$numItems = 0;
 		if(is_array($arrItems))
 			$numItems = count($arrItems);
@@ -1608,7 +1421,7 @@ class UniteCreatorTemplateEngineWork{
 	 * get rendered html
 	 * @param $name
 	 */
-	public function getRenderedHtml($name, $isInsideItems = false){
+	public function getRenderedHtml($name){
 		
 		UniteFunctionsUC::validateNotEmpty($name);
 		$this->validateInited();
@@ -1618,12 +1431,7 @@ class UniteCreatorTemplateEngineWork{
 		if(empty($this->twig))
 			$this->initTwig();
 		
-		$params = $this->arrParams;
-
-		if($isInsideItems == true)
-			$params = GlobalsProviderUC::$lastItemParams;
-		
-		$output = $this->twig->render($name, $params);
+		$output = $this->twig->render($name, $this->arrParams);
 		
 		return($output);
 	}

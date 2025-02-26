@@ -10,14 +10,24 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_image_gallery_gfont( $attr );
 
+$block_name = 'image-gallery';
+
 // Arrow & Dots Default Color Fallback ( Not from Theme ).
 $arrow_dot_color = $attr['paginateColor'] ? $attr['paginateColor'] : '#007cba';
 
 // Range Fallback.
-$paginate_dot_distance_fallback = is_numeric( $attr['paginateDotDistance'] ) ? $attr['paginateDotDistance'] : 0;
+$caption_background_blur_amount_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['captionBackgroundBlurAmount'], 'captionBackgroundBlurAmount', $block_name );
+$caption_background_blur_amount_hover_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['captionBackgroundBlurAmountHover'], 'captionBackgroundBlurAmountHover', $block_name );
+$caption_background_effect_amount_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['captionBackgroundEffectAmount'], 'captionBackgroundEffectAmount', $block_name );
+$caption_background_effect_amount_hover_fallback = UAGB_Block_Helper::get_fallback_number( $attr['captionBackgroundEffectAmountHover'], 'captionBackgroundEffectAmountHover', $block_name );
+$caption_gap_fallback                            = UAGB_Block_Helper::get_fallback_number( $attr['captionGap'], 'captionGap', $block_name );
+$paginate_arrow_distance_fallback                = UAGB_Block_Helper::get_fallback_number( $attr['paginateArrowDistance'], 'paginateArrowDistance', $block_name );
+$paginate_dot_distance_fallback                  = is_numeric( $attr['paginateDotDistance'] ) ? $attr['paginateDotDistance'] : 0;
+$paginate_loader_size_fallback                   = UAGB_Block_Helper::get_fallback_number( $attr['paginateLoaderSize'], 'paginateLoaderSize', $block_name );
+$grid_image_gap_fallback                         = UAGB_Block_Helper::get_fallback_number( $attr['gridImageGap'], 'gridImageGap', $block_name );
 
 // Responsive Slider Fallback.
-$grid_image_gap_tablet_fallback = is_numeric( $attr['gridImageGapTab'] ) ? $attr['gridImageGapTab'] : $attr['gridImageGap'];
+$grid_image_gap_tablet_fallback = is_numeric( $attr['gridImageGapTab'] ) ? $attr['gridImageGapTab'] : $grid_image_gap_fallback;
 $grid_image_gap_mobile_fallback = is_numeric( $attr['gridImageGapMob'] ) ? $attr['gridImageGapMob'] : $grid_image_gap_tablet_fallback;
 
 // Border Attributes.
@@ -67,38 +77,37 @@ $selectors = array(
 
 	// Feed Selectors.
 
-	'.wp-block-uagb-image-gallery'                       => array(
-		'padding'    => UAGB_Block_Helper::generate_spacing(
+	'.wp-block-uagb-image-gallery'                      => array(
+		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr['feedMarginUnit'],
 			$attr['feedMarginTop'],
 			$attr['feedMarginRight'],
 			$attr['feedMarginBottom'],
 			$attr['feedMarginLeft']
 		),
-		'visibility' => 'carousel' === $attr['feedLayout'] ? 'hidden' : '',
 	),
 
 	// Control Settings.
 
-	' .spectra-image-gallery__control-arrows svg'        => array(
+	' .spectra-image-gallery__control-arrows svg'       => array(
 		'fill' => $arrow_dot_color,
 	),
-	' .spectra-image-gallery__control-arrows svg:hover'  => array(
+	' .spectra-image-gallery__control-arrows svg:hover' => array(
 		'fill' => $attr['paginateColorHover'],
 	),
-	' .spectra-image-gallery__control-arrows--carousel'  => $arrow_border_css,
+	' .spectra-image-gallery__control-arrows--carousel' => $arrow_border_css,
 	' .spectra-image-gallery__control-arrows--carousel:hover' => array(
 		'border-color' => $attr['arrowBorderHColor'],
 	),
 	' .spectra-image-gallery__control-arrows--carousel.slick-prev' => array(
 		'left' => UAGB_Helper::get_css_value(
-			$attr['paginateArrowDistance'],
+			$paginate_arrow_distance_fallback,
 			$attr['paginateArrowDistanceUnit']
 		),
 	),
 	' .spectra-image-gallery__control-arrows--carousel.slick-next' => array(
 		'right' => UAGB_Helper::get_css_value(
-			$attr['paginateArrowDistance'],
+			$paginate_arrow_distance_fallback,
 			$attr['paginateArrowDistanceUnit']
 		),
 	),
@@ -117,17 +126,17 @@ $selectors = array(
 	' .spectra-image-gallery__control-dots li button:hover::before' => array(
 		'color' => $attr['paginateColorHover'],
 	),
-	' .spectra-image-gallery__control-loader'            => array(
+	' .spectra-image-gallery__control-loader'           => array(
 		'margin-top' => UAGB_Helper::get_css_value( $paginate_dot_distance_fallback, $attr['paginateDotDistanceUnit'] ),
 	),
-	' .spectra-image-gallery__control-loader div'        => array(
+	' .spectra-image-gallery__control-loader div'       => array(
 		'background-color' => $attr['paginateColor'],
-		'width'            => UAGB_Helper::get_css_value( $attr['paginateLoaderSize'], 'px' ),
-		'height'           => UAGB_Helper::get_css_value( $attr['paginateLoaderSize'], 'px' ),
+		'width'            => UAGB_Helper::get_css_value( $paginate_loader_size_fallback, 'px' ),
+		'height'           => UAGB_Helper::get_css_value( $paginate_loader_size_fallback, 'px' ),
 		'border-radius'    => '100%',
 		'padding'          => 0,
 	),
-	' .spectra-image-gallery__control-button'            => array_merge(
+	' .spectra-image-gallery__control-button'           => array_merge(
 		array(
 			'margin-top'       => UAGB_Helper::get_css_value( $paginate_dot_distance_fallback, $attr['paginateDotDistanceUnit'] ),
 			'padding'          => UAGB_Block_Helper::generate_spacing(
@@ -149,7 +158,7 @@ $selectors = array(
 		),
 		$btn_border_css
 	),
-	' .spectra-image-gallery__control-button:hover'      => array(
+	' .spectra-image-gallery__control-button:hover'     => array(
 		'color'            => $attr['paginateButtonTextColorHover'],
 		'background-color' => $attr['paginateColorHover'],
 		'border-color'     => $attr['btnBorderHColor'],
@@ -157,37 +166,37 @@ $selectors = array(
 
 	// Media Wrapper Selectors.
 
-	' .spectra-image-gallery__layout--grid'              => array(
+	' .spectra-image-gallery__layout--grid'             => array(
 		'grid-gap' => UAGB_Helper::get_css_value(
-			$attr['gridImageGap'],
+			$grid_image_gap_fallback,
 			$attr['gridImageGapUnit']
 		),
 	),
-	' .spectra-image-gallery__layout--isogrid'           => array(
+	' .spectra-image-gallery__layout--isogrid'          => array(
 		'margin' => UAGB_Helper::get_css_value(
-			-abs( $attr['gridImageGap'] / 2 ),
+			-abs( $grid_image_gap_fallback / 2 ),
 			$attr['gridImageGapUnit']
 		),
 	),
 	' .spectra-image-gallery__layout--isogrid .spectra-image-gallery__media-wrapper--isotope' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr['gridImageGap'] / 2,
+			$grid_image_gap_fallback / 2,
 			$attr['gridImageGapUnit']
 		),
 	),
-	' .spectra-image-gallery__layout--masonry'           => array(
+	' .spectra-image-gallery__layout--masonry'          => array(
 		'margin' => UAGB_Helper::get_css_value(
-			-abs( $attr['gridImageGap'] / 2 ),
+			-abs( $grid_image_gap_fallback / 2 ),
 			$attr['gridImageGapUnit']
 		),
 	),
 	' .spectra-image-gallery__layout--masonry .spectra-image-gallery__media-wrapper--isotope' => array(
 		'padding' => UAGB_Helper::get_css_value(
-			$attr['gridImageGap'] / 2,
+			$grid_image_gap_fallback / 2,
 			$attr['gridImageGapUnit']
 		),
 	),
-	' .spectra-image-gallery__layout--carousel'          => array(
+	' .spectra-image-gallery__layout--carousel'         => array(
 		// Override Slick Slider Margin.
 		'margin-bottom' => UAGB_Helper::get_css_value(
 			$paginate_dot_distance_fallback,
@@ -195,32 +204,24 @@ $selectors = array(
 		) . ' !important',
 	),
 	' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
-		'padding' => UAGB_Block_Helper::generate_spacing(
-			$attr['gridImageGapUnit'],
-			0,
-			$attr['gridImageGap'] / 2
-		),
-	),
-	' .spectra-image-gallery__layout--carousel .slick-list' => array(
-		'margin' => UAGB_Block_Helper::generate_spacing(
-			$attr['gridImageGapUnit'],
-			0,
-			-( $attr['gridImageGap'] / 2 )
-		),
-	),
-	' .spectra-image-gallery__layout--tiled'             => array(
-		'grid-gap' => UAGB_Helper::get_css_value(
-			$attr['gridImageGap'],
+		'padding' => UAGB_Helper::get_css_value(
+			$grid_image_gap_fallback,
 			$attr['gridImageGapUnit']
 		),
 	),
-	' .spectra-image-gallery__media'                     => array_merge(
+	' .spectra-image-gallery__layout--tiled'            => array(
+		'grid-gap' => UAGB_Helper::get_css_value(
+			$grid_image_gap_fallback,
+			$attr['gridImageGapUnit']
+		),
+	),
+	' .spectra-image-gallery__media'                    => array_merge(
 		$image_border_css,
 		array(
 			'box-shadow' => $image_box_shadow_css,
 		)
 	),
-	' .spectra-image-gallery__media:hover'               => array(
+	' .spectra-image-gallery__media:hover'              => array(
 		'border-color' => $attr['imageBorderHColor'],
 	),
 	' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media' => array(
@@ -229,28 +230,29 @@ $selectors = array(
 
 	// Thumbnail Selectors.
 
-	' .spectra-image-gallery__media-thumbnail-blurrer'   => array(
+	' .spectra-image-gallery__media-thumbnail-blurrer'  => array(
 		'-webkit-backdrop-filter' => 'blur(' . UAGB_Helper::get_css_value(
-			$attr['captionBackgroundBlurAmount'],
+			$caption_background_blur_amount_fallback,
 			'px'
 		) . ')',
 		'backdrop-filter'         => 'blur(' . UAGB_Helper::get_css_value(
-			$attr['captionBackgroundBlurAmount'],
+			$caption_background_blur_amount_fallback,
 			'px'
 		) . ')',
 	),
 	' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-blurrer' => array(
 		'-webkit-backdrop-filter' => 'blur(' . UAGB_Helper::get_css_value(
-			$attr['captionBackgroundBlurAmountHover'],
+			$caption_background_blur_amount_hover_fallback,
 			'px'
 		) . ')',
 		'backdrop-filter'         => 'blur(' . UAGB_Helper::get_css_value(
-			$attr['captionBackgroundBlurAmountHover'],
+			$caption_background_blur_amount_hover_fallback,
 			'px'
 		) . ')',
 	),
 
 	// Caption Wrapper Selectors.
+
 	' .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay' => array(
 		'background-color' => $attr['imageDisplayCaption'] ? ( ( 'hover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : $attr['captionBackgroundColor'] ) : $attr['overlayColor'],
 	),
@@ -265,10 +267,8 @@ $selectors = array(
 	),
 
 	// Caption Selectors.
-	' .spectra-image-gallery__media-thumbnail-caption a' => array(
-		'color' => ( 'hover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : $attr['captionColor'],
-	),
-	' .spectra-image-gallery__media-thumbnail-caption'   => array(
+
+	' .spectra-image-gallery__media-thumbnail-caption'  => array(
 		'color'           => ( 'hover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : $attr['captionColor'],
 		'text-align'      => UAGB_Block_Helper::get_matrix_alignment( $attr['imageCaptionAlignment'], 2 ),
 		'font-family'     => 'Default' === $attr['captionFontFamily'] ? '' : $attr['captionFontFamily'],
@@ -303,7 +303,7 @@ $selectors = array(
 	),
 	' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption--bar-inside' => array(
 		'background-color' => ( 'antiHover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : ( ( 'always' === $attr['captionVisibility'] && $attr['captionSeparateColors'] ) ? $attr['captionBackgroundColorHover'] : $attr['captionBackgroundColor'] ),
-		'border-color'     => ( 'antiHover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : ( ( 'antiHover' !== $attr['captionVisibility'] ) ? $attr['mainTitleBorderHColor'] : $attr['mainTitleBorderColor'] ),
+		'border-color'     => ( 'antiHover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : ( ( 'always' === $attr['captionVisibility'] && $attr['captionSeparateColors'] ) ? $attr['mainTitleBorderHColor'] : $attr['mainTitleBorderColor'] ),
 	),
 	' .spectra-image-gallery__media-thumbnail-caption--bar-outside' => array_merge(
 		array(
@@ -317,66 +317,6 @@ $selectors = array(
 	),
 	' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption' => array(
 		'color' => ( 'antiHover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : ( ( 'always' === $attr['captionVisibility'] && $attr['captionSeparateColors'] ) ? $attr['captionColorHover'] : $attr['captionColor'] ),
-	),
-	' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption a' => array(
-		'color' => ( 'antiHover' === $attr['captionVisibility'] ) ? 'rgba(0,0,0,0)' : ( ( 'always' === $attr['captionVisibility'] && $attr['captionSeparateColors'] ) ? $attr['captionColorHover'] : $attr['captionColor'] ),
-	),
-
-	// Lightbox Selectors.
-	'+.spectra-image-gallery__control-lightbox'          => array(
-		'background-color' => $attr['lightboxBackgroundColor'],
-		'backdrop-filter'  => $attr['lightboxBackgroundEnableBlur'] ? 'blur( ' . $attr['lightboxBackgroundBlurAmount'] . 'px)' : '',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--caption' => array(
-		'color'           => $attr['lightboxCaptionColor'],
-		'background'      => 'linear-gradient(rgba(0,0,0,0), ' . $attr['lightboxCaptionBackgroundColor'] . ')',
-		'min-height'      => UAGB_Helper::get_css_value( $attr['lightboxCaptionHeight'], 'px' ),
-		'font-family'     => ( 'Default' === $attr['lightboxFontFamily'] ) ? '' : $attr['lightboxFontFamily'],
-		'font-weight'     => $attr['lightboxFontWeight'],
-		'font-style'      => $attr['lightboxFontStyle'],
-		'text-decoration' => $attr['lightboxDecoration'],
-		'text-transform'  => $attr['lightboxTransform'],
-		'font-size'       => UAGB_Helper::get_css_value( $attr['lightboxFontSize'], $attr['lightboxFontSizeType'] ),
-		'line-height'     => UAGB_Helper::get_css_value( $attr['lightboxLineHeight'], $attr['lightboxLineHeightType'] ),
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--thumbnails-wrapper' => array(
-		'background-color' => $attr['lightboxDisplayCaptions'] ? $attr['lightboxCaptionBackgroundColor'] : 'transparent',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--count' => array(
-		'top'         => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ),
-		'left'        => is_rtl() ? '' : UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ),
-		'right'       => is_rtl() ? UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ) : '',
-		'color'       => $attr['lightboxIconColor'],
-		'font-family' => ( 'Default' === $attr['lightboxFontFamily'] ) ? '' : $attr['lightboxFontFamily'],
-		'font-weight' => 'normal',
-		'font-size'   => UAGB_Helper::get_css_value( $attr['lightboxIconSize'], 'px' ) ? 'calc(' . UAGB_Helper::get_css_value( $attr['lightboxIconSize'], 'px' ) . ' * 3 / 4 )' : '',
-		'line-height' => UAGB_Helper::get_css_value( $attr['lightboxIconSize'], 'px' ) ? 'calc(' . UAGB_Helper::get_css_value( $attr['lightboxIconSize'], 'px' ) . ' * 3 / 4 )' : '',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--close' => array(
-		'top'   => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ),
-		'right' => is_rtl() ? '' : UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ),
-		'left'  => is_rtl() ? UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ) : '',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--close svg' => array(
-		'width'  => UAGB_Helper::get_css_value( $attr['lightboxIconSize'], 'px' ),
-		'height' => UAGB_Helper::get_css_value( $attr['lightboxIconSize'], 'px' ),
-		'fill'   => $attr['lightboxIconColor'],
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main .swiper-button-prev' => array(
-		'left'  => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ),
-		'color' => $attr['lightboxIconColor'],
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main .swiper-button-next' => array(
-		'right' => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ),
-		'color' => $attr['lightboxIconColor'],
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main.swiper-rtl .swiper-button-prev' => array(
-		'right' => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ),
-		'left'  => 'auto',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main.swiper-rtl .swiper-button-next' => array(
-		'left'  => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistance'], 'px' ),
-		'right' => 'auto',
 	),
 );
 
@@ -438,15 +378,7 @@ $t_selectors = array(
 	' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr['gridImageGapUnitTab'],
-			0,
 			$grid_image_gap_tablet_fallback
-		),
-	),
-	' .spectra-image-gallery__layout--carousel .slick-list' => array(
-		'margin' => UAGB_Block_Helper::generate_spacing(
-			$attr['gridImageGapUnitTab'],
-			0,
-			-$grid_image_gap_tablet_fallback
 		),
 	),
 	' .spectra-image-gallery__layout--tiled'            => array(
@@ -469,41 +401,6 @@ $t_selectors = array(
 	),
 	' .spectra-image-gallery__media-thumbnail-caption--bar-inside' => $main_title_border_css_tablet,
 	' .spectra-image-gallery__media-thumbnail-caption--bar-outside' => $main_title_border_css_tablet,
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--caption' => array(
-		'min-height'  => UAGB_Helper::get_css_value( $attr['lightboxCaptionHeightTablet'], 'px' ),
-		'font-size'   => UAGB_Helper::get_css_value( $attr['lightboxFontSizeTab'], $attr['lightboxFontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['lightboxLineHeightTab'], $attr['lightboxLineHeightType'] ),
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--count' => array(
-		'top'         => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ),
-		'left'        => is_rtl() ? '' : UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ),
-		'right'       => is_rtl() ? UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ) : '',
-		'font-size'   => UAGB_Helper::get_css_value( $attr['lightboxIconSizeTablet'], 'px' ) ? 'calc(' . UAGB_Helper::get_css_value( $attr['lightboxIconSizeTablet'], 'px' ) . ' * 3 / 4 )' : '',
-		'line-height' => UAGB_Helper::get_css_value( $attr['lightboxIconSizeTablet'], 'px' ) ? 'calc(' . UAGB_Helper::get_css_value( $attr['lightboxIconSizeTablet'], 'px' ) . ' * 3 / 4 )' : '',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--close' => array(
-		'top'   => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ),
-		'right' => is_rtl() ? '' : UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ),
-		'left'  => is_rtl() ? UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ) : '',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--close svg' => array(
-		'width'  => UAGB_Helper::get_css_value( $attr['lightboxIconSizeTablet'], 'px' ),
-		'height' => UAGB_Helper::get_css_value( $attr['lightboxIconSizeTablet'], 'px' ),
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main .swiper-button-prev' => array(
-		'left' => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ),
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main .swiper-button-next' => array(
-		'right' => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ),
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main.swiper-rtl .swiper-button-prev' => array(
-		'right' => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ),
-		'left'  => 'auto',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main.swiper-rtl .swiper-button-next' => array(
-		'left'  => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceTablet'], 'px' ),
-		'right' => 'auto',
-	),
 );
 
 $m_selectors = array(
@@ -564,15 +461,7 @@ $m_selectors = array(
 	' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper' => array(
 		'padding' => UAGB_Block_Helper::generate_spacing(
 			$attr['gridImageGapUnitMob'],
-			0,
 			$grid_image_gap_mobile_fallback
-		),
-	),
-	' .spectra-image-gallery__layout--carousel .slick-list' => array(
-		'margin' => UAGB_Block_Helper::generate_spacing(
-			$attr['gridImageGapUnitMob'],
-			0,
-			-$grid_image_gap_mobile_fallback
 		),
 	),
 	' .spectra-image-gallery__layout--tiled .spectra-image-gallery__media-wrapper' => array(
@@ -595,48 +484,6 @@ $m_selectors = array(
 	),
 	' .spectra-image-gallery__media-thumbnail-caption--bar-inside' => $main_title_border_css_mobile,
 	' .spectra-image-gallery__media-thumbnail-caption--bar-outside' => $main_title_border_css_mobile,
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--caption' => array(
-		'min-height'  => UAGB_Helper::get_css_value( $attr['lightboxCaptionHeightMobile'], 'px' ),
-		'font-size'   => UAGB_Helper::get_css_value( $attr['lightboxFontSizeMob'], $attr['lightboxFontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['lightboxLineHeightMob'], $attr['lightboxLineHeightType'] ),
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--count' => array(
-		'top'         => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ),
-		'left'        => is_rtl() ? '' : UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ),
-		'right'       => is_rtl() ? UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ) : '',
-		'font-size'   => UAGB_Helper::get_css_value( $attr['lightboxIconSizeMobile'], 'px' ) ? 'calc(' . UAGB_Helper::get_css_value( $attr['lightboxIconSizeMobile'], 'px' ) . ' * 3 / 4 )' : '',
-		'line-height' => UAGB_Helper::get_css_value( $attr['lightboxIconSizeMobile'], 'px' ) ? 'calc(' . UAGB_Helper::get_css_value( $attr['lightboxIconSizeMobile'], 'px' ) . ' * 3 / 4 )' : '',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--close' => array(
-		'top'   => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ),
-		'right' => is_rtl() ? '' : UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ),
-		'left'  => is_rtl() ? UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ) : '',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--close svg' => array(
-		'width'  => UAGB_Helper::get_css_value( $attr['lightboxIconSizeMobile'], 'px' ),
-		'height' => UAGB_Helper::get_css_value( $attr['lightboxIconSizeMobile'], 'px' ),
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main .swiper-button-prev' => array(
-		'left' => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ),
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main .swiper-button-next' => array(
-		'right' => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ),
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main.swiper-rtl .swiper-button-prev' => array(
-		'right' => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ),
-		'left'  => 'auto',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main.swiper-rtl .swiper-button-next' => array(
-		'left'  => UAGB_Helper::get_css_value( $attr['lightboxEdgeDistanceMobile'], 'px' ),
-		'right' => 'auto',
-	),
-	// Arrow Size can be implemented for all other screen sizes if needed.
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main .swiper-button-prev::after' => array(
-		'font-size' => '24px',
-	),
-	'+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main .swiper-button-next::after' => array(
-		'font-size' => '24px',
-	),
 );
 
 // Background Effect based styling.
@@ -648,11 +495,11 @@ switch ( $attr['captionBackgroundEffect'] ) {
 	case 'grayscale':
 	case 'sepia':
 		$selectors[' .spectra-image-gallery__media-thumbnail']['-webkit-filter'] = $attr['captionBackgroundEffect'] . '(' . UAGB_Helper::get_css_value(
-			$attr['captionBackgroundEffectAmount'],
+			$caption_background_effect_amount_fallback,
 			'%'
 		) . ')';
 		$selectors[' .spectra-image-gallery__media-thumbnail']['filter']         = $attr['captionBackgroundEffect'] . '(' . UAGB_Helper::get_css_value(
-			$attr['captionBackgroundEffectAmount'],
+			$caption_background_effect_amount_fallback,
 			'%'
 		) . ')';
 		break;
@@ -665,11 +512,11 @@ switch ( $attr['captionBackgroundEffectHover'] ) {
 	case 'grayscale':
 	case 'sepia':
 		$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail']['-webkit-filter'] = $attr['captionBackgroundEffectHover'] . '(' . UAGB_Helper::get_css_value(
-			$attr['captionBackgroundEffectAmountHover'],
+			$caption_background_effect_amount_hover_fallback,
 			'%'
 		) . ')';
 		$selectors[' .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail']['filter']         = $attr['captionBackgroundEffectHover'] . '(' . UAGB_Helper::get_css_value(
-			$attr['captionBackgroundEffectAmountHover'],
+			$caption_background_effect_amount_hover_fallback,
 			'%'
 		) . ')';
 		break;
@@ -685,12 +532,12 @@ if ( ! $attr['captionBackgroundEnableBlur'] ) {
 if ( $attr['imageDisplayCaption'] && ( 'bar-outside' === $attr['captionDisplayType'] ) ) {
 	if ( 'top' === $attr['imageCaptionAlignment01'] ) {
 		$selectors[' .spectra-image-gallery__media-thumbnail-caption-wrapper']['margin-bottom'] = UAGB_Helper::get_css_value(
-			$attr['captionGap'],
+			$caption_gap_fallback,
 			$attr['captionGapUnit']
 		);
 	} else {
 		$selectors[' .spectra-image-gallery__media-thumbnail-caption-wrapper']['margin-top'] = UAGB_Helper::get_css_value(
-			$attr['captionGap'],
+			$caption_gap_fallback,
 			$attr['captionGapUnit']
 		);
 	}
@@ -770,14 +617,10 @@ if ( 'outset' === $attr['imageBoxShadowPositionHover'] ) {
 // Slick Dot Positioning in the Editor.
 $selectors[' .spectra-image-gallery__layout--carousel .slick-dots']['margin-bottom'] = '30px !important';
 
-$combined_selectors = UAGB_Helper::get_combined_selectors(
-	'image-gallery', 
-	array(
-		'desktop' => $selectors,
-		'tablet'  => $t_selectors,
-		'mobile'  => $m_selectors,
-	),
-	$attr
+$combined_selectors = array(
+	'desktop' => $selectors,
+	'tablet'  => $t_selectors,
+	'mobile'  => $m_selectors,
 );
 
 $base_selector = '.uagb-block-';

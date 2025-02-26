@@ -54,22 +54,9 @@ class UniteCreatorWooIntegrate{
 		if(class_exists("BeRocket_products_label")){
 			do_action('berocket_apl_set_label', true, $productID);
 		}
-
+			
 		
 	}
-
-	
-	/**
-	 * bottom product integrations
-	 */
-	public static function onInsideEditorWooProductBottom($productID){
-		
-		//wishlist
-		
-		UniteCreatorPluginIntegrations::putJetWooWishlistButton();
-		
-	}
-	
 	
 	/**
 	 * init actions on start, run on "plugins_loaded" filter
@@ -77,8 +64,6 @@ class UniteCreatorWooIntegrate{
 	public static function initActions(){
 		
 		add_action("ue_woocommerce_product_integrations", array("UniteCreatorWooIntegrate", "onInsideEditorWooProduct"), 10, 1);
-		
-		add_action("ue_woocommerce_product_integrations_bottom", array("UniteCreatorWooIntegrate", "onInsideEditorWooProductBottom"), 10, 1);
 		
 	}
 	
@@ -228,40 +213,24 @@ class UniteCreatorWooIntegrate{
 			
 			if(empty($arrPriceNumbers)){
 				$arrProduct["woo_".$key."_from"] = 0;
-				$arrProduct["woo_".$key."_to"] = 0;
-								
-				$arrProduct["woo_".$key."_from_id"] = null;
-				$arrProduct["woo_".$key."_to_id"] = null;
+				$arrProduct["woo_".$key."_to"] = 0;				
 				continue;
 			}
 			
-			$arrIDs = array_keys($arrPriceNumbers);
-			
 			$from = array_shift($arrPriceNumbers);
-
-			$fromID = $arrIDs[0];
-			
-			if(empty($arrPriceNumbers)){
+			if(empty($arrPriceNumbers))
 				$to = $from;
-				$toID = $fromID;
-			}
-			else{
+			else
 				$to = $arrPriceNumbers[count($arrPriceNumbers) - 1];
-				$toID = $arrIDs[count($arrPriceNumbers) - 1];
-			}
 			
 			$from = (float)$from;
 			$to = (float)$to;
-			
+						
 			$from = $this->modifyPrice($from, $objProduct);
 			$to = $this->modifyPrice($to, $objProduct);
 			
 			$arrProduct["woo_".$key."_from"] = $from;
 			$arrProduct["woo_".$key."_to"] = $to;
-			
-			$arrProduct["woo_".$key."_from_id"] = $fromID;
-			$arrProduct["woo_".$key."_to_id"] = $toID;
-			
 		}
 		
 		//check and clear sale prices
@@ -282,11 +251,9 @@ class UniteCreatorWooIntegrate{
 			$arrProduct["woo_regular_price_from"] = $regularPriceFrom;
 			$arrProduct["woo_regular_price_to"] = $regularPriceTo;
 		}
-		
-		
+				
 		return($arrProduct);
 	}
-	
 	
 	/**
 	 * get array of property names
@@ -587,11 +554,9 @@ class UniteCreatorWooIntegrate{
 			
 		if($type != "variable")
 			return(array());
-		
-		//variable data
-		
-		$variations = $product->get_available_variations();
-		
+
+		$variations = $product->get_available_variations();			
+				
 		if(empty($variations) || is_array($variations) == false)
 			return(array());
 		
@@ -710,6 +675,8 @@ class UniteCreatorWooIntegrate{
     	$arrData = $objInfo->get_data();
 		$type = $objInfo->get_type();
     	
+		//dmp($arrData);
+		
     	$arrProperties = $this->getArrPropertyNames();
     	
     	$productSku = UniteFunctionsUC::getVal($arrData, "sku");
@@ -721,7 +688,6 @@ class UniteCreatorWooIntegrate{
     	$price = apply_filters("woocommerce_product_get_price", $price, $objInfo);
     	$salePrice = apply_filters("woocommerce_product_get_sale_price", $salePrice, $objInfo);
     	$regularPrice = apply_filters("woocommerce_product_get_regular_price", $regularPrice, $objInfo);
-    	
     	
     	$salePrice = $this->modifyPrice($salePrice, $objInfo);
     	$regularPrice = $this->modifyPrice($regularPrice, $objInfo);
@@ -767,19 +733,14 @@ class UniteCreatorWooIntegrate{
     	//add prices of variations
     	
     	if($type == self::PRODUCT_TYPE_VARIABLE){
-    		    		
+    		
     		$arrPrices = $objInfo->get_variation_prices();
     		
     		$arrProduct = $this->addPricesFromTo($arrProduct, $arrPrices, $objInfo);
-    		    		
+    		
     		$arrProduct["woo_price"] = $arrProduct["woo_price_from"];
-    		$arrProduct["woo_price_id"] = $arrProduct["woo_price_from_id"];
-    		
     		$arrProduct["woo_regular_price"] = $arrProduct["woo_regular_price_from"];
-    		$arrProduct["woo_regular_price_id"] = $arrProduct["woo_regular_price_from_id"];
-    		
     		$arrProduct["woo_sale_price"] = $arrProduct["woo_sale_price_from"];
-    		$arrProduct["woo_sale_price_id"] = $arrProduct["woo_sale_price_from_id"];
     	}
     	
     	$finalPrice = UniteFunctionsUC::getVal($arrProduct, "woo_price");
@@ -1101,20 +1062,6 @@ class UniteCreatorWooIntegrate{
 		return($arrIDs);
 	}
 	
-	/**
-	 * get cart data
-	 */
-	public function getCartData(){
-		
-		$arrProducts = $this->getCartProductIDs();
-		
-		$numProducts = count($arrProducts);
-		
-		$output = array();
-		$output["num_products"] = $numProducts;
-		
-		return($output);
-	}
 	
 	/**
 	 * get related product id's from selected to cart products
@@ -1124,7 +1071,7 @@ class UniteCreatorWooIntegrate{
 		$isActive = self::isWooActive();
 		if($isActive == false)
 			return(array());
-		
+			
 		$arrIDs = $this->getCartProductIDs();
 		
 		if(empty($arrIDs))

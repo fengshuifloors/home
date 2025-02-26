@@ -61,7 +61,7 @@ if ( ! class_exists( 'Premium_Templates_Manager' ) ) {
 			$ids     = array_keys( $tabs );
 			$default = $ids[0];
 
-			$data['tabs']       = $tabs;
+			$data['tabs']       = $this->get_template_tabs();
 			$data['defaultTab'] = $default;
 
 			return $data;
@@ -202,7 +202,7 @@ if ( ! class_exists( 'Premium_Templates_Manager' ) ) {
 				wp_send_json_error();
 			}
 
-			$template = isset( $_REQUEST['template'] ) ? filter_var_array( wp_unslash( $_REQUEST['template'] ), FILTER_UNSAFE_RAW ) : false; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$template = isset( $_REQUEST['template'] ) ? filter_var_array( wp_unslash( $_REQUEST['template'] ), FILTER_SANITIZE_STRING ) : false; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			if ( ! $template ) {
 				wp_send_json_error();
@@ -234,7 +234,7 @@ if ( ! class_exists( 'Premium_Templates_Manager' ) ) {
 				);
 			}
 
-			wp_send_json_success( $template );
+			wp_send_json_success();
 
 		}
 

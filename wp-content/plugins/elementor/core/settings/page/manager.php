@@ -167,10 +167,9 @@ class Manager extends CSS_Manager {
 		<div class="elementor-panel-navigation">
 			<# _.each( tabs, function( tabTitle, tabSlug ) {
 			$e.bc.ensureTab( 'panel/page-settings', tabSlug ); #>
-			<button class="elementor-component-tab elementor-panel-navigation-tab elementor-tab-control-{{ tabSlug }}" data-tab="{{ tabSlug }}">
-				<?php /* TODO: raplace `<a>` tag with `<span>` tag in Elementor 3.14.0 */ ?>
-				<a>{{{ tabTitle }}}</a>
-			</button>
+			<div class="elementor-component-tab elementor-panel-navigation-tab elementor-tab-control-{{ tabSlug }}" data-tab="{{ tabSlug }}">
+				<a href="#">{{{ tabTitle }}}</a>
+			</div>
 			<# } ); #>
 		</div>
 		<# } #>

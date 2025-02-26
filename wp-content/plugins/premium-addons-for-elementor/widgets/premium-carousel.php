@@ -587,16 +587,13 @@ class Premium_Carousel extends Widget_Base {
 			)
 		);
 
-		$this->add_responsive_control(
+		$this->add_control(
 			'premium_carousel_space_btw_items',
 			array(
 				'label'       => __( 'Slides\' Spacing', 'premium-addons-for-elementor' ),
 				'description' => __( 'Set a spacing value in pixels (px)', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::NUMBER,
 				'default'     => '15',
-				'selectors'   => array(
-					'{{WRAPPER}}' => '--pa-carousel-center-padding: {{VALUE}}',
-				),
 			)
 		);
 
@@ -1237,6 +1234,8 @@ class Premium_Carousel extends Widget_Base {
 
 		$center_mode = 'yes' === $settings['premium_carousel_center_mode'] ? true : false;
 
+		$center_padding = ! empty( $settings['premium_carousel_space_btw_items'] ) ? $settings['premium_carousel_space_btw_items'] . 'px' : '';
+
 		// Navigation arrow setting setup.
 		if ( 'yes' !== $settings['mscroll'] && 'yes' === $settings['premium_carousel_navigation_show'] ) {
 			$arrows = true;
@@ -1377,6 +1376,7 @@ class Premium_Carousel extends Widget_Base {
 			'cssEase'        => $linear ? 'linear' : 'ease',
 			'pauseOnHover'   => $pause_hover,
 			'centerMode'     => $center_mode,
+			'centerPadding'  => $center_padding,
 			'arrows'         => $arrows,
 			'dots'           => $dots,
 			'slidesDesk'     => $slides_on_desk,

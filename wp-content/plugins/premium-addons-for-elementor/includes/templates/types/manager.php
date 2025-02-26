@@ -52,7 +52,6 @@ if ( ! class_exists( 'Premium_Templates_Types' ) ) {
 
 			$temp_types = array(
 				__NAMESPACE__ . '\Premium_Structure_Section' => $base_path . 'section.php',
-				__NAMESPACE__ . '\Premium_Structure_Page' => $base_path . 'page.php',
 			);
 
 			array_walk(

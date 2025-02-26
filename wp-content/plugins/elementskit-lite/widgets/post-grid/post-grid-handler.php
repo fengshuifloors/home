@@ -17,7 +17,7 @@ class ElementsKit_Widget_Post_Grid_Handler extends \ElementsKit_Lite\Core\Handle
     }
 
     static function get_keywords() {
-        return ['ekit', 'grid', 'post grid', 'post', 'elementskit post grid'];
+        return [ 'grid', 'post grid', 'post', 'ekit', 'elementskit post grid' ];
     }
 
     static function get_categories() {

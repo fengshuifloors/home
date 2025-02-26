@@ -199,7 +199,7 @@ if ( !class_exists( 'Master_Elementor_Addons' ) ) {
             
             // Check for required Elementor version
             
-            if ( defined( 'ELEMENTOR_VERSION' ) && !version_compare( ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=' ) ) {
+            if ( !version_compare( ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=' ) ) {
                 add_action( 'admin_notices', array( $this, 'jltma_admin_notice_minimum_elementor_version' ) );
                 return;
             }

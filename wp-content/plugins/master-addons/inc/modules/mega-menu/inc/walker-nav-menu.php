@@ -282,7 +282,7 @@ class JLTMA_Megamenu_Nav_Walker extends \Walker_Nav_Menu
                 // }
 
                 if ($item_meta['menu_enable'] == 1 && class_exists('Elementor\Plugin')) {
-                    $width = '600px';
+                    $width = '200px';
                     if( $item_meta['menu_width_type'] == 'custom_width' ){
                         if( $item_meta['menu_width_size'] != '' ){
                             $width = $item_meta['menu_width_size'];

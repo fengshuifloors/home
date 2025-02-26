@@ -647,6 +647,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		 */
 		public function putTermCustomFieldsDebug($term){
 			
+			
 			if(is_array($term)){
 				
 				$termID = UniteFunctionsUC::getVal($term, "id");
@@ -656,11 +657,10 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				
 				$termID = $term->term_id;
 				$name = $term->name;
-			
 			}
+			
 			$arrCustomFields = UniteFunctionsWPUC::getTermCustomFields($termID,false);
 
-			
 			foreach($arrCustomFields as $key=>$field){
 				$arrCustomFields[$key] = $this->modifyDebugField($field);
 			}
@@ -738,28 +738,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		
 		private function a____________URL_CONTENTS____________(){}
 		
-		/**
-		 * get local file contents
-		 */
-		public function getLocalFileContentsByUrl($url){
-			
-			$urlRelative = HelperUC::URLtoRelative($url);
-			
-			$isFile = $urlRelative != $url;
-
-			if($isFile == false)
-				return(null);
-				
-			$pathFile = HelperUC::urlToPath($url);
-				
-			if(empty($pathFile))
-				return(null);
-				
-			$content = file_get_contents($pathFile);
-			
-			return($content);
-				
-		}
 		
 		/**
 		 * get url contents from file or url with cache
@@ -796,8 +774,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				
 				return($content);
 			}
-
-			
+						
 			//add to cache
 			
 			$cacheKey = "uc_geturl_".$url;
@@ -1167,17 +1144,11 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			if($totalPages == 0)
 				$totalPages = 1;
 			
-			$numPosts = 0;
-			if(isset($query->posts))
-				$numPosts = count($query->posts);
+			$numPosts = count($query->posts);
 			
-			$totalPosts = 0;
-			if(isset($query->found_posts))
-				$totalPosts = $query->found_posts;
-				
 			$output = array();
 			$output["count_posts"] = $numPosts;
-			$output["total_posts"] = $totalPosts;
+			$output["total_posts"] = $query->found_posts;
 			$output["page"] = UniteFunctionsUC::getVal($data, "current");
 			$output["num_pages"] = $totalPages;
 			

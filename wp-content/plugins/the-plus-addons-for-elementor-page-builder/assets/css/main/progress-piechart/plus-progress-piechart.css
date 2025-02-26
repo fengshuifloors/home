@@ -196,7 +196,7 @@ position: relative;
     width: 100%;
 }
 .pianumber-css h5.counter-number {
-    margin: 0;
+    margin-bottom: 0;
 }
 .pt-plus-pie_chart.style-3 .counter-number,.pt-plus-pie_chart .pie_chart-style3 {
     text-align: center;

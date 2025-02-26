@@ -31,6 +31,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public $post_assets_objs = array();
 
 		/**
+		 * Holds the state for the add sites background process.
+		 *
+		 * @access   private
+		 * @var      UAGB_Background_Process    $collect_spectra_blocks_count    State of the background process.
+		 */
+		private $collect_spectra_blocks_count;
+
+		/**
 		 *  Initiator
 		 */
 		public static function get_instance() {
@@ -70,8 +78,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->loader();
 
-			add_action( 'after_setup_theme', array( $this, 'load_compatibility' ) );
-
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 
 			add_action( 'init', array( $this, 'init_actions' ) );
@@ -86,7 +92,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.6.1' );
+			define( 'UAGB_VER', '2.1.0' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -134,10 +140,29 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'classes/class-uagb-block.php';
 
+			// BSF Analytics.
+			if ( ! class_exists( 'BSF_Analytics_Loader' ) ) {
+				require_once UAGB_DIR . 'admin/bsf-analytics/class-bsf-analytics-loader.php';
+			}
+
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
 				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
 			}
+
+			$spectra_bsf_analytics = BSF_Analytics_Loader::get_instance();
+
+			$spectra_bsf_analytics->set_entity(
+				array(
+					'bsf' => array(
+						'product_name'    => 'Spectra',
+						'path'            => UAGB_DIR . 'admin/bsf-analytics',
+						'author'          => 'Brainstorm Force',
+						'time_to_display' => '+24 hours',
+					),
+				)
+			);
+
 		}
 
 		/**
@@ -186,18 +211,108 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			} else {
 				add_filter( 'ast_block_templates_disable', '__return_true' );
 			}
+
+			// Load background processing class.
+			if ( ! class_exists( 'UAGB_Background_Process' ) ) {
+				require_once UAGB_DIR . 'lib/wp-background-processing/class-uagb-wp-async-request.php';
+				require_once UAGB_DIR . 'lib/wp-background-processing/class-uagb-wp-background-process.php';
+				require_once UAGB_DIR . 'classes/class-uagb-background-process.php';
+			}
+
+			$this->collect_spectra_blocks_count = new \UAGB_Background_Process();
+
+			add_action( 'spectra_total_blocks_count_action', array( $this, 'trigger_background_processing' ) );
+
+			$count_status = get_option( 'spectra_blocks_count_status' );
+
+			if ( 'done' !== $count_status && 'processing' === $count_status && $this->collect_spectra_blocks_count->is_queue_empty() ) {
+				update_option( 'spectra_blocks_count_status', 'done' );
+				$this->collect_spectra_blocks_count->complete();
+			}
+
+			if ( 'done' === $count_status && get_option( 'spectra_settings_data' ) && get_option( 'get_spectra_block_count' ) && get_option( 'spectra_saved_blocks_settings' ) ) {
+
+				$settings_data = get_option( 'spectra_settings_data' );
+				$blocks_count  = get_option( 'get_spectra_block_count' );
+				$blocks_status = get_option( 'spectra_saved_blocks_settings' );
+
+				$default_stats['spectra_settings'] = array(
+					'spectra_version'          => UAGB_VER,
+					'settings_page_data'       => $settings_data,
+					'blocks_count'             => $blocks_count,
+					'blocks_activation_status' => $blocks_status,
+				);
+
+				// Active widgets data to analytics.
+				add_filter( 'bsf_core_stats', array( $this, 'spectra_specific_stats' ) );
+
+			}
+
 		}
 
 		/**
-		 * Loads theme compatibility files.
+		 * Render background processing for block count.
 		 *
-		 * @since 2.5.1
-		 *
-		 * @return void
+		 * @since 2.0.14
+		 * @return mixed Returns the block count.
 		 */
-		public function load_compatibility() {
-			require_once UAGB_DIR . 'classes/class-uagb-fse-fonts-compatibility.php';
+		public function trigger_background_processing() {
+
+			/* Action to get total blocks count */
+			if ( 'done' !== get_option( 'spectra_blocks_count_status' ) ) {
+
+				delete_option( 'get_spectra_block_count' );
+
+				update_option( 'spectra_blocks_count_status', 'processing' );
+
+				$posts_ids = get_posts(
+					array(
+						'post_type'   => 'any',
+						'numberposts' => -1,
+						'post_status' => 'publish',
+						'fields'      => 'ids',
+					)
+				);
+
+				foreach ( $posts_ids as $post_id ) {
+					$this->collect_spectra_blocks_count->push_to_queue(
+						array(
+							'data'        => $post_id,
+							'list_blocks' => UAGB_Helper::$block_list,
+						)
+					);
+				}
+
+				$this->collect_spectra_blocks_count->save()->dispatch();
+
+			}
+
 		}
+
+		/**
+		 * Pass Spectra specific stats to BSF analytics.
+		 *
+		 * @since 2.0.12
+		 * @param array $default_stats Default stats array.
+		 * @return array $default_stats Default stats with Spectra specific stats array.
+		 */
+		public function spectra_specific_stats( $default_stats ) {
+
+			$settings_data = get_option( 'spectra_settings_data' );
+			$blocks_count  = get_option( 'get_spectra_block_count' );
+			$blocks_status = get_option( 'spectra_saved_blocks_settings' );
+
+			$default_stats['spectra_settings'] = array(
+				'spectra_version'          => UAGB_VER,
+				'settings_page_data'       => $settings_data,
+				'blocks_count'             => $blocks_count,
+				'blocks_activation_status' => $blocks_status,
+			);
+
+			return $default_stats;
+
+		}
+
 		/**
 		 * Fix REST API issue with blocks registered via PHP register_block_type.
 		 *
@@ -251,36 +366,12 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					unset( $attributes['UAGLoggedOut'] );
 				}
 
-				if ( isset( $attributes['UAGDay'] ) ) {
-					unset( $attributes['UAGDay'] );
-				}
-
 				if ( isset( $attributes['zIndex'] ) ) {
 					unset( $attributes['zIndex'] );
 				}
 
 				if ( isset( $attributes['UAGResponsiveConditions'] ) ) {
 					unset( $attributes['UAGResponsiveConditions'] );
-				}
-
-				if ( isset( $attributes['UAGAnimationType'] ) ) {
-					unset( $attributes['UAGAnimationType'] );
-				}
-
-				if ( isset( $attributes['UAGAnimationTime'] ) ) {
-					unset( $attributes['UAGAnimationTime'] );
-				}
-
-				if ( isset( $attributes['UAGAnimationDelay'] ) ) {
-					unset( $attributes['UAGAnimationDelay'] );
-				}
-
-				if ( isset( $attributes['UAGAnimationEasing'] ) ) {
-					unset( $attributes['UAGAnimationEasing'] );
-				}
-
-				if ( isset( $attributes['UAGAnimationRepeat'] ) ) {
-					unset( $attributes['UAGAnimationRepeat'] );
 				}
 
 					$request['attributes'] = $attributes;
@@ -386,73 +477,18 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'compatibility/class-uagb-astra-compatibility.php';
 			}
 
-				register_meta(
-					'post',
-					'_uag_custom_page_level_css',
-					array(
-						'show_in_rest'  => true,
-						'type'          => 'string',
-						'single'        => true,
-						'auth_callback' => function() {
-							return current_user_can( 'edit_posts' );
-						},
-					)
-				);
-
-			// This class is loaded from blocks config.
-			UAGB_Popup_Builder::generate_scripts();
-
-			// Adds filters to modify the blocks allowed in excerpts.
-			add_filter( 'excerpt_allowed_blocks', array( $this, 'add_blocks_to_excerpt' ), 20 );
-			add_filter( 'excerpt_allowed_wrapper_blocks', array( $this, 'add_wrapper_blocks_to_excerpt' ), 20 );
-			add_filter( 'uagb_blocks_allowed_in_excerpt', array( $this, 'add_uagb_blocks_to_excerpt' ), 20, 2 );
-		}
-
-		/**
-		 * Adds specified blocks to the list of allowed blocks in excerpts.
-		 *
-		 * @param array $allowed    List of allowed blocks in excerpts.
-		 * @since 2.6.0
-		 * @return array            Modified list of allowed blocks in excerpts.
-		 */
-		public function add_blocks_to_excerpt( $allowed ) {
-			return apply_filters( 'uagb_blocks_allowed_in_excerpt', $allowed, array( 'uagb/advanced-heading' ) );
-		}
-
-		/**
-		 * Adds specified wrapper blocks to the list of allowed blocks in excerpts.
-		 *
-		 * @param array $allowed    List of allowed blocks in excerpts.
-		 * @since 2.6.0
-		 * @return array            Modified list of allowed blocks in excerpts.
-		 */
-		public function add_wrapper_blocks_to_excerpt( $allowed ) {
-			return apply_filters(
-				'uagb_blocks_allowed_in_excerpt',
-				$allowed,
+			register_meta(
+				'post',
+				'_uag_custom_page_level_css',
 				array(
-					'uagb/container',
-					'uagb/columns',
-					'uagb/column',
+					'show_in_rest'  => true,
+					'type'          => 'string',
+					'single'        => true,
+					'auth_callback' => function() {
+						return current_user_can( 'edit_posts' );
+					},
 				)
 			);
-		}
-
-		/**
-		 * Adds specified UAGB blocks to the list of allowed blocks in excerpts.
-		 *
-		 * @param array $excerpt_blocks     List of allowed blocks in excerpts.
-		 * @param array $blocks_to_add      Blocks to add to the list of allowed blocks in excerpts.
-		 * @since 2.6.0
-		 * @return array                    The merged excerpt blocks array if both parameters are arrays, or the original excerpt blocks if either parameter is not an array.
-		 */
-		public function add_uagb_blocks_to_excerpt( $excerpt_blocks, $blocks_to_add ) {
-			if ( is_array( $excerpt_blocks ) && is_array( $blocks_to_add ) ) {
-				return array_merge( $excerpt_blocks, $blocks_to_add );
-			}
-
-			// If either parameter is not an array, return the original excerpt blocks.
-			return $excerpt_blocks;
 		}
 	}
 }

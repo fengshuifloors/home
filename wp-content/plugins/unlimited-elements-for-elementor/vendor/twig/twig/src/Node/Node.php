@@ -19,7 +19,7 @@ use Twig\Source;
  * Represents a node in the AST.
  *
  * @author Fabien Potencier <fabien@symfony.com>
- */	
+ */
 class Node implements \Twig_NodeInterface
 {
     protected $nodes;

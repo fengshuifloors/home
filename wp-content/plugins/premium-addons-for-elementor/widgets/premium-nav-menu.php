@@ -87,7 +87,6 @@ class Premium_Nav_Menu extends Widget_Base {
 	 */
 	public function get_style_depends() {
 		return array(
-			'font-awesome-5-all',
 			'premium-addons',
 		);
 	}
@@ -252,6 +251,7 @@ class Premium_Nav_Menu extends Widget_Base {
 					'label'     => __( 'Menu', 'premium-addons-for-elementor' ),
 					'type'      => Controls_Manager::SELECT,
 					'options'   => $menu_list,
+					'default'   => array_keys( $menu_list )[0],
 					'condition' => array(
 						'menu_type' => 'wordpress_menu',
 					),
@@ -961,29 +961,6 @@ class Premium_Nav_Menu extends Widget_Base {
 				'skin'                   => 'inline',
 				'exclude_inline_options' => array( 'svg' ),
 				'frontend_available'     => true,
-			)
-		);
-
-		$this->add_control(
-			'submenu_item_icon',
-			array(
-				'label'                  => __( 'Submenu Item Icon', 'premium-addons-for-elementor' ),
-				'type'                   => Controls_Manager::ICONS,
-				'recommended'            => array(
-					'fa-solid' => array(
-						'chevron-down',
-						'angle-down',
-						'caret-down',
-						'plus',
-					),
-				),
-				'label_block'            => false,
-				'skin'                   => 'inline',
-				'exclude_inline_options' => array( 'svg' ),
-				'frontend_available'     => true,
-				'condition'              => array(
-					'menu_type' => 'wordpress_menu',
-				),
 			)
 		);
 
@@ -1838,15 +1815,6 @@ class Premium_Nav_Menu extends Widget_Base {
 		);
 
 		$this->add_control(
-			'close_after_click',
-			array(
-				'label'       => __( 'Close Menu After Click', 'premium-addons-for-elementor' ),
-				'type'        => Controls_Manager::SWITCHER,
-				'render_type' => 'template',
-			)
-		);
-
-		$this->add_control(
 			'pa_disable_page_scroll',
 			array(
 				'label'        => __( 'Disable Page Scroll', 'premium-addons-for-elementor' ),
@@ -2255,7 +2223,7 @@ class Premium_Nav_Menu extends Widget_Base {
 			array(
 				'label'       => __( 'Height', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SLIDER,
-				'size_units'  => array( 'px', 'em', '%', 'custom' ),
+				'size_units'  => array( 'px', 'em', '%' ),
 				'label_block' => true,
 				'selectors'   => array(
 					'{{WRAPPER}}.premium-nav-hor > .elementor-widget-container > .premium-nav-widget-container > .premium-ver-inner-container > .premium-nav-menu-container' => 'height: {{SIZE}}{{UNIT}};',
@@ -2271,7 +2239,7 @@ class Premium_Nav_Menu extends Widget_Base {
 			array(
 				'label'       => __( 'Width', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SLIDER,
-				'size_units'  => array( 'px', '%', 'custom' ),
+				'size_units'  => array( 'px', '%' ),
 				'range'       => array(
 					'px' => array(
 						'min' => 0,
@@ -3557,7 +3525,7 @@ class Premium_Nav_Menu extends Widget_Base {
 				'label'       => __( 'Minimum Width', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SLIDER,
 				'label_block' => true,
-				'size_units'  => array( 'px', 'em', '%', 'custom' ),
+				'size_units'  => array( 'px', 'em', '%' ),
 				'range'       => array(
 					'px' => array(
 						'min' => 0,
@@ -3565,10 +3533,7 @@ class Premium_Nav_Menu extends Widget_Base {
 					),
 				),
 				'selectors'   => array(
-					// '{{WRAPPER}} .premium-nav-menu-container .premium-sub-menu, {{WRAPPER}} .premium-mobile-menu-container .premium-sub-menu' => 'min-width: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .premium-mobile-menu-container .premium-sub-menu,
-                    {{WRAPPER}}.premium-nav-ver .premium-nav-menu-item.menu-item-has-children .premium-sub-menu,
-                    {{WRAPPER}}.premium-nav-hor .premium-nav-menu-item.menu-item-has-children .premium-sub-menu' => 'min-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-nav-menu-container .premium-sub-menu, {{WRAPPER}} .premium-mobile-menu-container .premium-sub-menu' => 'min-width: {{SIZE}}{{UNIT}};',
 				),
 				'condition'   => array(
 					'menu_type!' => 'custom',
@@ -3666,7 +3631,7 @@ class Premium_Nav_Menu extends Widget_Base {
 					),
 				),
 				'selectors'   => array(
-					'{{WRAPPER}}.premium-nav-hor .premium-nav-menu-container .premium-mega-content-container' => $mega_pos . ': {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.premium-nav-hor .premium-nav-menu-container .premium-mega-content-container' => $mega_pos . ': {{SIZE}}{{UNIT}}; transform: translateX(0)',
 					'{{WRAPPER}}.premium-nav-ver .premium-nav-menu-container .premium-mega-content-container' => 'top: {{SIZE}}{{UNIT}};',
 				),
 				'condition'   => array(
@@ -4419,9 +4384,7 @@ class Premium_Nav_Menu extends Widget_Base {
 
 		$break_point = '' === $break_point ? '1025' : $break_point;
 
-		$stretch_dropdown = 'yes' === $settings['pa_toggle_full'];
-
-		$close_after_click = 'yes' === $settings['close_after_click'];
+		$stretch_dropdown = 'yes' === $settings['pa_toggle_full'] ? true : false;
 
 		$is_click = 'click' === $settings['pa_ver_toggle_event'] && 'yes' !== $settings['pa_ver_toggle_open'];
 
@@ -4446,7 +4409,6 @@ class Premium_Nav_Menu extends Widget_Base {
 			'hoverEffect'     => $settings['sub_badge_hv_effects'],
 			'submenuEvent'    => $settings['submenu_event'],
 			'submenuTrigger'  => $settings['submenu_trigger'],
-			'closeAfterClick' => $close_after_click,
 		);
 
 		if ( 'yes' === $settings['pa_sticky_switcher'] ) {
@@ -4468,17 +4430,17 @@ class Premium_Nav_Menu extends Widget_Base {
 		}
 
 		$is_edit_mode = \Elementor\Plugin::$instance->editor->is_edit_mode();
-        $hidden_style   = $is_edit_mode ? '' : 'visibility:hidden; opacity:0;';
+		$hidden_cls   = $is_edit_mode ? '' : 'elementor-invisible';
 
 		$this->add_render_attribute(
 			'wrapper',
 			array(
 				'data-settings' => json_encode( $menu_settings ),
 				'class'         => array(
+					$hidden_cls,
 					'premium-nav-widget-container',
 					'premium-nav-pointer-' . $settings['pointer'],
 				),
-                'style' => $hidden_style
 			)
 		);
 

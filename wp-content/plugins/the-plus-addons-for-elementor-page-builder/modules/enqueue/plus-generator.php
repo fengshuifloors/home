@@ -118,11 +118,6 @@ Class L_Plus_Generator
 				$this->transient_widgets[] = 'plus-listing-masonry';
 			}
 		}
-		if(!empty($widget_name) && $widget_name=='tp-testimonial-listout'){			
-			if(!empty($options["layout"]) && $options["layout"]=='grid' || $options["layout"]=='masonry' ){
-				$this->transient_widgets[] = 'plus-listing-masonry';
-			}
-		}
 		if((!empty($widget_name) && $widget_name=='tp-flip-box') || (!empty($widget_name) && $widget_name=='tp-info-box')){
 			if(!empty($options["display_button"]) && $options["display_button"]=='yes'){
 				$this->transient_widgets[] = 'plus-button-extra';
@@ -382,7 +377,7 @@ Class L_Plus_Generator
 		
 		sort($elements);
 		
-		global $wp_query;
+		global $wp_query;		
         if (is_home() || is_singular() || is_archive() || is_search() || (isset( $wp_query ) && (bool) $wp_query->is_posts_page) || is_404()) {
 			
             $queried_object = get_queried_object_id();
@@ -513,7 +508,7 @@ Class L_Plus_Generator
 				'theplusback',
 				true
 			);
-
+			
 			$js_inline2 = 'var theplus_ajax_url = "'.admin_url("admin-ajax.php").'";
 			var theplus_ajax_post_url = "'.admin_url("admin-post.php").'";
             var theplus_nonce = "'.wp_create_nonce("theplus-addons").'";';

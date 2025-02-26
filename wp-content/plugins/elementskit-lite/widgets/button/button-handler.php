@@ -19,10 +19,6 @@ class ElementsKit_Widget_Button_Handler extends \ElementsKit_Lite\Core\Handler_W
         return [ 'elementskit' ];
     }
 
-    static function get_keywords() {
-        return ['ekit', 'button', 'call', 'call button'];
-    }
-
     static function get_dir() {
         return \ElementsKit_Lite::widget_dir() . 'button/';
     }

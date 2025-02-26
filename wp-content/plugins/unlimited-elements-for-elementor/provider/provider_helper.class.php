@@ -175,7 +175,6 @@ class HelperProviderUC{
 	}
 	
 	
-	
 	/**
 	 * get post addditions array from options
 	 */
@@ -492,57 +491,34 @@ class HelperProviderUC{
 		
 		if($scriptType != "css"){
 			
-			$isSaparateScripts = HelperProviderCoreUC_EL::getGeneralSetting("js_saparate");
-			$isSaparateScripts = UniteFunctionsUC::strToBool($isSaparateScripts);
-			
 			$arrScrips = UniteProviderFunctionsUC::getCustomScripts();
-			$version = UNLIMITED_ELEMENTS_VERSION;
 			
 			if(!empty($arrScrips)){
-				echo "\n<!--   Unlimited Elements $version Scripts --> \n";
+				echo "\n<!--   Unlimited Elements Scripts  --> \n";
 				
 				$arrScriptsOutput = array();
 				$arrModulesOutput = array();
 				
 				foreach ($arrScrips as $key=>$script){
-										
 					$isModule = (strpos($key, "module_") !== false);
 					
 					if($isModule == true)
-						$arrModulesOutput[$key] = $script;
+						$arrModulesOutput[] = $script;
 					else 
-						$arrScriptsOutput[$key] = $script;
+						$arrScriptsOutput[] = $script;
 				}
 				
 				//print the scripts
 				
 				if(!empty($arrScriptsOutput)){
 					
-					if($isSaparateScripts == false){		//one script tag
-						
-						echo "<script type='text/javascript' id='unlimited-elements-scripts'>\n";
-							
-							foreach ($arrScriptsOutput as $script){
-								
-								echo $script."\n";
-							}
-						
-						echo "</script>\n";
-					}
-					else{			//multiple script tags
-													
-						foreach ($arrScriptsOutput as $handle => $script){
-							
-							echo "\n<script type='text/javascript' id='{$handle}'>\n";
-							
+					echo "<script type='text/javascript'>\n";
+					
+						foreach ($arrScriptsOutput as $script){
 							echo $script."\n";
-							
-							echo "</script>\n";
 						}
-						
-					}
 					
-					
+					echo "</script>\n";
 				}
 					
 				//print the modules

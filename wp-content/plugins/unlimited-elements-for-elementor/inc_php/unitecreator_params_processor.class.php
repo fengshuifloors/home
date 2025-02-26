@@ -14,8 +14,7 @@ class UniteCreatorParamsProcessorWork{
 	private $processType;
 	private static $counter = 0;
 	private $arrMainParamsValuesCache = array();
-	protected $dynamicPopupParams = array();
-	protected $dynamicPopupEnabled = false;
+	
 	
 	const ITEMS_ATTRIBUTE_PREFIX = "uc_items_attribute_";
 	const KEY_ITEM_INDEX = "_uc_item_index_";
@@ -142,12 +141,11 @@ class UniteCreatorParamsProcessorWork{
 	 * construct the object
 	 */
 	public function init($addon){
-			
+	
 		//for auto complete
 		//$this->addon = new UniteCreatorAddon();
 		
 		$this->addon = $addon;
-				
 	}
 	
 	
@@ -891,8 +889,6 @@ class UniteCreatorParamsProcessorWork{
 	 */
 	private function getProcessedParamsValue_imageJson($data, $value, $param){
 		
-				
-		
 		//if the value is emtpy
 		if(empty($value)){
 			
@@ -915,9 +911,8 @@ class UniteCreatorParamsProcessorWork{
 			$urlDefault = $this->getImageJsonDefaultUrl($param);
 			return($urlDefault);
 		}
-				
-		$urlJson = $postThumb->guid;
 		
+		$urlJson = $postThumb->guid;
 		
 		return($urlJson);
 	}
@@ -948,7 +943,7 @@ class UniteCreatorParamsProcessorWork{
 			
 			if(isset($value["url"]))
 				$value = $value["url"];
-				
+			
 			if(empty($value))
 				return($data);
 		}
@@ -964,6 +959,8 @@ class UniteCreatorParamsProcessorWork{
 			$data[$name] = $value;
 		}
 		
+		if(is_numeric($value) == false)
+			return($data);
 		
 		$sizeFilters = UniteFunctionsUC::getVal($param, "size_filters");
 		$isNoAttributes = UniteFunctionsUC::getVal($param, "no_attributes");
@@ -983,10 +980,8 @@ class UniteCreatorParamsProcessorWork{
 		if(empty($urlThumb))
 			$data[$keyThumb] = $urlImage;
 		
-			
 		return($data);
 	}
-	
 	
 	
 	private function z___________ICON_____________(){}
@@ -1523,12 +1518,10 @@ class UniteCreatorParamsProcessorWork{
 	  * get link param data
 	 */
 	private function getLinkData($data, $value, $name, $param, $processType){
-		
+
 		if(is_string($value) == true){
-			
 			$data[$name] = $value;
-			
-			$value = array("url"=>$value);
+			return($data);
 		}
 		
 		$url = UniteFunctionsUC::getVal($value, "url");
@@ -1544,9 +1537,8 @@ class UniteCreatorParamsProcessorWork{
 		if(empty($scheme)){
 			$urlFull = "https://{$url}";
 			$urlNoPrefix = $url;
-		}else{
-			$urlNoPrefix = str_replace($scheme."://", "", $url);
-		}
+		}else
+			$urlNoPrefix = str_replace($scheme, "", $url);
 		
 		
 		$addHtml = "";
@@ -1635,42 +1627,6 @@ class UniteCreatorParamsProcessorWork{
 	}
 	
 	/**
-	 * get date time data
-	 */
-	protected function getDateTimeData($data, $value, $name, $param, $processType){
-
-		//not given - return current date
-		
-		$formatFullDate = "d-M-Y, H:i";
-		
-		if(empty($value)){
-			$stamp = time();
-			$data[$name."_stamp"] = $stamp;
-			$data[$name] = date($formatFullDate, $stamp);
-			
-			return($data);
-		}
-		
-		//numeric - date is stamp
-		
-		if(is_numeric($value)){
-			
-			$data[$name."_stamp"] = $value;
-			$data[$name] = date($formatFullDate, $stamp);
-			return($data);
-		}
-		
-		//date is string 
-		
-		$stamp = strtotime($value);
-		
-		$data[$name."_stamp"] = $stamp;
-		
-		return($data);
-	}
-	
-	
-	/**
 	 * put hover animation style if needed
 	 */
 	protected function outputHoverAnimationsStyles($value, $name, $param, $processType){
@@ -1685,63 +1641,6 @@ class UniteCreatorParamsProcessorWork{
 					
 	}
 	
-	private function z__________SPECIAL_PARAMS_DATA__________(){}
-	
-	
-	/**
-	 * special params data
-	 */
-	private function getSpecialParamsData($data, $value, $name, $param, $processType){
-		
-		$type = UniteFunctionsUC::getVal($param, "attribute_type");
-		
-		switch($type){
-			case "dynamic_popup":	
-				
-				//set dynamic popup class and save it for the items
-				
-				$name = UniteFunctionsUC::getVal($param, "name");
-				
-				$arrValues = UniteFunctionsUC::getVal($data, $name);
-				
-				$linkType = UniteFunctionsUC::getVal($arrValues, $name."_link_type");
-				
-				$className = "";
-				
-				$isEnabled = false;
-				
-				if($linkType == "popup"){	//is enabled
-					$className = "uc-dynamic-popup-grid";					
-					$isEnabled = true;
-					
-					$this->dynamicPopupEnabled = true;
-				}
-				
-				$suffix = UniteFunctionsUC::getVal($param, "dynamic_popup_suffix");
-				
-				if(!empty($suffix))
-					$suffix = "_{$suffix}";
-				
-				//if many popups, every one should enable the class
-				
-				if(isset($data["uc_dynamic_popup_class"]) == false)
-					$data["uc_dynamic_popup_class"] = $className;
-				else
-					if($this->dynamicPopupEnabled == true)
-						$data["uc_dynamic_popup_class"] = $className;
-				
-				//use in post items
-				
-				$param["dynamic_popup_enabled"] = $isEnabled;
-				
-				$this->dynamicPopupParams[] = $param;
-				
-			break;
-		}
-		
-		
-		return($data);
-	}
 	
 	private function z__________VALUES_OUTPUT__________(){}
 	
@@ -1790,19 +1689,11 @@ class UniteCreatorParamsProcessorWork{
 			case UniteCreatorDialogParam::PARAM_SLIDER:
 			    $data = $this->getSliderData($data, $value, $name, $param, $processType);
 			break;
-			case UniteCreatorDialogParam::PARAM_DATETIME:
-			    $data = $this->getDateTimeData($data, $value, $name, $param, $processType);
-			break;
 			case UniteCreatorDialogParam::PARAM_DATASET:
 			    $data[$name] = $this->getDatasetData($value, $name, $param, $processType);
 			break;
 			case UniteCreatorDialogParam::PARAM_HOVER_ANIMATIONS:
 				$this->outputHoverAnimationsStyles($value, $name, $param, $processType);
-			break;
-			case UniteCreatorDialogParam::PARAM_SPECIAL:
-			    
-				$data = $this->getSpecialParamsData($data, $value, $name, $param, $processType);
-				
 			break;
 		}
 				
@@ -1979,9 +1870,7 @@ class UniteCreatorParamsProcessorWork{
 		
 		if(empty($paramsSpecial))
 			return(null);
-		
-		$arrValues = array();
-		
+			
 		foreach($paramsSpecial as $param){
 						
 			$attributeType = UniteFunctionsUC::getVal($param, "attribute_type");
@@ -1999,25 +1888,18 @@ class UniteCreatorParamsProcessorWork{
 				$value = UniteFunctionsUC::getVal($value, $name."_size");
 			}
 			
-			$destParamName = UniteFunctionsUC::getVal($param, "image_size_param_name");
-			
-			if(empty($destParamName))
-				$destParamName = "_default_";
-			
-			$arrValues[$destParamName] = $value;
+			return($value);
 		}
 		
 		
-		return($arrValues);
+		return(null);
 	}
 	
 	/**
 	 * modify image param
 	 */
-	public function getProcessedItemsData_modifyImageItem($arrItemParams, $arrImageSizes){
+	private function getProcessedItemsData_modifyImageItem($arrItemParams, $itemsImageSize){
 		
-		$defaultSize = UniteFunctionsUC::getVal($arrImageSizes, "_default_");
-				
 		foreach($arrItemParams as $index => $param){
 			
 			$type = UniteFunctionsUC::getVal($param, "type");
@@ -2025,24 +1907,11 @@ class UniteCreatorParamsProcessorWork{
 			if($type != UniteCreatorDialogParam::PARAM_IMAGE)
 				continue;
 			
-			$name = UniteFunctionsUC::getVal($param, "name");
-			
-			$size = UniteFunctionsUC::getVal($arrImageSizes, $name);
-			
-			if(empty($size))
-				$size = $defaultSize;
-
-			if(empty($size))
-				continue;
-			
-				
 			$param["add_image_sizes"] = true;
-			$param["value_size"] = $size;
+			$param["value_size"] = $itemsImageSize;
 			
 			$arrItemParams[$index] = $param;
-				
 		}
-		
 		
 		return($arrItemParams);
 	}
@@ -2062,22 +1931,22 @@ class UniteCreatorParamsProcessorWork{
 		if($specialType == UniteCreatorAddon::ITEMS_TYPE_IMAGE)
 			return($arrItems);
 		
-					
+		
 		$this->setProcessType($processType);
 		
 		if(empty($arrItems))
 			return(array());
 		
 		//check for special params
-		$arrItemsImageSizes = $this->getProcessedItemsData_getImageSize($processType);
+		$itemsImageSize = $this->getProcessedItemsData_getImageSize($processType);
 		
 		$operations = new UCOperations();
 		
 		$arrItemsNew = array();
 		$arrItemParams = $this->addon->getParamsItems();
 		
-		if(!empty($arrItemsImageSizes)){
-			$arrItemParams = $this->getProcessedItemsData_modifyImageItem($arrItemParams, $arrItemsImageSizes);
+		if(!empty($itemsImageSize)){
+			$arrItemParams = $this->getProcessedItemsData_modifyImageItem($arrItemParams, $itemsImageSize);
 		}
 		
 		$arrItemParams = $this->initProcessParams($arrItemParams);

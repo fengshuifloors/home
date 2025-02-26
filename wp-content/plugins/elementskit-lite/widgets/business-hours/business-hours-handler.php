@@ -19,10 +19,6 @@ class ElementsKit_Widget_Business_Hours_Handler extends \ElementsKit_Lite\Core\H
         return [ 'elementskit' ];
     }
 
-    static function get_keywords() {
-        return ['ekit', 'business hours', 'opening hours', 'hours', 'opening times', 'times', 'currently open', 'watch'];
-    }
-
     static function get_dir() {
         return \ElementsKit_Lite::widget_dir() . 'business-hours/';
     }

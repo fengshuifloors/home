@@ -27,14 +27,12 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	private $cacheConstants = null;
 	private $processType = null;
 	private $generatedID = null;
-	private $systemOutputID = null;
 	private $isModePreview = false;
 	private $arrOptions;
 	private $isShowDebugData = false;
 	private $debugDataType = "";
 	private $itemsSource = "";
 	
-	private static $arrScriptsHandles = array();
 	
 	private static $arrUrlCacheCss = array();
 	private static $arrHandleCacheCss = array();
@@ -45,10 +43,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	public static $isBufferingCssActive = false;
 	public static $bufferBodyCss;
 	public static $bufferCssIncludes;
-	
-	private static $arrGeneratedIDs = array();
-	
-	private $lastSelectorStyle = "";
 	
 	
 	/**
@@ -100,7 +94,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		
 		self::$arrUrlCacheCss = array();
 		self::$arrUrlCacheJs = array();
-		
 	}
 	
 	
@@ -128,12 +121,12 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	 * check that the include located in cache
 	 */
 	private function isIncludeInCache($url, $handle, $type){
-				
+		
 		if(empty($url) || empty($handle))
 			return(false);
 		
 		if($type == "css"){
-						
+			
 			if(isset(self::$arrUrlCacheCss[$url]))
 				return(true);
 			
@@ -331,11 +324,10 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			$arrIncludesCss = array_merge($arrLibCss, $arrIncludesCss);
 			$arrIncludesCss = $this->processIncludesList($arrIncludesCss, "css");
 		}
-				
+		
 		$arrProcessedIncludes = array_merge($arrIncludesJS, $arrIncludesCss);
 		
 		$arrProcessedIncludes = $this->excludeExistingInlcudes($arrProcessedIncludes);
-		
 		
 		// add widget scripts to editor
 		
@@ -394,11 +386,8 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 				$handle = HelperUC::getUrlHandle($url, $addonName);
 			
 			$isInCache = $this->isIncludeInCache($url, $handle, $type);
-			
-			if($isInCache == true){
-								
+			if($isInCache == true)
 				continue;
-			}
 			
 			$this->cacheInclude($url, $handle, $type);
 			
@@ -416,17 +405,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 					break;
 				case "css":
 					$cssID = "{$handle}-css";
-					
-					$isDelayedScript = apply_filters("unlimited_element_is_style_delayed", $cssID);
-					
-					if($isDelayedScript === true){
-						$styleHtml = "<link id='{$cssID}' data-debloat-delay='' data-href='{$url}' type='text/css' rel='stylesheet' media='all' >";
-						
-						$html .= self::TAB2.$styleHtml.self::BR;
-					}
-					else
-						$html .= self::TAB2."<link id='{$cssID}' href='{$url}' type='text/css' rel='stylesheet' >".self::BR;
-					
+					$html .= self::TAB2."<link id='{$cssID}' href='{$url}' type='text/css' rel='stylesheet' >".self::BR;
 					break;
 				default:
 					UniteFunctionsUC::throwError("Wrong include type: {$type} ");
@@ -481,7 +460,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 					UniteProviderFunctionsUC::addScript($handle, $url, false, $arrIncludeDep);
 				break;
 				case "css":
-										
 						UniteProviderFunctionsUC::addStyle($handle, $url);
 				break;
 				default:
@@ -531,7 +509,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		
 		$value = UniteFunctionsUC::getVal($param, "value");
 		$selectorValue = UniteFunctionsUC::getVal($param, "selector_value");
-		
+				
 		$selectorValueDesktop = str_replace("{{VALUE}}", $value, $selectorValue);
 		
 		$style = $selector."{{$selectorValueDesktop}}";
@@ -858,7 +836,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		
 		$isResponsive = UniteFunctionsUC::getVal($param, "is_responsive");
 		$isResponsive = UniteFunctionsUC::strToBool($isResponsive);
-				
+		
 		$css = "";
 		
 		if(empty($selectorValue))
@@ -890,7 +868,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		
 		if($valueTablet !== ""){
 			
-			
 			$selectorTabletValue = $selectorValueBase;
 			$selectorTabletValue = str_replace("{{VALUE}}", $valueTablet, $selectorTabletValue);
 			
@@ -908,7 +885,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		$valueMobile = trim($valueMobile);
 		
 		if($valueMobile !== ""){
-						
+			
 			$selectorMobileValue = $selectorValueBase;
 			$selectorMobileValue = str_replace("{{VALUE}}", $valueMobile, $selectorMobileValue);
 		
@@ -933,7 +910,11 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		
 		if(empty($arrValues))
 			return(false);
-				
+		
+		$unit = UniteFunctionsUC::getVal($arrValues, "unit");
+		if(empty($unit))
+			return(false);
+		
 		$css = "";
 		
 		$arrValuesTablet = array();
@@ -1019,11 +1000,8 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		$type = UniteFunctionsUC::getVal($param, "type");
 		
 		$selector = trim($selector);
-		if(empty($selector)){
-			
-			$this->lastSelectorStyle = null;
+		if(empty($selector))
 			return(false);
-		}
 		
 		switch($type){
 			case UniteCreatorDialogParam::PARAM_NUMBER:
@@ -1058,54 +1036,27 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			break;
 		}
 		
-		if(empty($style)){
-			
-			$this->lastSelectorStyle = null;
-			
+		if(empty($style))
 			return(false);
-		}
 			
 		UniteProviderFunctionsUC::printCustomStyle($style);
 		
-		$this->lastSelectorStyle = $style;
-		
-		return($style);
 	}
-	
 	
 	/**
 	 * check what params has selectors in them, and include their css
 	 */
-	private function processPreviewParamsSelectors($isOutput = false){
+	private function processPreviewParamsSelectors(){
 		
 		$mainParams = $this->addon->getParams();
 		
 		if(empty($mainParams))
 			return(false);
 		
-		$styles = "";
 		foreach($mainParams as $param){
-
 			$this->processParamCSSSelector($param);
-			
-			if($isOutput == true && !empty($this->lastSelectorStyle))
-				$styles .= $this->lastSelectorStyle;
 		}
 		
-		if($isOutput == true)
-			return($styles);
-			
-	}
-	
-	
-	/**
-	 * get selectors css
-	 */
-	public function getSelectorsCss(){
-		
-		$style = $this->processPreviewParamsSelectors(true);
-		
-		return($style);
 	}
 	
 	
@@ -1663,32 +1614,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		return($html);
 	}
 	
-	/**
-	 * get script handle with serial
-	 */
-	private function getScriptHandle($handle){
-		
-		if(isset(self::$arrScriptsHandles[$handle]) == false){
-			self::$arrScriptsHandles[$handle] = true;
-			return($handle);
-		}
-		
-		$counter = 2;
-				
-		do{
-			
-			$outputHandle = $handle.$counter;
-			
-			$isExists = isset(self::$arrScriptsHandles[$outputHandle]);
-			
-			$counter++;
-			
-		}while($isExists);
-		
-			self::$arrScriptsHandles[$outputHandle] = true;
-		
-		return($outputHandle);
-	}
 	
 	/**
 	 * place output by shortcode
@@ -1703,8 +1628,8 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		
 		$settings = HelperProviderCoreUC_EL::getGeneralSettingsValues();
 		$isOutputComments = UniteFunctionsUC::strToBool($isOutputComments);
-		
-		
+
+				
 		try{
 			
 			$html = $this->objTemplate->getRenderedHtml(self::TEMPLATE_HTML);
@@ -1724,19 +1649,18 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 				$output = "<!-- start {$title} -->";
 			else
 				$output = "";
-			
+				
 			//add css includes if needed
 			if(!empty($arrCssIncludes)){
-				
 				$htmlIncludes = $this->getHtmlIncludes($arrCssIncludes);
-				
-				
+								
 				if(self::$isBufferingCssActive == true)
 					self::$bufferCssIncludes .= self::BR.$htmlIncludes;
 				else
 					$output .= "\n".$htmlIncludes;
 				
 			}
+				
 			
 			//add css
 			if(!empty($css)){
@@ -1762,23 +1686,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 				
 			}
 			
-			//add css selectors:
-			
-			$isAddSelectors = UniteFunctionsUC::getVal($params, "add_selectors_css");
-			$isAddSelectors = UniteFunctionsUC::strToBool($isAddSelectors);
-			
-			if($isAddSelectors == true){
-				
-				$cssSelectors = $this->getSelectorsCss();
-				
-				if(empty($cssSelectors))
-					$cssSelectors = "";
-				
-				$selectorsStyleID = "selectors_css_".$this->generatedID;
-				
-				$output .= "\n			<style id=\"{$selectorsStyleID}\" name=\"uc_selectors_css\" type=\"text/css\">{$cssSelectors}</style>";
-			}
-			
 			
 			//add html
 			
@@ -1792,24 +1699,18 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 				$isOutputJs = true;
 			
 			//output js
-							
 			if($isOutputJs == true){
 				
 				$isJSAsModule = $this->addon->getOption("js_as_module");
 				$isJSAsModule = UniteFunctionsUC::strToBool($isJSAsModule);
 				
 				$title = $this->addon->getTitle();
-							
-				$js = "\n/* $title scripts: */ \n\n".$js;
-				
-				$addonName = $this->addon->getAlias();
-				
-				$handle = $this->getScriptHandle("ue_script_".$addonName);
-				
-				//self::
+								
+				if($scriptHardCoded == false)
+					$js = "// $title scripts: \n".$js;
 				
 				if($scriptHardCoded == false){
-					UniteProviderFunctionsUC::printCustomScript($js, false, $isJSAsModule, $handle);
+					UniteProviderFunctionsUC::printCustomScript($js, false, $isJSAsModule);
 				}
 				else{
 					$wrapInTimeout = UniteFunctionsUC::getVal($params, "wrap_js_timeout");
@@ -1822,13 +1723,8 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 					if($isJSAsModule == true)
 						$jsType = "module";
 					
-					$htmlHandle = "";
-					if($wrapInTimeout == false){	 //add id's in front
-						$htmlHandle = " id=\"{$handle}\"";
-					}
-					
-					$output .= "\n\n			<script type=\"{$jsType}\" {$htmlHandle} >";
-					
+					$output .= "\n\n			<script type=\"{$jsType}\">";
+										
 					if(!empty($wrapStart))
 						$output .= "\n		".$wrapStart;
 					
@@ -1871,17 +1767,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		return($output);
 	}
 	
-	/**
-	 * get addon uc_id
-	 */
-	public function getWidgetID(){
-		
-		$data = $this->getConstantData();
-		
-		$widgetID = UniteFunctionsUC::getVal($data, "uc_id");
-		
-		return($widgetID);
-	}
 	
 	
 	/**
@@ -1903,29 +1788,10 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		//add serial number:
 		self::$serial++;
 		
-		//set output  widget id
-		
 		$generatedSerial = self::$serial.UniteFunctionsUC::getRandomString(4, true);
 		
-		if(!empty($this->systemOutputID))
-			$generatedID = $prefix."_".$this->systemOutputID;
-		else
-			$generatedID = $prefix.$generatedSerial;
+		$this->generatedID = $prefix.$generatedSerial;
 		
-		//protection in listings
-		if(isset(self::$arrGeneratedIDs[$generatedID]))
-			$generatedID .= self::$serial;
-		
-		//double protection
-		if(isset(self::$arrGeneratedIDs[$generatedID]))
-			$generatedID .= $generatedSerial;
-		
-			
-		self::$arrGeneratedIDs[$generatedID] = true;
-		
-		$this->generatedID = $generatedID;
-			
-			
 		$data["uc_serial"] = $generatedSerial;
 		$data["uc_id"] = $this->generatedID;
 		
@@ -2002,35 +1868,16 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	/**
 	 * modify items data, add "item" to array
 	 */
-	protected function normalizeItemsData($arrItems, $extraKey=null, $addObjectID = false){
+	protected function normalizeItemsData($arrItems, $extraKey=null){
 		
 		if(empty($arrItems))
 			return(array());
 		
 		foreach($arrItems as $key=>$item){
-						
-			if(!empty($extraKey)){
-				$arrAdd = array($extraKey=>$item);
-
-				//add object id
-				if($addObjectID === true){
-					
-					$objectID = UniteFunctionsUC::getVal($item, "id");
-					if(!empty($objectID))
-						$arrAdd["object_id"] = $objectID;
-
-					$postType = UniteFunctionsUC::getVal($item, "post_type");
-					if(!empty($postType))
-						$arrAdd["object_type"] = $postType;
-					
-				}
-				
-			}
+			if(!empty($extraKey))
+				$arrItems[$key] = array("item"=>array($extraKey=>$item));
 			else 			
-				$arrAdd = $item;
-			
-			
-			$arrItems[$key] = array("item"=>$arrAdd);
+				$arrItems[$key] = array("item"=>$item);
 		}
 		
 		return($arrItems);
@@ -2190,20 +2037,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		$this->objTemplate->addTemplate(self::TEMPLATE_HTML, $html);
 		$this->objTemplate->addTemplate(self::TEMPLATE_CSS, $css);
 		$this->objTemplate->addTemplate(self::TEMPLATE_JS, $js);
-		
-		//add custom templates
-		
-		$arrCustomTemplates = array();
-		
-		$arrCustomTemplates = apply_filters("ue_get_twig_templates", $arrCustomTemplates);
-		
-		if(!empty($arrCustomTemplates)){
-			
-			foreach($arrCustomTemplates as $templateName=>$templateValue)
-				$this->objTemplate->addTemplate($templateName, $templateValue);
-		}
-		
-		
+
 		$arrItemData = null;
 		
 		$paramPostsList = null;
@@ -2236,9 +2070,9 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 						UniteFunctionsUC::throwError("Some posts list param should be found");
 					
 					$postsListName = UniteFunctionsUC::getVal($paramPostsList, "name");
-										
-					$arrItemData = $this->normalizeItemsData($arrData[$postsListName], $postsListName, true);
-										
+					
+					$arrItemData = $this->normalizeItemsData($arrData[$postsListName], $postsListName);
+					
 					//set main param (true/false)
 					$arrData[$postsListName] = !empty($arrItemData);
 					
@@ -2287,15 +2121,13 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 					
 					if(empty($paramListing))
 						UniteFunctionsUC::throwError("Some multisource dynamic attribute should be found");
-										
+					
 					$paramName = UniteFunctionsUC::getVal($paramListing, "name");
 					
 					$dataValue = UniteFunctionsUC::getVal($arrData, $paramName);
 					
 					if(is_string($dataValue) && $dataValue === "uc_items"){
-						
 						$arrItemData = $this->addon->getProcessedItemsData($this->processType);
-						
 					}
 					elseif(is_array($dataValue)){
 						
@@ -2305,7 +2137,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 						dmp($arrItemData);
 						UniteFunctionsUC::throwError("Wrong multisouce data");
 					}
-					
 					
 					UniteCreatetorParamsProcessorMultisource::checkShowItemsDebug($arrItemData);
 										
@@ -2325,7 +2156,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			foreach($arrItemData as $key=>$item){
 			    
 			    $arrItem = $item["item"];
-			    			    
+			    
 			    $itemIndex++;
 			    
 			    $arrItem["item_index"] = $itemIndex;
@@ -2335,7 +2166,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			}
 							
 			$this->objTemplate->setParams($arrData);
-						
+			
 			$this->objTemplate->setArrItems($arrItemData);
 			
 			if(!empty($itemsSource))
@@ -2377,13 +2208,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 		$this->isModePreview = true;
 	}
 	
-	/**
-	 * set system output id for the generated id
-	 */
-	public function setSystemOutputID($systemID){
-		
-		$this->systemOutputID = $systemID;
-	}
 	
 	
 	/**

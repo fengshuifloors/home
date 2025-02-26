@@ -2698,18 +2698,18 @@ class JLTMA_Blog extends Widget_Base
 
 					// Query var for paged
 					if (get_query_var('paged')) {
-						$paged = (int) get_query_var('paged');
+						$paged = get_query_var('paged');
 					} elseif (get_query_var('page')) {
-						$paged = (int) get_query_var('page');
+						$paged = get_query_var('page');
 					} else {
 						$paged = 1;
 					}
 
 					$settings = $this->get_settings_for_display();
 
-					$offset = (int) $settings['ma_el_blog_post_offset'];
+					$offset = $settings['ma_el_blog_post_offset'];
 
-					$post_per_page = (int) $settings['ma_el_blog_posts_per_page'];
+					$post_per_page = $settings['ma_el_blog_posts_per_page'];
 
 					$new_offset = $offset + (($paged - 1) * $post_per_page);
 

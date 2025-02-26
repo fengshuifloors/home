@@ -45,7 +45,7 @@
 								<div class="premium-menu-control" id="pa-megamenu-switcher">
 									<label class="switch">
 										<input type="checkbox">
-										<span class="slider round pa-control"></span>
+										<span class="slider round"></span>
 									</label>
 								</div>
 							</div>
@@ -80,7 +80,7 @@
 								<div class="premium-menu-control" id="pa-full-width-switcher">
 									<label class="switch">
 										<input type="checkbox">
-										<span class="slider round pa-control"></span>
+										<span class="slider round"></span>
 									</label>
 								</div>
 							</div>

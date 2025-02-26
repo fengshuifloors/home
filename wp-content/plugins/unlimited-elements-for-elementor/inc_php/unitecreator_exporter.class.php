@@ -558,6 +558,7 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 		if($clearCatsFolder == true)
 			UniteFunctionsUC::deleteDir($this->pathExportCategories, false);
 		
+		
 		$this->pathExportCategory = $this->pathExportCategories."category_".UniteFunctionsUC::getRandomString(10)."/";
 		
 		UniteFunctionsUC::mkdirValidate($this->pathExportCategory, "Export Category");
@@ -891,12 +892,12 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 	 * unpack import addon from temp file
 	 */
 	private function extractImportAddonFile($arrTempFile){
-		
+				
 		$filepath = UniteFunctionsUC::getVal($arrTempFile, "tmp_name");
-		
+				
 		$zip = new UniteZipUC();
 		$extracted = $zip->extract($filepath, $this->pathImportAddon);
-				
+		
 		if($extracted == false)
 			UniteFunctionsUC::throwError("The import addon zip didn't extracted");
 		
@@ -966,6 +967,7 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 	 * import addon data
 	 */
 	private function importAddonData($catID, $overwrite = true, $forceToCat = true){
+		
 		
 		$filenameAddon = "addon.json";
 		$filepathData = $this->pathImportAddon.$filenameAddon;
@@ -1037,8 +1039,6 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 			
 		}
 		
-		$arrImport = apply_filters("uc_modify_addon_data_before_import", $arrImport);
-				
 		//check if addon type match
 		if(!empty($this->mustAddonType) && $this->mustAddonType != $addonType){
 			
@@ -1157,6 +1157,7 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 		return(false);
 	}
 	
+	
 	/**
 	 * set import single type
 	 */
@@ -1207,15 +1208,12 @@ class UniteCreatorExporter extends UniteCreatorExporterBase{
 		}
 		
 		$this->validateArrTempFile($arrTempFile);
-
+				
 		try{
 			
 			$this->prepareImportFolders();
 						
 			$this->extractImportAddonFile($arrTempFile);
-			
-			//validate there is no php in uploaded file
-			UniteFunctionsUC::validatePHPInExtracted($this->pathImportAddon);
 			
 			$isSingle = $this->isExtractedAddonSingle();
 			

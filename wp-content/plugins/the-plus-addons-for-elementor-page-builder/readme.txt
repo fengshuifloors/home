@@ -1,10 +1,10 @@
-=== The Plus Addons for Elementor ===
-Contributors: posimyththemes, devangvachheta, nirmalkavaiya, sagarpatel124
+=== The Plus Addons for Elementor | FREE Elementor Widgets & Elementor Templates, Header Menu, Blog Post Builder, Dark Mode, Full-Page Scroll, Cross Domain Copy ===
+Contributors: posimyththemes, ankitposimyth, nirmalkavaiya, sagarpatel124
 Tags: Elementor, elementor widgets, elements, elementor addon, elementor templates, elementor widgets, extensions
 Requires at least: 5.7.0
-Tested up to: 6.2
+Tested up to: 6.1
 Requires PHP: 5.6
-Stable tag: 5.2.4
+Stable tag: 5.1.15
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -268,69 +268,16 @@ We do not load any extra files, which will reduce your backend performance. But,
 We have the most advanced caching architecture, Which will never bloat your site. Know more about our caching architecture. We have some tricks and suggestions to improve frontend performance. 
 
 == Screenshots ==
-1. 120+ Advanced Elementor Widgets & Extensions
-2. Horizontal & Vertical Mega Menu Builder
-3. Ajax Search Bar & 15+ Filters for Posts, CPT & WooCommerce Products
-4. Complete WooCommerce Store Builder
-5. Custom Loop Skin for Posts, CPT & WooCommerce Products
-6. Free Blog/CPT Single Page Builder
-7. Full Page, Horizontal, Multi Scrolling Effects & Scroll Sequence
-8. Login Signup & Forgot Password Form
-9. Advanced Data Tables with Search & Sorting
-10. Advanced Dynamic Display Conditions (Exclusive WooCommerce Conditions)
-11. Social Feed, Reviews & Embed (6+ Platforms)
-12. Unique 22+ Elementor Extensions
+1. Collection of 100+ Free & Premium Elementor Widgets and Features.
+2. We have developed this for exceptional performance for all your Elementor websites.
+3. Craft your navigation menu using Elementor with great layout options and flexibility. 
+4. Your all listing needs are covered under our series of listing widgets with in-depth options. 
+5. Wrapper Link, Global Tool Tip, Elementor Pro Compatibility, Magic Scroll, Cross-Domain copy and paste and lots more extra features to supercharge your Elementor.
+6. Build creative and unique websites using Full Page, Page Pilling, Horizontal Scroll, and Multi Scroll in Elementor page builder.
+7. Most Elementor widgets for forms are covered such as Caldera forms, Gravity Forms, Everest Forms, Ninja Forms, Contact Form 7, WP Forms and more are coming soon.
+
 
 == Changelog ==
-
-= 5.2.4 =
-Fix : Minor bug fixes & Improvements
-
-= 5.2.3 =
-Update : Accordion : Document Link Update
-Update : Advanced Text Block : Document Link Update
-Update : Meeting Scheduler : Document Link Update
-Update : Tabs & Tours : Document Link Update
-Update : Countdown : Add Option For Countdown Setup and Style
-Fix : Minor bug fixes & Improvements
-
-= 5.2.2 =
-Update : Heading Title : Separator Margin Controller Added 
-Update : Countdown : Days, Hour, Minutes, Seconds Disable Controller Added
-Update : Testimonials : Add Controller Position Y Option For Arrows
-Update : Team Member : Box Loop Background Padding Controller Added
-Fix : Minor bug fixes & Improvements
-
-= 5.2.1 =
-Update : Button : UI Controller Improvement
-Update : Blockquote : Drop Cap Quote Description Html Support
-Update : Countdown : Controller Improvement
-Fix : Minor bug fixes & Improvements
-
-= 5.2.0 =
-Update : Gravity Form : Radio and Check box style Controller Improvement	
-Update : Progress Bar : Number Controller Css Improvement
-Update : Team Member : Controller Improvement
-Update : Equal Height : Js & Condition Improvement
-Fix : Minor bug fixes & Improvements
-
-= 5.1.18 =
-Update : Button : Controller Improvement
-Update : Number Counter : Change Controller Normal To Responsive
-Update : Tab Tours : Tab Active In Mobile Responsive
-Compatibility : Dokan Few Pages Caching Conflict
-Fix : Minor bug fixes & Improvements
-
-= 5.1.16 =
-Added : Client Listout : In Content Repeater Option
-Added : Team Member : In Content Repeater Option
-Added : Testimonials : In Content Repeater Option
-Update : Team Member : Added Image overlay
-Update : Team Member : Social Icon Styling Controller Improvement
-Update : Contact Form 7 : Textarea Height Option
-Update : Navigation Menu Lite : Mobile Menu Controller Improvement
-Fix : Team Member : Post Type Default image
-Compatibility : Elementor 3.1.X Free & Pro
 
 = 5.1.15 =
 Update : Smooth Scroll : Firefox Compatibility

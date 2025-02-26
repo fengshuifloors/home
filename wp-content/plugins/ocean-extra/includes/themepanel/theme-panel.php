@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scripts Panel
  *
@@ -7,7 +8,7 @@
  * @author OceanWP
  */
 
-// Exit if accessed directly.
+// Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -24,7 +25,7 @@ class Ocean_Extra_New_Theme_Panel {
 		require_once OE_PATH . 'includes/themepanel/includes/classes/class-system-status.php';
 
 		$oe_svg_support_active_status = get_option( 'oe_svg_support_active_status', 'no' );
-		if ( $oe_svg_support_active_status === 'yes' ) {
+		if ( $oe_svg_support_active_status == 'yes' ) {
 			require_once OE_PATH . 'includes/themepanel/includes/classes/class-svg-sanitizer.php';
 		}
 
@@ -52,7 +53,6 @@ class Ocean_Extra_New_Theme_Panel {
 		add_filter( 'oceanwp_theme_panel_pane_customizer_import_export', array( $this, 'customizer_import_export_part' ) );
 		add_filter( 'oceanwp_theme_panel_pane_customizer_controls', array( $this, 'customizer_controls_part' ) );
 
-		add_filter( 'oceanwp_theme_panel_pane_extra_settings_adobe_fonts', array( $this, 'extra_settings_adobe_fonts_part' ) );
 		add_filter( 'oceanwp_theme_panel_pane_extra_settings_metaboxes', array( $this, 'extra_settings_metaboxes_part' ) );
 		add_filter( 'oceanwp_theme_panel_pane_extra_settings_widgets', array( $this, 'extra_settings_widgets_part' ) );
 		add_filter( 'oceanwp_theme_panel_pane_extra_settings_my_library', array( $this, 'extra_settings_my_library_part' ) );
@@ -86,12 +86,12 @@ class Ocean_Extra_New_Theme_Panel {
 
 		$current_screen = get_current_screen();
 		// Only load scripts when needed
-		if ( 'toplevel_page_oceanwp' !== $current_screen->id ) {
+		if ( 'toplevel_page_oceanwp' != $current_screen->id ) {
 			return;
 		}
 
 		// JS
-		wp_enqueue_script( 'oceanwp-scripts-themepanel', plugins_url( '/assets/js/theme-panel.js', __FILE__ ), OE_VERSION, true );
+		wp_enqueue_script( 'oceanwp-scripts-themepanel', plugins_url( '/assets/js/theme-panel.min.js', __FILE__ ), OE_VERSION, true );
 
 		wp_localize_script(
 			'oceanwp-scripts-themepanel',
@@ -128,8 +128,7 @@ class Ocean_Extra_New_Theme_Panel {
 			if ( ! is_array( $value ) ) {
 				$value = trim( $value );
 			}
-			$value = isset( $value ) ? (array) $value : array();
-			$value = array_map( 'sanitize_text_field', $value );
+			$value = wp_unslash( $value );
 			$value = self::validate_panels( $value );
 		}
 		update_option( $option, $value );
@@ -160,8 +159,7 @@ class Ocean_Extra_New_Theme_Panel {
 		$value  = array();
 		if ( isset( $params[ $option ] ) ) {
 			$value = $params[ $option ];
-			$value = isset( $value ) ? (array) $value : array();
-			$value = array_map( 'sanitize_text_field', $value );
+			$value = wp_unslash( $value );
 		}
 		update_option( $option, $value );
 
@@ -187,7 +185,7 @@ class Ocean_Extra_New_Theme_Panel {
 			);
 		}
 
-		if ( $_POST['settings_for'] === 'white_label' ) {
+		if ( $_POST['settings_for'] == 'white_label' ) {
 			if( class_exists('Ocean_White_Label') ) {
 				$settings = Ocean_White_Label::get_white_label_settings();
 				$this->save_white_label_settings( $settings, $params );
@@ -216,17 +214,6 @@ class Ocean_Extra_New_Theme_Panel {
 			}
 		}
 
-		if( $_POST['settings_for'] === 'adobe_fonts' && $params['owp_integrations'][ 'adobe_fonts_integration' ] === '1' ) {
-			$check_project_id_result = OceanWP_Adobe_Font()->check_project_id();
-			if( $check_project_id_result['status'] !== 'success' ) {
-				wp_send_json_error(
-					array(
-						'message' => esc_html__( 'Project ID is wrong.', 'ocean-extra' ),
-					)
-				);
-			}
-		}
-
 		wp_send_json_success(
 			array(
 				'message' => esc_html__( 'Settings saved successfully.', 'ocean-extra' ),
@@ -251,15 +238,15 @@ class Ocean_Extra_New_Theme_Panel {
 		$value  = null;
 		if ( isset( $params['value'] ) ) {
 			$value = $params['value'];
-			if ( $value === 'true' ) {
+			if ( $value == 'true' ) {
 				$value = true;
-			} elseif ( $value === 'false' ) {
+			} elseif ( $value == 'false' ) {
 				$value = false;
 			}
 			if ( ! is_array( $value ) && ! is_bool( $value ) ) {
 				$value = trim( $value );
 			}
-			$value = sanitize_text_field( wp_unslash( $value ) );
+			$value = wp_unslash( $value );
 		}
 		update_option( $option, $value );
 
@@ -390,7 +377,7 @@ class Ocean_Extra_New_Theme_Panel {
 		// Process import file
 		$res = self::process_import_file( $file['file'] );
 
-		if ( $res['status'] === 'updated' ) {
+		if ( $res['status'] == 'updated' ) {
 			wp_send_json_success(
 				array(
 					'message' => 'Success',
@@ -585,9 +572,6 @@ class Ocean_Extra_New_Theme_Panel {
 		return OE_PATH . 'includes/themepanel/views/panes/customizer-controls.php';
 	}
 
-	function extra_settings_adobe_fonts_part() {
-		return OE_PATH . 'includes/themepanel/views/panes/extra-settings-adobe-fonts.php';
-	}
 	function extra_settings_metaboxes_part() {
 		return OE_PATH . 'includes/themepanel/views/panes/extra-settings-metaboxes.php';
 	}
@@ -637,7 +621,7 @@ class Ocean_Extra_New_Theme_Panel {
 
 	function control_svg_mime_type( $types ) {
 		$oe_svg_support_active_status = get_option( 'oe_svg_support_active_status', 'no' );
-		if ( $oe_svg_support_active_status === 'no' && ! empty( $types['svg'] ) ) {
+		if ( $oe_svg_support_active_status == 'no' && ! empty( $types['svg'] ) ) {
 			unset( $types['svg'] );
 		}
 		return $types;
@@ -663,17 +647,6 @@ class Ocean_Extra_New_Theme_Panel {
 		$settings = array(
 			'mailchimp_api_key' => get_option( 'owp_mailchimp_api_key' ),
 			'mailchimp_list_id' => get_option( 'owp_mailchimp_list_id' ),
-		);
-
-		return apply_filters( 'ocean_integrations_settings', $settings );
-	}
-
-	public static function get_adobe_fonts_settings() {
-		$settings = array(
-			'adobe_fonts_integration' => get_option( 'owp_adobe_fonts_integration' ),
-			'adobe_fonts_integration_project_id' => get_option( 'owp_adobe_fonts_integration_project_id' ),
-			'adobe_fonts_integration_enable_customizer' => get_option( 'owp_adobe_fonts_integration_enable_customizer' ),
-			'adobe_fonts_integration_enable_elementor' => get_option( 'owp_adobe_fonts_integration_enable_elementor' ),
 		);
 
 		return apply_filters( 'ocean_integrations_settings', $settings );
@@ -784,7 +757,7 @@ class Ocean_Extra_New_Theme_Panel {
 	}
 
 	function deactive_plugins_controll( $plugin, $network_deactivating ) {
-		if ( $plugin === 'anywhere-elementor/anywhere-elementor.php' ) {
+		if ( $plugin == 'anywhere-elementor/anywhere-elementor.php' ) {
 			$metabox_posttypes_settings = get_option( 'oe_metabox_posttypes_settings', -1 );
 			if ( $metabox_posttypes_settings !== -1 ) {
 				if ( ! empty( $metabox_posttypes_settings['ae_global_templates'] ) ) {

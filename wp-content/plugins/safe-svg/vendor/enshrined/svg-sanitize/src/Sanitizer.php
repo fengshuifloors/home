@@ -7,8 +7,6 @@ use enshrined\svgSanitize\data\AttributeInterface;
 use enshrined\svgSanitize\data\TagInterface;
 use enshrined\svgSanitize\data\XPath;
 use enshrined\svgSanitize\ElementReference\Resolver;
-use HTMLPurifier;
-use HTMLPurifier_Config;
 
 /**
  * Class Sanitizer
@@ -185,7 +183,7 @@ class Sanitizer
      * Sanitize the passed string
      *
      * @param string $dirty
-     * @return string|false
+     * @return string
      */
     public function sanitize($dirty)
     {
@@ -214,7 +212,7 @@ class Sanitizer
         $this->elementReferenceResolver->collect();
         $elementsToRemove = $this->elementReferenceResolver->getElementsToRemove();
 
-        // Start the cleaning process
+        // Start the cleaning proccess
         $this->startClean($this->xmlDocument->childNodes, $elementsToRemove);
 
         // Save cleaned XML to a variable
@@ -648,9 +646,7 @@ class Sanitizer
     protected function cleanUnsafeNodes(\DOMNode $currentElement) {
         // Replace CDATA node with encoded text node
         if ($currentElement instanceof \DOMCdataSection) {
-            $purifier = new HTMLPurifier(HTMLPurifier_Config::createDefault());
-            $clean_html = $purifier->purify($currentElement->nodeValue);
-            $textNode = $currentElement->ownerDocument->createTextNode($clean_html);
+            $textNode = $currentElement->ownerDocument->createTextNode($currentElement->nodeValue);
             $currentElement->parentNode->replaceChild($textNode, $currentElement);
         // If the element doesn't have a tagname, remove it and continue with next iteration
         } elseif (!$currentElement instanceof \DOMElement && !$currentElement instanceof \DOMText) {

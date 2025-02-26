@@ -1,9 +1,11 @@
 function generateCSSUnit( value, unit ) {
-	if ( isNaN( value ) || value === '' ) {
-		return '';
+	let css = '';
+
+	if ( typeof value !== 'undefined' ) {
+		css += value + unit;
 	}
 
-	return value + unit;
+	return css;
 }
 
 export default generateCSSUnit;

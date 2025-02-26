@@ -17,7 +17,9 @@ use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+if (!defined('ABSPATH'))
+    exit; // Exit if accessed directly
+
 
 class L_ThePlus_Contact_Form_7 extends Widget_Base {
 		
@@ -379,24 +381,6 @@ class L_ThePlus_Contact_Form_7 extends Widget_Base {
             [
                 'label' => esc_html__('TextArea (Message) Field', 'tpebl'),
                 'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-		$this->add_responsive_control('textarea_height',
-            [
-                'type' => Controls_Manager::SLIDER,
-				'label' => esc_html__('Height', 'theplus'),
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => [
-						'min' => 1,
-						'max' => 500,
-						'step' => 1,
-					],
-				],
-				'render_type' => 'ui',
-				'selectors' => [
-					'{{WRAPPER}} .theplus-contact-form textarea.wpcf7-form-control:not(.wpcf7-submit):not(.wpcf7-checkbox):not(.wpcf7-radio):not(.wpcf7-file)' => 'height: {{SIZE}}{{UNIT}}',
-				],
             ]
         );
 		$this->add_group_control(

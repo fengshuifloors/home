@@ -23,7 +23,6 @@ class InstagramAPIOfficialUC{
 	private $lastAPIError = "";
 	const DEBUG_SERVER_REQUEST = false;
 	
-	
 	/**
 	 * check if raw response is error one.
 	 */
@@ -72,19 +71,7 @@ class InstagramAPIOfficialUC{
 		}
 		
 		//get response from cache
-		
-		$isNoCache = UniteFunctionsUC::getGetVar("ucnocache","",UniteFunctionsUC::SANITIZE_TEXT_FIELD);
-		$isNoCache = UniteFunctionsUC::strToBool($isNoCache);
-		
-		if(UniteFunctionsWPUC::isCurrentUserHasPermissions() == false)
-			$isNoCache = false;
-		
-		if($isNoCache === true){
-			dmp("loading instagram without cache...");
-		}
-		
-		if(self::CACHE_RESPONSE == true && $isNoCache !== true){
-						
+		if(self::CACHE_RESPONSE == true){
 			$cacheKey = $this->createCacheKey($url);
 			
 			$response = HelperInstaUC::getFromCache($cacheKey);
@@ -202,7 +189,7 @@ class InstagramAPIOfficialUC{
 			UniteFunctionsUC::throwError("Wrong API Response");
 		
 		$arrData = UniteFunctionsUC::convertStdClassToArray($arrData);
-				
+		
 		//check for errors:
 		$error = UniteFunctionsUC::getVal($arrData, "error");
 		if(empty($error))

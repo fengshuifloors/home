@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
+	"apiVersion": 2,
 	"name": "core/comment-reply-link",
 	"title": "Comment Reply Link",
 	"category": "theme",
@@ -25,11 +25,7 @@
 		},
 		"spacing": {
 			"margin": true,
-			"padding": true,
-			"__experimentalDefaultControls": {
-				"margin": false,
-				"padding": false
-			}
+			"padding": true
 		},
 		"typography": {
 			"fontSize": true,
@@ -44,13 +40,6 @@
 				"fontSize": true
 			}
 		},
-		"__experimentalBorder": {
-			"radius": true,
-			"color": true,
-			"width": true,
-			"style": true
-		},
 		"html": false
-	},
-	"style": "wp-block-comment-reply-link"
+	}
 }

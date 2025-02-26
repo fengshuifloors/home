@@ -74,9 +74,7 @@ abstract class Module_Base {
 	public function __construct() {
 		$this->reflection = new \ReflectionClass( $this );
 
-		if ( defined( 'ELEMENTOR_VERSION' ) ) {
-			add_action( 'elementor/widgets/register', array( $this, 'init_widgets' ) );
-		}
+		add_action( 'elementor/widgets/widgets_registered', array( $this, 'init_widgets' ) );
 	}
 
 	/**
@@ -93,9 +91,7 @@ abstract class Module_Base {
 				$class_name = $this->reflection->getNamespaceName() . '\Widgets\\' . $widget;
 
 			if ( $this->is_widget() ) {
-				if ( defined( 'ELEMENTOR_VERSION' ) ) {
-					$widget_manager->register( new $class_name() );
-				}
+				$widget_manager->register_widget_type( new $class_name() );
 			}
 		}
 	}

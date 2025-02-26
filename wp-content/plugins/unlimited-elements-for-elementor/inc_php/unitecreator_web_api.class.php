@@ -650,7 +650,7 @@ class UniteCreatorWebAPIWork{
 		
 		$this->addDebug("Updating catalog option: ".self::OPTION_CATALOG);
 		
-		UniteProviderFunctionsUC::updateOption(self::OPTION_CATALOG, $arrData,false, false);
+		UniteProviderFunctionsUC::updateOption(self::OPTION_CATALOG, $arrData);
 		
 		$arrSavedCatalog = UniteProviderFunctionsUC::getOption(self::OPTION_CATALOG);
 		
@@ -710,6 +710,8 @@ class UniteCreatorWebAPIWork{
 			$data["include_pages"] = true;
 			
 			$response = $this->callAPI("check_catalog", $data);
+			
+			
 			
 			/*	print pages
 			unset($response["catalog"]["addons"]);dmp($response["catalog"]);exit();

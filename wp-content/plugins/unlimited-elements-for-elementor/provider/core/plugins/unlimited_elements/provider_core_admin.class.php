@@ -34,11 +34,10 @@ class UniteProviderCoreAdminUC_Elementor extends UniteProviderAdminUC{
 				"addon",
 				"addondefaults",
 				"svg_shapes",
-				"wpml-fields",
 				"backgrounds",
 				GlobalsUnlimitedElements::VIEW_TEMPLATES_ELEMENTOR,
 				GlobalsUnlimitedElements::VIEW_CUSTOM_POST_TYPES,
-				"testsettings"
+				"test_settings"
 			);
 					
 			HelperProviderCoreUC_EL::globalInit();
@@ -156,6 +155,7 @@ class UniteProviderCoreAdminUC_Elementor extends UniteProviderAdminUC{
 		
 		$noticeID = UniteFunctionsUC::getVal($arrNotice, "id");
 		$text = UniteFunctionsUC::getVal($arrNotice, "text");
+		$expire = UniteFunctionsUC::getVal($arrNotice, "expire");
 		$freeOnly = UniteFunctionsUC::getVal($arrNotice, "free_only");
 		$freeOnly = UniteFunctionsUC::strToBool($freeOnly);
 		
@@ -163,14 +163,7 @@ class UniteProviderCoreAdminUC_Elementor extends UniteProviderAdminUC{
 			return(false);
 		
 		$objNotices = new UniteCreatorAdminNotices();
-		$objNotices->setNotice($text, $noticeID, $arrNotice);		
-
-		$arrNotice2 = GlobalsUnlimitedElements::$arrAdminNotice2;
-		$noticeID = UniteFunctionsUC::getVal($arrNotice2, "id");
-		$text = UniteFunctionsUC::getVal($arrNotice2, "text");
-		
-		$objNotices->setNotice($text, $noticeID, $arrNotice2);	
-
+		$objNotices->setNotice($text, $noticeID, $expire, $arrNotice);		
 	}
 	
 	

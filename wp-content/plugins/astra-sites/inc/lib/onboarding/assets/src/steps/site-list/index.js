@@ -1,5 +1,7 @@
 // External Dependencies.
 import React, { useEffect, useState, useReducer } from 'react';
+import { sprintf, __ } from '@wordpress/i18n';
+import { decodeEntities } from '@wordpress/html-entities';
 import { sortBy } from 'underscore';
 import {
 	SiteType,
@@ -8,8 +10,6 @@ import {
 	NoResultFound,
 } from '@brainstormforce/starter-templates-components';
 import { useNavigate } from 'react-router-dom';
-import { decodeEntities } from '@wordpress/html-entities';
-import { sprintf, __ } from '@wordpress/i18n';
 
 // Internal Dependencies.
 import { DefaultStep, PreviousStepLink, Button } from '../../components/index';
@@ -46,7 +46,7 @@ export const useFilteredSites = () => {
 
 	if ( siteType ) {
 		for ( const siteId in sites ) {
-			if ( 'free' !== sites[ siteId ][ 'astra-sites-type' ] ) {
+			if ( siteType === sites[ siteId ][ 'astra-sites-type' ] ) {
 				sites[ siteId ] = sites[ siteId ];
 			} else {
 				delete sites[ siteId ];
@@ -150,27 +150,27 @@ const SiteList = () => {
 													onMyFavorite: false,
 													siteOrder: 'popular',
 												} );
-												const urlParam =
-													setURLParmsValue(
-														's',
-														childItem.title
-													);
+												const urlParam = setURLParmsValue(
+													's',
+													childItem.title
+												);
 												history( `?${ urlParam }` );
 											} }
 										/>
 									</div>
 									<div className="st-type-and-order-filters">
-										<SiteType
-											value={ siteType }
-											onClick={ ( event, type ) => {
-												dispatch( {
-													type: 'set',
-													siteType: type.id,
-													onMyFavorite: false,
-												} );
-											} }
-										/>
-
+										{ builder !== 'gutenberg' && (
+											<SiteType
+												value={ siteType }
+												onClick={ ( event, type ) => {
+													dispatch( {
+														type: 'set',
+														siteType: type.id,
+														onMyFavorite: false,
+													} );
+												} }
+											/>
+										) }
 										<SiteOrder
 											value={ siteOrder }
 											onClick={ ( event, order ) => {
@@ -182,8 +182,10 @@ const SiteList = () => {
 													selectedMegaMenu: '',
 													siteSearchTerm: '',
 												} );
-												const urlParam =
-													setURLParmsValue( 's', '' );
+												const urlParam = setURLParmsValue(
+													's',
+													''
+												);
 												history( `?${ urlParam }` );
 											} }
 										/>

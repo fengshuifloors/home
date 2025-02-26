@@ -1572,8 +1572,14 @@ class Premium_Icon_List extends Widget_Base {
 			)
 		);
 
-		$selector       = $draw_icon ? '{{WRAPPER}} .premium-drawable-icon *, ' : '';
-		$hover_selector = $draw_icon ? '{{WRAPPER}} .premium-bullet-list-content:hover .premium-drawable-icon *, ' : '';
+		$this->add_control(
+			'icon_color_render_notice',
+			array(
+				'raw'       => __( 'Color options below will be applied on Font Awesome and Text.', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::RAW_HTML,
+				'separator' => 'before',
+			)
+		);
 
 		$this->add_control(
 			'icon_color',
@@ -1585,7 +1591,7 @@ class Premium_Icon_List extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-bullet-list-wrapper i, {{WRAPPER}} .premium-bullet-list-icon-text p' => 'color: {{VALUE}}',
-					$selector . '{{WRAPPER}} svg:not([class*="premium-"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .premium-drawable-icon *, {{WRAPPER}} svg:not([class*="premium-"])' => 'fill: {{VALUE}};',
 					'{{WRAPPER}} .premium-bullet-list-blur:hover .premium-bullet-list-wrapper i, {{WRAPPER}} .premium-bullet-list-blur:hover .premium-bullet-list-wrapper svg, {{WRAPPER}} .premium-bullet-list-blur:hover .premium-bullet-list-wrapper .premium-bullet-list-icon-text p' => 'text-shadow: 0 0 3px {{VALUE}};',
 				),
 			)
@@ -1616,9 +1622,9 @@ class Premium_Icon_List extends Widget_Base {
 					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-bullet-list-content:hover .premium-bullet-list-wrapper i, {{WRAPPER}} .premium-bullet-list-content:hover .premium-bullet-list-icon-text p' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .premium-bullet-list-content:hover .premium-bullet-list-wrapper i ,{{WRAPPER}} .premium-bullet-list-content:hover .premium-bullet-list-icon-text p' => 'color: {{VALUE}}',
 					'{{WRAPPER}} .premium-bullet-list-blur .premium-bullet-list-content:hover .premium-bullet-list-wrapper i, {{WRAPPER}} .premium-bullet-list-blur .premium-bullet-list-content:hover  .premium-bullet-list-icon-text p' => 'text-shadow: none !important; color: {{VALUE}} !important;',
-					$hover_selector . '{{WRAPPER}} .premium-bullet-list-content:hover svg:not([class*="premium-"])' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .premium-bullet-list-content:hover .premium-drawable-icon *, {{WRAPPER}} .premium-bullet-list-content:hover svg:not([class*="premium-"])' => 'fill: {{VALUE}};',
 				),
 			)
 		);

@@ -645,7 +645,7 @@ class Premium_Blog extends Widget_Base {
 			array(
 				'label'      => __( 'Height', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', 'custom' ),
+				'size_units' => array( 'px', 'em' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 0,
@@ -3022,17 +3022,15 @@ class Premium_Blog extends Widget_Base {
 
 				$slug = str_replace( '-' . $current_language, '', $value->slug );
 
-				$if_empty = empty( array_intersect( array( $slug, $value->slug ), $filters ) );
-
 				if ( 'IN' === $filter_rule ) {
 
-					if ( ! $if_empty ) {
+					if ( in_array( $slug, $filters, true ) ) {
 
 						$tabs_array[] = $value;
 					}
 				} else {
 
-					if ( $if_empty ) {
+					if ( ! in_array( $slug, $filters, true ) ) {
 
 						$tabs_array[] = $value;
 					}

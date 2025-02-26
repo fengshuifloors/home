@@ -16,15 +16,17 @@
 
 .premium-banner-img-wrap {
     -js-display: flex;
-    display: -ms-flexbox;
+    display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
     height: 100%;
 }
 
 .premium-banner-img-wrap .premium-banner-ib-img {
-    -ms-flex-negative: 0;
     -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
     flex-shrink: 0;
 }
 
@@ -33,6 +35,8 @@
     overflow: hidden;
     margin: 0 0 35px;
     text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -51,6 +55,8 @@
 
 .premium-banner-ib *,
 .premium-banner-ib .premium-banner-ib-desc {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -65,6 +71,8 @@
     padding: 15px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
     position: absolute;
     top: 0;
@@ -98,7 +106,9 @@
     max-width: calc(100% + 50px) !important;
     -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+    -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+    transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     -webkit-transform: translate3d(40px, 0, 0);
     transform: translate3d(40px, 0, 0);
@@ -341,11 +351,11 @@
     right: 30px;
     border-top: 1px solid #fff;
     border-bottom: 1px solid #fff;
-    -ms-transform: scale(0, 1);
     -webkit-transform: scale(0, 1);
+    -ms-transform: scale(0, 1);
     transform: scale(0, 1);
-    -ms-transform-origin: 100% 0;
     -webkit-transform-origin: 100% 0;
+    -ms-transform-origin: 100% 0;
     transform-origin: 100% 0;
 }
 
@@ -356,11 +366,11 @@
     right: 50px;
     border-left: 1px solid #fff;
     border-right: 1px solid #fff;
-    -ms-transform: scale(1, 0);
     -webkit-transform: scale(1, 0);
+    -ms-transform: scale(1, 0);
     transform: scale(1, 0);
-    -ms-transform-origin: 0% 0;
     -webkit-transform-origin: 0% 0;
+    -ms-transform-origin: 0% 0;
     transform-origin: 0% 0;
 }
 
@@ -421,8 +431,8 @@
 .premium-banner-animation4:hover .premium-banner-ib-desc::before,
 .premium-banner-animation4.active .premium-banner-ib-desc::before {
     opacity: 1;
-    -ms-transform: scale(1);
     -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
 }
 
@@ -503,8 +513,8 @@
 .premium-banner-animation5.active .premium-banner-ib-title,
 .premium-banner-animation5:hover .premium-banner-read-more,
 .premium-banner-animation5.active .premium-banner-read-more {
-    -ms-transform: translateY(0);
     -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
     transform: translateY(0);
 }
 
@@ -516,7 +526,9 @@
 .premium-banner-animation5 img {
     -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+    -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+    transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
 }
 
@@ -525,52 +537,54 @@
 .premium-banner-animation6 img {
     -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+    -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+    transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation5.zoomout img,
 .premium-banner-animation5.scale img {
-    -ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
     transform: scale(1.1);
 }
 
 .premium-banner-animation2.zoomout img,
 .premium-banner-animation2.scale img {
-    -ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
     transform: scale(1.1);
 }
 
 .premium-banner-animation6.zoomout img,
 .premium-banner-animation6.scale img {
-    -ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
     transform: scale(1.1);
 }
 
 .premium-banner-animation5.zoomin:hover img,
 .premium-banner-animation2.zoomin:hover img,
 .premium-banner-animation6.zoomin:hover img {
-    -ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
     transform: scale(1.1);
 }
 
 .premium-banner-animation5.zoomout:hover img,
 .premium-banner-animation2.zoomout:hover img,
 .premium-banner-animation6.zoomout:hover img {
-    -ms-transform: scale(1);
     -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
 }
 
 .premium-banner-animation5.scale:hover img,
 .premium-banner-animation2.scale:hover img,
 .premium-banner-animation6.scale:hover img {
-    -ms-transform: scale(1.2) rotate(-5deg);
     -webkit-transform: scale(1.2) rotate(-5deg);
+    -ms-transform: scale(1.2) rotate(-5deg);
     transform: scale(1.2) rotate(-5deg);
 }
 
@@ -624,8 +638,8 @@
     transition: opacity 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, transform 0.35s;
     transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
-    -ms-transform: scale(0);
     -webkit-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0);
 }
 
@@ -646,8 +660,8 @@
 .premium-banner-animation6:hover .premium-banner-ib-desc::before,
 .premium-banner-animation6.active .premium-banner-ib-desc::before {
     opacity: 1;
-    -ms-transform: scale(1);
     -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
 }
 
@@ -707,7 +721,9 @@
     max-width: calc(100% + 20px) !important;
     -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+    -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+    transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
     -webkit-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0);
@@ -854,8 +870,8 @@
     width: auto !important;
     height: 100%;
     max-width: none;
-    -ms-transform: translateX(50%);
     -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
     transform: translateX(50%);
 }
 
@@ -1045,8 +1061,8 @@
 .premium-banner-animation8 .premium-banner-bleft {
     right: 30px;
     top: 50%;
-    -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     height: 0;
 }
@@ -1054,16 +1070,16 @@
 .premium-banner-animation8 .premium-banner-bright {
     left: 30px;
     top: 50%;
-    -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     height: 0;
 }
 
 .premium-banner-animation8 .premium-banner-bottom {
     right: 50%;
-    -ms-transform: translateX(50%);
     -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
     transform: translateX(50%);
     bottom: 30px;
     width: 0;
@@ -1071,8 +1087,8 @@
 
 .premium-banner-animation8 .premium-banner-btop {
     right: 50%;
-    -ms-transform: translateX(50%);
     -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
     transform: translateX(50%);
     top: 30px;
     width: 0;
@@ -1186,8 +1202,8 @@
     transition: opacity 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, transform 0.35s;
     transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
-    -ms-transform: scale(1.2);
     -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
     transform: scale(1.2);
 }
 
@@ -1291,8 +1307,8 @@
 }
 
 .premium-banner-animation9:hover img {
-    -ms-transform: scale(1);
     -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
 }
 
@@ -1427,6 +1443,7 @@
     bottom: 0;
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
+    background-image: -webkit-linear-gradient(-40deg, rgba(84, 89, 95, 0.5) 27.89%, #6ec1e4 72.11%);
     background-image: -webkit-linear-gradient(130deg, rgba(84, 89, 95, 0.5) 27.89%, #6ec1e4 72.11%);
     background-image: linear-gradient(-40deg, rgba(84, 89, 95, 0.5) 27.89%, #6ec1e4 72.11%);
     z-index: 2;
@@ -1459,14 +1476,4 @@
 .premium-banner-animation11.scale img {
     -webkit-transform: translate3d(-10px, 0, 0) scale(1.1);
     transform: translate3d(-10px, 0, 0) scale(1.1);
-}
-
-.premium-banner-ib-content p img {
-    min-width: unset !important;
-    max-width: none !important;
-    width: auto !important;
-    -webkit-transform: none !important;
-    -ms-transform: none !important;
-    transform: none !important;
-    display: inline;
 }

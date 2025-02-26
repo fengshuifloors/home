@@ -86,12 +86,7 @@ abstract class PageBase extends Document {
 			[
 				'label' => esc_html__( 'Hide Title', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
-				'description' => sprintf(
-					/* translators: 1: Link open tag, 2: Link close tag. */
-					esc_html__( 'Set a different selector for the title in the %1$sLayout panel%2$s.', 'elementor' ),
-					'<a href="javascript: $e.run( \'panel/global/open\' ).then( () => $e.route( \'panel/global/settings-layout\' ) )">',
-					'</a>'
-				),
+				'description' => esc_html__( 'Not working? You can set a different selector for the title in Site Settings > Layout', 'elementor' ),
 				'selectors' => [
 					':root' => '--page-title-display: none',
 				],
@@ -121,7 +116,7 @@ abstract class PageBase extends Document {
 			[
 				'label' => esc_html__( 'Margin', 'elementor' ),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+				'size_units' => [ 'px', 'em', '%', 'rem' ],
 				'selectors' => [
 					'{{WRAPPER}}' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				],
@@ -133,7 +128,7 @@ abstract class PageBase extends Document {
 			[
 				'label' => esc_html__( 'Padding', 'elementor' ),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+				'size_units' => [ 'px', 'em', '%', 'rem' ],
 				'selectors' => [
 					'{{WRAPPER}}' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				],
@@ -229,8 +224,8 @@ abstract class PageBase extends Document {
 		$config = parent::get_remote_library_config();
 
 		$config['category'] = '';
-		$config['type'] = 'block';
-		$config['default_route'] = 'templates/blocks';
+		$config['type'] = 'page';
+		$config['default_route'] = 'templates/pages';
 
 		return $config;
 	}

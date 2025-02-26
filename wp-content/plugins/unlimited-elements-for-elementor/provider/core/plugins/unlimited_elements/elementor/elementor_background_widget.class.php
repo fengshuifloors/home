@@ -135,10 +135,10 @@ class UniteCreatorElementorBackgroundWidget extends UniteCreatorElementorWidget 
     	
     	foreach($arrSettings as $key => $value){
     		
-    		if(strpos($key, $typeSearch) !== 0)
+    		if(strpos($key, $typeSearch) === false)
     			continue;
     		
-    		$addonKey = UniteFunctionsUC::replaceFirstSubstring($key, $bgType."_", "");
+    		$addonKey = str_replace($typeSearch, "", $key);
     		
     		$arrBGSettings[$addonKey] = $value;
     	}

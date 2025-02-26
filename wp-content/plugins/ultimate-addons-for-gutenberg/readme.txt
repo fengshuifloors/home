@@ -2,10 +2,10 @@
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
-Requires at least: 5.6
+Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 6.2
-Stable tag: 2.6.1
+Tested up to: 6.1
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,6 +117,10 @@ We understand the need for a quality product backed by dedicated support that ca
 
 You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Spectra on Github</a>
 
+<strong>CREDITS</strong>
+
+The awesome React FontIconPicker is developed by <a href="http://codeb.it/" target="_blank" rel="">Alessandro Benoit</a> & <a href="https://github.com/swashata" target="_blank" rel="">Swashata</a>. Our external packages use <a href="https://github.com/n49/react-stars" target="_blank" rel="">Star Ratings Component</a> that are distributed under the terms of the ISC. While <a href="https://github.com/akiran/react-slick" target="_blank" rel="">Slick</a>, <a href="https://github.com/chenqingspring/react-lottie" target="_blank" rel="">Lottie</a> and <a href="https://github.com/ericnorris/striptags" target="_blank" rel="">Striptags</a> is distributed under the terms of the MIT.
+
 == Installation ==
 
 1. Install the Spectra either via the WordPress plugin directory or by uploading the files to your server at wp-content/plugins.
@@ -158,206 +162,13 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Credits ==
 
-Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
+The awesome React FontIconPicker is developed by [Alessandro Benoit](http://codeb.it/) & [Swashata](https://github.com/swashata). Our external packages uses [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT, [WP Background Processing](https://github.com/deliciousbrains/wp-background-processing) is distributed under the terms of the GPL-2.0 license.
 
 == Screenshots ==
 
 1. /assets/screenshots/1.png
 
 == Changelog ==
-
-= 2.6.1 - FRIDAY, 19th MAY 2003 =
-* Improvement: Added Premium Templates in Template Kits library
-* Fix: Admin Dashboard - Added missing i18n support for some strings.
-* Fix: Admin Dashboard - 'Activate all' and 'Deactivate all' previously had no impact on the status of Animations extension.
-* Fix: Animations Extension - Resolved the 'Error loading' issue for dynamic blocks that was caused by animation attributes.
-* Fix: CF7 Designer - Resolved an issue with CF7 Styler where CSS of custom classes were not being applied correctly to multiple column fields.
-* Fix: Image Gallery - Resolved an issue in which the 'show on hover' border color for bar-type captions would not work as intended.
-
-= 2.6.0 - WEDNESDAY, 17th MAY 2023 =
-* New: Introducing the Popup Builder - Create sitewide Popups and Info Bars with ease!
-* New: Introducing the Animations extension - Give a new life to your page with some scroll-based entrance animations.
-* New: Introducing the Separator block -  Divide your page content in style.
-* Improvement: Heading - Added the functionality to move onto a new paragraph when pressing the enter key inside the Heading block.
-* Improvement: Countdown - Added the Countdown block to the list of Core Blocks.
-* Improvement: Typography - Added 'Bebas Neue' Google font in Font Families.
-* Fix: Container - Resolved an issue in which the content box width would not apply in the editor inside the column core block.
-* Fix: Container - Resolved an issue where the video/image background styling was not working as expected on the front-end.
-* Fix: Image - Resolved an issue where an error would occur when we try to crop the image.
-* Fix: Buttons - Fixed the issue in which the text hover color would apply to the icon when the icon is enabled.
-* Fix: Info Box -  Resolved an issue in which the prefix margin would not be applied on the front-end.
-* Fix: Forms - Fixed an issue on form submission failure in FSE themes.
-* Fix: Image Gallery - Resolved an issue wherein the carousel images would initially appear big on load.
-* Fix: Form - Resolved an issue in which the forms were not being submitted when the block is used inside the footer widget.
-* Fix: Masonry Gallery Extension - Resolved an issue in which the Masonry Gallery extension would not work as intended in the FSE.
-* Fix: Masonry Gallery - Resolved an issue in which the reset button did not work as intended.
-* Fix: Modal - Resolved an issue with the close button in Astra's custom layout action hook `before_add_to_card_form`.
-* Fix: Modal - Resolved an issue wherein the alignment of the block moves to the center from the left when inside the Container.
-* Fix: Post Blocks - Resolved an issue wherein the Spectra Heading and Container blocks were not displayed in post excerpts.
-* Fix: Post Grid - Resolved a pagination bug in Post Grid that affected the other grid's pagination.
-* Fix: Slider - Fixed an issue that was causing the Slider block to malfunction when used in the Full Site Editing (FSE) template and widget editors.
-* Fix: Table Of Contents - Updated the front-end preview UI to match in the "Inside Post/Page Content" type of Astra's Custom Layout.
-* Fix: Table Of Contents - Resolved an issue wherein the gap between lists setting would not work as required on the front-end.
-* Fix: Tabs - Set the tab title default color to 'inherit' to prevent it from taking the link color from the theme.
-* Fix: Taxonomy List - Resolved an issue where the child taxonomy links would show the link of the parent taxonomy.
-* Fix: Multi-buttons Control - Resolved a console issue that occurs when setAttributes is not defined.
-* Fix: Custom CSS - Added support for Custom CSS on the front-end for WP Core blocks without requiring a Spectra block to be present.
-* Fix: Global - Resolved an issue wherein a PHP error would appear for the Full Site Editing (FSE) font compatibility feature.
-* Fix: Global - Fixed an issue wherein a Google error would appear when loading Google Fonts locally with a specific font weight and family set to default.
-* Fix: Global - Fixed a font resource URL breakage issue that occurs when the provided 'google_font' array contains a font family with an empty string.
-* Fix: Global - Updated dynamic styling to load in FSE (Full Site Editing) template pages in the front-end for reusable blocks.
-
-= 2.5.1 - THURSDAY, 27th APRIL 2023 =
-* Feature: You can now add Google Fonts to Block Based Themes from Spectra Dashboard.
-* Fix: Counter - Added support for use within Slider (previously not working within Slider when it's set to infinite loop).
-* Fix: Buttons - Gap settings on Mobile preview is taking desktop value as default.
-* Fix: Modal - Container background do not get border radius.
-* Fix: Modal - Background not applying properly when custom width is set.
-* Fix: Resolve an issue of PHP error appear for block-based widget editor.
-* Fix: Table Of Contents - Removed the console warning that was thrown for an empty collapsible Table Of Contents block.
-
-= 2.5.0 - TUESDAY, 25th APRIL 2023 =
-* New: Spectra now has support for the all-new Spectra Pro!
-* Improvement: Global - Improved the editor performance.
-* Improvement: Global - Added Advanced options in Gradient Component.
-* Fix: Container - Resolved an issue where the heading tags were not inheriting the color from the theme or the Container.
-* Fix: Container - Removed Z-index restrictions that caused Image Gallery Lightboxes to get overlapped by other content.
-* Fix: Container - Handled the full-width issue encountered with the Neve theme on the front-end.
-* Fix: Container - Fixed settings link control's unlink functionality.
-* Fix: Heading - Removed the extra padding that was visible in the editor.
-* Fix: Image - Resolved an issue where the width and height tags would not appear when an image is uploaded.
-* Fix: Image - Removed the extra spacing and fixed the escaping container size issue in FSE themes.
-* Fix: Image - Resolved an issue in which the image sizing was incorrectly set for mobile devices on the front-end.
-* Fix: Countdown - Fixed separator line-height mismatch between the editor and the front-end.
-* Fix: Forms - Resolved an accessibility issue wherein the field labels for date and toggle child were missing.
-* Fix: Image Gallery - Replaced the null array focus list with an optimized object.
-* Fix: Image Gallery - Updated the carousel gap to work as required.
-* Fix: Modal - Removed the trigger alignment option for automatic, custom ID and custom class trigger types.
-* Fix: Post Carousel - Resolved an issue in the TwentyTwentyone theme wherein the hover styles for arrows and dots were mismatched in the editor and front-end.
-* Fix: Post Carousel - Resolved an issue in which the gap between posts was not visible when only 2 posts were present.
-* Fix: Slider - Updated dot color setting to avoid taking the background color of arrows.
-* Fix: Table Of Contents - Resolved an HTML validation issue in the HTML validator.
-* Fix: Advanced Columns - Resolved an issue in which the border radius was not getting applied in the front-end.
-* Fix: Controls - Updated control UI to render seamlessly when in RTL mode.
-* Fix: Spacing Control - Removed the capability to set negative values for width and border radius settings.
-* Fix: Typography Control - Removed the capability to set negative values for line height and font size settings.
-* Fix: Global - Resolved an issue in which fonts would not load in the customizer when Spectra blocks are used in Astra theme's header/footer section.
-* Fix: Global - Updated the mobile settings to inherit tablet setting values in the editor instead of inheriting desktop values.
-
-= 2.4.2 - WEDNESDAY, 12th APRIL 2023 =
-* Fix: Container - Updated the default content width for block-based themes to "wideSize".
-
-= 2.4.1 - TUESDAY, 28th MARCH 2023 =
-* Improvement: Updated Spectra to work with WordPress 6.2 and Full Site Editing (FSE) themes.
-* Improvement: Added filter to enable/disable core responsive condition.
-* Improvement: Resolved the Spectra blocks editor spacing conflict with the Blocksy theme.
-* Fix: Image - Resolved an issue where the image caption was visible twice in the editor when caption is enabled.
-* Fix: Inline Notice - Resolved an issue where the content color and typography were not working in the editor.
-* Fix: Modal - Resolved an issue where the Info box as an inner block was not loading in the Modal when Gutenberg was activated.
-* Fix: Social Share - Optimized PHP code for legacy users causing an error due `array_merge()` parameter issues.
-* Fix: Taxonomy List - Added the missing translation for the Select string in the PHP code.
-* Fix: Post Grid - Resolved an issue where pagination was not visible inside the editor.
-
-= 2.4.0 - WEDNESDAY, 15th MARCH 2023 =
-* New: Introducing the Countdown block that will help you generate hype and create a sense of urgency among your audience, during product sales or releases!
-* New: Introducing the Icon block that allows you to add FontAwesome 6 icons on your website with tonnes of styling options.
-* Feature: Image Gallery - Added a new lightbox feature with all the essential customizability that you'll need.
-* Improvement: Performance - Optimized the editor performance for all Spectra Blocks.
-* Improvement: Performance - Improved the archive page speed.
-* Improvement: Image Gallery - Added a dropdown to select the image size for all the images in the gallery.
-* Improvement: Custom CSS - Disabled the option for "on page-level CSS".
-* Improvement: Typography - Added Fahkwang and Jost Google Fonts in Font Families.
-* Improvement: Typography - Added Zen dots Google font in Font Families.
-* Improvement: Display Conditions - Added a "Day" option to display Spectra blocks on specific days.
-* Fix: Container - Resolved the full-width issue when adding a Container block inside the Slider block.
-* Fix: Container - Resolved an issue where the content was misaligned vertically when the background type was set to "video".
-* Fix: Image - Resolve an issue that was encountered when the Gutenberg plugin was activated.
-* Fix: Image - Updated the image dimensions width & height box as per the Spectra UI guidelines.
-* Fix: Buttons - Fixed the stack orientation and responsive alignment settings not working as expected on the front end.
-* Fix: Info Box - Resolved an issue where the icon was misaligned on tablet/mobile when padding was added.
-* Fix: Info Box - Updated the CTA hover styling on the front end.
-* Fix: Call To Action - Resolved an issue where the additional button's icon color was not changing on hover in the front end.
-* Fix: Forms- Resolved an issue where the form submit throws a success message without adding the "To" email address field.
-* Fix: Forms/Tabs/Table Of Contents - Resolved an issue where the JS throws an error in the console on blog/home page.
-* Fix: Post Timeline - Resolved an issue where the left padding was not applicable on the front end.
-* Fix: Team - Resolved an issue where images were not working as expected on responsive device presets.
-* Fix: Display Conditions - Fixed the undefined `key/index` when the Operating System is set to none.
-* Fix: Responsive Conditions - Updated slanted lines visibility for Counter and Slider Blocks.
-* Fix: Responsive Conditions - Slanted lines not visible for Post timeline and Content timeline Blocks.
-* Fix: Global - Updated Border Settings to remove all Border CSS when set to "default".
-* Fix: Global - Excluded BR Tags from buttons' text.
-* Fix: Global - Cartflows templates throw an error in the editor's Spectra Page Settings.
-* Fix: Global - Fonts was not loading on 404 page when Spectra blocks used in Astra theme's header/footer.
-
-= 2.3.5 - THURSDAY, 2nd FEBRUARY 2023 =
-* Improvement: Global - Removed Backward compatibility of button padding for old users from multiple blocks.
-* Improvement: Global - Updated SVG icons rendering conditions & optimized the loading.
-* Fix: Container - Full height and Fixed background Image not working properly on editor.
-* Fix: Info-Box - CTA padding not working on responsive devices.
-* Fix: Heading - Disabling heading and sub-heading hides the separator.
-* Fix: Forms - Using form inside inner blocks, it was showing an error on submit.
-* Fix: Background control - Image has wrong units for custom positioning.
-
-= 2.3.4 - WEDNESDAY, 25th JANUARY 2023 =
-* Improvement: Updated Gutenberg Templates Library.
-
-= 2.3.3 - TUESDAY, 24th JANUARY 2023 =
-* Fix: Post Block - PHP comment appears on frontend.
-
-= 2.3.2 - MONDAY, 23rd JANUARY 2023 =
-* Security fixes: Props to Patchstack for reporting security issues. Those are fixed in this release. Plus we’ve hardened security in other areas of the plugin.
-* Improvement: Modal - Added presets for a button trigger.
-* Fix: Forms - Multiple Form Submit AJAX related issues.
-* Fix: Timeline - unable to set connector Icon Background Size to zero.
-* Fix: Gradient Picker - block encounter an error when using gradient picker for Spectra block when Gutenberg is activated.
-
-= 2.3.1 - FRIDAY, 20th JANUARY 2023 =
-* Fix: Info-Box - Margin unit set to `px` after refresh in editor.
-* Fix: Post Block - First post is getting empty when post block used on shop page.
-* Fix: Background processing issue in some cases.
-
-= 2.3.0 - THURSDAY, 12th JANUARY 2023 =
-* New: Introducing the Slider block that allows you to make almost anything into a carousel, a good way to grab attention!
-* Improvement: Added support for Astra's 4.0 theme menu position next to the Dashboard in admin.
-* Fix: Container - Adding padding to paragraph cause uneven space and cross the boundary of container on responsive devices.
-* Fix: Container - Background video goes out the boundary of the container if we have rounded corner.
-* Fix: Image Gallery - When adding any of the HTML code or adding the link, the visibility of that caption gets changed to always visible
-* Fix: Image Gallery - Broken links were shown in the gallery on frontend when added to caption.
-* Fix: Icon List - Disable link for the list item, it turns on the toggle again.
-* Fix: Testimonial - Carousel dots overlapping on below blocks in the mobile device.
-* Fix: Post Grid - Undefined array key issue.
-* Fix: How-To - Image is not visible when image selected from Image control.
-* Fix: Image - Does not wrap with paragraph.
-* Fix: Tabs - Container get hidden inside tabs body whenever use.
-* Fix: Global - Buttons - Removed the WP default allowedFormats from the toolbar.
-* Fix: Global - SVG Icons for blocks look big after switching to responsive devices inside the editor.
-* Deprecated: Global - Removed deprecated toolbar and multiline for rich text.
-
-= 2.2.0 - TUESDAY, 27th DECEMBER 2022 =
-* New: Introducing the Modal block that will help you to show your own customized popups on the page and turn your visitors into subscribers and leads!
-* Improvement: Global - Added hover color accessibility to Spectra block with a button.
-* Improvement: Counter - Bar Layout - Added toggle to flip/swap the positions of bar and title.
-* Fix: Container - Resolved the issue where the list items overflow inside a Container on responsive devices.
-* Fix: Image - Resolved the issue where the alignments are ineffective inside a Container on the front end.
-* Fix: Buttons - Page scroll to the top when the hash link is added and refresh on click when the hash is removed.
-* Fix: Post Grid - Equal Height is not functional in Post Grid block.
-* Fix: Tabs - Removed the WP default Link option from the toolbar for the tabs title field.
-* Fix: Testimonial - Block break when we reduce the number of testimonials to 2.
-* Fix: Block Transform - Theme pallet color for default theme does not carry forward when block transform.
-* Fix: Typography - Resolved Google font console errors.
-
-= 2.1.1 - WEDNESDAY, 14th DECEMBER 2022 =
-* Improvement: Call To Action - Added a width option for the CTA buttons.
-* Improvement: Forms - Added a gradient background option for the submit button.
-* Improvement: Table Of Contents - Added unique IDs for headings that have the same text.
-* Improvement: Typography Control - Allowed negative values for letter spacing.
-* Fix: Container - Resolved an issue where the boxed container width would break when inside other blocks.
-* Fix: Container - Resolved an issue in which the background image position control goes missing when the viewport is changed.
-* Fix: Forms - Resolved an issue wherein settings a checkbox with a required condition would enforce the user to check all the checkboxes before submitting the form.
-* Fix: Marketing Button - Implemented support to make the background and hover colors persist for older users (V1.25.6).
-* Fix: Post Carousel/Masonry - Resolved an issue wherein the featured images for posts were not visible.
-* Fix: Post Carousel - Resolved an issue in which the static CSS was not loaded on the front end.
-* Fix: Separator Control - Removed the unwanted space that was added when the separator is used.
 
 = 2.1.0 - WEDNESDAY, 07th DECEMBER 2022 =
 * New: Introducing the Counter block with layouts that will help you flaunt your stats in a cool way!

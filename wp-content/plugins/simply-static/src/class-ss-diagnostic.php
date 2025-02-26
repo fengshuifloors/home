@@ -16,8 +16,8 @@ class Diagnostic {
 
 	/** @const */
 	protected static $min_version = array(
-		'php' => '7.4',
-		'curl' => '7.68.0'
+		'php' => '7.2.5',
+		'curl' => '7.15.0'
 	);
 
 	/**
@@ -145,7 +145,7 @@ class Diagnostic {
 		if ( stripos( $file, get_home_path() ) !== 0 && stripos( $file, WP_PLUGIN_DIR ) !== 0 && stripos( $file, WP_CONTENT_DIR ) !== 0 ) {
 			$test = false;
 			$message = __( 'Not a valid path', 'simply-static' );
-		} elseif ( ! is_readable( $file ) ) {
+		} else if ( ! is_readable( $file ) ) {
 			$test = false;
 			$message = __( 'Not readable', 'simply-static' );;
 		} else {
@@ -171,7 +171,7 @@ class Diagnostic {
 	public function is_wp_cron_running() {
 		$label = __( 'Checking if WordPress cron is available and running', 'simply-static' );
 
-		if ( ! defined( 'DISABLE_WP_CRON' ) || DISABLE_WP_CRON !== true || defined( 'SS_CRON' ) ) {
+		if ( ! defined( 'DISABLE_WP_CRON' ) || DISABLE_WP_CRON !== true ) {
 			$is_cron = true;
 		} else {
 			$is_cron = false;

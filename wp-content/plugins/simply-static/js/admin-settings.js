@@ -57,20 +57,24 @@ jQuery( document ).ready( function( $ ) {
 
 		if ( $radio.val() == 'absolute' ) {
 			$( '#destinationHost' )
-				.prop( 'readonly', false );
+				.prop( 'disabled', false );
 			$( '#destinationScheme' )
-				.prop( 'readonly', false );
+				.prop( 'disabled', false );
 		} else {
-			$( '#destinationHost' ).prop( 'readonly', true );
+			$( '#destinationHost' )
+				.val('')
+				.prop( 'disabled', true );
 			$( '#destinationScheme' )
-				.prop( 'readonly', true )
+				.prop( 'disabled', true )
 		}
 
 		if ( $radio.val() == 'relative' ) {
 			$( '#relativePath' )
-				.prop( 'readonly', false );
+				.prop( 'disabled', false );
 		} else {
-			$( '#relativePath' ).prop( 'readonly', true );
+			$( '#relativePath' )
+				.val('')
+				.prop( 'disabled', true );
 		}
 	}
 

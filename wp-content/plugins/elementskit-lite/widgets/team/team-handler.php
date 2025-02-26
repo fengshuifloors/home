@@ -20,10 +20,6 @@ class ElementsKit_Widget_Team_Handler extends \ElementsKit_Lite\Core\Handler_Wid
         return [ 'elementskit' ];
     }
 
-    static function get_keywords() {
-        return ['ekit', 'team', 'member', 'crew', 'staff', 'person'];
-    }
-
     static function get_dir() {
         return \ElementsKit_Lite::widget_dir() . 'team/';
     }

@@ -501,7 +501,7 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 	/**
 	 * get addon output, for the editor
 	 */
-	public function getAddonOutput($objAddon, $isWrap = true, $includeSelectors = false){
+	public function getAddonOutput($objAddon, $isWrap = true){
 		
 		$processType = UniteCreatorParamsProcessor::PROCESS_TYPE_OUTPUT_BACK;
 		
@@ -515,22 +515,14 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 		else
 			$params = array();
 			
-		if($includeSelectors == true)
-			$params["add_selectors_css"] = true;
-		
 		$htmlAddon = $objOutput->getHtmlBody(true,false,true,$params);
 		
-		$outputID = $objOutput->getWidgetID();
-		
 		$arrIncludes = $objOutput->getProcessedIncludes(true);
-				
+		
 		$arr = array();
 		$arr["html"] = $htmlAddon;
 		$arr["includes"] = $arrIncludes;
-
-		if($includeSelectors == true)
-			$arr["output_id"] = $outputID;
-		
+		//$arr["constants"] = $arrConstantData;
 		
 		return($arr);
 	}
@@ -544,11 +536,7 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 		//set addon type
 		$objAddon = $this->prepareAddonByData($addonData);
 		
-		$isIncludeSelectors = UniteFunctionsUC::getVal($addonData, "selectors");
-		
-		$isIncludeSelectors = UniteFunctionsUC::strToBool($isIncludeSelectors);
-		
-		$arrAddonContents = $this->getAddonOutput($objAddon, true, $isIncludeSelectors);
+		$arrAddonContents = $this->getAddonOutput($objAddon);
 		
 		return($arrAddonContents);
 	}
@@ -718,18 +706,6 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 			$arrSettings = UniteFunctionsUC::getVal($addonData, "settings");
 			
 			if(!empty($arrSettings)){
-				
-				if(isset($arrSettings["uc_items"])){
-					
-					$arrItems = UniteFunctionsUC::getVal($arrSettings, "uc_items");
-					if(empty($arrItems))
-						$arrItems = array();
-					
-					$objAddon->setArrItems($arrItems);
-					
-					unset($arrSettings["uc_items"]);
-				}
-				
 				
 				$objAddon->setParamsValues($arrSettings);
 				
@@ -1348,39 +1324,16 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 	 */
 	public function saveTestAddonData($data, $slot=1){
 		
-		$addonID = UniteFunctionsUC::getVal($data, "id");
+		$addonName = UniteFunctionsUC::getVal($data, "name");
+		$addontype = UniteFunctionsUC::getVal($data, "addontype");
 		
-		if(!empty($addonID)){
-			
-			$config = UniteFunctionsUC::getVal($data, "settings_values");
-						
-			$items = array();
-			
-			if(isset($config["uc_items"])){
-			
-				$items = UniteFunctionsUC::getVal($config, "uc_items");
-				unset($config["uc_items"]);
-			}
-			
-			$fonts = "";
-
-			$objAddon = new UniteCreatorAddon();
-			$objAddon->initByID($addonID);
-			
-			
-		}else{
-			$addonName = UniteFunctionsUC::getVal($data, "name");
-			$addontype = UniteFunctionsUC::getVal($data, "addontype");
-			
-			$config = UniteFunctionsUC::getVal($data, "config", array());
-			$items = UniteFunctionsUC::getVal($data, "items", array());
-			$fonts = UniteFunctionsUC::getVal($data, "fonts");
-			
-			$objAddon = new UniteCreatorAddon();
-			$objAddon->initByMixed($addonName, $addontype);
-			
-		}
+		$config = UniteFunctionsUC::getVal($data, "config", array());
+		$items = UniteFunctionsUC::getVal($data, "items", array());
+		$fonts = UniteFunctionsUC::getVal($data, "fonts");
 		
+		
+		$objAddon = new UniteCreatorAddon();
+		$objAddon->initByMixed($addonName, $addontype);
 		
 		$objAddon->saveTestSlotData($slot, $config, $items, $fonts);
 	}
@@ -1404,26 +1357,7 @@ class UniteCreatorAddons extends UniteElementsBaseUC{
 		$objAddon = $this->initAddonByData($data);
 		$slotNum = UniteFunctionsUC::getVal($data, "slotnum");
 		
-		$isCombine = UniteFunctionsUC::getVal($data, "combine");
-		
-		$isCombine = UniteFunctionsUC::strToBool($isCombine);
-		
 		$data = $objAddon->getTestData($slotNum);
-		
-		if($isCombine == true){
-			
-			$config = UniteFunctionsUC::getVal($data, "config", array());
-			
-			$items = UniteFunctionsUC::getVal($data, "items");
-			
-			if(!empty($items))
-				$config["uc_items"] = $items;
-				
-			$output = array("settings_values"=>$config);
-				
-			return($output);
-		}
-		
 		
 		return($data);
 	}

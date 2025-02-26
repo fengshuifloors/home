@@ -10,6 +10,8 @@
 // Add fonts.
 UAGB_Block_JS::blocks_advanced_heading_gfont( $attr );
 
+$block_name = 'advanced-heading';
+
 $m_selectors = array();
 $t_selectors = array();
 
@@ -20,7 +22,11 @@ $highLight_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr
 
 $selectors = array(
 	'.wp-block-uagb-advanced-heading .uagb-heading-text' => array(
-		'color' => $attr['headingColor'],
+		'color'         => $attr['headingColor'],
+		'margin-bottom' => UAGB_Helper::get_css_value(
+			UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $block_name ),
+			'px'
+		),
 	),
 	'.wp-block-uagb-advanced-heading '                   => array(
 		'background'     => 'classic' === $attr['blockBackgroundType'] ? $attr['blockBackground'] : $attr['blockGradientBackground'],
@@ -67,7 +73,7 @@ $selectors = array(
 	'.wp-block-uagb-advanced-heading .uagb-desc-text'    => array(
 		'color'         => $attr['subHeadingColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value(
-			$attr['subHeadSpace'],
+			UAGB_Block_Helper::get_fallback_number( $attr['subHeadSpace'], 'subHeadSpace', $block_name ),
 			'px'
 		),
 	),
@@ -159,36 +165,36 @@ if ( 'none' !== $seperatorStyle ) {
 	$selectors['.wp-block-uagb-advanced-heading .uagb-separator']   = array(
 		'border-top-style' => $attr['seperatorStyle'],
 		'border-top-width' => UAGB_Helper::get_css_value(
-			$attr['separatorHeight'],
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorHeight'], 'separatorHeight', $block_name ),
 			$attr['separatorHeightType']
 		),
 		'width'            => UAGB_Helper::get_css_value(
-			$attr['separatorWidth'],
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidth'], 'separatorWidth', $block_name ),
 			$attr['separatorWidthType']
 		),
 		'border-color'     => $attr['separatorColor'],
 		'margin-bottom'    => UAGB_Helper::get_css_value(
-			$attr['separatorSpace'],
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpace'], 'separatorSpace', $block_name ),
 			$attr['separatorSpaceType']
 		),
 	);
 	$t_selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
 		'width'         => UAGB_Helper::get_css_value(
-			$attr['separatorWidthTablet'],
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidthTablet'], 'separatorWidthTablet', $block_name ),
 			$attr['separatorWidthType']
 		),
 		'margin-bottom' => UAGB_Helper::get_css_value(
-			$attr['separatorSpaceTablet'],
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceTablet'], 'separatorSpaceTablet', $block_name ),
 			$attr['separatorSpaceType']
 		),
 	);
 	$m_selectors['.wp-block-uagb-advanced-heading .uagb-separator'] = array(
 		'width'         => UAGB_Helper::get_css_value(
-			$attr['separatorWidthMobile'],
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorWidthMobile'], 'separatorWidthMobile', $block_name ),
 			$attr['separatorWidthType']
 		),
 		'margin-bottom' => UAGB_Helper::get_css_value(
-			$attr['separatorSpaceMobile'],
+			UAGB_Block_Helper::get_fallback_number( $attr['separatorSpaceMobile'], 'separatorSpaceMobile', $block_name ),
 			$attr['separatorSpaceType']
 		),
 	);
@@ -236,49 +242,35 @@ $m_selectors['.wp-block-uagb-advanced-heading .uagb-highlight'] = array_merge(
 	$highLight_border_css_mobile
 );
 
-$t_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text'] = array(
+$t_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
 	'margin-bottom' => UAGB_Helper::get_css_value(
-		$attr['subHeadSpaceTablet'],
+		UAGB_Block_Helper::get_fallback_number( $attr['headSpaceTablet'], 'headSpaceTablet', $block_name ),
+		$attr['headSpaceType']
+	),
+);
+$m_selectors['.wp-block-uagb-advanced-heading .uagb-heading-text'] = array(
+	'margin-bottom' => UAGB_Helper::get_css_value(
+		UAGB_Block_Helper::get_fallback_number( $attr['headSpaceMobile'], 'headSpaceMobile', $block_name ),
+		$attr['headSpaceType']
+	),
+);
+$t_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text']    = array(
+	'margin-bottom' => UAGB_Helper::get_css_value(
+		UAGB_Block_Helper::get_fallback_number( $attr['subHeadSpaceTablet'], 'subHeadSpaceTablet', $block_name ),
 		$attr['subHeadSpaceType']
 	),
 );
-$m_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text'] = array(
+$m_selectors['.wp-block-uagb-advanced-heading .uagb-desc-text']    = array(
 	'margin-bottom' => UAGB_Helper::get_css_value(
-		$attr['subHeadSpaceMobile'],
+		UAGB_Block_Helper::get_fallback_number( $attr['subHeadSpaceMobile'], 'subHeadSpaceMobile', $block_name ),
 		$attr['subHeadSpaceType']
 	),
 );
-if ( $attr['headingDescToggle'] || 'none' !== $attr['seperatorStyle'] ) {
-	$selectors[' .uagb-heading-text']   = array(
-		'margin-bottom' => UAGB_Helper::get_css_value(
-			$attr['headSpace'],
-			'px'
-		),
-	);
-	$t_selectors[' .uagb-heading-text'] = array(
-		'margin-bottom' => UAGB_Helper::get_css_value(
-			$attr['headSpaceTablet'],
-			$attr['headSpaceType']
-		),
-	);
-	$m_selectors[' .uagb-heading-text'] = array(
-		'margin-bottom' => UAGB_Helper::get_css_value(
-			$attr['headSpaceMobile'],
-			$attr['headSpaceType']
-		),
-	);
-}
-/**
- * Get Combined selectors with filters.
- */
-$combined_selectors = UAGB_Helper::get_combined_selectors(
-	'advanced-heading',
-	array(
-		'desktop' => $selectors,
-		'tablet'  => $t_selectors,
-		'mobile'  => $m_selectors,
-	),
-	$attr
+
+$combined_selectors = array(
+	'desktop' => $selectors,
+	'tablet'  => $t_selectors,
+	'mobile'  => $m_selectors,
 );
 
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-heading-text', $combined_selectors );

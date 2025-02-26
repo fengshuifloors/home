@@ -119,9 +119,7 @@ class UniteProviderFunctionsUC{
 		
 		$arrUploads = wp_upload_dir();
 		
-		if(empty($arrUploads))
-			return(false);
-				
+		
 		$uploadsBaseDir = UniteFunctionsUC::getVal($arrUploads, "basedir");
 		$uploadsBaseUrl = UniteFunctionsUC::getVal($arrUploads, "baseurl");
 
@@ -131,14 +129,13 @@ class UniteProviderFunctionsUC{
 			
 		
 		$urlBase = null;
-		
 		if(is_dir($uploadsBaseDir)){
 			$pathBase = UniteFunctionsUC::addPathEndingSlash($uploadsBaseDir);
 			$urlBase = UniteFunctionsUC::addPathEndingSlash($uploadsBaseUrl);
 		}
 		
-		if(empty($pathBase))
-			return(false);
+		
+		
 		
 		//make base path
 		$pathAssets = $pathBase.$dirAssets."/";
@@ -157,7 +154,7 @@ class UniteProviderFunctionsUC{
 		
 		if(empty($urlAssets))
 			UniteFunctionsUC::throwError("Cannot set assets url");
-						
+			
 		if($returnValues == true){
 			
 			$arrReturn = array();
@@ -256,7 +253,7 @@ class UniteProviderFunctionsUC{
 	 * register script
 	 */
 	public static function addStyle($handle, $url){
-				
+	
 		if(empty($url))
 			UniteFunctionsUC::throwError("empty style url, handle: $handle");
 		
@@ -272,33 +269,22 @@ class UniteProviderFunctionsUC{
 	
 	/**
 	 * print some script at some place in the page
-	 * handle meanwhile inactive
 	 */
-	public static function printCustomScript($script, $hardCoded = false, $isModule = false, $handle = null, $isPutOnce = false){
+	public static function printCustomScript($script, $hardCoded = false, $isModule = false){
 		
 		self::$counterScripts++;
+		$key = "script_".self::$counterScripts;
 		
-		if(empty($handle))
-			$handle = "script_".self::$counterScripts;
-				
 		if($isModule == true)
-			$handle = "module_".$handle;
-				
-		if(isset(self::$arrScripts[$handle])){
-			
-			if($isPutOnce === true)
-				return(false);
-			
-			$handle .= "_". UniteFunctionsUC::getRandomString(5, true);
-		}
-			
+			$key = "module_".$key;
+		
 		if($hardCoded == false)
-			self::$arrScripts[$handle] = $script;
+			self::$arrScripts[$key] = $script;
 		else{
 			if($isModule == true)
-				echo "<script type='module' id='{$handle}'>{$script}</script>";
+				echo "<script type='module'>{$script}</script>";
 			else 
-				echo "<script type='text/javascript' id='{$handle}'>{$script}</script>";
+				echo "<script type='text/javascript'>{$script}</script>";
 			
 		}
 	}
@@ -577,17 +563,12 @@ class UniteProviderFunctionsUC{
 			$activeLanguage = $objWpml->getActiveLanguage();
 			
 			$data["uc_lang"] = $activeLanguage;
-		}else{
-							
-			$data["uc_lang"] = UniteFunctionsWPUC::getLanguage();
 		}
-		
-		$isInsideEditor = GlobalsProviderUC::$isInsideEditor;
-		
-		$isAdminUser = current_user_can('manage_options');
-		
+    	
+		$isInsideEditor = UniteCreatorElementorIntegrate::$isEditMode;
+				
 		$data["uc_inside_editor"] = $isInsideEditor?"yes":"no";
-		$data["uc_admin_user"] = $isAdminUser?"yes":"no";
+		
 		
 		return($data);
 	}
@@ -609,28 +590,11 @@ class UniteProviderFunctionsUC{
 	 */
 	public static function getNonce(){
 		
-		$nonceName = self::getNonceName();
-		
-		$nonce = wp_create_nonce($nonceName);
+		$nonce = wp_create_nonce(GlobalsUC::PLUGIN_NAME."_actions");
 		
 		return($nonce);
 	}
 	
-	
-	/**
-	 * get nonce name
-	 */
-	public static function getNonceName(){
-		
-		$userID = get_current_user_id();
-		
-		if(empty($userID))
-			$userID = "none";
-		
-		$name = GlobalsUC::PLUGIN_NAME."_actions_{$userID}";
-				
-		return($name);
-	}
 	
 	/**
 	 * veryfy nonce
@@ -646,11 +610,9 @@ class UniteProviderFunctionsUC{
 			UniteFunctionsUC::showTrace();
 			exit();
 		}
-
-		$nonceName = self::getNonceName();
 		
 		
-		$verified = wp_verify_nonce($nonce, $nonceName);
+		$verified = wp_verify_nonce($nonce, GlobalsUC::PLUGIN_NAME."_actions");
 		if($verified == false)
 			UniteFunctionsUC::throwError("Action security failed, please refresh the page and try again.");
 		
@@ -766,13 +728,13 @@ class UniteProviderFunctionsUC{
 	/**
 	 * update option
 	 */
-	public static function updateOption($option, $value, $supportMultisite = false,$autoload = null){
+	public static function updateOption($option, $value, $supportMultisite = false){
 	
 		if($supportMultisite == true && is_multisite()){
 			update_site_option($option, $value);
 		}else
-			update_option($option, $value, $autoload);
-		
+			update_option($option, $value);
+	
 	}
 	
 	

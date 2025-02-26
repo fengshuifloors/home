@@ -74,8 +74,15 @@ echo '<div class="theplus-panel-welcome-page">';
 				}else{
 					$memory_check_req = '<span class="check-req-wrong">'.$check_wrong_req.'</span>';
 				}
-				echo '<div class="sys-req-label theplus-bm-0"><span>'.esc_html__('Memory Limit : ','tpebl').'</br>'.ini_get('memory_limit').esc_html__(' Uncheck Required 512M','tpebl').'</span>'.$memory_check_req.'</div>';
+				echo '<div class="sys-req-label"><span>'.esc_html__('Memory Limit : ','tpebl').'</br>'.ini_get('memory_limit').esc_html__(' Uncheck Required 512M','tpebl').'</span>'.$memory_check_req.'</div>';
 				
+				$gzip_check_req = '';
+				if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')){
+					$gzip_check_req = '<span class="check-req-right">'.$check_right_req.'</span>';
+				}else{
+					$gzip_check_req = '<span class="check-req-wrong">'.$check_wrong_req.'</span>';
+				}
+				echo '<div class="sys-req-label theplus-bm-0"><span>'.esc_html__('GZIp Enabled :','tpebl').'</span>'.$gzip_check_req.'</div>';
 				echo '<a href="http://docs.posimyth.com/tpae/system-requirements-configurations/" class="theplus-panel-btn theplus-mt-8" title="'.esc_attr__('Know More & Resolve','tpebl').'" target="_blank">'.esc_html__('Know More & Resolve','tpebl').'</a>';
 			echo '</div>';
 			/*Welcome System Requirement*/
@@ -87,21 +94,23 @@ echo '<div class="theplus-panel-welcome-page">';
 				echo '<div class="theplus-sec-subtitle">'.esc_html__('Notable additions made to The Plus Addons for Elementor.','tpebl').'</div>';
 				echo '<div class="theplus-sec-border"></div>';
 				echo '<div class="theplus-changelog-list">';
-					echo '<div class="changelog-date">May 17, 2023 <span class="changelog-version">Lite Version 5.2.4</span></div>';
+					echo '<div class="changelog-date">Dec 05,2022 <span class="changelog-version">Lite Version 5.1.15</span></div>';
 						echo '<ul class="changelog-list">';
+							echo '<li>'.esc_html__('Update : Smooth Scroll : Firefox Compatibility','tpebl').'</li>';		
+							echo '<li>'.esc_html__('Update : MetaBox : Condition Improvement & Bug Fixes','tpebl').'</li>';							
 							echo '<li>'.esc_html__('Fix : Minor bug fixes and Improvements','tpebl').'</li>';							
-						echo '</ul>';
+						echo '</ul>';					
 				echo '</div>';
 				echo '<a href="https://wordpress.org/plugins/the-plus-addons-for-elementor-page-builder/#developers" class="theplus-panel-btn theplus-mt-8" title="'.esc_attr__('change log','tpebl').'" target="_blank">'.esc_html__('Lite Full Change log','tpebl').'</a>';
-
+				
 				
 				echo '<div class="theplus-sec-border" style="width:100%;height:1px;background:#DBDBDB;"></div>';
 				echo '<div class="theplus-changelog-list">';
-					echo '<div class="changelog-date">May 10, 2023 <span class="changelog-version">Pro Version 5.2.6</span></div>';
+					echo '<div class="changelog-date">Dec 05,2022 <span class="changelog-version">Pro Version 5.1.4</span></div>';
 						echo '<ul class="changelog-list">';	
-							echo '<li>'.esc_html__('Added : Scroll Sequence','tpebl').'</li>';
-							echo '<li>'.esc_html__('Update : Search Filter : Connection With Google Map Autocomplete Field','tpebl').'</li>';
-							echo '<li>'.esc_html__('Update : Search Filter : Metro Re-layout Compatibility','tpebl').'</li>';
+							echo '<li>'.esc_html__('Fix : LottieFiles Animation : Play Speed Issue Solved','tpebl').'</li>';
+							echo '<li>'.esc_html__('Update : Row Background : Container Compatibility','tpebl').'</li>';
+							echo '<li>'.esc_html__('Update : Search Filter : UI Controller improvement','tpebl').'</li>';
 						echo '</ul>';					
 				echo '</div>';
 				echo '<a href="https://roadmap.theplusaddons.com/changelog" class="theplus-panel-btn theplus-mt-8" title="'.esc_attr__('change log','tpebl').'" target="_blank">'.esc_html__('Pro Full Change log','tpebl').'</a>';

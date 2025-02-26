@@ -241,7 +241,7 @@
                         elementorFrontend.waypoint($videoBoxElement, function () {
                             playVideo();
                         }, {
-                            offset: 'top-in-view',
+                            offset: 0,
                             triggerOnce: false
                         });
 
@@ -268,7 +268,7 @@
                             elementorFrontend.waypoint($videoBoxElement, function () {
                                 playVideo();
                             }, {
-                                offset: 'top-in-view'
+                                offset: 0
                             });
                         } else {
                             playVideo();
@@ -1255,7 +1255,7 @@
 
             var $carouselElem = $scope.find(".premium-carousel-wrapper"),
                 settings = $($carouselElem).data("settings"),
-                computedStyle = getComputedStyle($scope[0]);
+                isEdit = elementorFrontend.isEditMode();
 
             if ($carouselElem.find(".item-wrapper").length < 1)
                 return;
@@ -1329,7 +1329,7 @@
                 adaptiveHeight: settings.adaptiveHeight,
                 pauseOnHover: settings.pauseOnHover,
                 centerMode: settings.centerMode,
-                centerPadding: computedStyle.getPropertyValue('--pa-carousel-center-padding') + 'px',
+                centerPadding: settings.centerPadding,
                 arrows: settings.arrows,
                 prevArrow: $carouselElem.find(".premium-carousel-nav-arrow-prev").html(),
                 nextArrow: $carouselElem.find(".premium-carousel-nav-arrow-next").html(),
@@ -2360,18 +2360,10 @@
         var PremiumSVGDrawerHandler = ModuleHandler.extend({
 
             bindEvents: function () {
-
-                ScrollTrigger.config({
-                    limitCallbacks: true,
-                    ignoreMobileResize: true
-                });
-
                 this.run();
             },
 
             run: function () {
-
-                gsap.registerPlugin(ScrollTrigger);
 
                 var $scope = this.$element;
 

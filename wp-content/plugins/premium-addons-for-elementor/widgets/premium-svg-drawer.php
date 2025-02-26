@@ -108,12 +108,11 @@ class Premium_SVG_Drawer extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-			'pa-tweenmax',
-			'pa-scrolltrigger',
-			'pa-gsap',
-			'premium-addons',
 			'pa-fontawesome-all',
+			'pa-tweenmax',
+			'pa-gsap',
 			'pa-motionpath',
+			'premium-addons',
 		);
 	}
 
@@ -205,7 +204,7 @@ class Premium_SVG_Drawer extends Widget_Base {
 			array(
 				'label'      => __( 'Width', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', '%', 'custom' ),
+				'size_units' => array( 'px', 'em', '%' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 1,
@@ -234,7 +233,7 @@ class Premium_SVG_Drawer extends Widget_Base {
 			array(
 				'label'      => __( 'Height', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', 'custom' ),
+				'size_units' => array( 'px', 'em' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 1,

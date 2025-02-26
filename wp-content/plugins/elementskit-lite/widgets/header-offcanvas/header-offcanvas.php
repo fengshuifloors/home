@@ -29,10 +29,6 @@ class ElementsKit_Widget_Header_Offcanvas extends Widget_Base
         return Handler::get_categories();
     }
 
-    public function get_keywords() {
-        return Handler::get_keywords();
-    }
-
     public function get_help_url() {
         return 'https://wpmet.com/doc/header-offcanvas/';
     }
@@ -683,7 +679,7 @@ class ElementsKit_Widget_Header_Offcanvas extends Widget_Base
 
         ?>
         <div class="ekit-offcanvas-toggle-wraper">
-            <a href="#" class="ekit_navSidebar-button ekit_offcanvas-sidebar" aria-label="offcanvas-menu">
+            <a href="#" class="ekit_navSidebar-button ekit_offcanvas-sidebar">
                 <?php
                     if($settings['ekit_offcanvas_menu_type'] == 'icon') {
                         // new icon
@@ -738,7 +734,7 @@ class ElementsKit_Widget_Header_Offcanvas extends Widget_Base
             <div class="ekit-sidebar-widget">
                 <div class="ekit_sidebar-widget-container">
                     <div class="ekit_widget-heading">
-                        <a href="#" class="ekit_close-side-widget" aria-label="close-icon">
+                        <a href="#" class="ekit_close-side-widget">
 
                             <?php
                                 // new icon

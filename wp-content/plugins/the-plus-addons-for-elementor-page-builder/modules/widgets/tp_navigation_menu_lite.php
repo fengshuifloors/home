@@ -1112,17 +1112,6 @@ class L_ThePlus_Navigation_Menu_Lite extends Widget_Base {
 			]
 		);
 		$this->add_responsive_control(
-			'mobile_main_menu_margin',
-			[
-				'label' => esc_html__( 'Margin', 'theplus' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
-				'selectors' => [
-					'{{WRAPPER}} .plus-mobile-menu .navbar-nav li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',					
-				],
-			]
-		);
-		$this->add_responsive_control(
 			'mobile_main_menu_inner_padding',
 			[
 				'label' => __( 'Inner Padding', 'tpebl' ),
@@ -1260,17 +1249,6 @@ class L_ThePlus_Navigation_Menu_Lite extends Widget_Base {
 				'name' => 'mobile_sub_menu_typography',
 				'label' => __( 'Typography', 'tpebl' ),
 				'selector' => '{{WRAPPER}} .plus-mobile-menu .nav li.dropdown .dropdown-menu > li > a',
-			]
-		);
-		$this->add_responsive_control(
-			'mobile_sub_menu_margin',
-			[
-				'label' => esc_html__( 'Margin', 'theplus' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
-				'selectors' => [
-					'{{WRAPPER}} .plus-mobile-menu .nav li.dropdown .dropdown-menu li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',					
-				],
 			]
 		);
 		$this->add_responsive_control(

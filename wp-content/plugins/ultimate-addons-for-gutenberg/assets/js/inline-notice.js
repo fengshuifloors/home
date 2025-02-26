@@ -1,9 +1,9 @@
-// eslint-disable-next-line no-undef
-UAGBInlineNotice = {
+
+UAGBInlineNotice = { // eslint-disable-line no-undef
 	init( attr, id ) {
 		const main = document.querySelectorAll( id );
 
-		if ( main.length === 0 ) {
+		if( main.length === 0 ){
 			return;
 		}
 
@@ -22,7 +22,11 @@ UAGBInlineNotice = {
 			if ( '' !== attr.noticeDismiss && '' !== attr.icon ) {
 				closeBtn.addEventListener( 'click', function () {
 					if ( true === isCookie && 'undefined' === typeof currentCookie ) {
-						Cookies.set( 'uagb-notice-' + uniqueId, true, { expires: cookiesDays } );
+						Cookies.set(
+							'uagb-notice-' + uniqueId,
+							true,
+							{ expires: cookiesDays }
+						);
 					}
 
 					this.parentElement.classList.add( 'uagb-notice__active' );

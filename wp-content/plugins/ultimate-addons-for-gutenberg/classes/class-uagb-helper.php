@@ -167,7 +167,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						continue;
 					}
 
-					if ( ! empty( $val ) || ( empty( $val ) && 'content' === $j ) || 0 === $val ) {
+					if ( ! empty( $val ) || 0 === $val ) {
 						if ( 'font-family' === $j ) {
 							$css .= $j . ': "' . $val . '";';
 						} else {
@@ -202,11 +202,18 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.13.4
 		 */
 		public static function get_css_value( $value = '', $unit = '' ) {
-			if ( ! is_numeric( $value ) ) {
-				return '';
+
+			if ( '' == $value ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
+				return $value;
 			}
 
-			return esc_attr( $value ) . $unit;
+			$css_val = '';
+
+			if ( isset( $value ) ) {
+				$css_val = esc_attr( $value ) . $unit;
+			}
+
+			return $css_val;
 		}
 
 
@@ -294,7 +301,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 			if ( '' !== $path && null !== $view ) {
 				?>
-				<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_attr( $view ); ?>"><path d="<?php echo esc_attr( $path ); ?>"></path></svg>
+				<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
 				<?php
 			}
 		}
@@ -362,7 +369,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				} else {
 
-					$paged = isset( $attributes['paged'] ) ? $attributes['paged'] : 1;
+					$paged = 1;
 
 				}
 				$query_args['posts_per_page'] = $attributes['postsToShow'];
@@ -1308,30 +1315,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			} elseif ( strpos( $user_agent, 'MSIE' ) || strpos( $user_agent, 'Trident/7' ) ) {
 				return 'ie';
 			}
-		}
-
-		/**
-		 * Get block dynamic CSS selector with filters applied for extending it.
-		 *
-		 * @param string $block_name Block name to filter.
-		 * @param array  $selectors Array of selectors to filter.
-		 * @param array  $attr Attributes.
-		 * @return array Combined selectors array.
-		 * @since 2.4.0
-		 */
-		public static function get_combined_selectors( $block_name, $selectors, $attr ) {
-			if ( ! is_array( $selectors ) ) { 
-				return $selectors;
-			}
-
-			$combined_selectors = array();
-
-			foreach ( $selectors as $key => $selector ) {
-				$hook_prefix                = ( 'desktop' === $key ) ? '' : '_' . $key;
-				$combined_selectors[ $key ] = apply_filters( 'spectra_' . $block_name . $hook_prefix . '_styling', $selector, $attr );
-			}
-
-			return $combined_selectors;
 		}
 	}
 

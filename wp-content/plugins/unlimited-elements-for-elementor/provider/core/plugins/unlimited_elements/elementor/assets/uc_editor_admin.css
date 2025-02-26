@@ -45,11 +45,8 @@
 }
 
 .elementor-panel .ue-widget-icon.ue-dark-mode::after{
-	filter: brightness(4) invert(100%);	
-	content:url(../images/logo-mini-dark.svg);	
+	filter: brightness(4);
 }
-
-
 
 .elementor-panel .ue-wi-svg::after{
 	height:44px;
@@ -138,18 +135,3 @@
 	padding:10px;
 	line-height:1.4em;
 }
-
-.uc-edit-template-button{
-	position:relative;
-	padding-top:5px;
-}
-
-.uc-edit-template-button__link{
-	position:absolute;
-	top:-7px;
-	right:0px;
-	font-size:12px;
-	font-weight:normal !important;
-}
-
-

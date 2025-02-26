@@ -5,8 +5,6 @@
  * @package safe-svg
  */
 
-namespace SafeSvg\SafeSvgAttr;
-
 /**
  * SVG Allowed Attributes lass.
  */

@@ -257,15 +257,6 @@ class UniteCreatorAddonViewChildParams{
 {# use the raw filter for printing attribute with html tags#}
 {{ some_attribute|raw }}
 ";
-
-		//----- Json Decode ------
-		
-		$key = "JSON Decode";
-		$text = "
-	  {% set arr = jsonvar|json_decode %}
-	  {{arr.yourkey}}
-";
-		
 		
 		$arrParams[] = $this->createChildParam_code($key, $text);
 
@@ -870,29 +861,6 @@ console.log(arrItems);
 		
 		return($arrParams);
 	}
-
-	/**
-	 * add put post meta function params
-	 */
-	private function getChildParams_post_getImageFromMeta($arrParams){
-
-		$strText = "{# get image data from post meta field arg1: postID, arg2: post meta name #} \n\n";
-		
-		$strText .= "{% set image = ucfunc(\"get_post_image\",[param_prefix].id,\"myimageid\") %} \n\n";
-		
-		$strText .= "{{image.thumb}} \n\n";
-		
-		$strText .= "{# to print the return data #} \n";
-		$strText .= "{{printVar(image)}} \n\n";
-		
-		$strText .= "{# to debug the meta field write: \"debug\" in place of meta field #} \n";
-		$strText .= "{# set image = ucfunc(\"get_post_image\",current_post.id,\"debug\") #}\n\n";
-		
-		$arrParams[] = $this->createChildParam("getImageFromMeta", null, array("raw_insert_text"=>$strText));
-		
-		return($arrParams);
-	}
-	
 	
 	/**
 	 * put html data
@@ -1003,6 +971,7 @@ console.log(arrItems);
 		$strCode .= "{{printVar(single_term)}} \n";
 		$strCode .= "{{isExists}} \n\n";
 		
+				
 		
 	    $arrParams[] = $this->createChildParam("putPostTerms", null, array("raw_insert_text"=>$strCode));
 		
@@ -1321,14 +1290,12 @@ console.log(arrItems);
 		$arrParams[] = $this->createChildParam("link");
 		$arrParams[] = $this->createChildParam("date",null,array("raw_insert_text"=>"{{[param_name]|ucdate(\"d F Y, H:i\")|raw}}"));
 		$arrParams[] = $this->createChildParam("date_modified",null,array("raw_insert_text"=>"{{[param_name]|ucdate(\"d F Y, H:i\")|raw}}"));
-		$arrParams[] = $this->createChildParam("post_type",null,array("raw_insert_text"=>"{{[param_name]}}\n\n{{ucfunc(\"put_post_type_title\",[param_name])}}\n"));
 		
 		$arrParams[] = $this->createChildParam("tagslist",null,array("raw_insert_text"=>"{{putPostTags([param_prefix].id)}}"));		
 		
 		$arrParams = $this->getChildParams_post_addTerms($arrParams);
 		$arrParams = $this->getChildParams_post_addAuthor($arrParams);
 		$arrParams = $this->getChildParams_post_addPostMeta($arrParams);
-		$arrParams = $this->getChildParams_post_getImageFromMeta($arrParams);
 		$arrParams = $this->getChildParams_post_putHtmlData($arrParams);
 		$arrParams = $this->getChildParams_post_numComments($arrParams);
 		
@@ -1544,7 +1511,7 @@ console.log(arrItems);
 	
 	
 	/**
-	 * get link add params
+	 * get post child params
 	 */
 	public function getAddParams_link(){
 
@@ -1558,27 +1525,6 @@ console.log(arrItems);
 		return($arrParams);
 	}
 
-	/**
-	 * get date time add params
-	 */
-	public function getAddParams_datetime(){
-
-		$arrParams = array();
-		
-		$arrParams[] = $this->createAddParam();
-		$arrParams[] = $this->createAddParam("stamp");
-		
-		$strUcDate = "\n {{[param_prefix]_stamp|ucdate(\"d m Y\")}}
-					  \n {{[param_prefix]_stamp|ucdate(\"H:i\")}}
-		";
-		
-		$arrParams[] = $this->createChildParam_code("[parent_name]_stamp|ucdate", $strUcDate);
-		
-		
-		return($arrParams);
-	}
-	
-	
 	/**
 	 * get post child params
 	 */

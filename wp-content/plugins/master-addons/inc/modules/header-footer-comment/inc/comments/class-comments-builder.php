@@ -15,14 +15,11 @@ if (!class_exists('JLTMA_Comments_Builder')) {
         private static $_instance = null;
 
         public $jltma_set_var;
-        public $jltma_api_settings;
 
         private $settings;
 
         public function __construct(array $settings = [])
         {
-            $this->jltma_api_settings = get_option('jltma_api_save_settings');
-            
             add_action('init', [$this, 'jltma_enable_comments_custom_post_type'], 11);
             add_filter('wp_insert_post_data', [$this, 'jltma_comments_on_by_default']);
 
@@ -65,8 +62,6 @@ if (!class_exists('JLTMA_Comments_Builder')) {
             //Check SPAM Protection reCaptcha
             add_action('pre_comment_on_post', [$this, 'jltma_verify_google_recaptcha']);
 
-            // Remove all comments field filter for others
-            remove_all_filters('comment_form_default_fields');
             // Unset Default Fields
             // add_action('comment_form_default_fields', [$this,'jltma_default_comment_fields']);
         }
@@ -383,10 +378,12 @@ if (!class_exists('JLTMA_Comments_Builder')) {
         // JS
         public function jltma_comments_frontend_scripts()
         {
+
             wp_register_script('jltma-comments', JLTMA_PLUGIN_URL . 'assets/js/jltma-comments.js', array('jquery'), JLTMA_VER, true);
-            if ( !empty($this->jltma_api_settings['recaptcha_site_key']) and !empty($this->jltma_api_settings['recaptcha_secret_key']) ) {
-                wp_register_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js', ['jquery'], null, true);
-            }
+
+            // if ( !empty($jltma_api_settings['recaptcha_site_key']) and !empty($jltma_api_settings['recaptcha_secret_key']) ) {
+            wp_register_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js', ['jquery'], null, true);
+            // }
 
             $jc_page = get_query_var('cpage') ? get_query_var('cpage') : 1;
 
@@ -943,8 +940,10 @@ if (!class_exists('JLTMA_Comments_Builder')) {
                  */
                 public function jltma_is_valid_captcha($captcha)
                 {
+                    $jltma_api_settings = get_option('jltma_api_save_settings');
+
                     $captcha_postdata = http_build_query(array(
-                        'secret' => $this->jltma_api_settings['recaptcha_secret_key'],
+                        'secret' => $jltma_api_settings['recaptcha_secret_key'],
                         'response' => $captcha,
                         'remoteip' => $_SERVER['REMOTE_ADDR']
                     ));

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Tooltip } from '@brainstormforce/starter-templates-components';
 import { __ } from '@wordpress/i18n';
+import { Tooltip } from '@brainstormforce/starter-templates-components';
 import Button from '../../components/button/button';
 import { useStateValue } from '../../store/store';
 import './style.scss';
@@ -71,8 +71,7 @@ const List = ( { className, options, onSelect, selected, type } ) => {
 											<span
 												style={ {
 													fontFamily: headingFont,
-													fontWeight:
-														headingFontWeight,
+													fontWeight: headingFontWeight,
 												} }
 												className="heading-font-preview"
 											>
@@ -97,8 +96,7 @@ const List = ( { className, options, onSelect, selected, type } ) => {
 											<span
 												style={ {
 													fontFamily: headingFont,
-													fontWeight:
-														headingFontWeight,
+													fontWeight: headingFontWeight,
 												} }
 												className="heading-font-preview"
 											>

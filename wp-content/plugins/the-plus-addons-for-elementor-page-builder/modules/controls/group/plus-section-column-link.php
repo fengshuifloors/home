@@ -5,9 +5,7 @@ use Elementor\Utils;
 use Elementor\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
 class L_Theplus_Section_Column_Link extends Elementor\Widget_Base {
-
 	public function __construct() {
 		$theplus_options=get_option('theplus_options');
 		$plus_extras=l_theplus_get_option('general','extras_elements');		
@@ -28,13 +26,12 @@ class L_Theplus_Section_Column_Link extends Elementor\Widget_Base {
 			add_action( 'elementor/frontend/before_enqueue_scripts', [ $this, 'tp_enqueue_scripts' ], 10 );
 		}		
 	}
-
+	
 	public function get_name() {
 		return 'plus-section-column-link';
 	}
-
-	public function tp_section_column_link($element) {
-		
+	
+	public function tp_section_column_link($element) {		
 		$element->start_controls_section(
 			'plus_sc_link_section',
 			[
@@ -67,15 +64,13 @@ class L_Theplus_Section_Column_Link extends Elementor\Widget_Base {
 		);
 		$element->end_controls_section();
 	}
-
 	public function tp_enqueue_scripts() {
 		wp_enqueue_script('plus-section-column-link',L_THEPLUS_ASSETS_URL . 'js/main/section-column-link/plus-section-column-link.min.js',array( 'jquery' ),'',true);	
 	}
-
 	public function plus_before_render($element) {		
-		// $settings = $element->get_settings();
-		$settings = $element->get_settings_for_display();
-
+		$settings = $element->get_settings();
+		//$settings = $element->get_settings_for_display();
+		
 		if((!empty($settings['sc_link_switch']) && $settings['sc_link_switch']=='yes') && !empty($settings['sc_link']) && !empty($settings['sc_link']['url'])){			
 			$element->add_render_attribute( '_wrapper', 
 			array(			
@@ -84,6 +79,6 @@ class L_Theplus_Section_Column_Link extends Elementor\Widget_Base {
 				'style' => 'cursor: pointer'
 			) );
 		}
-
+	
 	}
 }

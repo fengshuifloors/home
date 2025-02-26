@@ -47,62 +47,6 @@ class L_ThePlus_Countdown extends Widget_Base {
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
-
-		$this->add_control('CDType',
-			[
-				'label' => esc_html__( 'Countdown Setup', 'tpebl' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'normal',
-				'options' => [
-					'normal'  => esc_html__( 'Normal Countdown', 'tpebl' ),
-					'scarcity' => esc_html__( 'Scarcity Countdown (Evergreen) (Pro)', 'tpebl' ),
-					'numbers' => esc_html__( 'Fake Numbers Counter (Pro)', 'tpebl' ),
-				],
-			]
-		);
-		$this->add_control('tab_content_options1',
-			[
-				'label' => esc_html__( 'Unlock more possibilities', 'tpebl' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => '',
-				'description' => theplus_pro_ver_notice(),
-				'classes' => 'plus-pro-version',
-				'condition' => [
-					'CDType' => ['scarcity','numbers'],
-				]
-			]
-		);
-		$this->add_control('CDstyle',
-			[
-				'label' => esc_html__( 'Countdown Style', 'tpebl' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'style-1',
-				'options' => [
-					'style-1'  => esc_html__( 'Style 1', 'tpebl' ),
-					'style-2' => esc_html__( 'Style 2 (Pro)', 'tpebl' ),
-					'style-3' => esc_html__( 'Style 3 (Pro)', 'tpebl' ),
-				],
-				'condition' => [
-					'CDType' => 'normal',
-				],
-			]
-		);
-
-		$this->add_control('tab_content_options',
-			[
-				'label' => esc_html__( 'Unlock more possibilities', 'tpebl' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => '',
-				'description' => theplus_pro_ver_notice(),
-				'classes' => 'plus-pro-version',
-				'condition' => [
-					'CDType' => 'normal',
-					'CDstyle' => ['style-2','style-3'],
-				]
-			]
-		);
-	
-
 		$this->add_control(
 			'counting_timer',
 			[
@@ -110,9 +54,6 @@ class L_ThePlus_Countdown extends Widget_Base {
 				'type' => Controls_Manager::DATE_TIME,
 				'default'     => date( 'Y-m-d H:i', strtotime( '+1 month' ) + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) ),
 				'description' => sprintf( esc_html__( 'Date set according to your timezone: %s.', 'tpebl' ), Utils::get_timezone_string() ),
-				'condition' => [
-					'CDType' => 'normal',
-				],
 			]
 		);
 		$this->add_control(
@@ -124,10 +65,6 @@ class L_ThePlus_Countdown extends Widget_Base {
 				'label_off' => esc_html__( 'Off', 'tpebl' ),
 				'default' => 'no',
 				'separator' => 'before',
-				'condition' => [
-					'CDType' => 'normal',
-					'CDstyle' => 'style-1',
-				],
 			]
 		);
 
@@ -136,53 +73,14 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->start_controls_section(
             'section_downcount',
             [
-                'label' => esc_html__('Contant Source', 'tpebl'),
+                'label' => esc_html__('Label', 'tpebl'),
             ]
         );
-		$this->add_control('days_labels',
-			[
-				'label' => esc_html__( 'Days', 'tpebl' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'tpebl' ),
-				'label_off' => esc_html__( 'Hide', 'tpebl' ),
-				'default' => 'yes',
-			]
-		);
-		$this->add_control('hours_labels',
-			[
-				'label' => esc_html__( 'Hours', 'tpebl' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'tpebl' ),
-				'label_off' => esc_html__( 'Hide', 'tpebl' ),
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control('minutes_labels',
-			[
-				'label' => esc_html__( 'Minutes', 'tpebl' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'tpebl' ),
-				'label_off' => esc_html__( 'Hide', 'tpebl' ),
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control('seconds_labels',
-			[
-				'label'   => esc_html__( 'Seconds', 'tpebl' ),
-				'type'    => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'tpebl' ),
-				'label_off' => esc_html__( 'Hide', 'tpebl' ),
-				'separator' => 'after',
-				'default' => 'yes',
-			]
-		);
 		$this->add_control(
 			'show_labels',
 			[
-				'label' => esc_html__( 'Show Labels', 'tpebl' ),
-				'type' => Controls_Manager::SWITCHER,
+				'label'   => esc_html__( 'Show Labels', 'tpebl' ),
+				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
 		);
@@ -191,6 +89,7 @@ class L_ThePlus_Countdown extends Widget_Base {
             [
                 'type' => Controls_Manager::TEXT,
                 'label' => esc_html__('Days Section Text', 'tpebl'),
+                'label_block' => true,
                 'separator' => 'before',
                 'default' => esc_html__('Days', 'tpebl'),
 				'condition'    => [
@@ -203,8 +102,10 @@ class L_ThePlus_Countdown extends Widget_Base {
             [
                 'type' => Controls_Manager::TEXT,
                 'label' => esc_html__('Hours Section Text', 'tpebl'),
+                'label_block' => true,
+                'separator' => 'before',
                 'default' => esc_html__('Hours', 'tpebl'),
-				'condition' => [
+				'condition'    => [
 					'show_labels!' => '',
 				],
             ]
@@ -214,8 +115,10 @@ class L_ThePlus_Countdown extends Widget_Base {
             [
                 'type' => Controls_Manager::TEXT,
                 'label' => esc_html__('Minutes Section Text', 'tpebl'),
+                'label_block' => true,
+                'separator' => 'before',
                 'default' => esc_html__('Minutes', 'tpebl'),
-                'condition' => [
+                'condition'    => [
 					'show_labels!' => '',
 				],
             ]
@@ -225,8 +128,10 @@ class L_ThePlus_Countdown extends Widget_Base {
             [
                 'type' => Controls_Manager::TEXT,
                 'label' => esc_html__('Seconds Section Text', 'tpebl'),
+                'label_block' => true,
+                'separator' => 'before',
                 'default' => esc_html__('Seconds', 'tpebl'),
-				'condition' => [
+				'condition'    => [
 					'show_labels!' => '',
 				],
             ]
@@ -253,8 +158,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name' => 'numbers_typography',
-				'scheme' => Typography::TYPOGRAPHY_3,
+				'name'     => 'numbers_typography',
+				'scheme'   => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}}  .pt_plus_countdown li > span',
 				'separator' => 'after',
 			)
@@ -266,7 +171,7 @@ class L_ThePlus_Countdown extends Widget_Base {
                 'label' => esc_html__('Label Typography', 'tpebl'),
                 'selector' => '{{WRAPPER}} .pt_plus_countdown li > h6',
 				'separator' => 'after',
-				'condition' => [
+				'condition'    => [
 					'show_labels!' => '',
 				],
             ]
@@ -307,10 +212,10 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
-				'name' => 'days_background',
-				'label' => esc_html__("Days Background",'tpebl'),
-				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .pt_plus_countdown li.count_1',
+				'name'      => 'days_background',
+				'label'     => esc_html__("Days Background",'tpebl'),
+				'types'     => [ 'classic', 'gradient' ],
+				'selector'  => '{{WRAPPER}} .pt_plus_countdown li.count_1',
 				
 			]
 		);
@@ -342,7 +247,7 @@ class L_ThePlus_Countdown extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .pt_plus_countdown li.count_2' => 'border-color:{{VALUE}};',
                 ],
-                'condition' => [
+                'condition'    => [
                     'inline_style!' => 'yes',
                 ],
             ]
@@ -350,10 +255,10 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
-				'name' => 'hours_background',
-				'label' => esc_html__("Background",'tpebl'),
-				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .pt_plus_countdown li.count_2',				
+				'name'      => 'hours_background',
+				'label'     => esc_html__("Background",'tpebl'),
+				'types'     => [ 'classic', 'gradient' ],
+				'selector'  => '{{WRAPPER}} .pt_plus_countdown li.count_2',				
 			]
 		);
 		$this->end_controls_tab();
@@ -384,7 +289,7 @@ class L_ThePlus_Countdown extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .pt_plus_countdown li.count_3' => 'border-color:{{VALUE}};',
                 ],
-                'condition' => [
+                'condition'    => [
                     'inline_style!' => 'yes',
                 ],
             ]
@@ -392,10 +297,10 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
-				'name' => 'minutes_background',
-				'label' => esc_html__("Background",'tpebl'),
-				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .pt_plus_countdown li.count_3',				
+				'name'      => 'minutes_background',
+				'label'     => esc_html__("Background",'tpebl'),
+				'types'     => [ 'classic', 'gradient' ],
+				'selector'  => '{{WRAPPER}} .pt_plus_countdown li.count_3',				
 			]
 		);
 		$this->end_controls_tab();
@@ -425,7 +330,7 @@ class L_ThePlus_Countdown extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .pt_plus_countdown li.count_4' => 'border-color:{{VALUE}};',
                 ],
-                'condition' => [
+                'condition'    => [
                     'inline_style!' => 'yes',
                 ],
             ]
@@ -433,9 +338,9 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
-				'name' => 'seconds_background',
-				'label' => esc_html__("Background",'tpebl'),
-				'types' => [ 'classic', 'gradient' ],
+				'name'      => 'seconds_background',
+				'label'     => esc_html__("Background",'tpebl'),
+				'types'     => [ 'classic', 'gradient' ],
 				'selector'  => '{{WRAPPER}} .pt_plus_countdown li.count_4',
 			]
 		);
@@ -467,18 +372,18 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_control(
 			'count_border_style',
 			[
-				'label' => esc_html__( 'Border Style', 'tpebl' ),
-				'type' => Controls_Manager::SELECT,
+				'label'   => esc_html__( 'Border Style', 'tpebl' ),
+				'type'    => Controls_Manager::SELECT,
 				'default' => 'solid',
 				'options' => [
-					'none' => esc_html__( 'None', 'tpebl' ),
+					'none'   => esc_html__( 'None', 'tpebl' ),
 					'solid'  => esc_html__( 'Solid', 'tpebl' ),
 					'dotted' => esc_html__( 'Dotted', 'tpebl' ),
 					'dashed' => esc_html__( 'Dashed', 'tpebl' ),
 					'groove' => esc_html__( 'Groove', 'tpebl' ),
 				],
 				'separator' => 'before',
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .pt_plus_countdown li' => 'border-style: {{VALUE}};',
 				],
 			]
@@ -490,12 +395,12 @@ class L_ThePlus_Countdown extends Widget_Base {
 				'type'  => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'default' => [
-					'top' => 3,
-					'right' => 3,
+					'top'    => 3,
+					'right'  => 3,
 					'bottom' => 3,
-					'left' => 3,
+					'left'   => 3,
 				],
-				'selectors' => [
+				'selectors'  => [
 					'{{WRAPPER}} .pt_plus_countdown li' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
@@ -506,8 +411,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_control(
 			'count_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'tpebl' ),
-				'type' => Controls_Manager::DIMENSIONS,
+				'label'      => esc_html__( 'Border Radius', 'tpebl' ),
+				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
 					'{{WRAPPER}} .pt_plus_countdown li' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
@@ -517,7 +422,7 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
-				'name' => 'count_hover_shadow',
+				'name'     => 'count_hover_shadow',
 				'selector' => '{{WRAPPER}} .pt_plus_countdown li',
 				'separator' => 'before',
 			]			
@@ -544,8 +449,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_control(
 			'animation_effects',
 			[
-				'label' => esc_html__( 'Choose Animation Effect', 'tpebl' ),
-				'type' => Controls_Manager::SELECT,
+				'label'   => esc_html__( 'Choose Animation Effect', 'tpebl' ),
+				'type'    => Controls_Manager::SELECT,
 				'default' => 'no-animation',
 				'options' => l_theplus_get_animation_options(),
 			]
@@ -561,8 +466,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 				],
 				'range' => [
 					'' => [
-						'min' => 0,
-						'max' => 4000,
+						'min'	=> 0,
+						'max'	=> 4000,
 						'step' => 15,
 					],
 				],
@@ -574,8 +479,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_control(
             'animation_duration_default',
             [
-				'label' => esc_html__( 'Animation Duration', 'tpebl' ),
-				'type' => Controls_Manager::SWITCHER,
+				'label'   => esc_html__( 'Animation Duration', 'tpebl' ),
+				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'no',
 			]
 		);
@@ -590,8 +495,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 				],
 				'range' => [
 					'px' => [
-						'min' => 100,
-						'max' => 10000,
+						'min'	=> 100,
+						'max'	=> 10000,
 						'step' => 100,
 					],
 				],
@@ -604,8 +509,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_control(
 			'animation_out_effects',
 			[
-				'label' => esc_html__( 'Out Animation Effect', 'tpebl' ),
-				'type' => Controls_Manager::SELECT,
+				'label'   => esc_html__( 'Out Animation Effect', 'tpebl' ),
+				'type'    => Controls_Manager::SELECT,
 				'default' => 'no-animation',
 				'options' => l_theplus_get_out_animation_options(),
 				'separator' => 'before',
@@ -625,8 +530,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 				],
 				'range' => [
 					'' => [
-						'min' => 0,
-						'max' => 4000,
+						'min'	=> 0,
+						'max'	=> 4000,
 						'step' => 15,
 					],
 				],
@@ -639,8 +544,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->add_control(
             'animation_out_duration_default',
             [
-				'label' => esc_html__( 'Out Animation Duration', 'tpebl' ),
-				'type' => Controls_Manager::SWITCHER,
+				'label'   => esc_html__( 'Out Animation Duration', 'tpebl' ),
+				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'no',
 				'condition' => [
 					'animation_effects!' => 'no-animation',
@@ -659,8 +564,8 @@ class L_ThePlus_Countdown extends Widget_Base {
 				],
 				'range' => [
 					'px' => [
-						'min' => 100,
-						'max' => 10000,
+						'min'	=> 100,
+						'max'	=> 10000,
 						'step' => 100,
 					],
 				],
@@ -674,16 +579,12 @@ class L_ThePlus_Countdown extends Widget_Base {
 		$this->end_controls_section();
 					
 	}
-	protected function render() {
-        $settings = $this->get_settings_for_display();
-		$DaysLabels = !empty($settings['days_labels']) ? true : false;
-		$HoursLabels = !empty($settings['hours_labels']) ? true : false;
-		$MinutesLabels = !empty($settings['minutes_labels']) ? true : false;
-		$SecondsLabels = !empty($settings['seconds_labels']) ? true : false;
-		$CDType = !empty($settings['CDType']) ? $settings['CDType'] : 'normal';
-		$CDstyle = !empty($settings['CDstyle']) ? $settings['CDstyle'] : 'style-1';
+	 protected function render() {
 
+        $settings = $this->get_settings_for_display();
+		
 		$data_attr='';
+		
 		
 		$uid=uniqid('count_down');
 			if (empty($settings['show_labels'])){
@@ -691,7 +592,6 @@ class L_ThePlus_Countdown extends Widget_Base {
 			}else{
 				$show_labels='yes';
 			}
-			
 			if (empty($settings['text_days'])){
 				$text_days='Days';
 			}else{
@@ -715,7 +615,6 @@ class L_ThePlus_Countdown extends Widget_Base {
 			}else{
 				$text_seconds=$settings['text_seconds'];
 			}
-
 			$offset_time=get_option('gmt_offset');
 			if(!empty($settings['counting_timer'])){
 				$counting_timer=$settings['counting_timer'];
@@ -723,7 +622,6 @@ class L_ThePlus_Countdown extends Widget_Base {
 			}else{
 				$counting_timer='08/31/2019 12:00:00';
 			}
-			
 			$data_attr .=' data-days="'.esc_attr($text_days).'"';
 			$data_attr .=' data-hours="'.esc_attr($text_hours).'"';
 			$data_attr .=' data-minutes="'.esc_attr($text_minutes).'"';
@@ -752,48 +650,34 @@ class L_ThePlus_Countdown extends Widget_Base {
 			}					
 			
 			$inline_style= (!empty($settings["inline_style"]) && $settings["inline_style"]=='yes') ? 'count-inline-style' : '';
-			
-			if( $CDType == 'normal' && $CDstyle == 'style-1' ){
-				?>
-				<ul class="pt_plus_countdown <?php echo esc_attr($uid); ?> <?php echo esc_attr($inline_style); ?> <?php echo $animated_class; ?>" <?php echo $data_attr; ?> data-timer="<?php echo esc_attr($counting_timer); ?>" data-offset="<?php echo esc_attr($offset_time); ?>" <?php echo $animation_attr; ?>>
-					<?php if( !empty($DaysLabels)){ ?> 
-						<li class="count_1">
-							<span class="days">00</span>
-							<?php if(!empty($show_labels) && $show_labels == 'yes'){ ?>
-								<h6 class="days_ref"><?php echo esc_html($text_days); ?></h6>
-							<?php } ?>
-						</li>
-					<?php } 
-
-					if( !empty($HoursLabels)){ ?> 
-						<li class="count_2">
-							<span class="hours">00</span>
-							<?php if(!empty($show_labels) && $show_labels == 'yes'){ ?>
-								<h6 class="hours_ref"><?php echo esc_html($text_hours); ?></h6>
-							<?php } ?>
-						</li>
-					<?php } 
-
-					if( !empty($MinutesLabels) ){ ?> 
-						<li class="count_3">
-							<span class="minutes">00</span>
-							<?php if(!empty($show_labels) && $show_labels == 'yes'){ ?>
-								<h6 class="minutes_ref"><?php echo esc_html($text_minutes); ?></h6>
-							<?php } ?>
-						</li>
-					<?php }
-					
-					if( !empty($SecondsLabels) ){ ?> 
-						<li class="count_4">
-							<span class="seconds last">00</span>
-							<?php if(!empty($show_labels) && $show_labels == 'yes'){ ?>
-								<h6 class="seconds_ref"><?php echo esc_html($text_seconds); ?></h6>
-							<?php } ?>
-						</li>
-					<?php } ?>
+			?>
+			<ul class="pt_plus_countdown <?php echo esc_attr($uid); ?> <?php echo esc_attr($inline_style); ?> <?php echo $animated_class; ?>" <?php echo $data_attr; ?> data-timer="<?php echo esc_attr($counting_timer); ?>" data-offset="<?php echo esc_attr($offset_time); ?>" <?php echo $animation_attr; ?>>
+					<li class="count_1">
+						<span class="days">00</span>
+						<?php if(!empty($show_labels) && $show_labels=='yes'){ ?>
+							<h6 class="days_ref"><?php echo esc_html($text_days); ?></h6>
+						<?php } ?>
+					</li>
+					<li class="count_2">
+						<span class="hours">00</span>
+						<?php if(!empty($show_labels) && $show_labels=='yes'){ ?>
+							<h6 class="hours_ref"><?php echo esc_html($text_hours); ?></h6>
+						<?php } ?>
+					</li>
+					<li class="count_3">
+						<span class="minutes">00</span>
+						<?php if(!empty($show_labels) && $show_labels=='yes'){ ?>
+						<h6 class="minutes_ref"><?php echo esc_html($text_minutes); ?></h6>
+						<?php } ?>
+					</li>
+					<li class="count_4">
+						<span class="seconds last">00</span>
+						<?php if(!empty($show_labels) && $show_labels=='yes'){ ?>
+						<h6 class="seconds_ref"><?php echo esc_html($text_seconds); ?></h6>
+						<?php } ?>
+					</li>
 				</ul>
 			<?php 
-		}
 	}
     protected function content_template() {
 	

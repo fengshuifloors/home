@@ -1,5 +1,9 @@
 const isInvalid = ( block ) => {
-	const { name, isValid, validationIssues } = block;
+	const {
+		name,
+		isValid,
+		validationIssues,
+	} = block;
 
 	if ( ! name || ! name.match( /^uagb\// ) ) {
 		return false;
@@ -10,6 +14,6 @@ const isInvalid = ( block ) => {
 	}
 
 	return true;
-};
+}
 
 export default isInvalid;

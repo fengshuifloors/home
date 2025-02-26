@@ -196,10 +196,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		public function update_library_complete() {
 
 			if ( ! ast_block_templates_doing_wp_cli() ) {
-
-				if ( ! current_user_can( 'edit_posts' ) ) {
-					wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-				}
 				// Verify Nonce.
 				check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 			}
@@ -231,10 +227,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		public function check_sync_status() {
 
 			if ( ! ast_block_templates_doing_wp_cli() ) {
-
-				if ( ! current_user_can( 'edit_posts' ) ) {
-					wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-				}
 				// Verify Nonce.
 				check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 			}
@@ -348,13 +340,10 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		 */
 		public function ajax_import_sites() {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-			}
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
-			$page_no = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : '';
+			$page_no = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( $page_no ) {
 				$sites_and_pages = $this->import_sites( $page_no );
 				wp_send_json_success(
@@ -383,9 +372,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		 */
 		public function ajax_import_categories() {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-			}
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
@@ -408,13 +394,10 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		 */
 		public function ajax_import_blocks() {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-			}
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
-			$page_no = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : '';
+			$page_no = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( $page_no ) {
 				$sites_and_pages = $this->import_blocks( $page_no );
 				wp_send_json_success(
@@ -443,9 +426,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		 */
 		public function ajax_sites_requests_count() {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-			}
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
@@ -478,9 +458,6 @@ if ( ! class_exists( 'Ast_Block_Templates_Sync_Library' ) ) :
 		 */
 		public function ajax_blocks_requests_count() {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-			}
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 

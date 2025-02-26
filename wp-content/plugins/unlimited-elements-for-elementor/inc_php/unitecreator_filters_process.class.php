@@ -12,8 +12,6 @@ class UniteCreatorFiltersProcess{
 	const DEBUG_MAIN_QUERY = false;
 	
 	const DEBUG_FILTER = false;
-
-	const DEBUG_PARSED_TERMS = false;
 	
 	private static $showDebug = false;
 	
@@ -33,8 +31,6 @@ class UniteCreatorFiltersProcess{
 	private static $originalQueryVars = null;
 	private $contentWidgetsDebug = array();
 	private static $lastArgs = null;	
-	private static $isUnderAjaxSearch = false;
-	
 	
 	const TYPE_TABS = "tabs";
 	const TYPE_SELECT = "select";
@@ -150,8 +146,7 @@ class UniteCreatorFiltersProcess{
 			$args["taxonomy"] = $taxonomy;
 			$args["slug"] = $slug;			
 		}
-
-		
+				
 		$arrTerms = get_terms($args);
 		
 		$isError = is_wp_error($arrTerms);
@@ -240,94 +235,6 @@ class UniteCreatorFiltersProcess{
 		return($arrBase);
 	}
 	
-
-	/**
-	 * parse the values groups
-	 */
-	private function parseStrTerms_groups($strValues){
-		
-		preg_match_all('/\|(.*?)\|/', $strValues, $matches);
-
-		if(empty($matches))
-			return(array());
-			
-		$arrGroups = $matches[0];
-		$arrGroupValues = $matches[1];
-		
-		$arrReplace = array();
-		
-		//break into groups
-		
-		foreach($arrGroups as $index => $group){
-			
-			$strReplace = "group".($index+1)."_".UniteFunctionsUC::getRandomString();
-			
-			$strGroupValues = $arrGroupValues[$index];
-			
-			$arrReplace[$strReplace] = $strGroupValues;
-			
-			$strValues = str_replace($group, $strReplace, $strValues);
-		}
-		
-		//get the array
-		
-		$arrValues = $this->parseStrTerms_values($strValues);
-		
-		foreach($arrValues as $key => $value){
-			
-			if(isset($arrReplace[$value])){
-				
-				$strGroupValue = $arrReplace[$value];
-				
-				$arrGroupValue = $this->parseStrTerms_values($strGroupValue);
-		
-				$arrGroupValue["relation"] = "OR";
-				
-				if(count($arrGroupValue) == 1)
-					$arrGroupValue = $arrGroupValue[0];
-					
-				$arrValues[$key] = $arrGroupValue;
-			}
-			
-		}
-		
-		$arrValues["relation"] = "AND";
-		
-		return($arrValues);
-	}
-	
-	
-	
-	/**
-	 * parse the values
-	 */
-	private function parseStrTerms_values($strValues){
-		
-		//get the groups instead
-		
-		if(strpos($strValues,"|") !== false){
-			
-			$arrValues = $this->parseStrTerms_groups($strValues);
-			
-			return($arrValues);
-		}
-
-		$arrValues = explode(".", $strValues);
-		
-		$isTermsAnd = false;
-		foreach($arrValues as $valueKey=>$value){
-			if($value === "*"){
-				unset($arrValues[$valueKey]);
-				$isTermsAnd = true;
-			}
-		}
-		
-		if($isTermsAnd == true)
-			$arrValues["relation"] = "AND";
-		
-		return($arrValues);
-	}
-	
 	
 	/**
 	 * parse filters string
@@ -351,28 +258,33 @@ class UniteCreatorFiltersProcess{
 			$key = $arrFilter[0];
 			$strValues = $arrFilter[1];
 			
-			$arrValues = $this->parseStrTerms_values($strValues);
+			$arrValues = explode(".", $strValues);
 			
-			$arrTerms[$key] = $arrValues;
+			$isTermsAnd = false;
+			foreach($arrValues as $valueKey=>$value){
+				if($value === "*"){
+					unset($arrValues[$valueKey]);
+					$isTermsAnd = true;
+				}
+			}
+			
+			if($isTermsAnd == true)
+				$arrValues["relation"] = "AND";
+			
+			$type = self::TYPE_TABS;
+			
+			switch($type){
+				case self::TYPE_TABS:
+					$arrTerms[$key] = $arrValues;
+				break;
+			}
 			
 		}
-		
-		
-		//show debug terms
-		
-		if(self::DEBUG_PARSED_TERMS == true){
-			
-			dmp("parsed terms");
-			dmp($arrTerms);
-			exit();
-		}
-		
 		
 		$arrOutput = array();
 		
 		if(!empty($arrTerms))
 			$arrOutput[self::TYPE_TABS] = $arrTerms;
-		
 			
 		return($arrOutput);
 	}
@@ -400,7 +312,6 @@ class UniteCreatorFiltersProcess{
 			
 			$arrOutput = $this->parseStrTerms($strTerms);
 		}
-		
 		
 		//page
 		
@@ -444,7 +355,6 @@ class UniteCreatorFiltersProcess{
 			
 		self::$arrInputFiltersCache = $arrOutput;
 		
-		
 		return($arrOutput);
 	}
 	
@@ -478,7 +388,7 @@ class UniteCreatorFiltersProcess{
 		}
 		
 		self::$arrFiltersAssocCache = $output;
-		
+				
 		return($output);
 	}
 	
@@ -627,32 +537,6 @@ class UniteCreatorFiltersProcess{
 	}
 	
 	/**
-	 * remove "not in" tax query
-	 */
-	private function keepNotInTaxQuery($arrTaxQuery){
-		
-		if(empty($arrTaxQuery))
-			return(null);
-			
-		$arrNew = array();
-		
-		foreach($arrTaxQuery as $tax){
-			
-			if(isset($tax["operator"])){
-				$arrNew[] = $tax;
-				continue;
-			}
-			
-			$operator = UniteFunctionsUC::getVal($tax, "operator");
-			if($operator == "NOT IN")
-				$arrNew[] = $tax;
-		}
-		
-		return($arrNew);
-	}
-	
-	
-	/**
 	 * set arguments tax query, merge with existing if avaliable
 	 */
 	private function setArgsTaxQuery($args, $arrTaxQuery){
@@ -663,10 +547,9 @@ class UniteCreatorFiltersProcess{
 		$existingTaxQuery = UniteFunctionsUC::getVal($args, "tax_query");
 		
 		//if replace terms mode - just delete the existing tax query
-		if(self::$isModeReplace == true){
-			$existingTaxQuery = $this->keepNotInTaxQuery($existingTaxQuery);
-		}
-		
+		if(self::$isModeReplace == true)
+			$existingTaxQuery = null;
+			
 		if(empty($existingTaxQuery)){
 			
 			$args["tax_query"] = $arrTaxQuery;
@@ -678,7 +561,7 @@ class UniteCreatorFiltersProcess{
 			$existingTaxQuery, 
 			$arrTaxQuery
 		);
-		
+				
 		$newTaxQuery["relation"] = "AND";
 		
 		
@@ -714,17 +597,18 @@ class UniteCreatorFiltersProcess{
 			$args = $this->processRequestFilters_setPaging($args, $page, $numItems);
 		
 		//set paging by offset
-		if(!empty($offset))
+		if(!empty($offset)){
+			
 			$args["offset"] = $offset;
-		
-		if(!empty($numItems))
-			$args["posts_per_page"] = $numItems;
+			
+			if(!empty($numItems))
+				$args["posts_per_page"] = $numItems;
+		}
 		
 		//search
 		if(!empty($search) && $search != "_all_"){
 			$args["s"] = $search;
 		}
-		
 		
 		$arrTerms = UniteFunctionsUC::getVal($arrFilters, "terms");
 		if(!empty($arrTerms)){
@@ -755,18 +639,6 @@ class UniteCreatorFiltersProcess{
 		}
 		
 		
-		
-		//supress all filters
-		if(self::$isUnderAjaxSearch == true){
-
-			$args["suppress_filters"] = true;
-			
-			//delete all filters in case of ajax search
-			
-			global $wp_filter;
-			$wp_filter = array();
-		}
-		
 		if(self::$showDebug == true){
 			
 			dmp("args:");
@@ -775,7 +647,8 @@ class UniteCreatorFiltersProcess{
 			dmp("filters:");
 			dmp($arrFilters);
 		}
-				
+		
+		
 		return($args);
 	}
 
@@ -871,7 +744,7 @@ class UniteCreatorFiltersProcess{
 	 * get content element html
 	 */
 	private function getContentWidgetHtml($arrContent, $elementID, $isGrid = true){
-		
+				
 		$arrElement = HelperProviderCoreUC_EL::getArrElementFromContent($arrContent, $elementID);
 		
 		if(empty($arrElement)){
@@ -937,9 +810,6 @@ class UniteCreatorFiltersProcess{
 			$output["html"] = UniteFunctionsUC::getVal($arrHtml, "html_items1");
 			$output["html2"] = UniteFunctionsUC::getVal($arrHtml, "html_items2");
 			
-			$output["uc_id"] = $objOutput->getWidgetID();
-			
-			
 		}else{		//not a grid - output of html template
 
 			$htmlBody = $objOutput->getHtmlOnly();
@@ -952,9 +822,7 @@ class UniteCreatorFiltersProcess{
 		
 		if(!empty($htmlDebug))
 			$output["html_debug"] = $htmlDebug;
-		
-		
-		
+			
 		return($output);
 	}
 	
@@ -1012,10 +880,7 @@ class UniteCreatorFiltersProcess{
 	 * get init filtres taxonomy request
 	 */
 	private function getInitFiltersTaxRequest($request, $strTestIDs){
-		
-		if(strpos($request, "WHERE 1=2") !== false)
-			return(null);
-		
+				
 		$posLimit = strpos($request, "LIMIT");
 		
 		if($posLimit){
@@ -1134,10 +999,8 @@ class UniteCreatorFiltersProcess{
 		$isModeReplace = UniteFunctionsUC::getPostGetVariable("ucreplace","",UniteFunctionsUC::SANITIZE_TEXT_FIELD);
 		$isModeReplace = UniteFunctionsUC::strToBool($isModeReplace);
 		
-		GlobalsProviderUC::$isUnderAjax = true;
-		
 		self::$isModeReplace = $isModeReplace;
-		
+				
 		//if($isModeFiltersInit == true)
 			//GlobalsProviderUC::$skipRunPostQueryOnce = true;
 		
@@ -1206,15 +1069,6 @@ class UniteCreatorFiltersProcess{
 		$htmlGridItems = UniteFunctionsUC::getVal($arrHtmlWidget, "html");
 		$htmlGridItems2 = UniteFunctionsUC::getVal($arrHtmlWidget, "html2");
 		
-		//replace widget id
-		$widgetHTMLID = UniteFunctionsUC::getVal($arrHtmlWidget, "uc_id");				
-		
-		if(!empty($widgetHTMLID)){
-			
-			$htmlGridItems = str_replace($widgetHTMLID, "%uc_widget_id%", $htmlGridItems);
-			$htmlGridItems2 = str_replace($widgetHTMLID, "%uc_widget_id%", $htmlGridItems2);
-		}
-		
 		$htmlDebug = UniteFunctionsUC::getVal($arrHtmlWidget, "html_debug");
 		
 		$addWidgetsHTML = $this->getContentWidgetsHTML($arrContent, $addElIDs);
@@ -1280,15 +1134,12 @@ class UniteCreatorFiltersProcess{
 	 * ajax search
 	 */
 	private function putAjaxSearchData(){
-
-		self::$isUnderAjaxSearch = true;
+		
 		
 		$responseCode = http_response_code();
 		
 		if($responseCode != 200)
 			http_response_code(200);
-		
-		define("UE_AJAX_SEARCH_ACTIVE", true);
 		
 		$layoutID = UniteFunctionsUC::getPostGetVariable("layoutid","",UniteFunctionsUC::SANITIZE_KEY);
 		$elementID = UniteFunctionsUC::getPostGetVariable("elid","",UniteFunctionsUC::SANITIZE_KEY);
@@ -1300,10 +1151,7 @@ class UniteCreatorFiltersProcess{
 			
 		//run the post query
 		GlobalsProviderUC::$isUnderAjaxSearch = true;
-		
-		//for outside filters - check that under ajax
-				
-		
+			
 		$arrHtmlWidget = $this->getContentWidgetHtml($arrContent, $elementID);
 		
 		GlobalsProviderUC::$isUnderAjaxSearch = false;
@@ -1395,11 +1243,6 @@ class UniteCreatorFiltersProcess{
 	 * include the client side scripts
 	 */
 	private function includeClientSideScripts(){
-		
-		$isInsideEditor = GlobalsProviderUC::$isInsideEditor;
-		
-		if($isInsideEditor == true)
-			return(false);
 		
 		$this->includeJSFiles();
 		
@@ -1562,6 +1405,7 @@ class UniteCreatorFiltersProcess{
 		$isDebug = UniteFunctionsUC::getGetVar("ucfiltersdebug","",UniteFunctionsUC::SANITIZE_TEXT_FIELD);
 		$isDebug = UniteFunctionsUC::strToBool($isDebug);
 		
+		
 		//get current filters
 		
 		$arrData = array();
@@ -1597,7 +1441,7 @@ class UniteCreatorFiltersProcess{
 		$slug = UniteFunctionsUC::getVal($term, "slug");
 		
 		$found = in_array($slug, $arrSlugs);
-		
+			
 		return($found);
 	}
 	
@@ -2030,7 +1874,7 @@ class UniteCreatorFiltersProcess{
 		$addClassItem = "";
 		$isFirstLoad = true;		//not in ajax, or with init after (also first load)
 		
-		$isInsideEditor = GlobalsProviderUC::$isInsideEditor;
+		$isInsideEditor = UniteCreatorElementorIntegrate::$isEditMode;
 		
 		$isUnderAjax = $this->isUnderAjax();
 		

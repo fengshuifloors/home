@@ -270,7 +270,6 @@ class AllowedAttributes implements AttributeInterface
             'values',
             'viewbox',
             'visibility',
-            'vector-effect',
             'vert-adv-y',
             'vert-origin-x',
             'vert-origin-y',

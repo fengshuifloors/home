@@ -252,7 +252,7 @@ class Premium_Image_Separator extends Widget_Base {
 			array(
 				'label'      => __( 'Width/Size', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', '%', 'custom' ),
+				'size_units' => array( 'px', 'em', '%' ),
 				'default'    => array(
 					'unit' => 'px',
 					'size' => 200,
@@ -280,7 +280,7 @@ class Premium_Image_Separator extends Widget_Base {
 			array(
 				'label'      => __( 'Height', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', 'custom' ),
+				'size_units' => array( 'px', 'em' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 1,
@@ -598,12 +598,42 @@ class Premium_Image_Separator extends Widget_Base {
 			'premium_image_separator_image_link',
 			array(
 				'label'       => __( 'URL', 'premium-addons-for-elementor' ),
-				'type'        => Controls_Manager::URL,
-				'dynamic'     => array( 'active' => true ),
+				'type'        => Controls_Manager::TEXT,
+				'dynamic'     => array(
+					'active'     => true,
+					'categories' => array(
+						TagsModule::POST_META_CATEGORY,
+						TagsModule::URL_CATEGORY,
+					),
+				),
 				'label_block' => true,
 				'condition'   => array(
 					'premium_image_separator_link_switcher' => 'yes',
 					'premium_image_separator_link_type' => 'url',
+				),
+			)
+		);
+
+		$this->add_control(
+			'premium_image_separator_image_link_text',
+			array(
+				'label'       => __( 'Link Title', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::TEXT,
+				'label_block' => true,
+				'condition'   => array(
+					'premium_image_separator_link_switcher' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'link_new_tab',
+			array(
+				'label'     => __( 'Open Link in New Tab', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'condition' => array(
+					'premium_image_separator_link_switcher' => 'yes',
 				),
 			)
 		);
@@ -957,13 +987,26 @@ class Premium_Image_Separator extends Widget_Base {
 			$link_type = $settings['premium_image_separator_link_type'];
 
 			if ( 'url' === $link_type ) {
-				$this->add_link_attributes( 'link', $settings['premium_image_separator_image_link'] );
+				$url = $settings['premium_image_separator_image_link'];
 			} else {
-				$this->add_render_attribute( 'link', 'href', get_permalink( $settings['premium_image_separator_existing_page'] ) );
+				$url = get_permalink( $settings['premium_image_separator_existing_page'] );
 			}
 
-			$this->add_render_attribute( 'link', 'class', 'premium-image-separator-link' );
+			$this->add_render_attribute(
+				'link',
+				array(
+					'class' => 'premium-image-separator-link',
+					'href'  => $url,
+				)
+			);
 
+			if ( 'yes' === $settings['link_new_tab'] ) {
+				$this->add_render_attribute( 'link', 'target', '_blank' );
+			}
+
+			if ( ! empty( $settings['premium_image_separator_image_link_text'] ) ) {
+				$this->add_render_attribute( 'link', 'title', $settings['premium_image_separator_image_link_text'] );
+			}
 		}
 
 		if ( 'image' === $type ) {
@@ -1039,7 +1082,7 @@ class Premium_Image_Separator extends Widget_Base {
 			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'separator_lottie' ) ); ?>></div>
 		<?php endif; ?>
 
-		<?php if ( 'yes' === $settings['premium_image_separator_link_switcher'] ) : ?>
+		<?php if ( 'yes' === $settings['premium_image_separator_link_switcher'] && ! empty( $url ) ) : ?>
 			<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'link' ) ); ?>></a>
 		<?php endif; ?>
 	</div>
@@ -1116,10 +1159,15 @@ class Premium_Image_Separator extends Widget_Base {
 
 			if( 'yes' === linkSwitch ) {
 				var linkType = settings.premium_image_separator_link_type,
-					linkUrl = ( 'url' == linkType ) ? settings.premium_image_separator_image_link.url : settings.premium_image_separator_existing_page;
+					linkTitle = settings.premium_image_separator_image_link_text,
+					linkUrl = ( 'url' == linkType ) ? settings.premium_image_separator_image_link : settings.premium_image_separator_existing_page;
 
 				view.addRenderAttribute( 'link', 'class', 'premium-image-separator-link' );
 				view.addRenderAttribute( 'link', 'href', linkUrl );
+
+				if( '' !== linkTitle ) {
+					view.addRenderAttribute( 'link', 'title', linkTitle );
+				}
 
 			}
 

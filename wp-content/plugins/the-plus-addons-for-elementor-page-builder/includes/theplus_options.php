@@ -139,20 +139,7 @@ class L_Theplus_Elementor_Plugin_Options
 				update_option( $option_name_ele380reset,$value, $deprecated, $autoload );
 			}
 		}
-
-		/*@sinnce 3.12.0*/
-		if ( defined( 'ELEMENTOR_VERSION' ) &&  version_compare( ELEMENTOR_VERSION, '3.12.0', '>=' ) ) {
-			$option_name_ele350reset ='ele312_default_plus_options';
-			if ( is_admin() && get_option( $option_name_ele350reset ) !== false ) {
-			} else if( is_admin() ){
-				$widgets_list = $this->tp_ele_get_registered_widgets();
-				$ele_wid_options=[];
-				$ele_wid_options['elementor_check_elements']= array_keys($widgets_list);				
-				update_option( 'theplus_elementor_widget',$ele_wid_options, $deprecated, $autoload );
-				update_option( $option_name_ele350reset,$value, $deprecated, $autoload );
-			}
-		}
-
+		
 		if(defined( 'ELEMENTOR_PRO_VERSION' ) && Utils::has_pro()){
 
 			/*New Added*/
@@ -345,11 +332,10 @@ class L_Theplus_Elementor_Plugin_Options
 
 		foreach ( $types as $type ) {
 			$ele_widget_cat = $type->get_categories();
-		
-			if ( empty($ele_widget_cat[0]) || !in_array( $ele_widget_cat[0], $ele_cat, true ) ) {
+			
+			if ( ! in_array( $ele_widget_cat[0], $ele_cat, true ) ) {
 				continue;
 			}			
-
 			$widgets[ $type->get_name() ] = $type->get_title();
 		}
 		
@@ -1191,15 +1177,6 @@ class L_Theplus_Elementor_Plugin_Options
 				'tag' => 'freemium',
 				'labelIcon' => '<svg xmlns="http://www.w3.org/2000/svg" width="16.867" height="23" viewBox="0 0 320 512"><path d="M288 288H32c-28.4 0-42.8 34.5-22.6 54.6l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c20-20.1 5.7-54.6-22.7-54.6zM160 448L32 320h256L160 448zM32 224h256c28.4 0 42.8-34.5 22.6-54.6l-128-128c-12.5-12.5-32.8-12.5-45.3 0l-128 128C-10.7 189.5 3.6 224 32 224zM160 64l128 128H32L160 64z"/></svg>',
 				'keyword' => ['scroll navigation'],
-			],
-			'tp_scroll_sequence' => [
-				'label' => esc_html__('Scroll Sequence','tpebl'),
-				'demoUrl' => 'https://theplusaddons.com/widgets/scroll-sequence-demo/',
-				'docUrl' => 'https://docs.posimyth.com/tpae/scroll-sequence/',
-				'videoUrl' => '#',
-				'tag' => 'pro',
-				'labelIcon' => '<svg xmlns="http://www.w3.org/2000/svg" width="16.867" height="23" viewBox="0 0 576 512"><path d="M568 336h-288c-4.422 0-8 3.594-8 8v56c0 35.28-28.7 64-64 64s-64-28.72-64-64V104c0-22.73-10.8-42.79-27.31-56H400c35.3 0 64 28.72 64 64v184c0 4.406 3.578 8 8 8S480 300.4 480 296V112C480 67.88 444.1 32 400 32H72C32.3 32 0 64.31 0 104v64C0 172.4 3.578 176 8 176h80C92.42 176 96 172.4 96 168S92.42 160 88 160H16V104c0-30.88 25.12-56 56-56S128 73.13 128 104v296C128 444.1 163.9 480 208 480h288c44.11 0 80-35.88 80-80v-56C576 339.6 572.4 336 568 336zM560 400c0 35.28-28.7 64-64 64H255.1C275.4 449.4 288 426.1 288 400V352h272V400z"/></svg>',
-				'keyword' => ['Scroll Sequence', 'Image Sequence', 'Video Scroll Sequence', 'Image Scroll Sequence', 'Cinematic Scroll Sequence', 'Cinematic Scroll Animation', 'Image Scroll Animation'],
 			],
 			'tp_search_bar' => [
 				'label' => esc_html__('Search bar','tpebl'),

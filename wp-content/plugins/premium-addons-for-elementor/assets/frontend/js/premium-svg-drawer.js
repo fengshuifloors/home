@@ -5,18 +5,10 @@
         var PremiumSVGDrawerHandler = elementorModules.frontend.handlers.Base.extend({
 
             bindEvents: function () {
-
-                ScrollTrigger.config({
-                    limitCallbacks: true,
-                    ignoreMobileResize: true
-                });
-
                 this.run();
             },
 
             run: function () {
-
-                gsap.registerPlugin(ScrollTrigger);
 
                 var $scope = this.$element;
 

@@ -126,22 +126,14 @@ class ProviderOperationsUC extends UCOperations{
 		
 		$search = $this->getSearchFromData($data);
 		$taxonomy = UniteFunctionsUC::getVal($data, "taxonomy");
-
+				
 		$query = array();
 		$query["number"] = $limit;
 		$query["search"] = $search;
 		$query["hide_empty"] = false;
 		
-		$arrTaxNames = array();
-		
-		$isSingleTax = true;
-		
-		if(!empty($taxonomy)){
+		if(!empty($taxonomy))
 			$query["taxonomy"] = $taxonomy;
-		}
-		
-		if(is_array($taxonomy) && count($taxonomy) > 1)
-			$isSingleTax = false;
 		
 		$response = get_terms($query);
 		
@@ -154,7 +146,7 @@ class ProviderOperationsUC extends UCOperations{
 		if(empty($response))
 			return(null);
 		
-		
+			
 		$arrResult = array();
 		foreach($response as $term){
 			
@@ -163,13 +155,7 @@ class ProviderOperationsUC extends UCOperations{
 			$taxonomy = $term->taxonomy;
 			$count = $term->count;
 			
-			if($taxonomy == "post_tag")
-				$taxonomy = "tag";
-			
-			if($isSingleTax == false)
-				$title = $name.", ($taxonomy, {$count} items)";
-			else
-				$title = $name.", ({$count} items)";
+			$title = $name." ({$count} items)";
 			
 			$arr = array();
 			$arr["id"] = $termID;

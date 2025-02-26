@@ -290,11 +290,10 @@ class HtmlDomParser extends AbstractDomParser
      *
      * @param string   $html
      * @param int|null $libXMLExtraOptions
-     * @param bool     $useDefaultLibXMLOptions
      *
      * @return \DOMDocument
      */
-    protected function createDOMDocument(string $html, $libXMLExtraOptions = null, $useDefaultLibXMLOptions = true): \DOMDocument
+    protected function createDOMDocument(string $html, $libXMLExtraOptions = null): \DOMDocument
     {
         if ($this->callbackBeforeCreateDom) {
             $html = \call_user_func($this->callbackBeforeCreateDom, $html, $this);
@@ -428,21 +427,18 @@ class HtmlDomParser extends AbstractDomParser
         }
         \libxml_clear_errors();
 
-        $optionsXml = 0;
-        if ($useDefaultLibXMLOptions) {
-            $optionsXml = \LIBXML_DTDLOAD | \LIBXML_DTDATTR | \LIBXML_NONET;
+        $optionsXml = \LIBXML_DTDLOAD | \LIBXML_DTDATTR | \LIBXML_NONET;
 
-            if (\defined('LIBXML_BIGLINES')) {
-                $optionsXml |= \LIBXML_BIGLINES;
-            }
+        if (\defined('LIBXML_BIGLINES')) {
+            $optionsXml |= \LIBXML_BIGLINES;
+        }
 
-            if (\defined('LIBXML_COMPACT')) {
-                $optionsXml |= \LIBXML_COMPACT;
-            }
+        if (\defined('LIBXML_COMPACT')) {
+            $optionsXml |= \LIBXML_COMPACT;
+        }
 
-            if (\defined('LIBXML_HTML_NODEFDTD')) {
-                $optionsXml |= \LIBXML_HTML_NODEFDTD;
-            }
+        if (\defined('LIBXML_HTML_NODEFDTD')) {
+            $optionsXml |= \LIBXML_HTML_NODEFDTD;
         }
 
         if ($libXMLExtraOptions !== null) {
@@ -863,13 +859,12 @@ class HtmlDomParser extends AbstractDomParser
      *
      * @param string   $html
      * @param int|null $libXMLExtraOptions
-     * @param bool     $useDefaultLibXMLOptions
      *
      * @return $this
      */
-    public function loadHtml(string $html, $libXMLExtraOptions = null, $useDefaultLibXMLOptions = true): DomParserInterface
+    public function loadHtml(string $html, $libXMLExtraOptions = null): DomParserInterface
     {
-        $this->document = $this->createDOMDocument($html, $libXMLExtraOptions, $useDefaultLibXMLOptions);
+        $this->document = $this->createDOMDocument($html, $libXMLExtraOptions);
 
         return $this;
     }
@@ -879,13 +874,12 @@ class HtmlDomParser extends AbstractDomParser
      *
      * @param string   $filePath
      * @param int|null $libXMLExtraOptions
-     * @param bool     $useDefaultLibXMLOptions
      *
      * @throws \RuntimeException
      *
      * @return $this
      */
-    public function loadHtmlFile(string $filePath, $libXMLExtraOptions = null, $useDefaultLibXMLOptions = true): DomParserInterface
+    public function loadHtmlFile(string $filePath, $libXMLExtraOptions = null): DomParserInterface
     {
         if (
             !\preg_match("/^https?:\/\//i", $filePath)
@@ -909,7 +903,7 @@ class HtmlDomParser extends AbstractDomParser
             throw new \RuntimeException('Could not load file ' . $filePath);
         }
 
-        return $this->loadHtml($html, $libXMLExtraOptions, $useDefaultLibXMLOptions);
+        return $this->loadHtml($html, $libXMLExtraOptions);
     }
 
     /**

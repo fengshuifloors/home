@@ -33,10 +33,6 @@ class ElementsKit_Widget_Client_Logo extends Widget_Base {
         return Handler::get_categories();
     }
 
-    public function get_keywords() {
-        return Handler::get_categories();
-    }
-
     public function get_help_url() {
         return 'https://wpmet.com/doc/client-logo/';
     }
@@ -218,10 +214,8 @@ class ElementsKit_Widget_Client_Logo extends Widget_Base {
 					'size' => 15,
 					'unit' => 'px',
 				],
-				'render_type' => 'template',
 				'selectors' => [
 					'{{WRAPPER}} .elementskit-clients-slider .slick-slide' => 'margin-right: {{SIZE}}{{UNIT}};margin-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .elementskit-clients-slider' => '--ekit_client_logo_left_right_spacing: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -292,10 +286,6 @@ class ElementsKit_Widget_Client_Logo extends Widget_Base {
 				'default' => [
 					'size' => 4,
 					'unit' => 'px',
-				],
-				'render_type' => 'template',
-				'selectors' => [
-					'{{WRAPPER}} .ekit-price-card-slider' => '--ekit_client_logo_slidetosho:  {{SIZE}};',
 				],
 			]
         );
@@ -1610,7 +1600,7 @@ class ElementsKit_Widget_Client_Logo extends Widget_Base {
         $seperotor_enable = $settings['ekit_client_logo_separator'] == 'yes' ? 'log-separator' : '';
         ?>
         <div <?php echo $this->get_render_attribute_string( 'wrapper' ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped by elementor ?>>
-            <div class="<?php echo esc_attr(\ElementsKit_Lite\Utils::swiper_class()); ?>">
+            <div class="swiper-container">
                 <div class="slick-list swiper-wrapper">
                     <?php
 

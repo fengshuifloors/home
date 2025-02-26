@@ -19,18 +19,16 @@ class Spectra_Block_Prioritization {
 	 * Array of all blocks in order.
 	 * This array should be in the same order as: /src/blocks.js.
 	 *
-	 * @var array
+	 * @var blocks
 	 */
 	private static $blocks = array(
 		// Core Spectra Blocks.
 		'container',
 		'advanced-heading',
 		'image',
-		'icon',
 		'buttons',
 		'info-box',
 		'call-to-action',
-		'countdown',
 		// Alphabetically Ordered Blocks.
 		'blockquote',
 		'content-timeline',
@@ -42,20 +40,15 @@ class Spectra_Block_Prioritization {
 		'icon-list',
 		'image-gallery',
 		'inline-notice',
-		'instagram-feed',
 		'login',
-		'loop-builder',
 		'lottie',
 		'marketing-button',
-		'modal',
 		'post-carousel',
 		'post-grid',
 		'post-timeline',
 		'price-list',
 		'register',
 		'review',
-		'separator',
-		'slider',
 		'social-share',
 		'star-rating',
 		'table-of-contents',
@@ -70,8 +63,6 @@ class Spectra_Block_Prioritization {
 		'gf-styler',
 		'post-masonry',
 		'wp-search',
-		// Extensions.
-		'popup-builder',
 	);
 
 	/**

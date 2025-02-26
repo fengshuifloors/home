@@ -19,10 +19,6 @@ class ElementsKit_Widget_Dual_Button_Handler extends \ElementsKit_Lite\Core\Hand
         return [ 'elementskit' ];
     }
 
-    static function get_keywords() {
-        return ['ekit', 'button', 'btn', 'dual', 'advance', 'link'];
-    }
-
     static function get_dir() {
         return \ElementsKit_Lite::widget_dir() . 'dual-button/';
     }

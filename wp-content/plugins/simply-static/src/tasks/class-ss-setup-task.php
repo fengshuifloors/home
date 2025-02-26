@@ -56,7 +56,7 @@ class Setup_Task extends Task {
 		//->delete_all();
 
 		// add origin url and additional urls/files to database.
-		$additional_urls = apply_filters( 'ss_setup_task_additional_urls', $this->options->get( 'additional_urls' ) );
+		$additional_urls = $this->options->get( 'additional_urls' );
 
 		self::add_origin_and_additional_urls_to_db( $additional_urls );
 		self::add_additional_files_to_db( $this->options->get( 'additional_files' ) );
@@ -151,10 +151,6 @@ class Setup_Task extends Task {
 		} elseif ( stripos( $path, get_home_path() ) === 0 ) {
 			$url = str_replace( untrailingslashit( get_home_path() ), Util::origin_url(), $path );
 		}
-		
-		// Windows support
-		$url = Util::normalize_slashes( $url );
-
 		return $url;
 	}
 
@@ -174,12 +170,6 @@ class Setup_Task extends Task {
 		$files = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $dir, \RecursiveDirectoryIterator::SKIP_DOTS ), \RecursiveIteratorIterator::CHILD_FIRST );
 
 		foreach ( $files as $fileinfo ) {
-			$can_delete_file = apply_filters( 'ss_can_delete_file', true, $fileinfo, $dir );
-
-			if ( ! $can_delete_file ) {
-				continue;
-			}
-
 			if ( $fileinfo->isDir() ) {
 				if ( false === rmdir( $fileinfo->getRealPath() ) ) {
 					return false;

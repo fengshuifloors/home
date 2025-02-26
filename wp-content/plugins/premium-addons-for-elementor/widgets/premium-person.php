@@ -202,7 +202,7 @@ class Premium_Person extends Widget_Base {
 				'label'       => __( 'Width', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::SLIDER,
 				'description' => __( 'Enter image width in (PX, EM, %), default is 100%', 'premium-addons-for-elementor' ),
-				'size_units'  => array( 'px', 'em', '%', 'custom' ),
+				'size_units'  => array( 'px', 'em', '%' ),
 				'range'       => array(
 					'px' => array(
 						'min' => 1,
@@ -407,7 +407,7 @@ class Premium_Person extends Widget_Base {
 			array(
 				'label'      => __( 'Custom Height', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', 'custom' ),
+				'size_units' => array( 'px', 'em' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 0,
@@ -1097,7 +1097,7 @@ class Premium_Person extends Widget_Base {
 			'doc_2',
 			array(
 				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => sprintf( '<a href="%s" target="_blank">%s</a>', $doc2_url, __( 'I\'m not able to see the social icons in the widget »', 'premium-addons-for-elementor' ) ),
+				'raw'             => sprintf( '<a href="%s" target="_blank">%s</a>', $doc2_url, __( 'I\'m not able to see Font Awesome icons in the widget »', 'premium-addons-for-elementor' ) ),
 				'content_classes' => 'editor-pa-doc',
 			)
 		);

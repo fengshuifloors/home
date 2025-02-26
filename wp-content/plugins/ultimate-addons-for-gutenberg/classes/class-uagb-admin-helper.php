@@ -51,10 +51,8 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				'uag_enable_legacy_blocks'          => self::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
 				'_uagb_allow_file_generation'       => self::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
 				'uag_enable_templates_button'       => self::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
-				'uag_enable_on_page_css_button'     => self::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' ),
 				'uag_enable_block_condition'        => self::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
 				'uag_enable_masonry_gallery'        => self::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
-				'uag_enable_animations_extension'   => self::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ),
 				'uag_enable_block_responsive'       => self::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
 				'uag_select_font_globally'          => self::get_admin_settings_option( 'uag_select_font_globally', array() ),
 				'uag_load_select_font_globally'     => self::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' ),
@@ -75,15 +73,18 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 						'container',
 						'advanced-heading',
 						'image',
-						'icon',
 						'buttons',
 						'info-box',
 						'call-to-action',
-						'countdown',
 					)
 				),
-				'wp_is_block_theme'                 => function_exists( 'wp_is_block_theme' ) ? wp_is_block_theme() : false,
 			);
+
+			$setting_data = get_option( 'spectra_settings_data' );
+
+			if ( ! $setting_data ) {
+				update_option( 'spectra_settings_data', $options );
+			}
 
 			return $options;
 		}
@@ -109,12 +110,19 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * @param  string  $key     The option key.
 		 * @param  mixed   $default Option default value if option is not available.
 		 * @param  boolean $network_override Whether to allow the network admin setting to be overridden on subsites.
-		 * @return mixed            Return the option value.
+		 * @return string           Return the option value
 		 * @since 0.0.1
 		 */
 		public static function get_admin_settings_option( $key, $default = false, $network_override = false ) {
+
 			// Get the site-wide option if we're in the network admin.
-			return $network_override && is_multisite() ? get_site_option( $key, $default ) : get_option( $key, $default );
+			if ( $network_override && is_multisite() ) {
+				$value = get_site_option( $key, $default );
+			} else {
+				$value = get_option( $key, $default );
+			}
+
+			return $value;
 		}
 
 		/**
@@ -127,6 +135,8 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$blocks       = UAGB_Helper::$block_list;
 			$saved_blocks = self::get_admin_settings_option( '_uagb_blocks' );
+
+			update_option( 'spectra_saved_blocks_settings', $saved_blocks );
 
 			if ( is_array( $blocks ) ) {
 				foreach ( $blocks as $slug => $data ) {
@@ -278,11 +288,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			foreach ( $combined as $key => $c_block ) {
 
-				if ( false !== strpos( $c_block, '-pro' ) ) {
-					$style_file = SPECTRA_PRO_DIR . 'assets/css/blocks/' . $c_block . '.css';
-				} else {
-					$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
-				}
+				$style_file = UAGB_DIR . 'assets/css/blocks/' . $c_block . '.css';
 
 				if ( file_exists( $style_file ) ) {
 					$style .= $wp_filesystem->get_contents( $style_file );
@@ -399,14 +405,9 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 					$content_width = intval( $content_width_third_party );
 					self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Filter added through any 3rd Party Theme/Plugin.', 'ultimate-addons-for-gutenberg' ) );
 				}
-				if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
-					$settings      = wp_get_global_settings();
-					$content_width = intval( $settings['layout']['wideSize'] );
-					self::update_admin_settings_option( 'uag_content_width_set_by', __( "Full Site Editor's Global Styles", 'ultimate-addons-for-gutenberg' ) );
-				}
 			}
 
-			return '' === $content_width ? 1140 : $content_width;
+			return $content_width;
 		}
 	}
 

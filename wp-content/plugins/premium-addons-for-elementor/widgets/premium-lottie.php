@@ -751,9 +751,19 @@ class Premium_Lottie extends Widget_Base {
 		if ( 'yes' === $settings['link_switcher'] ) {
 
 			if ( 'url' === $settings['link_selection'] ) {
-				$this->add_link_attributes( 'link', $settings['link'] );
+				$button_url = $settings['link']['url'];
 			} else {
-				$this->add_render_attribute( 'link', 'href', get_permalink( $settings['existing_link'] ) );
+				$button_url = get_permalink( $settings['existing_link'] );
+			}
+
+			$this->add_render_attribute( 'link', 'href', $button_url );
+
+			if ( ! empty( $settings['link']['is_external'] ) ) {
+				$this->add_render_attribute( 'link', 'target', '_blank' );
+			}
+
+			if ( ! empty( $settings['link']['nofollow'] ) ) {
+				$this->add_render_attribute( 'link', 'rel', 'nofollow' );
 			}
 		}
 
@@ -767,7 +777,7 @@ class Premium_Lottie extends Widget_Base {
 		?>
 
 		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'lottie' ) ); ?>>
-			<?php if ( 'yes' === $settings['link_switcher'] ) : ?>
+			<?php if ( 'yes' === $settings['link_switcher'] && ! empty( $button_url ) ) : ?>
 				<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'link' ) ); ?>></a>
 			<?php endif; ?>
 		</div>

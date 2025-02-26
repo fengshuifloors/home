@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Tooltip } from '@brainstormforce/starter-templates-components';
 import { __ } from '@wordpress/i18n';
+import { Tooltip } from '@brainstormforce/starter-templates-components';
 import { PreviousStepLink, DefaultStep } from '../../components/index';
 import ICONS from '../../../icons';
 import { useStateValue } from '../../store/store';
@@ -140,8 +140,9 @@ const Survey = () => {
 			Object.keys( requirementWarning ).length > 0;
 	}
 
-	const [ showRequirementCheck, setShowRequirementCheck ] =
-		useState( requirementsFlag );
+	const [ showRequirementCheck, setShowRequirementCheck ] = useState(
+		requirementsFlag
+	);
 
 	const [ formDetails, setFormDetails ] = useState( {
 		first_name: '',
@@ -379,7 +380,8 @@ const Survey = () => {
 												content={
 													<span
 														dangerouslySetInnerHTML={ {
-															__html: value.tooltip,
+															__html:
+																value.tooltip,
 														} }
 													/>
 												}
@@ -402,7 +404,8 @@ const Survey = () => {
 												content={
 													<span
 														dangerouslySetInnerHTML={ {
-															__html: value.tooltip,
+															__html:
+																value.tooltip,
 														} }
 													/>
 												}
@@ -432,8 +435,10 @@ const Survey = () => {
 	};
 
 	const fileSystemPermissionRequirement = () => {
-		const { is_readable: isReadable, is_writable: isWritable } =
-			fileSystemPermissions.permissions;
+		const {
+			is_readable: isReadable,
+			is_writable: isWritable,
+		} = fileSystemPermissions.permissions;
 
 		return (
 			<div className="requirement-check-wrap">

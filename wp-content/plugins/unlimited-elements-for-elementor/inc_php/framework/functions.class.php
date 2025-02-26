@@ -342,30 +342,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		
 			return($arr);
 		}
-
-		/**
-		 *
-		 * convert assoc array to array
-		 */
-		public static function assocToArrayNames($assoc, $valueName){
-			
-			$arr = array();
-			
-			if(empty($assoc))
-				return(array());
-			
-			foreach($assoc as $item){
-				
-				if(!array_key_exists($valueName, $item))
-					UniteFunctionsUC::throwError("field: $valueName not found in array");
-				
-				$value = $item[$valueName];
-				
-				$arr[] = $value;
-			}
-		
-			return($arr);
-		}
 		
 		
 		/**
@@ -891,53 +867,32 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		 */
 		public static function truncateString($value, $length = 100, $preserve = true, $separator = '...', $charset="utf-8"){
 			
-			if(empty($length))
-				$length = 100;
-			
-			$originalValue = $value;
-        	
-			$value = strip_tags($value,"<br><em><b><strong>");
-			
-			if (mb_strlen($value, $charset) <= $length) 
-				return($originalValue);
-			
-			//preserve words
-            if ($preserve) {
-            	
-            	if(function_exists("mb_strpos")){
-	                // If breakpoint is on the last word, return the value without separator.
-	                if (false === ($breakpoint = mb_strpos($value, ' ', $length, $charset))) {
-	                	return $value;
-	                }
-            	}else{
-	                
-            		if (false === ($breakpoint = strpos($value, ' ', $length))) {
-	                    return $value;
-	                }
-            		
-            	}
-
-                $length = $breakpoint;
-            }
-			
-            if(function_exists("mb_substr"))	            
-            	$value = rtrim(mb_substr($value, 0, $length, $charset)).$separator;
-            else
-            	$value = rtrim(substr($value, 0, $length)).$separator;
-            
-	       	
-            //if html errors - strip tags and trim again
-            
-	        $arrErrors = UniteFunctionsUC::validateHTML($value);
-	        
-	        if(!empty($arrErrors)){
-	        	$value = strip_tags($originalValue);
-
-	            if(function_exists("mb_substr"))	            
-	            	$value = rtrim(mb_substr($value, 0, $length, $charset)).$separator;
-	            else
-	            	$value = rtrim(substr($value, 0, $length)).$separator;
+			$value = strip_tags($value);
+						
+	        if (mb_strlen($value, $charset) > $length) {
+	            if ($preserve) {
 	            	
+	            	if(function_exists("mb_strpos")){
+		                // If breakpoint is on the last word, return the value without separator.
+		                if (false === ($breakpoint = mb_strpos($value, ' ', $length, $charset))) {
+		                    return $value;
+		                }
+	            	}else{
+		                
+	            		if (false === ($breakpoint = strpos($value, ' ', $length))) {
+		                    return $value;
+		                }
+	            		
+	            	}
+	
+	                $length = $breakpoint;
+	            }
+				
+	            if(function_exists("mb_substr"))	            
+	            	return rtrim(mb_substr($value, 0, $length, $charset)).$separator;
+	            else
+	            	return rtrim(substr($value, 0, $length, $charset)).$separator;
+	            
 	        }
 	        
 	        return $value;
@@ -1161,20 +1116,13 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		 * maybe json decode
 		 */
 		public static function maybeCsvDecode($str){
-
-			$str = trim($str);
-						
+			
 			if(empty($str))
 				return($str);
 			
 			if(is_string($str) == false)
 				return($str);
-
-			//not allowed html tags
 			
-			if($str != strip_tags($str))
-				return($str);
-							
 			//try to csv decode
 
 			$arrLines = explode("\n", $str);
@@ -1185,24 +1133,20 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			$arrKeys = array();
 
 			$arrItems = array();
-						
+			
 			foreach($arrLines as $line){
-				
-				$line = trim($line);
 				
 				if(empty($line))
 					continue;
 				
 				$arrLine = str_getcsv($line);
-								
+				
 				if(empty($arrLine))
 					continue;
-							
 				
 				//get the keys
 				if(empty($arrKeys)){
 					$arrKeys = $arrLine;
-					
 					continue;
 				}
 				
@@ -1538,17 +1482,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 	
 	    }		
 		
-	    /**
-	     * replace only first substring in string
-	     */
-	    public static function replaceFirstSubstring($string, $strFind, $strReplace){
-	    	
-			$newString = substr_replace($string, $strReplace, strpos($string, $strFind), strlen($strFind));	    	
-	    	
-			return($newString);
-	    }
-	    
-	    
 		public static function z__________URLS__________(){}
 		
 		/**
@@ -2034,51 +1967,19 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 	    }
 		
 	    /**
-	     * check if the html is valid
-	     */
-	    public static function isHTMLValid($html){
-	    	
-	    	if(empty($html))
-	    		return(true);
-	    	
-	    	if(class_exists("DOMDocument") == false)
-	    		return(true);
-	    		
-	    	$dom = new DOMDocument;
-			$dom->loadHTML($html);
-			
-	    	$isValid = $dom->validate();
-	    	
-	    	
-	    	return($isValid);
-	    }
-	    
-	    
-	    /**
 	     * check if html valid, get errors list
 	     */
 		public static function validateHTML($string){
 			
 		    $start = strpos($string, '<');
 		    $end = strrpos($string, '>', $start);
-			
-		    if($start === false)
-				return(array());
-		    
-			if(function_exists("libxml_clear_errors") == false)
-				return(array());
-				
-			if(function_exists("simplexml_load_string") == false)
-				return(array());
-		    
-		    
+		
 		    if ($end !== false) {
 		        $string = substr($string, $start);
 		    } else {
 		        $string = substr($string, $start, strlen($string) - $start);
 		    }
 			
-		    
 		    // xml requires one root node
 		    $string = "<div>$string</div>";
 			
@@ -2090,32 +1991,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			
 		    return $arrErrors;
 		}
-		
-		/**
-		 * validate extracted files for unwanted files like php
-		 */
-		public static function validatePHPInExtracted($path, $isDelete = true){
-			
-			if(is_dir($path) == false)
-				return(false);
-			
-			$arrFiles = self::getFileListTree($path,"php");
-						
-			if(empty($arrFiles))
-				return(false);
-				
-			//if php files found - throw error and delete all files
-				
-			$firstFile = $arrFiles[0];
-			$filename = basename($firstFile);
-			
-			self::throwError("Found some dengerous files in the uploaded like <b>$filename</b>. ");
-			
-			if($isDelete == true)
-				self::deleteDir($path, false);
-			
-		}
-		
 		
 		public static function z________FILE_SYSTEM________(){}
 		
@@ -2192,10 +2067,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				UniteFunctionsUC::throwError("write file should accept only string in file: ". $filepath);
 			
 			$fp = fopen($filepath,"w+");
-			
-			if($fp === false)
-				UniteFunctionsUC::throwError("File $filepath could not been created. Check folder permissions");
-			
 			fwrite($fp,$str);
 			fclose($fp);
 		}
@@ -2358,27 +2229,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			self::deleteDir($path,false,array(),"",array("olderthen"=>$olderThenSeconds));
 		}
 		
-		/**
-		 * delete list of files
-		 */
-		public static function deleteListOfFiles($arrFiles){
-			
-			if(empty($arrFiles))
-				return(false);
-				
-			if(is_array($arrFiles) == false)
-				return(false);
-			
-			foreach($arrFiles as $filepath){
-				
-				if(file_exists($filepath) == false)
-					continue;
-				
-				unlink($filepath);
-			}
-			
-		}
-		
 		
 		/**
 		 *
@@ -2486,21 +2336,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			}
 			closedir($dir);
 		}		
-
-		/**
-		 * add ending to the path
-		 */
-		public static function addUrlEndingSlash($url){
-			
-			$lastChar = substr($url, strlen($url)-1, 1);
-		
-			if($lastChar == '/')
-				return($url);
-			
-			$url .= '/';
-			
-			return($url);
-		}
 		
 		
 		/**

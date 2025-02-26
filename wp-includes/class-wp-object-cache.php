@@ -73,7 +73,7 @@ class WP_Object_Cache {
 	private $multisite;
 
 	/**
-	 * Sets up object properties.
+	 * Sets up object properties; PHP 5 style constructor.
 	 *
 	 * @since 2.0.8
 	 */
@@ -101,9 +101,10 @@ class WP_Object_Cache {
 	 *
 	 * @param string $name  Property to set.
 	 * @param mixed  $value Property value.
+	 * @return mixed Newly-set property.
 	 */
 	public function __set( $name, $value ) {
-		$this->$name = $value;
+		return $this->$name = $value;
 	}
 
 	/**
@@ -155,7 +156,7 @@ class WP_Object_Cache {
 		$message = is_string( $key )
 			? __( 'Cache key must not be an empty string.' )
 			/* translators: %s: The type of the given cache key. */
-			: sprintf( __( 'Cache key must be an integer or a non-empty string, %s given.' ), $type );
+			: sprintf( __( 'Cache key must be integer or non-empty string, %s given.' ), $type );
 
 		_doing_it_wrong(
 			sprintf( '%s::%s', __CLASS__, debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 2 )[1]['function'] ),

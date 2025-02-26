@@ -29,7 +29,7 @@ class Url_Extractor {
 	protected static $match_tags = array(
 		'a'       => array( 'href', 'urn', 'style' ),
 		'base'    => array( 'href' ),
-		'img'     => array( 'src', 'usemap', 'longdesc', 'dynsrc', 'lowsrc', 'srcset', 'data-src', 'data-bg' ),
+		'img'     => array( 'src', 'usemap', 'longdesc', 'dynsrc', 'lowsrc', 'srcset' ),
 		'picture' => array( 'src', 'srcset' ),
 		'source'  => array( 'srcset' ),
 		'amp-img' => array( 'src', 'srcset' ),
@@ -60,7 +60,6 @@ class Url_Extractor {
 
 		'bgsound' => array( 'src' ),
 		'div'     => array( 'href', 'src', 'style' ),
-		'span'    => array( 'href', 'src', 'style' ),
 		'section' => array( 'style' ),
 		'footer'  => array( 'style' ),
 		'header'  => array( 'style' ),
@@ -152,15 +151,6 @@ class Url_Extractor {
 	public function save_body( $content ) {
 		return file_put_contents( $this->options->get_archive_dir() . $this->static_page->file_path, $content );
 	}
-
-    /**
-     * Get the Static Page.
-     *
-     * @return \Simply_Static\Page|string
-     */
-    public function get_static_page() {
-        return $this->static_page;
-    }
 
 	/**
 	 * Extracts URLs from the static_page and update them based on the dest. type
@@ -303,14 +293,8 @@ class Url_Extractor {
 					}
 				}
 
-                $strict_url_validation = apply_filters( 'simply_static_strict_url_validation', false );
-
 				foreach ( $extracted_urls as $extracted_url ) {
-                    if ( $strict_url_validation && ! filter_var( $extracted_url, FILTER_VALIDATE_URL ) ) {
-                        continue;
-                    }
-
-                    if ( $extracted_url !== '' ) {
+					if ( $extracted_url !== '' ) {
 						$updated_extracted_url = $this->add_to_extracted_urls( $extracted_url );
 						$attribute_value       = str_replace( $extracted_url, $updated_extracted_url, $attribute_value );
 					}
@@ -350,9 +334,9 @@ class Url_Extractor {
 			}
 
 			// handle 'style' tag differently, since we need to parse the content.
-			$style_tags = $dom->find( 'style' );
+			$tags = $dom->find( 'style' );
 
-			foreach ( $style_tags as $tag ) {
+			foreach ( $tags as $tag ) {
 				// Check if valid content exists.
 				try {
 					$updated_css        = $this->extract_and_replace_urls_in_css( $tag->innerhtmlKeep );
@@ -364,14 +348,13 @@ class Url_Extractor {
 			}
 
 			// handle 'script' tag differently, since we need to parse the content.
-			$script_tags = $dom->find( 'script' );
+			$tags = $dom->find( 'script' );
 
-			foreach ( $script_tags as $tag ) {
+			foreach ( $tags as $tag ) {
 				// Check if valid content exists.
 				try {
 					$updated_script     = $this->extract_and_replace_urls_in_script( $tag->innerhtmlKeep );
 					$tag->innerhtmlKeep = $updated_script;
-					$this->extract_and_replace_urls_in_script_inner_text( $tag );
 				} catch ( Exception $e ) {
 					// If not skip the result.
 					continue;
@@ -437,75 +420,11 @@ class Url_Extractor {
 	}
 
 	private function extract_and_replace_urls_in_script( $text ) {
-        if ( $this->is_json( $text ) ) {
-            $decoded_text = html_entity_decode( $text, ENT_NOQUOTES );
-        } else {
-            $decoded_text = html_entity_decode( $text );
-        }
-		$text = preg_replace( '/(https?:)?\/\/' . addcslashes( Util::origin_host(), '/' ) . '/i', $this->options->get_destination_url(), $decoded_text );
+
+		$text = preg_replace( '/(https?:)?\/\/' . addcslashes( Util::origin_host(), '/' ) . '/i', $this->options->get_destination_url(), html_entity_decode( $text ) );
 
 		return $text;
 	}
-
-	/**
-	 * @param \ $tag
-	 *
-	 * @return array|string|string[]|null
-	 */
-	private function extract_and_replace_urls_in_script_inner_text( $tag ) {
-
-		$regex = '/(https?:)?\/\/' . addcslashes( Util::origin_host(), '/' ) . '/i';
-
-		switch ( $this->options->get( 'destination_url_type' ) ) {
-			case 'absolute':
-				$convert_to = $this->options->get_destination_url();
-				break;
-			case 'relative':
-				// Adding \/? before end of regex pattern to convert url.com/ & url.com to relative path, ex. /path/.
-				$regex      = '/(https?:)?\/\/' . addcslashes( Util::origin_host(), '/' ) . '\/?/i';
-				$convert_to = $this->options->get( 'relative_path' );
-				break;
-			default:
-				// Offline mode.
-				// Adding \/? before end of regex pattern to convert url.com/ & url.com to relative path, ex. /path/.
-				$regex      = '/(https?:)?\/\/' . addcslashes( Util::origin_host(), '/' ) . '\/?/i';
-				$convert_to = '/';
-		}
-
-        if ( $this->is_json( $tag->innerText ) ) {
-            $decoded_text = html_entity_decode( $tag->innerText, ENT_NOQUOTES );
-        } else {
-            $decoded_text = html_entity_decode( $tag->innerText );
-        }
-
-		$tag->innerText = preg_replace( $regex, $convert_to, $decoded_text );
-
-		return $tag;
-	}
-
-    /**
-     * Check whether a given string is a valid JSON representation.
-     *
-     * Copied from: WP CLI, https://github.com/wp-cli/wp-cli/blob/f3e4b0785aa3d3132ee73be30aedca8838a8fa06/php/utils.php#L1600-L1612
-     *
-     * @param string $argument       String to evaluate.
-     * @param bool   $ignore_scalars Optional. Whether to ignore scalar values.
-     *                               Defaults to true.
-     * @return bool Whether the provided string is a valid JSON representation.
-     */
-    protected function is_json( $argument, $ignore_scalars = true ) {
-        if ( ! is_string( $argument ) || '' === $argument ) {
-            return false;
-        }
-        $arg = $argument[0];
-        if ( $ignore_scalars && ! in_array( $argument[0], [ '{', '[' ], true ) ) {
-            return false;
-        }
-
-        json_decode( $argument, $assoc = true );
-$last_error = json_last_error();
-        return json_last_error() === JSON_ERROR_NONE;
-    }
 
 	/**
 	 * callback function for preg_replace in extract_and_replace_urls_in_css
@@ -517,7 +436,7 @@ $last_error = json_last_error();
 	 *
 	 * @return string An updated string for the text that was originally matched
 	 */
-	public function css_matches( $matches ) {
+	private function css_matches( $matches ) {
 		$full_match    = $matches[0];
 		$extracted_url = $matches[1];
 
@@ -583,12 +502,7 @@ $last_error = json_last_error();
 
 		if ( $url && Util::is_local_url( $url ) ) {
 			// add to extracted urls queue
-			$this->extracted_urls[] = apply_filters(
-				'simply_static_extracted_url',
-				Util::remove_params_and_fragment( $url ),
-				$url,
-				$this->static_page
-			);
+			$this->extracted_urls[] = Util::remove_params_and_fragment( $url );
 
 			$url = $this->convert_url( $url );
 		}
@@ -604,9 +518,6 @@ $last_error = json_last_error();
 	 * @return string      Converted URL
 	 */
 	private function convert_url( $url ) {
-
-		$url = apply_filters( 'simply_static_pre_converted_url', $url, $this->static_page, $this );
-
 		if ( $this->options->get( 'destination_url_type' ) == 'absolute' ) {
 			$url = $this->convert_absolute_url( $url );
 		} else if ( $this->options->get( 'destination_url_type' ) == 'relative' ) {
@@ -615,9 +526,7 @@ $last_error = json_last_error();
 			$url = $this->convert_offline_url( $url );
 		}
 
-		$url = remove_query_arg( 'simply_static_page', $url );
-
-		return apply_filters( 'simply_static_converted_url', $url, $this->static_page, $this );
+		return $url;
 	}
 
 	/**

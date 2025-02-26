@@ -196,27 +196,25 @@ function UERemoteGeneralAPI(){
 	
 	
 
-	/*
-		events
-	*/	
-	this.onEvent = function(name, func){
-	
-		  validateInited();
-		  
-	      switch(name){
-			case "change":
-				
-				g_objParent.on("uc_change", func);
-				
-			break;
-			case "pause":		// do nothing
-			break;
-			default:
-				throw new Error("General API: Wrong event: "+name);
-			break;
-	
-		}
+/*
+	events
+*/	
+this.onEvent = function(name, func){
+
+	  validateInited();
+	  
+      switch(name){
+		case "change":
+			
+			g_objParent.on("uc_change", func);
+						
+		break;
+		default:
+			throw new Error("General API: Wrong event: "+event);
+		break;
+
 	}
+}
 	
 	
 	/**
@@ -271,9 +269,7 @@ function UERemoteGeneralAPI(){
 				changeItem(arg1);
 				
 			break;
-			case "pause":
-			case "play":
-			break;
+						
 			default:
 				throw new Error("General API: Wrong action: "+action);
 			break;
@@ -322,7 +318,7 @@ function UERemoteGeneralAPI(){
 	 * add set active events
 	 */
 	function initEvents_setActive(){
-		
+				
 		var objItems = getObjItems();
 		
 		if(objItems.length == 0)
@@ -340,13 +336,6 @@ function UERemoteGeneralAPI(){
 		objItems.on(g_vars.trigger_event, function(event){
 			
 			var objItem = jQuery(this);
-			
-			var objElement = jQuery(event.target);
-			var isLink = objElement.is("a");
-			
-			if(isLink == true)
-				return(true);
-			
 			objItems.not(objItem).removeClass(g_vars.class_active);
 			
 			objItem.addClass(g_vars.class_active);
@@ -368,11 +357,8 @@ function UERemoteGeneralAPI(){
 		if(g_vars.listen_class_change == true)
 			initEvents_listenClassChange();
 		
-		if(g_vars.add_set_active_code == true){
-						
+		if(g_vars.add_set_active_code == true)
 			initEvents_setActive();
-			
-		}
 		
 	}
 	
@@ -535,22 +521,6 @@ function UERemoteGalleryAPI(){
 				g_api.selectItem(arg1);
 				
 			break;
-			case "is_playing":
-				
-				var isPlaying = g_api.isPlaying();
-				
-				return(isPlaying);
-				
-			break;
-			case "pause":
-				
-				g_api.stop();
-				
-			break;
-			case "play":
-				
-				g_api.play();
-			break;
 			default:
 				throw new Error("GALLERY API: Wrong action: "+action);
 			break;
@@ -567,16 +537,12 @@ function UERemoteGalleryAPI(){
 		  
 	      switch(name){
 			case "change":
+				
 				g_api.on("item_change", func);
-			break;
-			case "play":
-				g_api.on("play",func);
-			break;
-			case "pause":
-				g_api.on("stop",func);
+			
 			break;
 			default:
-				throw new Error("Gallery API: Wrong event: "+name);
+				throw new Error("General API: Wrong event: "+event);
 			break;
 	
 		}
@@ -629,9 +595,7 @@ function UERemoteCarouselAPI(){
 
 	var g_owlCarousel, g_owl, g_isInited;
 	var t = this;
-	var enableDebug = false;
-	
-	
+
 	/**
 	* console log some string
 	*/
@@ -675,12 +639,8 @@ function UERemoteCarouselAPI(){
 		do some action
 	*/
 	this.doAction = function(action, arg1, arg2){
-		
+				
 		validateInited();
-		
-		if(enableDebug == true){
-			trace("carousel action: "+action+" "+arg1+" "+arg2);
-		}
 		
 		switch(action){
 			case "next":
@@ -692,13 +652,15 @@ function UERemoteCarouselAPI(){
 			break;
 			case "play":
 				
-				g_owlCarousel.trigger('start_autoplay.owl.autoplay');
+				g_owlCarousel.trigger('play.owl.autoplay');
+				g_owlCarousel.trigger('next.owl.carousel');
 				
 			break;
 			case "pause":
 
 				g_owlCarousel.trigger('stop.owl.autoplay');
-				
+				g_owl.settings.autoplay = false;				
+								
 			break;
 			case "is_playing":
 				
@@ -730,10 +692,6 @@ function UERemoteCarouselAPI(){
 			case 'get_num_current':
 				
       			var currentItem = g_owl.relative(g_owl.current());
-      			
-      			if(enableDebug == true){
-      				trace("num current: " + currentItem);
-      			}
       			
       			return(currentItem);
 			break;
@@ -793,14 +751,14 @@ function UERemoteCarouselAPI(){
 		  
           switch(name){
 			case "play":
-								
-				g_owlCarousel.on("play_autoplay.owl.carousel", func);
+
+				g_owlCarousel.on("play.owl.autoplay", func);
 				
 			break;
 			case "pause":
-								
-				g_owlCarousel.on("stop_autoplay.owl.carousel", func);
 				
+				g_owlCarousel.on("stop.owl.autoplay", func);
+
 			break;
 			case "change":
 				
@@ -820,11 +778,10 @@ function UERemoteCarouselAPI(){
 			case "refreshed":
 				
 				g_owlCarousel.on("refreshed.owl.carousel", func);
-				
+
 			break;
 			default:
-				console.error("Carousel API: Wrong event: "+name);
-				throw new Error("Carousel API: Wrong event: "+name);
+				throw new Error("Carousel API: Wrong event: "+event);
 			break;
 
 		}
@@ -856,9 +813,9 @@ function UERemoteCarouselAPI(){
 			throw new Error("owl-carousel class not found");
 		
 		g_owlCarousel = objParent;
-        
+                                     
 		g_owl = g_owlCarousel.data("owl.carousel");
-				
+		
 		if(!g_owl)
 			return(false);
 				
@@ -881,8 +838,7 @@ function UESyncObject(){
 	
 	var g_vars = {
 		is_editor:false,
-		is_editor_func_started:false,
-		show_debug:false
+		is_editor_func_started:false
 	};
 	
 	/**
@@ -953,9 +909,6 @@ function UESyncObject(){
 	 */
 	function mapAPIs(func, objElement){
 		
-		if(typeof ucRemoteDebugEnabled != "undefined")
-			g_vars.show_debug = true;
-		
 		var elementID = null;
 		
 		if(objElement){
@@ -987,37 +940,14 @@ function UESyncObject(){
 	function onItemChange(objAPI){
 		
 		var numCurrent = objAPI.doAction("get_num_current");
-		
+				
 		var objElement = objAPI.getElement();
 		
-		if(g_vars.show_debug == true){
-			
-			trace("sync onchange: " + numCurrent);
-			trace(objElement);
-			trace(g_objApis);
-		}
-			
 		mapAPIs(function(api){
 						
 			api.doAction("change_item", numCurrent);
 			
 		}, objElement);
-		
-	}
-	
-	/**
-	 * on pause - pause others as well
-	 */
-	function onPause(objAPI){
-		
-		var objElement = objAPI.getElement();
-		
-		mapAPIs(function(api){
-						
-			api.doAction("pause");
-			
-		}, objElement);
-		
 		
 	}
 	
@@ -1150,14 +1080,6 @@ function UESyncObject(){
 			
 		});
 		
-		//sync objects pause 
-		
-		objAPI.onEvent("pause", function(){
-			
-			onPause(objAPI);
-		});
-				
-		
 		if(g_vars.is_editor == true && g_vars.is_editor_func_started == false){
 			
 			setInterval(onEditorCheck, 700);
@@ -1215,6 +1137,7 @@ function UERemoteWidgets(){
 		widget_id:null,
 		init_options:null,
 		is_parent_mode: false,
+		is_debug: false,
 		syncid:null,
 		options_api:null,
 		show_connection_debug:false,
@@ -1533,10 +1456,7 @@ function UERemoteWidgets(){
 	 * init api variable
 	 */
 	function initAPI(){
-				
-		if(g_vars.trace_debug == true){
-			trace("start init api function");
-		}
+		
 		
 		//set type and related objects
 		if(!g_api){
@@ -1628,14 +1548,13 @@ function UERemoteWidgets(){
 		//init the debug related
 		
 		var isDebug = g_objWidget.data("debug");
-		if(isDebug === true || typeof ucRemoteDebugEnabled != "undefined"){
+		if(isDebug === true){
 			
 			if(g_vars.show_trace_when_debug_on == true)
 				g_vars.trace_debug = true;
 			
 			g_vars.show_connection_debug = true;
 		}
-				
 		
 		g_vars.is_inited = initParent();
 		
@@ -2092,12 +2011,7 @@ function UERemoteWidgets(){
 	 * do api action
 	 */
 	this.doAction = function(action, arg1, arg2){
-		
-		if(g_vars.trace_debug){
-			trace("Do Action: ");
-			trace(action+ " "+arg1+" "+arg2);
-		}
-		
+			
 		switch(action){
 			case "prev":
 			case "next":
@@ -2118,12 +2032,6 @@ function UERemoteWidgets(){
 				
 		var response = g_api.doAction(action, arg1, arg2);
 		
-		if(g_vars.trace_debug){
-			trace("Response: ");
-			trace(response);
-		}
-
-
 		return(response);
 	}
 	
@@ -2374,52 +2282,28 @@ function UERemoteWidgets(){
 		
 		var syncID = g_objParent.data("syncid");
 		
-		
-		if(g_vars.trace_debug == true){
-			trace("Start parent sync");
-			trace(g_objParent);
-		}
-		
-		if(!syncID){
-			
-			if(g_vars.trace_debug == true){
-				trace("no sync id");
-			}
-			
+		if(!syncID)
 			return(false);
-		}
 		
 		var objSync = g_remoteConnection.getSyncObject(syncID);
-		
+				
 		var isEditorMode = isInsideEditor();
 				
 		objSync.setOptions(syncID, isEditorMode);
-				
+		
 		var isInited = initAPI();
-				
+		
 		if(isInited == false){
 			
 			var widgetID = g_objParent.attr("id");
 			
-			var parentType = getParentType();
-			
-			var message = "Sync Error - can't init api for "+widgetID; 
-			
-			if(parentType == g_types.CAROUSEL){
-				
-				message += ", please check that the owl carousel js file loading from unlimited elements plugin.";
-				
-			}else{
-				message += ", please check if the widget is inited and working.";
-			}
-			
-			throw new Error(message);
+			throw new Error("Sync Error - can't init api for "+widgetID+", please check if the widget is inited and working.");
 		}
 		
 		g_vars.syncid = syncID;
 		
 		//add debug event listener
-		if(g_vars.trace_debug === true)
+		if(g_vars.is_debug === true)
 			objSync.on("update_debug", updateSyncDebug);
 		
 		g_objSync = objSync;
@@ -2459,11 +2343,8 @@ function UERemoteWidgets(){
 			
 			var isDebug = g_objParent.data("debug");
 			
-			if(typeof ucRemoteDebugEnabled != "undefined")
-				isDebug = true;
-			
-			g_vars.trace_debug = isDebug;
-							
+			g_vars.is_debug = isDebug;
+						
 			if(isDebug === true)
 				addParentDebug(objParent);
 			

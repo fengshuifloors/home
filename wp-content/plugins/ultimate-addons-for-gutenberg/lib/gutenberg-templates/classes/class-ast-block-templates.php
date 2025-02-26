@@ -82,14 +82,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function import_wpforms( $wpforms_url = '' ) {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-			}
-			// Verify Nonce.
-			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
-
-			// Ingnoring PHPCS temporary, we need to check why url encoded passed from API.
-			$wpforms_url = ( isset( $_REQUEST['wpforms_url'] ) ) ? esc_url_raw( urldecode( $_REQUEST['wpforms_url'] ) ) : $wpforms_url; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$wpforms_url = ( isset( $_REQUEST['wpforms_url'] ) ) ? urldecode( $_REQUEST['wpforms_url'] ) : $wpforms_url; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$ids_mapping = array();
 
 			if ( ! empty( $wpforms_url ) && function_exists( 'wpforms_encode' ) ) {
@@ -158,19 +151,13 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function import_block() {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-			}
-			// Verify Nonce.
-			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
-
 			// Allow the SVG tags in batch update process.
 			add_filter( 'wp_kses_allowed_html', array( $this, 'allowed_tags_and_attributes' ), 10, 2 );
 
 			$ids_mapping = get_option( 'ast_block_templates_wpforms_ids_mapping', array() );
 
 			// Post content.
-			$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 			// Empty mapping? Then return.
 			if ( ! empty( $ids_mapping ) ) {
@@ -298,21 +285,19 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 * Activate Plugin
 		 */
 		public function activate_plugin() {
-
-			if ( ! current_user_can( 'activate_plugins' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action.', 'astra-sites' ) );
-			}
-			// Verify Nonce.
-			check_ajax_referer( 'ast-block-templates-ajax-nonce', 'security' );
-
 			wp_clean_plugins_cache();
 
-			$plugin_init = ( isset( $_POST['init'] ) ) ? sanitize_text_field( $_POST['init'] ) : '';
+			$plugin_init = ( isset( $_POST['init'] ) ) ? esc_attr( $_POST['init'] ) : ''; // phpcs:ignore
 
 			$activate = activate_plugin( $plugin_init, '', false, true );
 
 			if ( is_wp_error( $activate ) ) {
-				wp_send_json_error( $activate->get_error_message() );
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => $activate->get_error_message(),
+					)
+				);
 			}
 
 			wp_send_json_success(
@@ -329,18 +314,13 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 */
 		public function template_importer() {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
-			}
-			// Verify Nonce.
-			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+			$nonce = isset( $_REQUEST['_ajax_nonce'] ) && wp_verify_nonce( $_REQUEST['_ajax_nonce'], 'ast-block-templates-ajax-nonce' ) ? true : false;
 
-			$api_uri = ( isset( $_REQUEST['api_uri'] ) ) ? esc_url_raw( $_REQUEST['api_uri'] ) : '';
-
-			// Early return.
-			if ( '' == $api_uri ) {
-				wp_send_json_error( __( 'Something wrong', 'astra-sites' ) );
+			if ( ! $nonce ) {
+				wp_send_json_error( 'Invalid nonce.' );
 			}
+
+			$api_uri = sanitize_text_field( $_REQUEST['api_uri'] );
 
 			$api_args = apply_filters(
 				'ast_block_templates_api_args',
@@ -397,15 +377,11 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				return;
 			}
 
-			wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), AST_BLOCK_TEMPLATES_VER, true );
+			wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/null.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), AST_BLOCK_TEMPLATES_VER, true );
 			wp_add_inline_script( 'ast-block-templates', 'window.lodash = _.noConflict();', 'after' );
 
 			wp_enqueue_style( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/style.css', array(), AST_BLOCK_TEMPLATES_VER, 'all' );
 
-			$license_status = false;
-			if ( is_callable( 'BSF_License_Manager::bsf_is_active_license' ) ) {
-				$license_status = BSF_License_Manager::bsf_is_active_license( 'astra-pro-sites' );
-			}
 			wp_localize_script(
 				'ast-block-templates',
 				'AstBlockTemplatesVars',
@@ -432,9 +408,6 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 						'button_class'            => '',
 						'display_suggestion_link' => true,
 						'suggestion_link'         => 'https://wpastra.com/sites-suggestions/?utm_source=demo-import-panel&utm_campaign=astra-sites&utm_medium=suggestions',
-						'license_status'          => $license_status,
-						'isPro'                   => defined( 'ASTRA_PRO_SITES_NAME' ) ? true : false,
-						'getProURL'               => defined( 'ASTRA_PRO_SITES_NAME' ) ? esc_url( admin_url( 'plugins.php?bsf-inline-license-form=astra-pro-sites' ) ) : esc_url( 'https://wpastra.com/starter-templates-plans/?utm_source=gutenberg-templates&utm_medium=dashboard&utm_campaign=Starter-Template-Backend' ),
 					)
 				)
 			);
@@ -597,29 +570,26 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				'size'     => filesize( $temp_file ),
 			);
 
-			$defaults = apply_filters(
-				'ast_block_templates_wp_handle_sideload',
-				array(
+			$defaults = array(
 
-					// Tells WordPress to not look for the POST form
-					// fields that would normally be present as
-					// we downloaded the file from a remote server, so there
-					// will be no form fields
-					// Default is true.
-					'test_form'   => false,
+				// Tells WordPress to not look for the POST form
+				// fields that would normally be present as
+				// we downloaded the file from a remote server, so there
+				// will be no form fields
+				// Default is true.
+				'test_form'   => false,
 
-					// Setting this to false lets WordPress allow empty files, not recommended.
-					// Default is true.
-					'test_size'   => true,
+				// Setting this to false lets WordPress allow empty files, not recommended.
+				// Default is true.
+				'test_size'   => true,
 
-					// A properly uploaded file will pass this test. There should be no reason to override this one.
-					'test_upload' => true,
+				// A properly uploaded file will pass this test. There should be no reason to override this one.
+				'test_upload' => true,
 
-					'mimes'       => array(
-						'xml'  => 'text/xml',
-						'json' => 'application/json',
-					),
-				) 
+				'mimes'       => array(
+					'xml'  => 'text/xml',
+					'json' => 'application/json',
+				),
 			);
 
 			$overrides = wp_parse_args( $overrides, $defaults );

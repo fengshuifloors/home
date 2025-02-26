@@ -81,10 +81,10 @@ if (!class_exists('Master_Addons_Promotions')) {
                 /** Changelog Items
                  * Starts from: %3$s
                  */
-                __('<span class="dashicons dashicons-yes"></span> <span class="jltma-changes-list">Unsupported operand issue fixed on MA Blog widget</span><br>', 'master-addons'), //%3$s
-                __('<span class="dashicons dashicons-yes"></span> <span class="jltma-changes-list">Comment form field loading issue at backend</span><br>', 'master-addons'),
-                __('<span class="dashicons dashicons-yes"></span> <span class="jltma-changes-list">Google re-captcha issue fixed</span><br>', 'master-addons'),
-                __('<span class="dashicons dashicons-yes"></span> <span class="jltma-changes-list">Swiper Slider overflow issue fixed.</span><br>', 'master-addons') //%6$s
+                __('<span class="dashicons dashicons-yes"></span> <span class="jltma-changes-list">Latest Elementor, WordPress and Elementor Compatibility</span><br>', 'master-addons'), //%3$s
+                __('<span class="dashicons dashicons-yes"></span> <span class="jltma-changes-list">Backward Campatibility Elementor Version functionality</span><br>', 'master-addons'),
+                __('<span class="dashicons dashicons-yes"></span> <span class="jltma-changes-list">"Navigation Menu" addon -  Style issue fixed when Layout/Type is VERTICAL/SIDE. </span><br>', 'master-addons'),
+                __('<span class="dashicons dashicons-yes"></span> <span class="jltma-changes-list">"Current Time" addon -  Name of the Month made translatable</span><br>', 'master-addons') //%6$s
 
             );
 

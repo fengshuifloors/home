@@ -20,7 +20,7 @@ class ElementsKit_Widget_Page_List_Handler extends \ElementsKit_Lite\Core\Handle
 
 
 	static function get_keywords() {
-		return ['ekit', 'list', 'page list', 'page', 'elementskit page list'];
+		return [ 'list', 'page list', 'page', 'ekit', 'elementskit page list' ];
 	}
 
     static function get_categories() {

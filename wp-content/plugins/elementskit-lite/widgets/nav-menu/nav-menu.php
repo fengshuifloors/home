@@ -33,10 +33,6 @@ class ElementsKit_Widget_Nav_Menu extends Widget_Base {
         return Handler::get_categories();
     }
 
-    public function get_keywords() {
-        return Handler::get_keywords();
-    }
-
     public function get_help_url() {
         return 'https://wpmet.com/doc/nav-menu/';
     }
@@ -1529,7 +1525,7 @@ class ElementsKit_Widget_Nav_Menu extends Widget_Base {
              * Hamburger Toggler Button
              */
             ?>
-            <button class="elementskit-menu-hamburger elementskit-menu-toggler"  type="button" aria-label="hamburger-icon">
+            <button class="elementskit-menu-hamburger elementskit-menu-toggler">
                 <?php
                 /**
                  * Show Default Icon
@@ -1562,18 +1558,16 @@ class ElementsKit_Widget_Nav_Menu extends Widget_Base {
             }
 
             $metadata = \ElementsKit_Lite\Utils::img_meta(esc_attr($settings['elementskit_nav_menu_logo']['id']));
-			$markup = '<div class="elementskit-nav-identity-panel">';
-			// Use an if statement to conditionally display the site logo
-			if (!empty($settings['elementskit_nav_menu_logo']['id'])) : 
-				$markup .= '
-				<div class="elementskit-site-title">
-					<a class="elementskit-nav-logo" href="'.esc_url($link).'" target="'.(!empty($target) ? esc_attr($target) : '_self').'" rel="'.esc_attr($nofollow).'">
-						'. \Elementskit_Lite\Utils::get_attachment_image_html($settings, 'elementskit_nav_menu_logo', 'full') .'
-					</a> 
-				</div>';
-			endif;
-			$markup .= '<button class="elementskit-menu-close elementskit-menu-toggler" type="button">X</button></div>';
-		
+            $markup = '
+				<div class="elementskit-nav-identity-panel">
+					<div class="elementskit-site-title">
+						<a class="elementskit-nav-logo" href="'.esc_url($link).'" target="'.(!empty($target) ? esc_attr($target) : '_self').'" rel="'.esc_attr($nofollow).'">
+                            '. \Elementskit_Lite\Utils::get_attachment_image_html($settings, 'elementskit_nav_menu_logo', 'full') .'
+						</a> 
+					</div>
+					<button class="elementskit-menu-close elementskit-menu-toggler" type="button">X</button>
+				</div>
+			';
 
 			$container_classes = [
 				'elementskit-menu-container elementskit-menu-offcanvas-elements elementskit-navbar-nav-default',

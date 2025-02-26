@@ -151,14 +151,14 @@ class Module {
 			)
 		);
 
-		$sm_link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/elementor-editor-not-loading-with-display-conditions/', 'editor-page', 'wp-editor', 'get-support' );
+		$doc_link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/elementor-display-conditions-tutorial/', 'editor-page', 'wp-editor', 'get-support' );
 
 		$element->add_control(
-			'pa_display_sm_notice',
+			'pa_display_conditions_notice',
 			array(
 				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => '<a href="' . esc_url( $sm_link ) . '" target="_blank">' . __( 'IMPORTANT: Check this article first!', 'premium-addons-for-elementor' ) . '</a>',
-				'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
+				'raw'             => '<a href="' . esc_url( $doc_link ) . '" target="_blank">' . __( 'How to use Premium Display Conditions for Elementor »', 'premium-addons-for-elementor' ) . '</a>',
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
 				'condition'       => array(
 					'pa_display_conditions_switcher' => 'yes',
 				),
@@ -339,7 +339,7 @@ class Module {
 		$element->add_control(
 			'pa_condition_info',
 			array(
-				'label'     => __( 'Helpful Information', 'premium-addons-for-elementor' ),
+				'label'     => __( 'Helpful Information', 'premium-addons-pro' ),
 				'separator' => 'before',
 				'type'      => Controls_Manager::HEADING,
 				'condition' => array(
@@ -349,8 +349,8 @@ class Module {
 		);
 
 		$docs = array(
-			'https://premiumaddons.com/docs/elementor-display-conditions-tutorial/' => __( 'Getting started »', 'premium-addons-for-elementor' ),
-			'https://premiumaddons.com/docs/elementor-editor-not-loading-with-display-conditions/' => __( 'Fix editor not loading with Display Conditions enabled »', 'premium-addons-for-elementor' ),
+			'https://premiumaddons.com/docs/elementor-display-conditions-tutorial/' => __( 'Getting started »', 'premium-addons-pro' ),
+			'https://premiumaddons.com/docs/elementor-editor-not-loading-with-display-conditions/' => __( 'Fix editor not loading with Display Conditions enabled »', 'premium-addons-pro' ),
 		);
 
 		$doc_index = 1;

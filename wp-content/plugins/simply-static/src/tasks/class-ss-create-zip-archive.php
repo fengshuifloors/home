@@ -27,12 +27,7 @@ class Create_Zip_Archive_Task extends Task {
 			return $download_url;
 		} else {
 			$message = __( 'ZIP archive created: ', 'simply-static' );
-            if ( $this->is_wp_cli_running() ) {
-                $message .= $download_url;
-            } else {
-                $message .= ' <a href="' . $download_url . '">' . __( 'Click here to download', 'simply-static' ) . '</a>';
-            }
-
+			$message .= ' <a href="' . $download_url . '">' . __( 'Click here to download', 'simply-static' ) . '</a>';
 			$this->save_status_message( $message );
 			return true;
 		}
@@ -52,12 +47,6 @@ class Create_Zip_Archive_Task extends Task {
 		if ( ! $temp_dir_empty ) {
 			foreach ( new \DirectoryIterator( $temp_dir ) as $file ) {
 				if ( ! $file->isDir() ) {
-					$can_delete_file = apply_filters( 'ss_can_delete_file', true, $file, $temp_dir );
-
-					if ( ! $can_delete_file ) {
-						continue;
-					}
-
 					unlink( $file->getPathname() );
 				}
 			}
@@ -82,8 +71,6 @@ class Create_Zip_Archive_Task extends Task {
 		if ( $zip_archive->create( $files, PCLZIP_OPT_REMOVE_PATH, $archive_dir ) === 0 ) {
 			return new \WP_Error( 'create_zip_failed', __( 'Unable to create ZIP archive', 'simply-static' ) );
 		}
-
-		do_action('ss_zip_file_created', $zip_archive );
 
 		$download_url = Util::abs_path_to_url( $zip_archive->zipname );
 		return $download_url;

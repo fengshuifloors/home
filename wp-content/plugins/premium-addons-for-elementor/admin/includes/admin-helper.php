@@ -108,7 +108,7 @@ class Admin_Helper {
 
 		if ( is_admin() ) {
 			if ( isset( $_SERVER['REQUEST_URI'] ) ) {
-				$current_page = sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+				$current_page = filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_STRING );
 				if ( false === strpos( $current_page, 'action=elementor' ) ) {
 					Admin_Notices::get_instance();
 
@@ -210,7 +210,7 @@ class Admin_Helper {
 		$suffix           = is_rtl() ? '-rtl' : '';
 		$current_screen   = self::get_current_screen();
 		$enabled_elements = self::get_enabled_elements();
-		$action           = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+		$action           = isset( $_SERVER['REQUEST_URI'] ) ? filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_STRING ) : '';
 
 		if ( false === strpos( $action, 'action=architect' ) ) {
 
@@ -420,16 +420,12 @@ class Admin_Helper {
 			wp_send_json_error( 'Settings are not set!' );
 		}
 
-		$settings = array_map(
-			function( $setting ) {
-				return htmlspecialchars( $setting, ENT_QUOTES );
-			},
-			wp_unslash( $_POST['settings'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		);
+		// phpcs: already sanitized by 'filter_var_array'
+		$settings = filter_var_array( wp_unslash( $_POST['settings'] ), FILTER_SANITIZE_STRING ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		update_post_meta( $settings['item_id'], 'pa_megamenu_item_meta', json_encode( $settings, JSON_UNESCAPED_UNICODE ) );
 
-		wp_send_json_success( $settings );
+		wp_send_json_success( 'Item Settings Saved' );
 	}
 
 	/**
@@ -691,7 +687,7 @@ class Admin_Helper {
 			<div class="pa-settings-sections">
 				<?php
 				foreach ( self::$tabs as $key => $tab ) {
-					echo '<div id="pa-section-' . esc_attr( $tab['id'] ) . '" class="pa-section pa-section-' . esc_attr( $key ) . '">';
+					echo wp_kses_post( '<div id="pa-section-' . $tab['id'] . '" class="pa-section pa-section-' . $key . '">' );
 						include_once $tab['template'] . '.php';
 					echo '</div>';
 				}

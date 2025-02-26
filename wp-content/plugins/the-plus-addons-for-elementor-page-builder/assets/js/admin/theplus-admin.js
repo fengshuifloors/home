@@ -9,7 +9,6 @@
 				$(".cmb2-id-team-member-post-title").attr('id', 'team_member_p_t');
 			}
 		}
-
 		var performace_cont = $('#cmb2-metabox-theplus_performance');
 		if(performace_cont.length > 0){
 			var ids="theplus-remove-smart-cache";
@@ -84,7 +83,6 @@
 			}
 		})	
 	});	
-
 	$(document).ready(function(){
 	
 		var $category_container = $(".plus-template-main-category");
@@ -185,7 +183,6 @@
 			}
 		});
 	});
-	
 	function get_template_load(category){
 		if(category!=''){
 				$.ajax({
@@ -216,41 +213,39 @@
 				});
 			}
 	}
-	
 	$(document).ready(function() {
 		if($('#elementor-import-template-area.theplus-import-template-library-form').length==1){
-			$('#elementor-import-template-area').dialog({
-				title: 'Import Template Library',
-				dialogClass: 'wp-dialog plus-import-template-popup',
-				autoOpen: false,
-				draggable: false,
-				width: 'auto',
-				modal: true,
-				resizable: false,
-				closeOnEscape: true,
-				position: {
-				my: "center",
-				at: "center",
-				of: window
-				},
-				open: function () {
-				// close dialog by clicking the overlay behind it
-				$('.ui-widget-overlay').bind('click', function(){
-					$('#elementor-import-template-area').dialog('close');
-				})
-				},
-				create: function () {
-				// style fix for WordPress admin
-				$('.ui-dialog-titlebar-close').addClass('ui-button');
-				},
-			});
-			// bind a button or a link to open the dialog
-			$('.theplus-import-template-library').on('click', function(e) {
-				e.preventDefault();
-				$('#elementor-import-template-area').dialog('open');
-			});
+		$('#elementor-import-template-area').dialog({
+			title: 'Import Template Library',
+			dialogClass: 'wp-dialog plus-import-template-popup',
+			autoOpen: false,
+			draggable: false,
+			width: 'auto',
+			modal: true,
+			resizable: false,
+			closeOnEscape: true,
+			position: {
+			  my: "center",
+			  at: "center",
+			  of: window
+			},
+			open: function () {
+			  // close dialog by clicking the overlay behind it
+			  $('.ui-widget-overlay').bind('click', function(){
+				$('#elementor-import-template-area').dialog('close');
+			  })
+			},
+			create: function () {
+			  // style fix for WordPress admin
+			  $('.ui-dialog-titlebar-close').addClass('ui-button');
+			},
+		});
+		  // bind a button or a link to open the dialog
+		$('.theplus-import-template-library').on('click',function(e) {
+			e.preventDefault();
+			$('#elementor-import-template-area').dialog('open');
+		});
 		}
-
 		if($("#theplus_verified_api").length==1){
 		
 			$("#post_type_options").find(".button-primary").remove();
@@ -326,7 +321,7 @@
 		/*unused widget start*/
 		/*get page start*/
 		var SacanedData = [];
-		$( ".tp-widget-scan-area .tp-widget-scan" ).on("click", function (e) {
+		  $( ".tp-widget-scan-area .tp-widget-scan" ).on("click", function (e) {
 			e.preventDefault();
 			$(this).addClass("tp-loading"),
 				$.ajax({
@@ -364,7 +359,7 @@
 		});
 		
 		/*disable widget*/
-		$( ".tp-widget-scan-area .tp-widget-scan-disable" ).on("click", function (e) {
+		 $( ".tp-widget-scan-area .tp-widget-scan-disable" ).on("click", function (e) {
 			e.preventDefault();
 			$(this).addClass("tp-loading1"),
 			$(this).closest(".tp-widget-scan-area").find(".tp-widget-scan-disable-text").addClass("tp-loading-text")

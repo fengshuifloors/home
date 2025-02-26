@@ -421,11 +421,11 @@ class Woo_Checkout extends Widget_Base {
 		$this->add_control(
 			'ea_section_woo_login_show',
 			[
-				'label' => __( 'Show Preview of Login', 'essential-addons-for-elementor-lite' ),
+				'label' => __( 'Show Preview of Login', 'essential-addons-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'no',
-				'label_on' => __( 'Show', 'essential-addons-for-elementor-lite' ),
-				'label_off' => __( 'Hide', 'essential-addons-for-elementor-lite' ),
+				'label_on' => __( 'Show', 'essential-addons-elementor' ),
+				'label_off' => __( 'Hide', 'essential-addons-elementor' ),
 				'return_value' => 'yes',
 				'description' => 'You can force show login in order to style them properly.',
 			]
@@ -552,15 +552,6 @@ class Woo_Checkout extends Widget_Base {
 				'label' => esc_html__( 'Billing/Shipping Fields', 'essential-addons-for-elementor-lite' ),
 			]
 		);
-
-        $this->add_control(
-            'eael_new_checkout_fields_not_found',
-            [
-                'type' => Controls_Manager::RAW_HTML,
-                'raw' => __('If you didn\'t find your custom checkout fields. Please remove this widget and again add this.' , 'essential-addons-for-elementor-lite'),
-                'content_classes' => 'eael-warning',
-            ]
-        );
 
 		$this->start_controls_tabs( 'ea_woo_checkout_reorder_fields');
 		$this->start_controls_tab( 'ea_woo_checkout_reorder_billing_fields_tab',
@@ -2914,7 +2905,6 @@ class Woo_Checkout extends Widget_Base {
 		$classes         = [ 'form-row-first', 'form-row-last', 'form-row-wide' ];
 		foreach ( $checkout_fields as $key => $field_set ) {
 			$field_key = $field_set['field_key'];
-            $this->checkout_field_keys[$field_type][] = $field_key;
 			if ( isset( $fields[ $field_key ] ) ) {
 				$field_set_class                  = is_array( $fields[ $field_key ]['class'] ) ? $fields[ $field_key ]['class'] : [];
 				$fields[ $field_key ]['label']    = $field_set['field_label'];
@@ -2922,6 +2912,7 @@ class Woo_Checkout extends Widget_Base {
 				$fields[ $field_key ]['class']    = array_diff( $field_set_class, $classes ) + [ $field_set['field_class'] ];
 			}
 		}
+
 		return $fields;
 	}
 
@@ -2970,15 +2961,6 @@ class Woo_Checkout extends Widget_Base {
 			'layout-'. $settings['ea_woo_checkout_layout']
 		] );
 
-        $checkout_field_keys['billing'] = wp_list_pluck( $settings[ 'ea_billing_fields_list' ], 'field_class', 'field_key' );
-        $checkout_field_keys['shipping'] = wp_list_pluck( $settings[ 'ea_shipping_fields_list' ], 'field_class', 'field_key' );
-
-        $button_texts = [
-                'place_order' => $settings['ea_woo_checkout_place_order_text']
-        ];
-        $this->add_render_attribute( 'container', 'data-checkout_ids', json_encode($checkout_field_keys) );
-        $this->add_render_attribute( 'container', 'data-button_texts', json_encode($button_texts) );
-
 		global $wp;
 		$order_review_change_data = [
 			'ea_woo_checkout_layout'              => $settings['ea_woo_checkout_layout'],
@@ -2996,12 +2978,6 @@ class Woo_Checkout extends Widget_Base {
 
 		?>
         <div data-checkout="<?php echo htmlspecialchars(json_encode($order_review_change_data), ENT_QUOTES, 'UTF-8'); ?>" <?php echo $this->get_render_attribute_string( 'container' ); ?>>
-            <div type="text/template" id="eael-wc-billing-reordered-fields">
-                <div class="eael-woo-billing-fields"></div>
-            </div>
-            <div type="text/template" id="eael-wc-shipping-reordered-fields">
-                <div class="eael-woo-shipping-fields"></div>
-            </div>
             <div class="woocommerce">
                 <style>
                     .woocommerce .blockUI.blockOverlay:before {

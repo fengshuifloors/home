@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use PremiumAddons\Includes\Helper_Functions;
 
-// Get settings.
+// Get settings
 $settings = self::get_integrations_settings();
 
 ?>
@@ -20,7 +20,7 @@ $settings = self::get_integrations_settings();
 				<div class="pa-section-info-wrap">
 					<div class="pa-section-info">
 						<h4><?php echo esc_html_e( 'Rollback to Previous Version', 'premium-addons-for-elementor' ); ?></h4>
-						<p><?php echo esc_html_e( sprintf( __( 'Experiencing an issue with Premium Addons for Elementor version %s? Rollback to a previous version before the issue appeared.', 'premium-addons-for-elementor' ), esc_attr( PREMIUM_ADDONS_VERSION ) ) ); ?></p>
+						<p><?php echo sprintf( esc_html_e( 'Experiencing an issue with Premium Addons for Elementor version %s? Rollback to a previous version before the issue appeared.', 'premium-addons-for-elementor' ), esc_attr( PREMIUM_ADDONS_VERSION ) ); ?></p>
 					</div>
 
 					<div class="pa-section-info-cta">

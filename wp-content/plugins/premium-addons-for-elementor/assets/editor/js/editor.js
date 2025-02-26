@@ -301,25 +301,35 @@
                 if (!this.isPremiumWidget())
                     return;
 
+                elementor.promotion.dialog.buttons[0].removeClass("premium-promotion-btn");
                 void this.constructor.__super__.onMouseDown.call(this);
 
                 var widgetObject = this.getElementObj(this.model.get("name")),
-                    actionURL = widgetObject.action_url;
+                    actonURL = widgetObject.action_url;
+
+                // console.log(widgetObject.action_url.indexOf('/?utm_source'));
+
+                elementor.promotion.dialog.buttons[0].addClass("premium-promotion-btn").closest('#elementor-element--promotion__dialog').addClass('premium-promotion-dialog');
+
+                $(".premium-promotion-pro-btn").remove();
+
+                var goProCta = 'https://premiumaddons.com/pro' + actonURL.substring(actonURL.indexOf('/?utm_source'));
+
+                var $goProBtn = $('<a>', { text: wp.i18n.__('Go Pro', 'elementor'), href: goProCta, class: 'premium-promotion-pro-btn dialog-button elementor-button', target: '_blank' });
+
+                elementor.promotion.dialog.buttons[0].after($goProBtn);
 
                 elementor.promotion.showDialog({
-                    title: sprintf(wp.i18n.__('%s', 'elementor'), this.model.get("title")),
-                    content: sprintf(wp.i18n.__('Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'elementor'), this.model.get("title")),
+                    headerMessage: sprintf(wp.i18n.__('%s', 'elementor'), this.model.get("title")),
+                    message: sprintf(wp.i18n.__('Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'elementor'), this.model.get("title")),
                     top: "-7",
-                    targetElement: this.$el,
-                    actionButton: {
-                        url: actionURL,
-                        text: wp.i18n.__('See Demo', 'elementor')
-                    }
+                    element: this.el,
+                    actionURL: widgetObject.action_url
                 })
             }
         }
 
-
+        // setTimeout(function () {
         panel.elements.view = elementsView.extend({
             childView: elementsView.prototype.childView.extend(paWidgetsPromoHandler)
         });
@@ -329,24 +339,12 @@
                 childView: categoriesView.prototype.childView.prototype.childView.extend(paWidgetsPromoHandler)
             })
         });
+        // }, 2000);
+
 
         return panel;
 
 
     });
-
-    var onNavigatorInit = function () {
-
-        elementor.navigator.indicators.paDisConditions = {
-            icon: 'preview-medium',
-            settingKeys: ['pa_display_conditions_switcher'],
-            title: wp.i18n.__('Display Conditions', 'premium-addons-for-elementor'),
-            section: 'section_pa_display_conditions'
-        };
-    }
-
-    elementor.on('navigator:init', onNavigatorInit);
-
-
 
 })(jQuery);

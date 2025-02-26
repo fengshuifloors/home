@@ -660,11 +660,6 @@ class UniteCreatorAcfIntegrate{
 		 */
 		public function getAcfFields($postID, $objName = "post", $addPrefix = true, $imageSize = null){
 			
-			$isActive = self::isAcfActive();
-			
-			if($isActive == false)
-				return(array());
-			
 			if(!empty($imageSize))
 				$this->outputImageSize = $imageSize;
 			
@@ -679,9 +674,9 @@ class UniteCreatorAcfIntegrate{
 				case "term":
 					
 					$termID = "term_".$postID;
-										
+					
 					$arrData = get_fields($termID);
-															
+					
 				break;
 				case "user":
 					

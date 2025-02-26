@@ -27,10 +27,6 @@ class ElementsKit_Widget_Blog_Posts extends Widget_Base {
         return Handler::get_categories();
     }
 
-    public function get_keywords() {
-        return Handler::get_keywords();
-    }
-
     public function get_help_url() {
         return 'https://wpmet.com/doc/blog-posts-2/';
     }
@@ -1543,6 +1539,7 @@ class ElementsKit_Widget_Blog_Posts extends Widget_Base {
            Group_Control_Background::get_type(),
            array(
                'name'     => 'ekit_blog_posts_floating_date_bg_color_group',
+               'default' => '',
                'selector' => '{{WRAPPER}} .elementskit-meta-lists .elementskit-single-meta',
                'separator' => 'before',
            )
@@ -2643,6 +2640,7 @@ class ElementsKit_Widget_Blog_Posts extends Widget_Base {
            Group_Control_Background::get_type(),
            array(
                'name'     => 'ekit_blog_posts_btn_bg_color',
+               'default' => '',
                'selector' => '{{WRAPPER}} .elementskit-btn',
            )
        );
@@ -2673,6 +2671,7 @@ class ElementsKit_Widget_Blog_Posts extends Widget_Base {
            Group_Control_Background::get_type(),
            array(
                'name'     => 'ekit_blog_posts_btn_bg_hover_color',
+               'default' => '',
                'selector' => '{{WRAPPER}} .elementskit-btn:hover',
            )
        );

@@ -66,7 +66,7 @@ class Browser extends Condition {
 	 */
 	public function compare_value( $settings, $operator, $value, $compare_val, $tz ) {
 
-		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
+		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? filter_var( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ), FILTER_SANITIZE_STRING ) : '';
 
 		$user_agent = $this->get_browser_name( $user_agent );
 
